@@ -1,0 +1,240 @@
+*{
+    font-family: open sans;
+  }
+/*
+body {
+    background: rgb(253,40,29);
+    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+    background-size: 2000px 2000px;
+}
+*/
+.main {
+    max-height: 500px;
+    max-width: 90%;
+}
+/*
+.logo {
+    height: 1px;
+    width: 280px;
+    border: 0 none;
+    margin-top: 50%;
+    margin-right: 600px;
+}
+
+#divisor {
+    background-color: white;
+    height: 1px;
+    width: 280px;
+    border: 0 none;
+    margin-top: 400px;
+    margin-right: 70%;
+    transform: rotate(90deg);
+}
+*/
+.form {
+    width: 450px;
+    height: 500px;
+    /*position: absolute;*/
+    /*
+    left: 50%;
+    top: 50%;
+    */
+
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+
+    background: rgb(253,40,29);
+    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+    background-size: 2000px 2000px;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+
+}
+
+.form #main-image {
+    width: 100px;
+    margin-top: 20px;
+}
+
+.form #hr-top-left {
+    width: 128px;
+    left: -110px;
+    top: -51px;
+    position: relative;
+    background-color: white;
+    height: 3px;
+    border: 0 none;
+    border-radius: 5px;
+}
+
+.form #hr-top-right {
+    width: 128px;
+    right: -110px;
+    top: -70px;
+    position: relative;
+    background-color: white;
+    height: 3px;
+    border: 0 none;
+    border-radius: 5px;
+
+}
+
+.inputs {
+    margin-top: -25px;
+}
+
+/*FORM OF USER*/
+div .username {
+    border-radius: 5px;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    margin-left: 53px;
+}
+
+div .username .div-user-icon {
+    width: 45px;
+    border: 1.5px solid;
+    border-color: white;
+    border-radius: 6px 0px 0px 6px;
+}
+    
+div .username .div-user-icon #user-icon {
+    margin-top: 10px;
+    width: 30px;
+    height: 29px;
+}
+
+div .username #email-input {
+    height: 50px;
+    width: 300px;
+    border-radius: 0px 6px 6px 0px;
+    border: 0 none;
+    outline: 0;
+}
+
+#emailHelp {
+    color: white;
+}
+
+/*FORM OF PASSWORD*/
+.password {
+    border: 1px;
+    border-color: white;
+    border-radius: 5px;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 53px;
+}
+
+div .password .div-padlock-icon {
+    width: 45px;
+    border: 1.5px solid;
+    border-color: white;
+    border-radius: 6px 0px 0px 6px;
+}
+
+form .inputs .password .div-padlock-icon #padlock-icon {
+    margin-top: 10px;
+    width: 30px;
+    height: 29px;
+}
+
+form .inputs .password #password-input {
+    height: 50px;
+    width: 300px;
+    border-radius: 0px 6px 6px 0px;
+    border: 0 none;
+    outline: 0;
+}
+
+
+/*FORM OF CHECKBOX*/
+div .div-check {
+    margin-top: 20px;
+    margin-left: -107px;
+}
+
+div .div-check #check-input {
+    display: none;
+}
+
+div .div-check #check-input + .check-label:before {
+    margin-left: -105px;
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: none;
+    border-radius: 3px;
+    border: 1px solid white
+
+}
+
+div .div-check #check-input:checked + .check-label:before {
+    background-color: white;
+}
+
+div .div-check .check-label {
+    top: 100px;
+    color: white;
+}
+
+
+/*BUTTON*/
+form .enter-button {
+    height: 60px;
+    width: 50px; /*O TAMANHO NÃO DIMINUUUUUUUIIII*/
+    max-width: 30px;
+    margin-top: 20px;
+    background-color: #FE5387;
+    border-color: #FE5387;
+    border-radius: 5px;
+    color: white;
+    border: 0 none;
+    font-size: 15px;
+}
+
+/*LINKS*/
+.links {
+    width: 400px;
+    margin-top: 40px;
+    margin-left: 25px;
+    display: flex;
+
+}
+
+#link-forgot-password {
+    margin-right: 0px;
+    font-size: 15px;
+    text-decoration:none;
+    color: white;
+}
+
+#link-register {
+    margin-left: -31px;
+    font-size: 15px;
+    text-decoration:none;
+    color: white;
+}
+
+#divider-bottom {
+    width: 40px;
+    height: 2px;
+    background: white;
+    border: 0 none;
+    transform: rotate(90deg) translate(0px, 16px);
+}
+/*
+#link-register:link {
+    text-decoration:none;
+}
+
+#link-register:visited {
+    text-decoration:none;
+}
+
+#link-register:hover {
+text-decoration:underline;
+}
+*/
