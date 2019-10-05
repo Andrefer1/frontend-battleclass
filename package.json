@@ -3,18 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "core-util-is": "^1.0.2",
+    "gh-pages": "^2.1.1",
+    "rc-if": "^0.0.12",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.1",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "sweetalert2-react": "^0.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d docs"
   },
   "eslintConfig": {
     "extends": "react-app"
