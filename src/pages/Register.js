@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import RcIf from 'rc-if';
+import SweetAlert from 'sweetalert2-react';
 //import mainBanner from '../assets/icons/1920x650.png'
 //import secondaryBanner from '../assets/icons/390x280.png'
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,12 +33,12 @@ export default function Register({ history }) {
             professor: professor
         });
 
-        if(response){
-            history.push('/main')
+        if(response.data.user){
             console.log(response.data)
+            setCadastro('true')
         }
         else {
-            setCadastro("login incorreto")
+            history.push('/main')
         }
         
     }
@@ -69,6 +71,14 @@ export default function Register({ history }) {
         <hr id='divisor' />
         */}
 
+        <RcIf if={cadastro === "true"}>
+            <SweetAlert
+                show={cadastro}
+                title="Falha no Cadastro"
+                text="E-mail já cadastrado!"
+                onConfirm={() => setCadastro(null)}
+            />
+        </RcIf>
         <div className='form'>
             
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
