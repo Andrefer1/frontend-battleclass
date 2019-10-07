@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/frontend-battleclass/static/css/main.1558319f.chunk.css",
-    "main.js": "/frontend-battleclass/static/js/main.c74d23d8.chunk.js",
-    "main.js.map": "/frontend-battleclass/static/js/main.c74d23d8.chunk.js.map",
-    "runtime-main.js": "/frontend-battleclass/static/js/runtime-main.510d6c0c.js",
-    "runtime-main.js.map": "/frontend-battleclass/static/js/runtime-main.510d6c0c.js.map",
-    "static/css/2.266e55a5.chunk.css": "/frontend-battleclass/static/css/2.266e55a5.chunk.css",
-    "static/js/2.e07a0b9f.chunk.js": "/frontend-battleclass/static/js/2.e07a0b9f.chunk.js",
-    "static/js/2.e07a0b9f.chunk.js.map": "/frontend-battleclass/static/js/2.e07a0b9f.chunk.js.map",
-    "index.html": "/frontend-battleclass/index.html",
-    "precache-manifest.c40181d0923e3316473fa1621f27607a.js": "/frontend-battleclass/precache-manifest.c40181d0923e3316473fa1621f27607a.js",
-    "service-worker.js": "/frontend-battleclass/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/frontend-battleclass/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.1558319f.chunk.css.map": "/frontend-battleclass/static/css/main.1558319f.chunk.css.map",
-    "static/media/github.png": "/frontend-battleclass/static/media/github.c8a83d07.png",
-    "static/media/user-profile.svg": "/frontend-battleclass/static/media/user-profile.7a21cbe9.svg",
-    "static/media/user.svg": "/frontend-battleclass/static/media/user.5673de5f.svg"
+    "main.css": "/topicos-frontend/static/css/main.1558319f.chunk.css",
+    "main.js": "/topicos-frontend/static/js/main.e4e9cc88.chunk.js",
+    "main.js.map": "/topicos-frontend/static/js/main.e4e9cc88.chunk.js.map",
+    "runtime-main.js": "/topicos-frontend/static/js/runtime-main.58615003.js",
+    "runtime-main.js.map": "/topicos-frontend/static/js/runtime-main.58615003.js.map",
+    "static/css/2.266e55a5.chunk.css": "/topicos-frontend/static/css/2.266e55a5.chunk.css",
+    "static/js/2.bb9b08ce.chunk.js": "/topicos-frontend/static/js/2.bb9b08ce.chunk.js",
+    "static/js/2.bb9b08ce.chunk.js.map": "/topicos-frontend/static/js/2.bb9b08ce.chunk.js.map",
+    "index.html": "/topicos-frontend/index.html",
+    "precache-manifest.6f81a5ad3e7cf2334fbcf33be840f0ec.js": "/topicos-frontend/precache-manifest.6f81a5ad3e7cf2334fbcf33be840f0ec.js",
+    "service-worker.js": "/topicos-frontend/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/topicos-frontend/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.1558319f.chunk.css.map": "/topicos-frontend/static/css/main.1558319f.chunk.css.map",
+    "static/media/github.png": "/topicos-frontend/static/media/github.c8a83d07.png",
+    "static/media/user-profile.svg": "/topicos-frontend/static/media/user-profile.7a21cbe9.svg",
+    "static/media/user.svg": "/topicos-frontend/static/media/user.5673de5f.svg"
   }
 }

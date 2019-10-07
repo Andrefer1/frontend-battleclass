@@ -6,12 +6,15 @@ import userProfile from '../assets/user-profile.svg'
 
 import './MainStudent.css';
 
-export default function MainStudent() {
+export default function MainStudent({ history }) {
 
     function telas() {
         console.log(132)
     }
 
+    function selecionarEquipe(){
+        history.push('/main/team')
+    }
 
     return (
     <div className='main'>
@@ -60,7 +63,7 @@ export default function MainStudent() {
         </nav>
 
         <div className='btns-profiles'>
-            <a href='/main/team'> 
+            <a onClick={selecionarEquipe}> 
                 <button className='btn btn-primary btn-team' onClick={telas()}>
                     <div className='img-profiles'>
                         <div>

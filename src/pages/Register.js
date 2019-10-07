@@ -18,6 +18,7 @@ export default function Register({ history }) {
     const [ nome, setNome ] = useState('');
     const [ professor, setProfessor ] = useState();
     const [ cadastro, setCadastro ] = useState('');
+    const [ confirmation, setConfirmation ] = useState('');
 
     const [ senha1, setSenha1 ] = useState('');
     const [ senha2, setSenha2 ] = useState('');
@@ -36,9 +37,9 @@ export default function Register({ history }) {
         if(response.data.user){
             console.log(response.data)
             setCadastro('true')
-        }
-        else {
-            history.push('/main')
+            
+        } else {
+            setConfirmation('true')
         }
         
     }
@@ -76,7 +77,17 @@ export default function Register({ history }) {
                 show={cadastro}
                 title="Falha no Cadastro"
                 text="E-mail já cadastrado!"
+                type="error"
                 onConfirm={() => setCadastro(null)}
+            />
+        </RcIf>
+        <RcIf if={confirmation === "true"}>
+            <SweetAlert
+                show={confirmation}
+                title="Opaa!!"
+                text="Um email de confirmação foi encaminhado para o seu email."
+                type="warning"
+                onConfirm={() => setConfirmation(null)}
             />
         </RcIf>
         <div className='form'>

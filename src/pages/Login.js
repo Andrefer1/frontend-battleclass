@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import RcIf, { RcElse } from 'rc-if';
-import SweetAlert from 'sweetalert2-react';
-import api from '../service/api';
-//import mainBanner from '../assets/icons/1920x650.png'
-//import secondaryBanner from '../assets/icons/390x280.png'
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import RcIf, { RcElse } from 'rc-if'
+import SweetAlert from 'sweetalert2-react'
+import api from '../service/api'
 
 import mainImage from '../assets/user.svg' 
 import userIcon from '../assets/user.svg'
 import padlockIcon from '../assets/padlock.png'
 
-import './Login.css';
+import './Login.css'
 
 export default function Login({ history }) {
     const [ username, setUsername ] = useState('');
@@ -34,6 +31,10 @@ export default function Login({ history }) {
         console.log(response.data);
         
     }
+
+    function selecionarCadastro(){
+        history.push('/register')
+    }
     return (
     <div className='main'>
         {/*
@@ -48,6 +49,7 @@ export default function Login({ history }) {
                 show={variavel}
                 title="Falha no Login"
                 text="Login ou Senha incorretos"
+                type='error'
                 onConfirm={() => setVariavel(null)}
             />
         </RcIf>
@@ -94,7 +96,7 @@ export default function Login({ history }) {
                     </div>
                     <hr id='divider-bottom' />
                     <div>
-                        <a href='./register' id='link-register'>Ainda não possui cadastro?</a>
+                        <a onClick={selecionarCadastro} id='link-register'>Ainda não possui cadastro?</a>
                     </div>
                 </div>
                 
