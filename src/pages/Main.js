@@ -8,34 +8,12 @@ import './Main.css';
 
 export default function MainStudent({ history }) {
 
-    function telas() {
-        console.log(132)
-    }
-
     function selecionarEquipe(){
         history.push('/main/team')
     }
 
     return (
-    <div className='main'>
-
-{/*
-<div id="demo">
-    <div class="wrapper">
-        <div class="content">
-            <ul>
-                <a href="#"><li>Lorem ipsum dolor</li></a>
-                <a href="#"><li>Consectetur adipisicing</li></a>
-                <a href="#"><li>Reprehenderit</li></a>
-                <a href="#"><li>Commodo consequat</li></a>
-            </ul>
-        </div>
-        <div class="parent">
-            <img src={mainImage} alt='Imagem do usuário' width='30' height='30'/>
-        </div>
-    </div>
-</div>
-*/}
+    <div className='main-student'>
     
         <nav>
             <div className='navbar'>
@@ -44,23 +22,20 @@ export default function MainStudent({ history }) {
                         BATTLECLASS
                     </a>
                 </div>
-                {/*
-                <div className='username'>
-                    André
-                </div>
-                */}
-                <div className="dropdown">
-                    <img src={mainImage} alt='Imagem do usuário' className="dropimg" />
-                    <div className="dropdown-content">
-                        <a href='/main'>Início</a>
-                        <a href="google.com"> Meu Perfil</a>
-                        <a href="google.com">Equipe</a>
-
+                <div className='student-data'>
+                    <div className='student-name'>
+                        ANDRÉ FERNANDES BISPO
+                    </div>
+                    <div className='trace'>
+                        -
+                    </div>
+                    <div className='student-points'>
+                        75 PONTOS
                     </div>
                 </div>
             </div>
            
-            <hr />
+            <hr id='hr' />
         </nav>
 
         <div className='menu'>
@@ -78,7 +53,7 @@ export default function MainStudent({ history }) {
 
         <div className='btns-profiles'>
             <a onClick={selecionarEquipe}> 
-                <button className='btn btn-primary btn-team' onClick={telas()}>
+                <button className='btn btn-primary btn-team'>
                     <div className='img-profiles'>
                         <div>
                             <img src={userProfile} alt='Imagem do usuário' className='user-profile' />
