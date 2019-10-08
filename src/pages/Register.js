@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RcIf from 'rc-if';
 import SweetAlert from 'sweetalert2-react';
-//import mainBanner from '../assets/icons/1920x650.png'
-//import secondaryBanner from '../assets/icons/390x280.png'
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../service/api'
 
 import mainImage from '../assets/user.svg' 
@@ -63,7 +60,7 @@ export default function Register({ history }) {
     })
     return (
         
-    <div className='main'>
+    <div className='main-register'>
         {/*
         <div class='logo'>
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
@@ -90,7 +87,7 @@ export default function Register({ history }) {
                 onConfirm={() => setConfirmation(null)}
             />
         </RcIf>
-        <div className='form'>
+        <div className='form-register'>
             
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
 

@@ -3,8 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import Login from './pages/Login'
 import Register from './pages/Register'
-import MainStudent from './pages/MainStudent'
-import MainTeam from './pages/MainTeam'
+import MainStudent from './pages/Main'
+import MainTeam from './pages/Team'
 import Autenticacao from './pages/Autenticacao'
 
 export default function Routes() {

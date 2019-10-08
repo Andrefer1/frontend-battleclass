@@ -1,6 +1,17 @@
 *{
     font-family: open sans;
   }
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    min-height: 100%
+}
 /*
 body {
     background: rgb(253,40,29);
@@ -8,44 +19,36 @@ body {
     background-size: 2000px 2000px;
 }
 */
-.main {
-    max-height: 500px;
-    max-width: 90%;
-}
-/*
-.logo {
-    height: 1px;
-    width: 280px;
-    border: 0 none;
-    margin-top: 50%;
-    margin-right: 600px;
+
+.main-register {
+    /*max-height: 500px;*/
 }
 
-#divisor {
-    background-color: white;
-    height: 1px;
-    width: 280px;
-    border: 0 none;
-    margin-top: 400px;
-    margin-right: 70%;
-    transform: rotate(90deg);
-}
-*/
-.form {
+.form-register {
+    width: 450px;
+    height: 720px;
+    border-radius: 10px;
+
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-    height: 630px;
+
+    background: rgb(253,40,29);
+    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+    background-size: 2000px 2000px;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
 }
 
-#main-image {
+.form-register #main-image {
     width: 100px;
+    margin-top: 20px;
 }
 
-#hr-top-left {
+.form-register #hr-top-left {
     width: 120px;
-    left: 106px;
+    left: 60px;
     top: -50px;
     position: relative;
     background-color: white;
@@ -54,10 +57,10 @@ body {
     border-radius: 5px;
 }
 
-#hr-top-right {
+.form-register #hr-top-right {
     width: 120px;
-    right: 106px;
-    top: -62px;
+    right: -270px;
+    top: -70px;
     position: relative;
     background-color: white;
     height: 3px;
@@ -65,40 +68,79 @@ body {
     border-radius: 5px;
 }
 
-.form #h2-cadastro  {
+.form-register #h2-cadastro  {
     color: white;
     margin-top: -40px;
 }
 
 /*NAME INPUT*/
-div .name {
+.form-register .name {
+    border-radius: 5px;
+    display: flex;
+    margin-top: -5px;
+    margin-left: 55px;
+}
+
+.form-register .label-name-input {
+    margin-right: 206px;
+    color: white;
+}
+
+.form-register .name .div-user-icon {
+    width: 45px;
+    border: 1.5px solid;
+    border-color: white;
+    border-radius: 6px 0px 0px 6px;
+}
+    
+.form-register .name .div-user-icon #user-icon {
+    margin-top: 5px;
+    width: 30px;
+    height: 29px;
+}
+
+.form-register .name #name-input {
+    height: 50px;
+    width: 300px;
+    border-radius: 0px 6px 6px 0px;
+    border: 0 none;
+    outline: 0;
+}
+
+.form-register #nameHelp {
+    color: white;
+}
+
+
+/*EMAIL INPUT*/
+.form-register .username {
     border-radius: 5px;
     display: flex;
     margin-top: 1px;
     margin-left: 55px;
+    margin-top: -5px
 }
 
-.label-name-input {
+.form-register .label-username-input {
     margin-right: 206px;
     color: white;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-
-div .name .div-user-icon {
+.form-register .username .div-user-icon {
     width: 45px;
     border: 1.5px solid;
     border-color: white;
     border-radius: 6px 0px 0px 6px;
 }
     
-div .name .div-user-icon #user-icon {
+.form-register .username .div-user-icon #user-icon {
     margin-top: 5px;
     width: 30px;
     height: 29px;
 }
 
-div .name #name-input {
+.form-register .username #username-input {
     height: 50px;
     width: 300px;
     border-radius: 0px 6px 6px 0px;
@@ -106,79 +148,43 @@ div .name #name-input {
     outline: 0;
 }
 
-#nameHelp {
-    color: white;
-}
-
-/*EMAIL INPUT*/
-div .username {
-    border-radius: 5px;
-    display: flex;
-    margin-top: 1px;
-}
-
-.label-username-input {
-    margin-right: 206px;
-    color: white;
-    margin-top: 20px;
-}
-
-
-div .username .div-user-icon {
-    width: 45px;
-    border: 1.5px solid;
-    border-color: white;
-    border-radius: 6px 0px 0px 6px;
-}
-    
-div .username .div-user-icon #user-icon {
-    margin-top: 5px;
-    width: 30px;
-    height: 29px;
-}
-
-div .username #username-input {
-    height: 50px;
-    width: 300px;
-    border-radius: 0px 6px 6px 0px;
-    border: 0 none;
-    outline: 0;
-}
-
-#usernameHelp {
+.form-register #usernameHelp {
     color: white;
 }
 
 
 /*PASSWORD INPUT*/
-.password {
+.form-register .password {
     border: 1px;
     border-color: white;
     border-radius: 5px;
     display: flex;
     margin-top: 3px;
     margin-bottom: 3px;
+    margin-left: 55px;
+    margin-top: -5px;
 }
 
-.label-password-input {
+.form-register .label-password-input {
     margin-right: 206px;
     color: white;
+    margin-top: 10px;
 }
 
-div .password .div-padlock-icon {
+.form-register .password .div-padlock-icon {
     width: 45px;
     border: 1.5px solid;
     border-color: white;
     border-radius: 6px 0px 0px 6px;
 }
 
-div .password .div-padlock-icon #padlock-icon {
+.form-register .password .div-padlock-icon #padlock-icon {
     margin-top: 5px;
     width: 30px;
     height: 29px;
 }
 
-.inputs .password #password-input {
+.form-register .inputs .password #password-input {
     height: 50px;
     width: 300px;
     border-radius: 0px 6px 6px 0px;
@@ -187,33 +193,35 @@ div .password .div-padlock-icon #padlock-icon {
 }
 
 /*PASSWORD CONFIRMATION FORM*/
-.password-confirmation  {
+.form-register .password-confirmation  {
     border: 1px;
     border-color: white;
     border-radius: 5px;
     display: flex;
-    margin-left: 53px;
+    margin-left: 55px;
+    margin-top: -5px;
 }
 
-.label-password-input-confirmation {
+.form-register .label-password-input-confirmation {
     margin-right: 206px;
     color: white;
+    margin-top: 10px;
 }
 
-div .password-confirmation  .div-padlock-icon-confirmation  {
+.form-register .password-confirmation  .div-padlock-icon-confirmation  {
     width: 45px;
     border: 1.5px solid;
     border-color: white;
     border-radius: 6px 0px 0px 6px;
 }
 
-div .password-confirmation  .div-padlock-icon-confirmation  #padlock-icon-confirmation  {
+.form-register .password-confirmation  .div-padlock-icon-confirmation  #padlock-icon-confirmation  {
     margin-top: 10px;
     width: 30px;
     height: 29px;
 }
 
-div .password-confirmation  #password-input-confirmation  {
+.form-register .password-confirmation  #password-input-confirmation  {
     height: 50px;
     width: 300px;
     border-radius: 0px 6px 6px 0px;
@@ -223,16 +231,16 @@ div .password-confirmation  #password-input-confirmation  {
 
 
 /*CHECKBOX INPUT*/
-div .div-accept-terms {
-    margin-top: 20px;
+.form-register .div-accept-terms {
+    margin-top: 25px;
     margin-right: 86px;
 }
 
-div .div-accept-terms #check-input {
+.form-register .div-accept-terms #check-input {
     display: none;
 }
 
-div .div-accept-terms #check-input + .check-label:before {
+.form-register .div-accept-terms #check-input + .check-label:before {
     margin-left: -15px;
     content: '';
     display: inline-block;
@@ -243,22 +251,21 @@ div .div-accept-terms #check-input + .check-label:before {
     border: 1px solid white
 }
 
-div .div-accept-terms #check-input:checked + .check-label:before {
+.form-register .div-accept-terms #check-input:checked + .check-label:before {
     background-color: white;
 }
 
-div .div-accept-terms .check-label {
+.form-register .div-accept-terms .check-label {
     top: 100px;
     color: white;
 }
 
 
 /*BUTTON*/
-.enter-button {
+.form-register .enter-button {
     height: 50px;
-    width: auto;
-    min-width: 100%;
-    margin-top: 20px;
+    width: 345px;
+    margin-top: 15px;
     background-color: #FE5387;
     border-color: #FE5387;
     border-radius: 5px;
@@ -267,31 +274,18 @@ div .div-accept-terms .check-label {
     font-size: 15px;
 }
 
-.link {
+.form-register .link {
     margin-top: 20px;
 }
 
-#link-login {
+.form-register #link-login {
     margin-left: 210px;
     font-size: 15px;
     text-decoration:none;
     color: white;
 }
-/*
-#link-register {
-    margin-left: -13px;
-    font-size: 15px;
-    text-decoration:none;
-}
-#link-register:link {
-    text-decoration:none;
-}
 
-#link-register:visited {
-    text-decoration:none;
-}
-*/
-#hr-bottom {
+.form-register #hr-bottom {
     background-color: white;
     height: .7px;
     margin-top: 20px;

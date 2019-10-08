@@ -36,14 +36,8 @@ export default function Login({ history }) {
         history.push('/register')
     }
     return (
-    <div className='main'>
-        {/*
-        <div class='logo'>
-            <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
-        </div>
-
-        <hr id='divisor' />
-        */}
+    <div className='main-login'>
+        
         <RcIf if={variavel === "login incorreto"}>
             <SweetAlert
                 show={variavel}
@@ -54,13 +48,13 @@ export default function Login({ history }) {
             />
         </RcIf>
     
-        <div className='form'>
+        <div className='form-login'>
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
 
             <hr id='hr-top-left' />
             <hr id='hr-top-right' />
 
-            <form onSubmit={efetuarLogin}>  {/*#formLogin="ngForm" (ngSubmit)="login(formLogin)"*/}
+            <form onSubmit={efetuarLogin}>
                 <div className='inputs'>
                     {/*PASSWORD INPUT*/}
                     <div className='username'>
@@ -88,7 +82,7 @@ export default function Login({ history }) {
                     <label className="check-label" for="check-input"> Vender a alma</label>
                 </div>
                 
-                <button className="btn btn-primary enter-button" href='./main-student' >Entrar</button> {/*[disabled]="formLogin.invalid"*/}
+                <button className="btn btn-primary enter-button" href='./main' >Entrar</button>
 
                 <div className='links'>
                     <div>

@@ -4,9 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import mainImage from '../assets/user.svg' 
 import userProfile from '../assets/user-profile.svg'
 
-import './MainTeam.css';
+import './Main.css';
 
-export default function MainStudent() {
+export default function MainStudent({ history }) {
+
+    function telas() {
+        console.log(132)
+    }
+
+    function selecionarEquipe(){
+        history.push('/main/team')
+    }
+
     return (
     <div className='main'>
 
@@ -28,11 +37,10 @@ export default function MainStudent() {
 </div>
 */}
     
-
         <nav>
             <div className='navbar'>
                 <div className='sitename'>
-                    <a href='/main/team'> 
+                    <a href='/main'> 
                         BATTLECLASS
                     </a>
                 </div>
@@ -41,12 +49,13 @@ export default function MainStudent() {
                     André
                 </div>
                 */}
-                <div class="dropdown">
-                    <img src={mainImage} alt='Imagem do usuário' class="dropimg" />
-                    <div class="dropdown-content">
+                <div className="dropdown">
+                    <img src={mainImage} alt='Imagem do usuário' className="dropimg" />
+                    <div className="dropdown-content">
                         <a href='/main'>Início</a>
                         <a href="google.com"> Meu Perfil</a>
                         <a href="google.com">Equipe</a>
+
                     </div>
                 </div>
             </div>
@@ -54,46 +63,38 @@ export default function MainStudent() {
             <hr />
         </nav>
 
-        <div className='cards-students'>
-            <div className='card-individual'>
-                <div className='profile-data'>
-                    <div className='img-profile'>
-                        <img src={userProfile} alt='Imagem do usuário' className='img-individual' />
-                    </div>
-                    <div className='username-profile'>
-                        André Fernandes Bispo
-                    </div>
-                    <div className='points'>
-                        75
-                    </div>
-                </div>
+        <div className='menu'>
+            <a href='/main'> Página Inicial </a>
+            <a href='/main/team'> Minha Equipe </a>
+            <a href='google.com'> Atividades </a>
+            <div className='menu-bottom'>
+                <a href='google.com'> Configurações </a>
+                <a href='google.com'> Contatos </a>
+                <a href='google.com'> Sobre </a>
             </div>
-            <div className='card-individual'>
-                <div className='profile-data'>
-                    <div className='img-profile'>
-                        <img src={userProfile} alt='Imagem do usuário' className='img-individual' />
+        </div>
+
+       
+
+        <div className='btns-profiles'>
+            <a onClick={selecionarEquipe}> 
+                <button className='btn btn-primary btn-team' onClick={telas()}>
+                    <div className='img-profiles'>
+                        <div>
+                            <img src={userProfile} alt='Imagem do usuário' className='user-profile' />
+                        </div>
+                        <div>
+                            <img src={userProfile} alt='Imagem do usuário' className='user-profile' />
+                        </div>
+                        <div>
+                            <img src={userProfile} alt='Imagem do usuário' className='user-profile' />
+                        </div>
+                        <div className='str-equipe'>
+                            Equipe
+                        </div>
                     </div>
-                    <div className='username-profile'>
-                        João Vitor S. Egidio
-                    </div>
-                    <div className='points'>
-                        75
-                    </div>
-                </div>
-            </div>
-            <div className='card-individual'>
-                <div className='profile-data'>
-                    <div className='img-profile'>
-                        <img src={userProfile} alt='Imagem do usuário' className='img-individual' />
-                    </div>
-                    <div className='username-profile'>
-                        Emmanuel Peralta
-                    </div>
-                    <div className='points'>
-                        75
-                    </div>
-                </div>
-            </div>
+                </button>
+            </a>
         </div>
 
         <div className='rankings'>
@@ -145,9 +146,6 @@ export default function MainStudent() {
                 </ul>
             </div>
         </div>
-
-
-
 
         <div className='btns-activitys'>
             {/*colocar um for para adicionar os botões das atividades*/}
