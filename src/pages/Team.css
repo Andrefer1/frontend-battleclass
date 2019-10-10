@@ -1,90 +1,170 @@
-*{
+* {
     font-family: open sans;
-  }
-
-/*
-body {
-    background: rgb(253,40,29);
-    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
-    background-size: 2000px 2000px;
-}
-*/
-
-.main{
-    margin-left: 10%;
-    max-width: 90%;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
 }
 
-.navbar {
-    display: flex;
+html, body, #root {
+    min-height: 100%
+}
+
+
+/*NAVBAR*/
+.team nav .navbar {
+    height: 100px;
     width: 100%;
     background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+    position: fixed;
+    box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.13);
 }
 
-.navbar .sitename {
-    /*margin-top: 0.9%;*/
+.team nav .navbar .sitename a {
     color: white;
     text-decoration: none;
+    margin-left: 60px;
 }
 
-.navbar img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    float: right;
+.team nav .navbar .student-data {
+    display: flex;
+    /*grid-template-columns: repeat(3, 2fr); NÃO FUNCIONOU, VERIFICAR*/
+    position: absolute;
+    margin-left: 254px;
 }
 
-.navbar .dropdown {
-    margin-left: 1.5%;
-}
-
-.navbar .username {
+.team nav .navbar .student-data .team-name-principal {
     color: white;
-    margin: 0.8% 0 0 74.2%;
-    /*float: right;*/
+    font-size: 30px;
 }
 
+.team nav .navbar .student-data .trace {
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+}
 
-/* Style The Dropdown Button */
-  
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
+.team nav .navbar .student-data .team-points-principal{
+    color: white;
+    font-size: 25px;
+    margin-top: 3px;
+    margin-left: 20px;
+}
+
+.team nav #hr {
+    max-width: 100%;
+    margin-top: -1px;
+    margin-left: 270px;
+    background: black;
     position: relative;
-    display: inline-block;
 }
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute; /*Tirar o absolute no ranking*/
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+/*MENU*/
+.team .menu {
+    position: fixed; /*Tirar o absolute no ranking*/
+    background-color: #2e2e64;
+    width: 250px;
+    height: 90%;
     z-index: 1;
-    margin-left: -60px;
+    margin-top: 83px;
+    margin-left: 0px;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
+.team .menu a {
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    border-bottom: 1px solid;
+    border-color: white;
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
+.team .menu a:hover {
+    background-color: rgba(206,51,126,1)
 }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1
+.team .menu .menu-bottom {
+    margin-top: 535px;
+
 }
 
+
+/*RANKINGS*/
+.team .rankings .ranking-do-dia {
+    height: 280px;
+    width: 270px;
+    background: white;
+    border-radius: 9px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
+    float: right;
+    margin-top: 110px;
+    margin-right: 20px;
+}
+
+.team .rankings .ranking-do-dia .ranking-name {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.team .rankings .ranking-do-dia ul {
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.team .rankings .ranking-do-dia ul li {
+    display: inline-block;
+}
+
+.team .rankings .ranking-do-dia ul li .team-ranking {
+    display: flex;
+    transform: translate( 95px, 20px)
+}
+
+.team .rankings .ranking-do-dia ul li .team-ranking:hover {
+    background-color: #f1f1f1;
+    cursor: pointer
+}
+
+.team .rankings .ranking-do-dia ul li .team-ranking .team-profile {
+    position: absolute;
+    transform: translate(-105px, -25px);
+}
+
+.team .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
+    height: 30px;
+}
+
+.team .rankings .ranking-do-dia ul li .team-ranking .team-name {
+    width: 155px;
+    position: relative;
+    text-align: left;
+    margin-top: -20px;
+    transform: translate(-72px, -3px);
+
+    white-space: nowrap;
+    overflow: hidden;
+    transition-duration: 1s;
+}
+
+.team .rankings .ranking-do-dia ul li .team-ranking .team-points {
+    position: absolute;
+    transform: translate(90px, -22px);
+}
+
+.team .rankings .ranking-do-dia ul #hr-ranking {
+    width: 210px;
+    margin-top: 25px;
+    margin-left: 30px;
+}
 
 /*PROFILES CARDS*/
-.cards-students {
-    max-width: 400px;
+.team .cards-students ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    margin-top: 50px
 }
 
 .cards-students .card-individual {
@@ -123,70 +203,4 @@ body {
     position: absolute;
 }
 
-
-/*RANKINGS*/
-.rankings .ranking-do-dia {
-    height: 210px;
-    width: 270px;
-    background: white;
-    border-radius: 9px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    text-align: center;
-    float: right;
-    margin-top: -510px;
-}
-
-.rankings .ranking-do-dia ul {
-    margin-top: 20px;
-    margin-right: 40px;
-}
-
-.rankings .ranking-do-dia ul li {
-    display: inline-block;
-}
-
-.rankings .ranking-do-dia ul li .user-ranking {
-    display: flex;
-    cursor: pointer
-}
-
-.rankings .ranking-do-dia ul li .user-ranking:hover {
-    background-color: #f1f1f1
-}
-.rankings .ranking-do-dia ul li .user-ranking .user-profile {
-    position: absolute;
-    transform: translate(-105px, -15px)
-}
-
-.rankings .ranking-do-dia ul li .user-ranking .user-profile img {
-    height: 30px;
-}
-
-.rankings .ranking-do-dia ul li .user-ranking .team-name {
-    position: absolute;
-    transform: translate(-65px, -12px)
-}
-
-.rankings .ranking-do-dia ul li .user-ranking .team-points {
-    position: absolute;
-    transform: translate(90px, -12px)
-}
-
-.rankings .ranking-do-dia ul #hr-ranking {
-    width: 210px;
-    margin-left: -8px;
-
-}
-
-.btns-activitys {
-    padding-top: 80%;
-    float: left;
-}
-
-.btns-activitys .btn-activity {
-    margin-left: 5px;
-    border-radius: 20px;
-    width: 160px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.4);
-}
 
