@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import RcIf from 'rc-if';
 import SweetAlert from 'sweetalert2-react';
-//import mainBanner from '../assets/icons/1920x650.png'
-//import secondaryBanner from '../assets/icons/390x280.png'
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../service/api'
 
 import mainImage from '../assets/user.svg' 
@@ -18,6 +15,7 @@ export default function Register({ history }) {
     const [ nome, setNome ] = useState('');
     const [ professor, setProfessor ] = useState();
     const [ cadastro, setCadastro ] = useState('');
+    const [ confirmation, setConfirmation ] = useState('');
 
     const [ senha1, setSenha1 ] = useState('');
     const [ senha2, setSenha2 ] = useState('');
@@ -36,9 +34,9 @@ export default function Register({ history }) {
         if(response.data.user){
             console.log(response.data)
             setCadastro('true')
-        }
-        else {
-            history.push('/main')
+            
+        } else {
+            setConfirmation('true')
         }
         
     }
@@ -62,7 +60,7 @@ export default function Register({ history }) {
     })
     return (
         
-    <div className='main'>
+    <div className='main-register'>
         {/*
         <div class='logo'>
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
@@ -76,10 +74,20 @@ export default function Register({ history }) {
                 show={cadastro}
                 title="Falha no Cadastro"
                 text="E-mail já cadastrado!"
+                type="error"
                 onConfirm={() => setCadastro(null)}
             />
         </RcIf>
-        <div className='form'>
+        <RcIf if={confirmation === "true"}>
+            <SweetAlert
+                show={confirmation}
+                title="Opaa!!"
+                text="Um email de confirmação foi encaminhado para o seu email."
+                type="warning"
+                onConfirm={() => setConfirmation(null)}
+            />
+        </RcIf>
+        <div className='form-register'>
             
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
 

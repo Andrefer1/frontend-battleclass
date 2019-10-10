@@ -1,0 +1,206 @@
+* {
+    font-family: open sans;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    min-height: 100%
+}
+
+
+/*NAVBAR*/
+.main-student nav .navbar {
+    height: 100px;
+    width: 100%;
+    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+    position: fixed;
+    box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.13);
+}
+
+.main-student nav .navbar .sitename a {
+    color: white;
+    text-decoration: none;
+    margin-left: 60px;
+}
+
+.main-student nav .navbar .student-data {
+    display: flex;
+    /*grid-template-columns: repeat(3, 2fr); NÃO FUNCIONOU, VERIFICAR*/
+    position: absolute;
+    margin-left: 254px;
+}
+
+.main-student nav .navbar .student-data .student-name {
+    color: white;
+    font-size: 30px;
+}
+
+.main-student nav .navbar .student-data .trace {
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.main-student nav .navbar .student-data .student-points {
+    color: white;
+    font-size: 25px;
+    margin-top: 3px;
+    margin-left: 20px;
+}
+
+.main-student nav #hr {
+    max-width: 100%;
+    margin-top: -1px;
+    margin-left: 270px;
+    background: black;
+    position: relative;
+}
+
+
+/*MENU*/
+.main-student .menu {
+    position: fixed; /*Tirar o absolute no ranking*/
+    background-color: #2e2e64;
+    width: 250px;
+    height: 90%;
+    z-index: 1;
+    margin-top: 83px;
+    margin-left: 0px;
+}
+
+.main-student .menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid;
+    border-color: white;
+}
+
+.main-student .menu a:hover {
+    background-color: rgba(206,51,126,1)
+}
+
+.main-student .menu .menu-bottom {
+    margin-top: 535px;
+
+}
+
+/*RANKINGS*/
+.main-student .rankings .ranking-do-dia {
+    height: 210px;
+    width: 270px;
+    background: white;
+    border-radius: 9px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
+    text-align: center;
+    float: right;
+    margin-top: -250px;
+    margin-right: 20px;
+}
+
+.main-student .rankings .ranking-do-dia ul {
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.main-student .rankings .ranking-do-dia ul li {
+    display: inline-block;
+}
+
+.main-student .rankings .ranking-do-dia ul li .user-ranking {
+    display: flex;
+    cursor: pointer
+}
+
+.main-student .rankings .ranking-do-dia ul li .user-ranking:hover {
+    background-color: #f1f1f1
+}
+
+.main-student .rankings .ranking-do-dia ul li .user-ranking .user-profile {
+    position: absolute;
+    transform: translate(-105px, -15px)
+}
+
+.main-student .rankings .ranking-do-dia ul li .user-ranking .user-profile img {
+    height: 30px;
+}
+
+.main-student .rankings .ranking-do-dia ul li .user-ranking .team-name {
+    position: absolute;
+    transform: translate(-65px, -12px)
+}
+
+.main-student .rankings .ranking-do-dia ul li .user-ranking .team-points {
+    position: absolute;
+    transform: translate(90px, -12px)
+}
+
+.main-student .rankings .ranking-do-dia ul #hr-ranking {
+    width: 210px;
+    margin-left: -8px;
+
+}
+
+
+/*TASKS*/
+.main-student .tasks .task {
+    display: flex;
+    width: 50%;
+    height: 250px;
+    margin-top: 140px;
+    margin-left: 275px;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.07);
+}
+
+.main-student .tasks .task:hover {
+    cursor: pointer;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+
+.main-student .tasks .task .task-content {
+    width: 85%;
+    height: 230px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.main-student .tasks .task .task-content .task-title {
+    /*width: 100%;*/
+    float: left;
+    font-size: 25px;
+}
+
+.main-student .tasks .task .task-content .task-description {
+    content: '...';
+    width: 100%;
+    height: 180px;
+    float: left;
+    margin-top: 10px;
+    margin-right: 100%;
+    color: rgb(161, 161, 161);
+    text-align: justify;
+    overflow: hidden;
+}
+
+.main-student .tasks .task .task-points {
+    width: 15%;
+    height: 202px;
+    margin-top: 28px;
+    margin-left: 20px;
+    border-left: 1.5px solid;
+    border-color: rgb(218, 217, 217);
+}
+
+.main-student .tasks .task .task-points .task-points-notes {
+    font-size: 20px;
+}
+
+.main-student .tasks .task .task-points .task-pontuation {
+    font-size: 25px;
+    margin-top: 8px;
+}

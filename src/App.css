@@ -1,15 +1,20 @@
+* {
+    font-family: open sans;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
 .App {
-    width: 90%;
+    width: 100%;
     max-width: 100%;
     height: 100%;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    
 }
-
-/*
-nav a {
-    float: right;
-}
-*/
 
 footer {
     height: 35px;

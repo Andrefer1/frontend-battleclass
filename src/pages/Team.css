@@ -1,0 +1,192 @@
+*{
+    font-family: open sans;
+  }
+
+/*
+body {
+    background: rgb(253,40,29);
+    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+    background-size: 2000px 2000px;
+}
+*/
+
+.main{
+    margin-left: 10%;
+    max-width: 90%;
+}
+
+.navbar {
+    display: flex;
+    width: 100%;
+    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+}
+
+.navbar .sitename {
+    /*margin-top: 0.9%;*/
+    color: white;
+    text-decoration: none;
+}
+
+.navbar img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    float: right;
+}
+
+.navbar .dropdown {
+    margin-left: 1.5%;
+}
+
+.navbar .username {
+    color: white;
+    margin: 0.8% 0 0 74.2%;
+    /*float: right;*/
+}
+
+
+/* Style The Dropdown Button */
+  
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute; /*Tirar o absolute no ranking*/
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -60px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+
+/*PROFILES CARDS*/
+.cards-students {
+    max-width: 400px;
+}
+
+.cards-students .card-individual {
+    min-width: 200px;
+    min-height: 150px;
+    max-width: 400px;
+    max-height: 294px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.cards-students .card-individual .profile-data {
+    padding-top: 10px;
+    display: flex;
+}
+
+.cards-students .card-individual .profile-data .img-individual {
+    height: 30px;
+    width: 30px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.cards-students .card-individual .profile-data .username-profile {
+    margin-top: 4px;
+    margin-left: 60px;
+    position: absolute;
+}
+
+
+.cards-students .card-individual .profile-data .points {
+    margin-top: 4px;
+    padding-left: 360px;
+    margin-right: 10px;
+    position: absolute;
+}
+
+
+/*RANKINGS*/
+.rankings .ranking-do-dia {
+    height: 210px;
+    width: 270px;
+    background: white;
+    border-radius: 9px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    text-align: center;
+    float: right;
+    margin-top: -510px;
+}
+
+.rankings .ranking-do-dia ul {
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.rankings .ranking-do-dia ul li {
+    display: inline-block;
+}
+
+.rankings .ranking-do-dia ul li .user-ranking {
+    display: flex;
+    cursor: pointer
+}
+
+.rankings .ranking-do-dia ul li .user-ranking:hover {
+    background-color: #f1f1f1
+}
+.rankings .ranking-do-dia ul li .user-ranking .user-profile {
+    position: absolute;
+    transform: translate(-105px, -15px)
+}
+
+.rankings .ranking-do-dia ul li .user-ranking .user-profile img {
+    height: 30px;
+}
+
+.rankings .ranking-do-dia ul li .user-ranking .team-name {
+    position: absolute;
+    transform: translate(-65px, -12px)
+}
+
+.rankings .ranking-do-dia ul li .user-ranking .team-points {
+    position: absolute;
+    transform: translate(90px, -12px)
+}
+
+.rankings .ranking-do-dia ul #hr-ranking {
+    width: 210px;
+    margin-left: -8px;
+
+}
+
+.btns-activitys {
+    padding-top: 80%;
+    float: left;
+}
+
+.btns-activitys .btn-activity {
+    margin-left: 5px;
+    border-radius: 20px;
+    width: 160px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.4);
+}
+

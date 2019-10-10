@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import RcIf, { RcElse } from 'rc-if';
-import SweetAlert from 'sweetalert2-react';
-import api from '../service/api';
-//import mainBanner from '../assets/icons/1920x650.png'
-//import secondaryBanner from '../assets/icons/390x280.png'
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import RcIf, { RcElse } from 'rc-if'
+import SweetAlert from 'sweetalert2-react'
+import api from '../service/api'
 
 import mainImage from '../assets/user.svg' 
 import userIcon from '../assets/user.svg'
 import padlockIcon from '../assets/padlock.png'
 
-import './Login.css';
+import './Login.css'
 
 export default function Login({ history }) {
     const [ username, setUsername ] = useState('');
@@ -34,31 +31,35 @@ export default function Login({ history }) {
         console.log(response.data);
         
     }
-    return (
-    <div className='main'>
-        {/*
-        <div class='logo'>
-            <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
-        </div>
 
-        <hr id='divisor' />
-        */}
+    function selecionarCadastro(){
+        history.push('/register')
+    }
+
+    function selecionarRecuperar(){
+        history.push('/recuperar')
+    }
+    
+    return (
+    <div className='main-login'>
+        
         <RcIf if={variavel === "login incorreto"}>
             <SweetAlert
                 show={variavel}
                 title="Falha no Login"
                 text="Login ou Senha incorretos"
+                type='error'
                 onConfirm={() => setVariavel(null)}
             />
         </RcIf>
     
-        <div className='form'>
+        <div className='form-login'>
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
 
             <hr id='hr-top-left' />
             <hr id='hr-top-right' />
 
-            <form onSubmit={efetuarLogin}>  {/*#formLogin="ngForm" (ngSubmit)="login(formLogin)"*/}
+            <form onSubmit={efetuarLogin}>
                 <div className='inputs'>
                     {/*PASSWORD INPUT*/}
                     <div className='username'>
@@ -86,15 +87,15 @@ export default function Login({ history }) {
                     <label className="check-label" for="check-input"> Vender a alma</label>
                 </div>
                 
-                <button className="btn btn-primary enter-button" href='./main-student' >Entrar</button> {/*[disabled]="formLogin.invalid"*/}
+                <button className="btn btn-primary enter-button" href='./main' >Entrar</button>
 
                 <div className='links'>
                     <div>
-                        <a href='#' id='link-forgot-password'>Esqueci minha senha</a>
+                        <a onClick={selecionarRecuperar} id='link-forgot-password'>Esqueci minha senha</a>
                     </div>
                     <hr id='divider-bottom' />
                     <div>
-                        <a href='./register' id='link-register'>Ainda não possui cadastro?</a>
+                        <a onClick={selecionarCadastro} id='link-register'>Ainda não possui cadastro?</a>
                     </div>
                 </div>
                 

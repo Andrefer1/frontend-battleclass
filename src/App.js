@@ -8,14 +8,6 @@ import github from './assets/github.png'
 function App() {
   return (
     <div className="App">
-      
-      {/*
-      <nav>
-        BATTLECLASS
-        <a href='#'>André</a>
-        <hr />
-      </nav>
-      */}
 
       <Routes/>
 {/*
