@@ -28,7 +28,6 @@ html, body, #root {
 
 .team nav .navbar .student-data {
     display: flex;
-    /*grid-template-columns: repeat(3, 2fr); NÃO FUNCIONOU, VERIFICAR*/
     position: absolute;
     margin-left: 254px;
 }
@@ -158,49 +157,56 @@ html, body, #root {
     margin-left: 30px;
 }
 
+
 /*PROFILES CARDS*/
+.team .cards-students {
+    width: 55%;
+    /*border: solid 1px red;*/
+    margin-top: 125px;
+    margin-left: 22%;
+}
+
 .team .cards-students ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
-    margin-top: 50px
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    /*border: solid 1px;*/
 }
 
-.cards-students .card-individual {
-    min-width: 200px;
-    min-height: 150px;
-    max-width: 400px;
-    max-height: 294px;
-    margin-bottom: 20px;
+.team .cards-students .card-individual {
+    min-width: 100px;
+    height: 150px;
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /*border: solid 1px blue;*/
 }
 
-.cards-students .card-individual .profile-data {
-    padding-top: 10px;
+.team .cards-students .card-individual .profile-data {
+    margin-top: 0px;
     display: flex;
 }
 
-.cards-students .card-individual .profile-data .img-individual {
-    height: 30px;
-    width: 30px;
+.team .cards-students .card-individual .profile-data .img-individual {
+    height: 8%;
     margin-left: 20px;
+    margin-top: 15px;
     position: absolute;
+    /*border: solid 1px*/
 }
 
-.cards-students .card-individual .profile-data .username-profile {
-    margin-top: 4px;
-    margin-left: 60px;
+.team .cards-students .card-individual .profile-data .username-profile {
+    margin-top: 25px;
+    margin-left: 100px;
+    /*border: solid 1px;*/
     position: absolute;
+    
 }
 
-
-.cards-students .card-individual .profile-data .points {
-    margin-top: 4px;
-    padding-left: 360px;
-    margin-right: 10px;
-    position: absolute;
+.team .cards-students .card-individual .points {
+    transform: translate(0px, 45px);
+    /*border: solid 1px green;*/
+    font-size: 50px;
 }
 
 
