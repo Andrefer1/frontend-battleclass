@@ -3,8 +3,8 @@ import RcIf, { RcElse } from 'rc-if'
 import SweetAlert from 'sweetalert2-react'
 import api from '../service/api'
 
-import mainImage from '../assets/user.svg' 
-import userIcon from '../assets/user.svg'
+import mainImage from '../assets/user2.png' 
+import userIcon from '../assets/user2.png'
 import padlockIcon from '../assets/padlock.png'
 
 import './Login.css'
@@ -76,12 +76,12 @@ export default function Login({ history }) {
                         placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} required/>
                     </div>
                 </div>
-
+                {/*
                 <div className="div-check">
                     <input type="checkbox" id='check-input' />
-                    <label className="check-label" for="check-input"> Vender a alma</label>
+                    <label className="check-label" for="check-input"> Manter logado </label>
                 </div>
-                
+                */}
                 <button className="btn btn-primary enter-button" href='./main' >Entrar</button>
 
                 <div className='links'>

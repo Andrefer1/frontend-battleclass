@@ -3,8 +3,8 @@ import RcIf from 'rc-if';
 import SweetAlert from 'sweetalert2-react';
 import api from '../service/api'
 
-import mainImage from '../assets/user.svg' 
-import userIcon from '../assets/user.svg'
+import mainImage from '../assets/user2.png' 
+import userIcon from '../assets/user2.png'
 import padlockIcon from '../assets/padlock.png'
 
 import './Register.css';
@@ -112,15 +112,15 @@ export default function Register({ history }) {
                         </div>
                     </div>
 
-                    <label className='label-username-input' for='username-input'> Digite seu e-mail: </label>
+                    <label className='label-email-input' for='email-input'> Digite seu e-mail: </label>
                     
-                    <div className='username'>
+                    <div className='email'>
                         <div className='div-user-icon'>
                             <img id='user-icon' src={ userIcon } alt='imagem usuário' />
                         </div>
                         <div>
-                            <input  className="form-control" id="username-input" aria-describedby="usernameHelp"
-                                placeholder="usuario@rede.ulbra.br" name='username' type="text" value={email} onChange={e => setEmail(e.target.value)} required />
+                            <input  className="form-control" id="email-input" aria-describedby="emailHelp"
+                                placeholder="usuario@rede.ulbra.br" name='email' type="text" value={email} onChange={e => setEmail(e.target.value)} required />
                         </div>
                     </div>
 
@@ -141,7 +141,7 @@ export default function Register({ history }) {
                         <div className='div-padlock-icon-confirmation'>
                             <img id='padlock-icon-confirmation' src={ padlockIcon } alt='padlock' />
                         </div>
-                        <input type="password" name="password-confirmation" id="password-input-confirmation" 
+                        <input type="password" className="form-control" name="password-confirmation" id="password-input-confirmation" 
                         placeholder="Confirme sua senha" value={senha2} onChange={e => setSenha2(e.target.value)} required/>
                     </div>
                 </div>

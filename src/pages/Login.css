@@ -7,17 +7,14 @@
 }
 
 html, body, #root {
-    min-height: 100%
+    min-height: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(
+        90deg, rgba(2,0,36,1) 0%,
+        rgba(9,9,121,1) 35%,
+        rgba(0,212,255,1) 100%
+    );
 }
-/*
-body {
-
-    background: rgb(253,40,29);
-    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
-    background-size: 2000px 2000px;
-
-}
-*/
 
 .main-login {
     /*
@@ -28,17 +25,24 @@ body {
 
 .form-login {
     width: 450px;
-    height: 500px;
+    height: 480px;
     border-radius: 10px;
 
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-
+    /*
     background: rgb(253,40,29);
-    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
+    background: linear-gradient(
+        221deg, rgba(253,40,29,1) 0%, 
+        rgba(206,51,126,1) 50%, 
+        rgba(156,63,232,1) 100%
+    );
     background-size: 2000px 2000px;
+    */
+
+    background: white;
 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
 
@@ -51,10 +55,10 @@ body {
 
 .form-login #hr-top-left {
     width: 128px;
-    left: 50px;
+    left: 52px;
     top: -51px;
     position: relative;
-    background-color: white;
+    background-color: black;
     height: 3px;
     border: 0 none;
     border-radius: 5px;
@@ -65,11 +69,10 @@ body {
     right: -270px;
     top: -70px;
     position: relative;
-    background-color: white;
+    background-color: black;
     height: 3px;
     border: 0 none;
     border-radius: 5px;
-
 }
 
 .form-login .inputs {
@@ -87,8 +90,9 @@ body {
 
 .form-login div .username .div-user-icon {
     width: 45px;
-    border: 1.5px solid;
-    border-color: white;
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+    border-color: rgb(194, 194, 194);
     border-radius: 6px 0px 0px 6px;
 }
     
@@ -102,13 +106,16 @@ body {
     height: 50px;
     width: 300px;
     border-radius: 0px 6px 6px 0px;
-    border: 0 none;
     outline: 0;
+    border: none;
+    border-bottom: solid 1px;
+    border-color: rgb(194, 194, 194);
 }
 
-.form-login #emailHelp {
-    color: white;
-}
+.form-login div .username #email-input {
+    -webkit-box-shadow: none !important;
+}    
+
 
 /*FORM OF PASSWORD*/
 .form-login .password {
@@ -122,8 +129,11 @@ body {
 
 .form-login div .password .div-padlock-icon {
     width: 45px;
-    border: 1.5px solid;
-    border-color: white;
+    border-top: solid 1px;
+    border-left: solid 1px;
+    border-bottom: solid 1px;
+    border-right: solid 1px;
+    border-color: rgb(194, 194, 194);
     border-radius: 6px 0px 0px 6px;
 }
 
@@ -137,12 +147,17 @@ body {
     height: 50px;
     width: 300px;
     border-radius: 0px 6px 6px 0px;
-    border: 0 none;
     outline: 0;
-}
+    border: none;
+    border-bottom: solid 1px;
+    border-bottom: solid 1px;
+    border-color: rgb(194, 194, 194);
+    -webkit-box-shadow: none !important;
+}    
 
 
 /*FORM OF CHECKBOX*/
+/*
 .form-login  .div-check {
     margin-top: 20px;
     margin-left: -107px;
@@ -170,17 +185,20 @@ body {
 
 .form-login .div-check .check-label {
     top: 100px;
-    color: white;
+    color: black;
 }
-
+*/
 
 /*BUTTON*/
 .form-login .enter-button {
     height: 60px;
     width: 345px;
-    margin-top: 15px;
-    background-color: #FE5387;
-    border-color: #FE5387;
+    margin-top: 35px;
+    background: linear-gradient(
+        90deg, rgba(2,0,36,1) 0%,
+        rgba(9,9,121,1) 35%,
+        rgba(0,212,255,1) 100%
+    );
     border-radius: 5px;
     color: white;
     border: 0 none;
@@ -195,22 +213,64 @@ body {
     display: flex;
 }
 
-#link-forgot-password {
+.form-login .links #link-forgot-password {
     margin-right: 0px;
     font-size: 15px;
     text-decoration:none;
-    color: white;
+    color: black;
 }
 
-#link-register {
+.form-login .links #link-forgot-password:before {
+    content: "";
+    margin-top: 25px;
+    position: absolute;
+    width: 33%;
+    height: 3px;
+    background: linear-gradient(
+        90deg, rgba(2,0,36,1) 0%,
+        rgba(9,9,121,1) 35%,
+        rgba(0,212,255,1) 100%
+    );
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+}
+
+.form-login .links #link-forgot-password:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+}
+
+.form-login .links #link-register {
     margin-left: -31px;
     font-size: 15px;
     text-decoration:none;
-    color: white;
+    color: black;
 }
 
-#link-register:hover {
+.form-login .links #link-register:hover {
     cursor: pointer;
+}
+
+.form-login .links #link-register:before {
+    content: "";
+    margin-top: 25px;
+    position: absolute;
+    width: 42.5%;
+    height: 3px;
+    background: linear-gradient(
+        90deg, rgba(2,0,36,1) 0%,
+        rgba(9,9,121,1) 35%,
+        rgba(0,212,255,1) 100%
+    );
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+}
+
+.form-login .links #link-register:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
 }
 
 #divider-bottom {
@@ -218,7 +278,7 @@ body {
     height: 2px;
     margin-left: 20px;
     margin-right: 20px;
-    background: white;
+    background: black;
     border: 0 none;
     transform: rotate(90deg) translate(0px, 16px);
 }

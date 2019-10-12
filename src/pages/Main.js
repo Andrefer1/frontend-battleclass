@@ -1,7 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import mainImage from '../assets/user.svg' 
 import userProfile from '../assets/user-profile.svg'
 
 import './Main.css';
