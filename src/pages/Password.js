@@ -22,7 +22,7 @@ export default function Login({ history }) {
     async function verificarEmail(e){
         e.preventDefault();
 
-        const response = await api.post('/user',{
+        const response = await api.post('/userEmail',{
             email: username
         });
 

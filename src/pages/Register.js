@@ -9,13 +9,18 @@ import padlockIcon from '../assets/padlock.png'
 
 import './Register.css';
 
+const header = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
+    "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS"
+}
+
 export default function Register({ history }) {
     const [ email, setEmail ] = useState('');
     const [ senha, setSenha ] = useState('');
     const [ nome, setNome ] = useState('');
     const [ professor, setProfessor ] = useState();
     const [ cadastro, setCadastro ] = useState('');
-    const [ confirmation, setConfirmation ] = useState('');
 
     const [ senha1, setSenha1 ] = useState('');
     const [ senha2, setSenha2 ] = useState('');
@@ -23,20 +28,21 @@ export default function Register({ history }) {
 
     async function efetuarCadastro(e){
         e.preventDefault();
+        const nome2 = nome.toUpperCase();
         
         const response = await api.post('/cadastro/usuario',{
-            nome: nome,
+            nome: nome2,
             email: email,
             senha: senha,
             professor: professor
         });
 
         if(response.data.user){
-            console.log(response.data)
             setCadastro('true')
             
         } else {
-            setConfirmation('true')
+            history.push(`/${response.data._id}/icon`)
+            
         }
         
     }
@@ -76,15 +82,6 @@ export default function Register({ history }) {
                 text="E-mail já cadastrado!"
                 type="error"
                 onConfirm={() => setCadastro(null)}
-            />
-        </RcIf>
-        <RcIf if={confirmation === "true"}>
-            <SweetAlert
-                show={confirmation}
-                title="Opaa!!"
-                text="Um email de confirmação foi encaminhado para o seu email."
-                type="warning"
-                onConfirm={() => setConfirmation(null)}
             />
         </RcIf>
         <div className='form-register'>

@@ -1,16 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import mainImage from '../assets/user.svg' 
 import userProfile from '../assets/user-profile.svg'
 
 import './Main.css';
+import api from '../service/api';
 
-export default function MainStudent({ history }) {
+export default function MainStudent({ history, match }) {
+
+    const [user, setUser] = useState('');
 
     function selecionarEquipe(){
         history.push('/main/team')
     }
+
+    useEffect(() => {
+        async function buscarUser(){
+            const response = await api.post('/userId', {
+                id: match.params.id
+            })
+    
+            if (response.data != null){
+                setUser(response.data);
+            }
+        }
+        buscarUser();
+
+        console.log(user)
+    }, [])
+    
 
     return (
     <div className='main-student'>
@@ -24,13 +42,13 @@ export default function MainStudent({ history }) {
                 </div>
                 <div className='student-data'>
                     <div className='student-name'>
-                        ANDRÉ FERNANDES BISPO
+                        {user.nome}
                     </div>
                     <div className='trace'>
                         -
                     </div>
                     <div className='student-points'>
-                        75 PONTOS
+                        {user.pontuacao} PONTOS
                     </div>
                 </div>
             </div>
