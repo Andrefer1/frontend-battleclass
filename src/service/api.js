@@ -5,3 +5,6 @@ const api = axios.create({
 });
 
 export default api;
+
+// https://topicos-backend.herokuapp.com
+// http://localhost:1512

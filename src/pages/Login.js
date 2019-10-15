@@ -23,7 +23,7 @@ export default function Login({ history }) {
         });
 
         if(response.data.login == true){
-            history.push('/main')
+            history.push(`/main/${response.data.id_user}`)
         }
         else {
             setVariavel("login incorreto")
@@ -35,6 +35,11 @@ export default function Login({ history }) {
     function selecionarCadastro(){
         history.push('/register')
     }
+
+    function selecionarRecuperar(){
+        history.push('/recuperar')
+    }
+    
     return (
     <div className='main-login'>
         
@@ -76,17 +81,17 @@ export default function Login({ history }) {
                         placeholder="Senha" value={senha} onChange={e => setSenha(e.target.value)} required/>
                     </div>
                 </div>
-                {/*
+
                 <div className="div-check">
                     <input type="checkbox" id='check-input' />
                     <label className="check-label" for="check-input"> Manter logado </label>
                 </div>
-                */}
+                
                 <button className="btn btn-primary enter-button" href='./main' >Entrar</button>
 
                 <div className='links'>
                     <div>
-                        <a href='#' id='link-forgot-password'>Esqueci minha senha</a>
+                        <a onClick={selecionarRecuperar} id='link-forgot-password'>Esqueci minha senha</a>
                     </div>
                     <hr id='divider-bottom' />
                     <div>
@@ -94,7 +99,6 @@ export default function Login({ history }) {
                     </div>
                 </div>
                 
-               
             </form>
         </div>
 
