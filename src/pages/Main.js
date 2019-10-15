@@ -38,15 +38,15 @@ export default function MainStudent({ history }) {
         </nav>
 
         <div className='menu'>
-                <a href='/main'> Página Inicial </a>
-                <a href='/team'> Minha Equipe </a>
-                <a href='/activitys-student'> Atividades </a>
-                <div className='menu-bottom'>
-                    <a href='/settings'> Configurações </a>
-                    <a href='/contacts'> Contatos </a>
-                    <a href='/about'> Sobre </a>
-                </div>
+            <a href='/main'> Página Inicial </a>
+            <a href='/team'> Minha Equipe </a>
+            <a href='/activitys-student'> Atividades </a>
+            <div className='menu-bottom'>
+                <a href='/settings'> Configurações </a>
+                <a href='/contacts'> Contatos </a>
+                <a href='/about'> Sobre </a>
             </div>
+        </div>
 
         <div className='rankings'>
             <div className='ranking-do-dia' >

@@ -34,8 +34,8 @@ export default function Routes() {
             <Route path='/student' component={Main} />
             <Route path='/teams' component={Main} />
             <Route path='/activitys' component={Main} />
-            <Route path='/activitys/activity' component={Main} />
-            <Route path='/activity/add-activity' component={Main} />
+            <Route path='/activitys/activity' exact component={Main} />
+            <Route path='/activitys/activity/add-activity' component={Main} />
             <Route path='/settings' component={Main} />
             
 

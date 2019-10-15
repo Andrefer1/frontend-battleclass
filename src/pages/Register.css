@@ -6,30 +6,24 @@
     box-sizing: border-box;
 }
 
-html, body, #root {
-    min-height: 100%;
-    background: rgb(2,0,36);
+html, body{
+    height: 0px;
+}
+
+.main-register {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(
         90deg, rgba(2,0,36,1) 0%,
         rgba(9,9,121,1) 35%,
-        rgba(0,212,255,1) 100%
+        rgba(0,212,255,1) 100%,
     );
-}
-/*
-body {
-    background: rgb(253,40,29);
-    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
-    background-size: 2000px 2000px;
-}
-*/
-
-.main-register {
-    /*max-height: 500px;*/
 }
 
 .form-register {
     width: 450px;
-    height: 720px;
+    height: 745px;
     border-radius: 10px;
 
     position: absolute;
@@ -89,10 +83,9 @@ body {
 
 .form-register .name .div-user-icon {
     width: 45px;
-    border-left: solid 1px;
-    border-bottom: solid 1px;
+    border-bottom: solid .5px;
     border-color: rgb(194, 194, 194);
-    border-radius: 0px 0px 0px 6px;
+    border-radius: 0px 0px 0px 0px;
 }
     
 .form-register .name .div-user-icon #user-icon {
@@ -104,11 +97,10 @@ body {
 .form-register .name #name-input {
     height: 50px;
     width: 300px;
-    border-radius: 0px 0px 6px 0px;
+    border-radius: 0px 0px 0px 0px;
     outline: 0;
     border: none;
     border-bottom: solid 1px;
-    border-right: solid 1px;
     border-color: rgb(194, 194, 194);
     -webkit-box-shadow: none !important;
 }
@@ -131,10 +123,9 @@ body {
 
 .form-register .email .div-user-icon {
     width: 45px;
-    border-left: solid 1px;
     border-bottom: solid 1px;
     border-color: rgb(194, 194, 194);
-    border-radius: 0px 0px 0px 6px;
+    border-radius: 0px 0px 0px 0px;
 }
     
 .form-register .email .div-user-icon #user-icon {
@@ -146,16 +137,12 @@ body {
 .form-register .email #email-input {
     height: 50px;
     width: 300px;
-    border-radius: 0px 0px 0px 0px;
     outline: 0;
     border: none;
     border-bottom: solid 1px;
+    border-radius: 0px 0px 0px 0px;
     border-color: rgb(194, 194, 194);
     -webkit-box-shadow: none !important;
-}
-
-.form-register #emailHelp {
-    color: black;
 }
 
 
@@ -179,11 +166,9 @@ body {
 
 .form-register .password .div-padlock-icon {
     width: 45px;
-    border-top: solid 1px;
-    border-left: solid 1px;
     border-bottom: solid 1px;
     border-color: rgb(194, 194, 194);
-    border-radius: 6px 0px 0px 6px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 .form-register .password .div-padlock-icon #padlock-icon {
@@ -195,11 +180,9 @@ body {
 .form-register .inputs .password #password-input {
     height: 50px;
     width: 300px;
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 0px 0px 0px 0px;
     outline: 0;
     border: none;
-    border-top: solid 1px;
-    border-right: solid 1px;
     border-bottom: solid 1px;
     border-color: rgb(194, 194, 194);
     -webkit-box-shadow: none !important;
@@ -218,18 +201,16 @@ body {
 }
 
 .form-register .label-password-input-confirmation {
-    margin-right: 206px;
+    margin-right: 180px;
     color: black;
     margin-top: 10px;
 }
 
 .form-register .password-confirmation  .div-padlock-icon-confirmation  {
     width: 45px;
-    border-top: solid 1px;
     border-bottom: solid 1px;
-    border-left: solid 1px;
     border-color: rgb(194, 194, 194);
-    border-radius: 6px 0px 0px 6px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 .form-register .password-confirmation  .div-padlock-icon-confirmation  #padlock-icon-confirmation  {
@@ -241,7 +222,7 @@ body {
 .form-register .password-confirmation  #password-input-confirmation  {
     height: 50px;
     width: 300px;
-    border-radius: 0px 6px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
     outline: 0;
     border: none;
     border-bottom: solid 1px;
@@ -252,8 +233,19 @@ body {
 
 /*CHECKBOX INPUT*/
 .form-register .div-accept-terms {
-    margin-top: 25px;
+    margin-top: 15px;
     margin-right: 86px;
+}
+
+.form-register .div-accept-terms .terms-use {
+    margin-right: 115px;
+    margin-bottom: 10px;
+    border: solid 1px rgba(0,212,255,1);
+    -webkit-box-shadow: none !important;
+}
+
+.form-register .div-accept-terms .terms-use:hover {
+    background: rgba(0,212,255,1);
 }
 
 .form-register .div-accept-terms #check-input {
@@ -268,7 +260,7 @@ body {
     height: 1em;
     background-color: none;
     border-radius: 3px;
-    border: 1px solid black
+    border: solid 1px black;
 }
 
 .form-register .div-accept-terms #check-input:checked + .check-label:before {
@@ -276,7 +268,6 @@ body {
 }
 
 .form-register .div-accept-terms .check-label {
-    top: 100px;
     color: black;
 }
 

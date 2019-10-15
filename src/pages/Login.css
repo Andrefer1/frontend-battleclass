@@ -6,21 +6,19 @@
     box-sizing: border-box;
 }
 
-html, body, #root {
-    min-height: 100%;
-    background: rgb(2,0,36);
+html, body{
+    height: 0px;
+}
+
+.main-login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(
         90deg, rgba(2,0,36,1) 0%,
         rgba(9,9,121,1) 35%,
         rgba(0,212,255,1) 100%
-    );
-}
-
-.main-login {
-    /*
-    max-height: 500px;
-    max-width: 90%;
-    */
+    ); 
 }
 
 .form-login {
@@ -91,9 +89,8 @@ html, body, #root {
 .form-login div .username .div-user-icon {
     width: 45px;
     border-bottom: solid 1px;
-    border-right: solid 1px;
     border-color: rgb(194, 194, 194);
-    border-radius: 6px 0px 0px 6px;
+    border-radius: 0px 0px 0px 0px;
 }
     
 .form-login div .username .div-user-icon #user-icon {
@@ -105,14 +102,11 @@ html, body, #root {
 .form-login div .username #email-input {
     height: 50px;
     width: 300px;
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 0px 0px 0px 0px;
     outline: 0;
     border: none;
     border-bottom: solid 1px;
     border-color: rgb(194, 194, 194);
-}
-
-.form-login div .username #email-input {
     -webkit-box-shadow: none !important;
 }    
 
@@ -129,12 +123,9 @@ html, body, #root {
 
 .form-login div .password .div-padlock-icon {
     width: 45px;
-    border-top: solid 1px;
-    border-left: solid 1px;
     border-bottom: solid 1px;
-    border-right: solid 1px;
     border-color: rgb(194, 194, 194);
-    border-radius: 6px 0px 0px 6px;
+    border-radius: 0px 0px 0px 0px;
 }
 
 .form-login form .inputs .password .div-padlock-icon #padlock-icon {
@@ -146,10 +137,9 @@ html, body, #root {
 .form-login form .inputs .password #password-input {
     height: 50px;
     width: 300px;
-    border-radius: 0px 6px 6px 0px;
+    border-radius: 0px 0px 0px 0px;
     outline: 0;
     border: none;
-    border-bottom: solid 1px;
     border-bottom: solid 1px;
     border-color: rgb(194, 194, 194);
     -webkit-box-shadow: none !important;

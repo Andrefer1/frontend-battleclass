@@ -136,7 +136,7 @@ export default function Register({ history }) {
                 
 
                     {/*PASSWORD INPUT CONFIRMATION*/}
-                    <label className='label-password-input-confirmation' for='password-input-confirmation'> Confirme senha: </label>
+                    <label className='label-password-input-confirmation' for='password-input-confirmation'> Confirme sua senha: </label>
                     <div className='password-confirmation'>
                         <div className='div-padlock-icon-confirmation'>
                             <img id='padlock-icon-confirmation' src={ padlockIcon } alt='padlock' />
@@ -147,6 +147,9 @@ export default function Register({ history }) {
                 </div>
                     
                 <div className="div-accept-terms">
+                    <button type="button" class="btn btn-outline-info terms-use">
+                        Termos de uso
+                    </button>
                     <input type="checkbox" id='check-input' />
                     <label className="check-label" for="check-input"> Li e concordo com os termos </label>
                 </div>
