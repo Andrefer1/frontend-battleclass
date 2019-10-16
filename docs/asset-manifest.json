@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/topicos-frontend/static/css/main.a8fc3ee8.chunk.css",
+    "main.js": "/topicos-frontend/static/js/main.3ed4f393.chunk.js",
+    "main.js.map": "/topicos-frontend/static/js/main.3ed4f393.chunk.js.map",
+    "runtime-main.js": "/topicos-frontend/static/js/runtime-main.58615003.js",
+    "runtime-main.js.map": "/topicos-frontend/static/js/runtime-main.58615003.js.map",
+    "static/css/2.266e55a5.chunk.css": "/topicos-frontend/static/css/2.266e55a5.chunk.css",
+    "static/js/2.34e84654.chunk.js": "/topicos-frontend/static/js/2.34e84654.chunk.js",
+    "static/js/2.34e84654.chunk.js.map": "/topicos-frontend/static/js/2.34e84654.chunk.js.map",
+    "index.html": "/topicos-frontend/index.html",
+    "precache-manifest.4f72753f9eb7e33921f8d0460bba604e.js": "/topicos-frontend/precache-manifest.4f72753f9eb7e33921f8d0460bba604e.js",
+    "service-worker.js": "/topicos-frontend/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/topicos-frontend/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.a8fc3ee8.chunk.css.map": "/topicos-frontend/static/css/main.a8fc3ee8.chunk.css.map",
+    "static/media/github.png": "/topicos-frontend/static/media/github.c8a83d07.png",
+    "static/media/user-profile.svg": "/topicos-frontend/static/media/user-profile.7a21cbe9.svg",
+    "static/media/user2.png": "/topicos-frontend/static/media/user2.dc836601.png"
+  }
+}
