@@ -16,7 +16,6 @@ export default function Register({ history }) {
     const [ nome, setNome ] = useState('');
     const [ professor, setProfessor ] = useState();
     const [ cadastro, setCadastro ] = useState('');
-    const [ confirmation, setConfirmation ] = useState('');
 
     const [ senha1, setSenha1 ] = useState('');
     const [ senha2, setSenha2 ] = useState('');

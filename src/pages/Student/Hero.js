@@ -30,7 +30,7 @@ export default function Hero({ history, match }) {
     }
 
     function navegarTela(){
-        history.push('/login')
+        history.push('/')
     }
 
     useEffect(() => {
@@ -53,7 +53,10 @@ export default function Hero({ history, match }) {
                     title="Opaa!!"
                     text="Um email de confirmação foi encaminhado para o seu email."
                     type="warning"
-                    onConfirm={() => setConfirmation(null)}
+                    onConfirm={() => {
+                        setConfirmation(null);
+                        navegarTela();
+                    }}
                 />
             </RcIf>
 

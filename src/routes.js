@@ -5,8 +5,6 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Login from './pages/General/Login'
 import Password from './pages/General/Password'
 import Register from './pages/General/Register'
-import Authenticate from './pages/General/Authenticate'
-import Test from './pages/General/test'
 
 /*STUDENT*/
 import Main from './pages/Student/Main'
@@ -31,7 +29,6 @@ export default function Routes() {
             {/*<Route path='/recover' component={Recover} />*/}
             <Route path='/contacts' component={Main} />
             <Route path='/about' component={Main} />
-            <Route path='/test' component={Test} />
 
             {/*STUDENT*/}
             <Route path='/main/:id' component={Main} />

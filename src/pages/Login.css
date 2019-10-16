@@ -206,6 +206,9 @@ html, body {
     text-decoration:none;
     color: black;
 }
+.form-login .links #link-forgot-password:hover {
+    cursor: pointer;
+}
 
 .form-login .links #link-forgot-password:before {
     content: "";
