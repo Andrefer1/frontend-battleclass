@@ -2,19 +2,19 @@ import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 /*GENERAL*/
-import Login from './pages/Login'
-import Password from './pages/Password'
-import Register from './pages/Register'
+import Login from './pages/General/Login'
+import Password from './pages/General/Password'
+import Register from './pages/General/Register'
+import Authenticate from './pages/General/Authenticate'
+import Test from './pages/General/test'
 
-import Recover from './pages/Recover'
-import Hero from './pages/Hero'
-
-import Main from './pages/Main'
-import Team from './pages/Team'
-/* import ActivitysStudent from './pages/Student/ActivitysStudent'
-import IndividualActivity from './pages/Student/IndividualActivity' */
-
-
+/*STUDENT*/
+import Main from './pages/Student/Main'
+import Team from './pages/Student/Team'
+import ActivitysStudent from './pages/Student/ActivitysStudent'
+import IndividualActivity from './pages/Student/IndividualActivity'
+/*import Battle from './pages/Battle'*/
+import Hero from './pages/Student/Hero'
 
 /*PROFESSOR*/
 
@@ -28,18 +28,16 @@ export default function Routes() {
             <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
             <Route path='/:id/icon' component={Hero} />
-            <Route path='/recover' component={Recover} />
-
+            {/*<Route path='/recover' component={Recover} />*/}
             <Route path='/contacts' component={Main} />
             <Route path='/about' component={Main} />
+            <Route path='/test' component={Test} />
 
             {/*STUDENT*/}
             <Route path='/main/:id' component={Main} />
             <Route path='/team' component={Team} />
-            {/*
-                <Route path='/activitys-student' exact component={ActivitysStudent} />
-                <Route path='/activitys-student/individual-activity' component={IndividualActivity} />
-            */}
+            <Route path='/activitys-student' exact component={ActivitysStudent} />
+            <Route path='/activitys-student/individual-activity' component={IndividualActivity} />
             <Route path='/settings' component={Main} />
 
             {/*PROFESSOR*/}
@@ -47,11 +45,9 @@ export default function Routes() {
             <Route path='/student' component={Main} />
             <Route path='/teams' component={Main} />
             <Route path='/activitys' component={Main} />
-            <Route path='/activitys/activity' exact component={Main} />
-            <Route path='/activitys/activity/add-activity' component={Main} />
+            <Route path='/activitys/activity' component={Main} />
+            <Route path='/activitys/add-activity' component={Main} />
             <Route path='/settings' component={Main} />
-
-            <Route path='/test' component={Test} />
         </BrowserRouter>
     );
 }

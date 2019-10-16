@@ -8,6 +8,7 @@
     "core-util-is": "^1.0.2",
     "dropdown": "^0.2.0",
     "gh-pages": "^2.1.1",
+    "install": "^0.13.0",
     "popper.js": "^1.15.0",
     "rc-if": "^0.0.12",
     "react": "^16.9.0",
