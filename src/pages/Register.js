@@ -9,11 +9,6 @@ import padlockIcon from '../assets/padlock.png'
 
 import './Register.css';
 
-const header = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
-    "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS"
-}
 
 export default function Register({ history }) {
     const [ email, setEmail ] = useState('');
@@ -111,13 +106,13 @@ export default function Register({ history }) {
 
                     <label className='label-username-input' for='username-input'> Digite seu e-mail: </label>
                     
-                    <div className='username'>
+                    <div className='email'>
                         <div className='div-user-icon'>
                             <img id='user-icon' src={ userIcon } alt='imagem usuário' />
                         </div>
                         <div>
-                            <input  className="form-control" id="username-input" aria-describedby="usernameHelp"
-                                placeholder="usuario@rede.ulbra.br" name='username' type="text" value={email} onChange={e => setEmail(e.target.value)} required />
+                            <input  className="form-control" id="email-input" aria-describedby="emailHelp"
+                                placeholder="usuario@rede.ulbra.br" name='email' type="text" value={email} onChange={e => setEmail(e.target.value)} required />
                         </div>
                     </div>
 
@@ -144,6 +139,9 @@ export default function Register({ history }) {
                 </div>
                     
                 <div className="div-accept-terms">
+                    <button type="button" class="btn btn-outline-info terms-use">
+                        Termos de uso
+                    </button>
                     <input type="checkbox" id='check-input' />
                     <label className="check-label" for="check-input"> Li e concordo com os termos </label>
                 </div>

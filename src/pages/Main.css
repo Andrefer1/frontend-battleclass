@@ -5,11 +5,16 @@
     outline: 0;
     box-sizing: border-box;
 }
-
-html, body, #root {
-    min-height: 100%
+ 
+html, body{
+    height: 0px;
 }
 
+.main-login {
+    width: 100%;
+    height: 100%;
+    background: white
+}
 
 /*NAVBAR*/
 .main-student nav .navbar {
@@ -65,7 +70,6 @@ html, body, #root {
     position: fixed; /*Tirar o absolute no ranking*/
     background-color: #2e2e64;
     width: 250px;
-    height: 90%;
     z-index: 1;
     margin-top: 83px;
     margin-left: 0px;
@@ -85,21 +89,26 @@ html, body, #root {
 }
 
 .main-student .menu .menu-bottom {
-    margin-top: 535px;
+    margin-top: 544px;
 
 }
 
+
 /*RANKINGS*/
 .main-student .rankings .ranking-do-dia {
-    height: 210px;
+    height: 280px;
     width: 270px;
     background: white;
     border-radius: 9px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
-    text-align: center;
     float: right;
-    margin-top: -250px;
+    margin-top: 110px;
     margin-right: 20px;
+}
+
+.main-student .rankings .ranking-do-dia .ranking-name {
+    margin-top: 20px;
+    text-align: center;
 }
 
 .main-student .rankings .ranking-do-dia ul {
@@ -111,48 +120,60 @@ html, body, #root {
     display: inline-block;
 }
 
-.main-student .rankings .ranking-do-dia ul li .user-ranking {
+.main-student .rankings .ranking-do-dia ul li .team-ranking {
     display: flex;
+    transform: translate( 95px, 20px)
+}
+
+.main-student .rankings .ranking-do-dia ul li .team-ranking:hover {
+    background-color: #f1f1f1;
     cursor: pointer
 }
 
-.main-student .rankings .ranking-do-dia ul li .user-ranking:hover {
-    background-color: #f1f1f1
-}
-
-.main-student .rankings .ranking-do-dia ul li .user-ranking .user-profile {
+.main-student .rankings .ranking-do-dia ul li .team-ranking .team-profile {
     position: absolute;
-    transform: translate(-105px, -15px)
+    transform: translate(-105px, -25px);
 }
 
-.main-student .rankings .ranking-do-dia ul li .user-ranking .user-profile img {
+.main-student .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
     height: 30px;
 }
 
-.main-student .rankings .ranking-do-dia ul li .user-ranking .team-name {
-    position: absolute;
-    transform: translate(-65px, -12px)
+.main-student .rankings .ranking-do-dia ul li .team-ranking .team-name {
+    width: 155px;
+    position: relative;
+    text-align: left;
+    margin-top: -20px;
+    transform: translate(-72px, -3px);
+
+    white-space: nowrap;
+    overflow: hidden;
+    transition-duration: 1s;
 }
 
-.main-student .rankings .ranking-do-dia ul li .user-ranking .team-points {
+.main-student .rankings .ranking-do-dia ul li .team-ranking .team-points {
     position: absolute;
-    transform: translate(90px, -12px)
+    transform: translate(90px, -22px);
 }
 
 .main-student .rankings .ranking-do-dia ul #hr-ranking {
     width: 210px;
-    margin-left: -8px;
-
+    margin-top: 25px;
+    margin-left: 30px;
 }
 
 
 /*TASKS*/
+.main-student .tasks {
+    margin-top: 130px;
+    width: 50%;
+    margin-left: 275px;
+}
+
 .main-student .tasks .task {
     display: flex;
-    width: 50%;
+    width: 100%;
     height: 250px;
-    margin-top: 140px;
-    margin-left: 275px;
     border-radius: 10px;
     box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.07);
 }
