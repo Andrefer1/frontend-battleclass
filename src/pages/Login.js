@@ -3,6 +3,7 @@ import RcIf, { RcElse } from 'rc-if'
 import SweetAlert from 'sweetalert2-react'
 import api from '../service/api'
 
+
 import mainImage from '../assets/user2.png' 
 import userIcon from '../assets/user2.png'
 import padlockIcon from '../assets/padlock.png'
@@ -37,7 +38,7 @@ export default function Login({ history }) {
     }
 
     function selecionarRecuperar(){
-        history.push('/recuperar')
+        history.push('/recover')
     }
     
     return (
@@ -82,10 +83,12 @@ export default function Login({ history }) {
                     </div>
                 </div>
 
+                {/*
                 <div className="div-check">
                     <input type="checkbox" id='check-input' />
                     <label className="check-label" for="check-input"> Manter logado </label>
                 </div>
+                */}
                 
                 <button className="btn btn-primary enter-button" href='./main' >Entrar</button>
 

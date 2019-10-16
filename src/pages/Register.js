@@ -9,11 +9,6 @@ import padlockIcon from '../assets/padlock.png'
 
 import './Register.css';
 
-const header = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
-    "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS"
-}
 
 export default function Register({ history }) {
     const [ email, setEmail ] = useState('');

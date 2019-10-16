@@ -104,8 +104,6 @@ html, body{
     -webkit-box-shadow: none !important;
 }
 
-
-
 /*EMAIL INPUT*/
 .form-register .email {
     border-radius: 5px;
@@ -324,4 +322,3 @@ html, body{
     margin-top: 20px;
     
 }
-

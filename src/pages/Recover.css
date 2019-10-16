@@ -6,8 +6,7 @@
     box-sizing: border-box;
 }
 
-
-html, body {
+html, body{
     height: 0px;
 }
 
@@ -143,7 +142,7 @@ html, body {
     border: none;
     border-bottom: solid 1px;
     border-color: rgb(194, 194, 194);
-
+    box-shadow: #000000;
     -webkit-box-shadow: none !important;
 }    
 
