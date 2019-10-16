@@ -1,8 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
+/*GENERAL*/
 import Login from './pages/Login'
+import Password from './pages/Password'
 import Register from './pages/Register'
+
 import Recover from './pages/Recover'
 import Hero from './pages/Hero'
 
@@ -12,11 +15,17 @@ import Team from './pages/Team'
 import IndividualActivity from './pages/Student/IndividualActivity' */
 
 
+
+/*PROFESSOR*/
+
+
 export default function Routes() {
     return (
-        <BrowserRouter basename="/topicos-frontend">
+        <BrowserRouter basename="/frontend-battleclass">
+
             {/*GENERAL*/}
             <Route path='/' exact component={Login} />
+            <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
             <Route path='/:id/icon' component={Hero} />
             <Route path='/recover' component={Recover} />
@@ -41,9 +50,8 @@ export default function Routes() {
             <Route path='/activitys/activity' exact component={Main} />
             <Route path='/activitys/activity/add-activity' component={Main} />
             <Route path='/settings' component={Main} />
-            
 
-            
+            <Route path='/test' component={Test} />
         </BrowserRouter>
     );
 }

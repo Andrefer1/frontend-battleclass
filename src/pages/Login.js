@@ -3,8 +3,9 @@ import RcIf, { RcElse } from 'rc-if'
 import SweetAlert from 'sweetalert2-react'
 import api from '../service/api'
 
-import mainImage from '../assets/user.png' 
-import userIcon from '../assets/user.png'
+
+import mainImage from '../assets/user2.png' 
+import userIcon from '../assets/user2.png'
 import padlockIcon from '../assets/padlock.png'
 
 import './Login.css'
@@ -101,7 +102,6 @@ export default function Login({ history }) {
                     </div>
                 </div>
                 
-               
             </form>
         </div>
 

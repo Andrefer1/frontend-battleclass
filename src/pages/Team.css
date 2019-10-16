@@ -4,10 +4,16 @@
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+
+html, body{
+    height: 0px;
 }
 
-html, body, #root {
-    min-height: 100%
+.team {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    background: white;
 }
 
 
@@ -155,56 +161,4 @@ html, body, #root {
     width: 210px;
     margin-top: 25px;
     margin-left: 30px;
-}
-
-
-/*PROFILES CARDS*/
-.team .cards-students {
-    width: 55%;
-    /*border: solid 1px red;*/
-    margin-top: 125px;
-    margin-left: 22%;
-}
-
-.team .cards-students ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    /*border: solid 1px;*/
-}
-
-.team .cards-students .card-individual {
-    min-width: 100px;
-    height: 150px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    /*border: solid 1px blue;*/
-}
-
-.team .cards-students .card-individual .profile-data {
-    margin-top: 0px;
-    display: flex;
-}
-
-.team .cards-students .card-individual .profile-data .img-individual {
-    height: 8%;
-    margin-left: 20px;
-    margin-top: 15px;
-    position: absolute;
-    /*border: solid 1px*/
-}
-
-.team .cards-students .card-individual .profile-data .username-profile {
-    margin-top: 25px;
-    margin-left: 100px;
-    /*border: solid 1px;*/
-    position: absolute;
-    
-}
-
-.team .cards-students .card-individual .points {
-    transform: translate(0px, 45px);
-    /*border: solid 1px green;*/
-    font-size: 50px;
 }

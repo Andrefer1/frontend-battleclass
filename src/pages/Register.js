@@ -3,8 +3,8 @@ import RcIf from 'rc-if';
 import SweetAlert from 'sweetalert2-react';
 import api from '../service/api'
 
-import mainImage from '../assets/user.svg' 
-import userIcon from '../assets/user.svg'
+import mainImage from '../assets/user2.png' 
+import userIcon from '../assets/user2.png'
 import padlockIcon from '../assets/padlock.png'
 
 import './Register.css';
@@ -16,6 +16,7 @@ export default function Register({ history }) {
     const [ nome, setNome ] = useState('');
     const [ professor, setProfessor ] = useState();
     const [ cadastro, setCadastro ] = useState('');
+    const [ confirmation, setConfirmation ] = useState('');
 
     const [ senha1, setSenha1 ] = useState('');
     const [ senha2, setSenha2 ] = useState('');
@@ -35,7 +36,8 @@ export default function Register({ history }) {
         if(response.data.user){
             setCadastro('true')
             
-        } else {
+        } 
+        else {
             history.push(`/${response.data._id}/icon`)
             
         }
@@ -45,14 +47,16 @@ export default function Register({ history }) {
     useEffect(() => {
         if (senha1 !== senha2){
             console.log("Senha não coincidem")
-        } else {
+        } 
+        else {
             setSenha(senha2);
             console.log(senha)
         }
         
         if (email.includes('rede.ulbra.br')){
             setProfessor(false);
-        } else if(email.includes('ulbra.br')){
+        } 
+        else if(email.includes('ulbra.br')){
             setProfessor(true);
         }
         
@@ -62,13 +66,6 @@ export default function Register({ history }) {
     return (
         
     <div className='main-register'>
-        {/*
-        <div class='logo'>
-            <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
-        </div>
-
-        <hr id='divisor' />
-        */}
 
         <RcIf if={cadastro === "true"}>
             <SweetAlert
@@ -88,7 +85,7 @@ export default function Register({ history }) {
 
             <h2 id='h2-cadastro'>CADASTRO</h2>
 
-            <form onSubmit={efetuarCadastro}>  {/*#formLogin="ngForm" (ngSubmit)="login(formLogin)"*/}
+            <form onSubmit={efetuarCadastro}> 
                 <div className='inputs'>
                     {/*PASSWORD INPUT*/}
                     
@@ -104,7 +101,7 @@ export default function Register({ history }) {
                         </div>
                     </div>
 
-                    <label className='label-username-input' for='username-input'> Digite seu e-mail: </label>
+                    <label className='label-email-input' for='email-input'> Digite seu e-mail: </label>
                     
                     <div className='email'>
                         <div className='div-user-icon'>
@@ -128,12 +125,12 @@ export default function Register({ history }) {
                 
 
                     {/*PASSWORD INPUT CONFIRMATION*/}
-                    <label className='label-password-input-confirmation' for='password-input-confirmation'> Confirme senha: </label>
+                    <label className='label-password-input-confirmation' for='password-input-confirmation'> Confirme sua senha: </label>
                     <div className='password-confirmation'>
                         <div className='div-padlock-icon-confirmation'>
                             <img id='padlock-icon-confirmation' src={ padlockIcon } alt='padlock' />
                         </div>
-                        <input type="password" name="password-confirmation" id="password-input-confirmation" 
+                        <input type="password" className="form-control" name="password-confirmation" id="password-input-confirmation" 
                         placeholder="Confirme sua senha" value={senha2} onChange={e => setSenha2(e.target.value)} required/>
                     </div>
                 </div>
@@ -146,7 +143,7 @@ export default function Register({ history }) {
                     <label className="check-label" for="check-input"> Li e concordo com os termos </label>
                 </div>
                 
-                <button className="btn btn-primary enter-button"> Criar </button> {/*[disabled]="formLogin.invalid"*/}
+                <button className="btn btn-primary enter-button"> Criar </button> 
 
                 <div className='link'>
                     <a href='/' id='link-login'> Já possui cadastro? </a>
