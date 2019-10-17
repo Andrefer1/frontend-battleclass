@@ -15,7 +15,7 @@ import IndividualActivity from './pages/Student/IndividualActivity'
 import Hero from './pages/Student/Hero'
 
 /*PROFESSOR*/
-
+import AddActivity from './pages/Professor/AddActivity'
 
 export default function Routes() {
     return (
@@ -43,7 +43,7 @@ export default function Routes() {
             <Route path='/teams' component={Main} />
             <Route path='/activitys' component={Main} />
             <Route path='/activitys/activity' component={Main} />
-            <Route path='/activitys/add-activity' component={Main} />
+            <Route path='/activitys/add-activity' component={AddActivity} />
             <Route path='/settings' component={Main} />
         </BrowserRouter>
     );

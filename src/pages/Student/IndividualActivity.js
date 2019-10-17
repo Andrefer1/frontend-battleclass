@@ -131,7 +131,7 @@ export default function Activity() {
                             <div className='alternatives'>
                                 <div className='alternative'>
                                     <div>
-                                        <input type='radio' className='radio-input' /> a)
+                                        <input type='radio' name='radio-question' className='radio-input' />
                                     </div>
                                     <div>
                                         <label for='radio-input' className='radio-input-text'>
@@ -142,7 +142,7 @@ export default function Activity() {
                                 </div>
                                 <div className='alternative'>
                                     <div>
-                                        <input type='radio' className='radio-input' /> b)
+                                        <input type='radio' name='radio-question' className='radio-input' />
                                     </div>
                                     <div>
                                         <label for='radio-input' className='radio-input-text'>
@@ -153,7 +153,7 @@ export default function Activity() {
                                 </div>
                                 <div className='alternative'>
                                     <div>
-                                        <input type='radio' className='radio-input' /> c)
+                                        <input type='radio' name='radio-question' className='radio-input' />
                                     </div>
                                     <div>
                                         <label for='radio-input' className='radio-input-text'>
@@ -164,7 +164,7 @@ export default function Activity() {
                                 </div>
                                 <div className='alternative'>
                                     <div>
-                                        <input type='radio' className='radio-input' /> d)
+                                        <input type='radio' name='radio-question' className='radio-input' />
                                     </div>
                                     <div>
                                         <label for='radio-input' className='radio-input-text'>
@@ -175,7 +175,7 @@ export default function Activity() {
                                 </div>
                                 <div className='alternative'>
                                     <div>
-                                        <input type='radio' className='radio-input' /> e)
+                                        <input type='radio' name='radio-question' className='radio-input' />
                                     </div>
                                     <div>
                                         <label for='radio-input' className='radio-input-text'>
