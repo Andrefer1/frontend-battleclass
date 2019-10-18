@@ -27,7 +27,6 @@ export default function Routes() {
             <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
             <Route path='/:id/icon' component={Hero} />
-            {/*<Route path='/recover' component={Recover} />*/}
             <Route path='/contacts' component={Main} />
             <Route path='/about' component={Main} />
             {/**
