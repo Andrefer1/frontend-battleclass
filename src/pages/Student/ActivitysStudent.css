@@ -244,4 +244,11 @@ html, body{
     overflow: hidden;
 }
 
+.activitys-student .empty {
+    font-size: 32px;
+    color: #999;
+    font-weight: bold;
+    margin-top: 300px;
+}
+
 

@@ -59,7 +59,7 @@ export default function Hero({ history, match }) {
                     }}
                 />
             </RcIf>
-
+            
             <h2> Escolha seu ícone: </h2>
             { heros.length > 0 ? (
                 <ul>
