@@ -169,58 +169,87 @@ html, body{
 }
 
 
-/*ACTIVITY CARDS*/
-.individual-activity .cards-questions {
+
+.individual-activity .content {
     width: 55%;
-    margin-top: 125px;
-    margin-left: 19%;
-    /*border: solid 1px red;*/
-}
-
-.individual-activity .cards-questions ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    /*border: solid 1px;*/
-}
-
-.individual-activity .cards-questions .card-individual {
-    position: absolute;
-    width: 60%;
     max-height: 100%;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    text-decoration: none;
+    margin-top: 125px;
+    margin-left: 20%;
     /*border: solid 1px blue;*/
 }
 
-.individual-activity .cards-questions a {
-    text-decoration: none;
-    color: black;
-}
-
-.individual-activity .cards-questions .card-individual {
-    margin-top: 10px;
-}
-
-.individual-activity .cards-questions .card-individual .question {
-    margin-top: 10px;
+.individual-activity .content .input-title {
+    width: 94.5%;
     margin-left: 20px;
+    /*border: solid 1px red;*/
+}
+
+.individual-activity .content .input-title label {
     float: left;
+    /*border: solid 1px red;*/
+}
+
+/*ACTIVITY CARDS*/
+.individual-activity .content .cards-questions {
+    width: 100%;
+    margin-top: 25px;
+    float: right;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /*border: solid 1px red;*/
+}
+
+.individual-activity .content .cards-questions strong {
+    /*margin: 20px 20px 20px 20px;*/
+    float: left;
+}
+
+.individual-activity .content .cards-questions .editor {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     /*border: solid 1px;*/
 }
 
-.individual-activity .cards-questions .card-individual .activity-content {
-    content: '...';
-    width: 90%;
-    max-height: 100%;
-    margin-top: 49px;
-    margin-left: 10px;
-    margin-right: 10px;
-    color: rgb(161, 161, 161);
-    text-align: justify;
-    overflow: hidden;
+.individual-activity .content .cards-questions .alternative {
+    width: 94.2%; 
+    margin-top: 20px;
+    margin-left: 20px;
+    /*border: solid 1px;*/
 }
 
+.individual-activity .content .cards-questions .alternative strong {
+    float: left;
+}
 
+.individual-activity .content .cards-questions .alternative .radio-editor {
+    width: 100%;
+    margin-top: 10px;
+    float: left;
+    display: flex;
+}
+
+.individual-activity .content .cards-questions .alternative .radio-editor .radio-alternative {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.individual-activity .content .cards-questions .alternative .radio-editor .radio-alternative .input-radio {
+
+}
+
+.individual-activity .content .cards-questions .alternative .radio-editor .editor-alternative {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    /*border: solid 1px;*/
+}
+
+.individual-activity .content .cards-questions .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0px;
+    float: bottom;
+    float: right;
+    margin: 20px 20px 20px 0px;
+    /*border: solid 1px;*/
+}
