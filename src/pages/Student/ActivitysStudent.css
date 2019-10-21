@@ -72,11 +72,7 @@ html, body{
 /*MENU*/
 .activitys-student .menu {
     position: fixed; /*Tirar o absolute no ranking*/
-    background: linear-gradient(
-        90deg, rgba(2,0,36,1) 0%,
-        rgba(9,9,121,1) 100%,
-        rgba(9,9,121,1) 85%
-    ); 
+    background:rgba(9,9,121,1) 35%;
     width: 250px;
     height: 90%;
     z-index: 1;
@@ -175,10 +171,9 @@ html, body{
 /*PROFILES CARDS*/
 .activitys-student .cards-activitys {
     width: 55%;
-    /*border: solid 1px red;*/
     margin-top: 125px;
     margin-left: 22%;
-    
+    /*border: solid 1px red;*/
 }
 
 .activitys-student .cards-activitys ul {
