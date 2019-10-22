@@ -108,39 +108,91 @@ export default function Team() {
             </div>
 
             <div className='cards-students'>
-                <ul>
+                {/*<ul>
                     <li>
-                        <div className='line-title'>
-                            <div className='dataname'>
+                        <div className='student-data'>{/*'line-title'*/}
+                            {/*<div className='student-name'>
                                 NOME DO ALUNO
                             </div>
-                            <div className='number'>
+                            <div className='student-points'>
                                 NOTA
                             </div>
-                            <div className='number'>
+                            <div className='team-name'>
                                 NOME DA EQUIPE
                             </div>
-                            <div className='number'>
+                            <div className='team-points'>
                                 NOTA
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div className='card-individual'>
-                            <div className='dataname'>
+                        <div className='student-data'>
+                            <div className='student-name'>
                                 André Fernandes Bispo
                             </div>
-                            <div className='number'>
+                            <div className='student-points'>
                                 75
                             </div>
-                            <div className='number'>
+                            <div className='team-name'>
                                 Bonde do Tigrãaaaaao
                             </div>
-                            <div className='number'>
+                            <div className='team-points'>
                                 75
                             </div>
                         </div>
-                    </li>
+                    </li>*/}
+                    
+                    <div className='student-data'>
+                        <ul>
+                            <li>
+                                <div className='student-name'>
+                                    André Fernandes Bispo
+                                </div>
+                                <div className='student-name'>
+                                    Joao Vitor Soares Egidio
+                                </div>
+                                <div className='student-name'>
+                                    Emmanuel Peralta
+                                </div>
+                            </li>
+                            <li>
+                                <div className='student-points'>
+                                    75
+                                </div>
+                                <div className='student-points'>
+                                    65
+                                </div>
+                                <div className='student-points'>
+                                    85
+                                </div>
+                            </li>
+                            <li>
+                                <div className='team-name'>
+                                    André Fernandes Bispo
+                                </div>
+                                <div className='team-name'>
+                                    Joao Vitor Soares Egidio
+                                </div>
+                                <div className='team-name'>
+                                    Emmanuel Peralta
+                                </div>
+                            </li>
+                            <li>
+                                <div className='team-points'>
+                                    75
+                                </div>
+                                <div className='team-points'>
+                                    65
+                                </div>
+                                <div className='team-points'>
+                                    85
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                
+                    {/*
                     <li>
                         <div className='card-individual'>
                             <div className='dataname'>
@@ -173,7 +225,8 @@ export default function Team() {
                             </div>
                         </div>
                     </li>
-                </ul>
+                    */}
+   
 
             </div>
                     

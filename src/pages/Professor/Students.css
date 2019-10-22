@@ -167,11 +167,54 @@ html, body{
 
 /*PROFILES CARDS*/
 .students .cards-students {
-    width: 58%;
+    max-width: 68%;
     margin-top: 125px;
-    margin-left: 20%;
+    margin-left: 15%;
     /*border: solid 1px red;*/
 }
+/*
+.students .cards-students ul {
+    list-style: none;
+    /*border: solid 1px;*/
+/*}*/
+/*
+.students .cards-students .line-title {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.students .cards-students .student-data {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    border: solid 1px red;
+}
+
+.students .cards-students .student-data .student-name {
+    width: auto;
+    white-space: nowrap;
+    border: solid 1px;
+}
+
+.students .cards-students .student-data .student-points {
+    margin-left: 235px;
+    border: solid 1px;
+}
+
+.students .cards-students .student-data .team-name {
+    margin-left: 355px;
+    white-space: nowrap;
+    border: solid 1px;
+}
+
+.students .cards-students .student-data .team-points {
+    width: 30px;
+    margin-left: 535px;
+    border: solid 1px;
+}
+*/
 
 .students .cards-students ul {
     list-style: none;
@@ -184,24 +227,48 @@ html, body{
     grid-gap: 20px;
 }
 
-.students .cards-students .card-individual {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
-    /*border: solid 1px blue;*/
-}
-
-.students .cards-students .card-individual .dataname {
-    margin-top: 5px;
-    font-size: 15pt;
-    /*border: solid 1px;*/
+.students .cards-students .student-data {
+    margin-top: 15px;
+    border: solid 1px red;
     
 }
 
-.students .cards-students .card-individual .number {
-    margin-top: 8px;
-    font-size: 15pt;
-    /*border: solid 1px green;*/
+.students .cards-students .student-data ul {
+
+    /*CRIAR UMA DIVPARA CADA BLOCO E USAR FLEX*/
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px;
 }
 
+.students .cards-students .student-data li {
+    border: solid 1px;
+}
 
+.students .cards-students .student-data .student-name {
+    margin-top: 10px;
+    float: left;
+    white-space: nowrap;
+    border: solid 1px;
+}
+
+.students .cards-students .student-data .student-points {
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 40px;
+    border: solid 1px;
+}
+
+.students .cards-students .student-data .team-name {
+    margin-top: 10px;
+    float: left;
+    white-space: nowrap;
+    border: solid 1px;
+}
+
+.students .cards-students .student-data .team-points {
+    width: 30px;
+    margin-top: 10px;
+    margin-left: 40px;
+    border: solid 1px;
+}
