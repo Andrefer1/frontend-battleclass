@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
+import api from '../../service/api';
 
 import './IndividualActivity.css';
 
-export default function Activity() {
-    const [showMembers, setShowMembers] = useState('')
+export default function Activity({ history, match}) {
+    const [ showMembers, setShowMembers ] = useState('')
+    const [ atividade, setAtividade ] = useState(Object);
+    const [ questoes, setQuestoes ] = useState([]); 
+    var letra = '';
+    const alfabeto = ['a','b','c','d']
 
     function dropdown() {
         setShowMembers('true')
     }
+    
+
+    useEffect(() => {
+        async function buscarAtividadeIndividual(id) {
+            const response = await api.get('/buscar/atividade', {headers: {
+                id: id
+            }});
+            //heros = response.data;
+            setAtividade(response.data)
+            setQuestoes(response.data.questoes)
+        }
+        buscarAtividadeIndividual(match.params.idAtividade);
+    }, [])
 
     return (
         <div className='individual-activity'>
@@ -25,7 +43,7 @@ export default function Activity() {
                     </div>
                     <div className='student-data'>
                         <div className='activity-title'>
-                            [Título da atividade]
+                            {atividade.titulo}
                         </div>
                         
                         <div className='trace'>
@@ -37,10 +55,10 @@ export default function Activity() {
                     </div>
                     <div className='dates'>
                         <div className='trace'>
-                            Postado em: dd/MM/aaaa
+                            Postagem: {atividade.dataPostagem}
                         </div>
                         <div className='team-points-principal'>
-                            Entrega: dd/MM/aaaa
+                            Entrega: {atividade.dataEntrega}
                         </div>
                     </div>
                 </div>
@@ -115,79 +133,46 @@ export default function Activity() {
             </div>
 
             <div className='cards-questions'>
-                <ul>
-                    <li>
-                        <div className='card-individual'>
-                            <div className='question'>
-                                <strong>Questão 1</strong>
-                            </div>
-                            <div className='activity-content'>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint  occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
-                            <div className='alternatives'>
-                                <div className='alternative'>
-                                    <div>
-                                        <input type='radio' name='radio-question' className='radio-input' />
+                { questoes.length > 0 ? (
+                    <ul>
+                        { questoes.map( (questao, index) => (
+                            
+                            <li>
+                                <div className='card-individual'>
+                                    <div className='question'>
+                                        <strong>{questao[index + 1].texto}</strong>
                                     </div>
-                                    <div>
-                                        <label for='radio-input' className='radio-input-text'>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </label>
-                                    </div>
+                                    { questao[index + 1].alternativas.length > 0 ? (
+                                        <div className='alternatives'>
+                                            { questao[index + 1].alternativas.map((alternativa, index) => (
+                                                <div className='alternative' key={index}>
+                                                    {letra = alfabeto[index]}
+                                                    {console.log(alfabeto[index])}
+                                                    <div>
+                                                        <input type='radio' name='radio-question' className='radio-input' />
+                                                    </div>
+                                                    <div>
+                                                        <label for='radio-input' className='radio-input-text'> 
+                                                            {alternativa[letra].texto}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                            
+                                        </div>
+                                    ): (
+                                        <div> Sem questões </div>
+                                    )}
+                                    
                                 </div>
-                                <div className='alternative'>
-                                    <div>
-                                        <input type='radio' name='radio-question' className='radio-input' />
-                                    </div>
-                                    <div>
-                                        <label for='radio-input' className='radio-input-text'>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className='alternative'>
-                                    <div>
-                                        <input type='radio' name='radio-question' className='radio-input' />
-                                    </div>
-                                    <div>
-                                        <label for='radio-input' className='radio-input-text'>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className='alternative'>
-                                    <div>
-                                        <input type='radio' name='radio-question' className='radio-input' />
-                                    </div>
-                                    <div>
-                                        <label for='radio-input' className='radio-input-text'>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </label>
-                                    </div>
-                                </div>
-                                <div className='alternative'>
-                                    <div>
-                                        <input type='radio' name='radio-question' className='radio-input' />
-                                    </div>
-                                    <div>
-                                        <label for='radio-input' className='radio-input-text'>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                            </li>
+                        ))}
+                        
+                    </ul>
+                ) : (
+                    <div> Sem questões </div>
+                )}
+                
             </div>
         </div>
     );

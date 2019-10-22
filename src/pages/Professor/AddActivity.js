@@ -360,28 +360,7 @@ export default function Activity() {
                             </div>
                         </div>
 
-                        <div className='radio-editor'>
-                            <div className='radio-alternative'>
-                                <input type='radio' name='radio' className='input-radio'/>
-                            </div>
-                            <div className='editor-alternative'>
-                            <CKEditor
-                                editor={ ClassicEditor }
-        
-                                onChange={ ( event, editor ) => {
-                                    const data = editor.getData();
-                                    console.log( { event, editor, data } );
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
-                            />
-
-                            </div>
-                        </div>
+                        
 
                     </div>
 

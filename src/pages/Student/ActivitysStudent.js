@@ -7,7 +7,7 @@ import api from '../../service/api';
 
 import './ActivitysStudent.css';
 
-export default function Activity() {
+export default function Activity({ history, match }) {
     const [showMembers, setShowMembers] = useState('')
     const [ atividades, setAtividade ] = useState([]);
 
@@ -15,12 +15,17 @@ export default function Activity() {
         setShowMembers('true')
     }
 
+    function navegarAtividade(atividade){
+        history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`)
+        
+    }
+
     useEffect(() => {
         async function buscarAtividades() {
             const response = await api.get('/buscar/atividades');
             //heros = response.data;
            
-            setAtividade(response.data)
+            setAtividade(response.data.reverse()) // reverse() é para colocar a lista de tras pra frente.
         }
         
         buscarAtividades();
@@ -124,7 +129,7 @@ export default function Activity() {
                     <ul>
                         { atividades.map(atividade =>(
                             <li>
-                            <a href='/activitys-student/individual-activity'>
+                            <a onClick={()=> navegarAtividade(atividade)}>
                                 <div className='card-individual'>
                                     <div className='activity-data'>
                                         <div className='activity-title'>
