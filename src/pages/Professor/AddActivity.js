@@ -208,181 +208,914 @@ export default function Activity() {
                 </div>
                 <div className='cards-questions'>
                     <div className='individual-card'>
-                        {/*<strong>Conteúdo</strong>*/}
+                        <b>Questão 1</b>
+                        <div className='str-content'>
+                            <strong>Conteúdo</strong>
+                        </div>
                         <div className='editor'>
-                        {/*onclick={get_CKditor()}*/}
-                        <CKEditor
-                            editor={ ClassicEditor }
+                            {/*onclick={get_CKditor()}*/}
+                            <CKEditor
+                                editor={ ClassicEditor }
 
-                            onInit={ editor => {
-                                // You can store the "editor" and use when it is needed.
-                                console.log( 'Editor is ready to use!', editor );
-                            } }
-                            onChange={ ( event, editor ) => {
-                                const data = editor.getData();
-                                console.log( { event, editor, data } );
-                            } }
-                            onBlur={ ( event, editor ) => {
-                                console.log( 'Blur.', editor );
-                            } }
-                            onFocus={ ( event, editor ) => {
-                                console.log( 'Focus.', editor );
-                            } }
-                        />
-                    </div>
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
+                                onChange={ ( event, editor ) => {
+                                    const data = editor.getData();
+                                    console.log( { event, editor, data } );
+                                } }
+                                onBlur={ ( event, editor ) => {
+                                    console.log( 'Blur.', editor );
+                                } }
+                                onFocus={ ( event, editor ) => {
+                                    console.log( 'Focus.', editor );
+                                } }
+                            />
+                        </div>
 
                         <div className='alternative'>
                             <strong>Alternativas</strong><br />
-                            <div className='r adio-editor'>
-                            <div className='radio-alternative'>
-                                <input type='radio' name='radio' className='input-radio'/>
-                            </div>
-                            <div className='editor-alternative'>
-                            <CKEditor
-                                editor={ ClassicEditor }
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    a)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
 
-                                onInit={ editor => {
-                                    // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
-                                    const data = editor.getData();
-                                    console.log( { event, editor, data } );
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
-                            />
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
 
+                                </div>
                             </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    b)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    c)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    d)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    e)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+                                </div>
+                            </div>
+
                         </div>
-
-                            <div className='radio-editor'>
-                            <div className='radio-alternative'>
-                                <input type='radio' name='radio' className='input-radio'/>
+                
+                        <div className='buttons'>
+                            <div>
+                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
                             </div>
-                            <div className='editor-alternative'>
-                            <CKEditor
-                                editor={ ClassicEditor }
-
-                                onInit={ editor => {
-                                    // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
-                                    const data = editor.getData();
-                                    console.log( { event, editor, data } );
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
-                            />
-
+                            <div>
+                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
                             </div>
-                        </div>
-
-                            <div className='radio-editor'>
-                            <div className='radio-alternative'>
-                                <input type='radio' name='radio' className='input-radio'/>
-                            </div>
-                            <div className='editor-alternative'>
-                            <CKEditor
-                                editor={ ClassicEditor }
-
-                                onInit={ editor => {
-                                    // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
-                                    const data = editor.getData();
-                                    console.log( { event, editor, data } );
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
-                            />
-
-                            </div>
-                        </div>
-
-                            <div className='radio-editor'>
-                            <div className='radio-alternative'>
-                                <input type='radio' name='radio' className='input-radio'/>
-                            </div>
-                            <div className='editor-alternative'>
-                            <CKEditor
-                                editor={ ClassicEditor }
-
-                                onInit={ editor => {
-                                    // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
-                                    const data = editor.getData();
-                                    console.log( { event, editor, data } );
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
-                            />
-
-                            </div>
-                        </div>
-
-                            <div className='radio-editor'>
-                            <div className='radio-alternative'>
-                                <input type='radio' name='radio' className='input-radio'/>
-                            </div>
-                            <div className='editor-alternative'>
-                            <CKEditor
-                                editor={ ClassicEditor }
-                                
-                                onInit={ editor => {
-                                    // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
-                                    const data = editor.getData();
-                                    console.log( { event, editor, data } );
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
-                            />
-
-                            </div>
-                        </div>
                         </div>
                     </div>
-
-
-                    <div className='buttons'>
-                        <div>
-                            {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
-                        </div>
-                        <div>
-                            <button className='btn btn-primary add' id='teste'>Adicionar</button>
-                        </div>
-                    </div>
-
-
-
                 </div>
+
+                <div className='cards-questions'>
+                    <div className='individual-card'>
+                        <b>Questão 2</b>
+                        <div className='str-content'>
+                            <strong>Conteúdo</strong>
+                        </div>
+                        <div className='editor'>
+                            {/*onclick={get_CKditor()}*/}
+                            <CKEditor
+                                editor={ ClassicEditor }
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
+                                onChange={ ( event, editor ) => {
+                                    const data = editor.getData();
+                                    console.log( { event, editor, data } );
+                                } }
+                                onBlur={ ( event, editor ) => {
+                                    console.log( 'Blur.', editor );
+                                } }
+                                onFocus={ ( event, editor ) => {
+                                    console.log( 'Focus.', editor );
+                                } }
+                            />
+                        </div>
+
+                        <div className='alternative'>
+                            <strong>Alternativas</strong><br />
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    a)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    b)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    c)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    d)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    e)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+                
+                        <div className='buttons'>
+                            <div>
+                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
+                            </div>
+                            <div>
+                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='cards-questions'>
+                    <div className='individual-card'>
+                        <b>Questão 3</b>
+                        <div className='str-content'>
+                            <strong>Conteúdo</strong>
+                        </div>
+                        <div className='editor'>
+                            {/*onclick={get_CKditor()}*/}
+                            <CKEditor
+                                editor={ ClassicEditor }
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
+                                onChange={ ( event, editor ) => {
+                                    const data = editor.getData();
+                                    console.log( { event, editor, data } );
+                                } }
+                                onBlur={ ( event, editor ) => {
+                                    console.log( 'Blur.', editor );
+                                } }
+                                onFocus={ ( event, editor ) => {
+                                    console.log( 'Focus.', editor );
+                                } }
+                            />
+                        </div>
+
+                        <div className='alternative'>
+                            <strong>Alternativas</strong><br />
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    a)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    b)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    c)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    d)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    e)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+                
+                        <div className='buttons'>
+                            <div>
+                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
+                            </div>
+                            <div>
+                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='cards-questions'>
+                    <div className='individual-card'>
+                        <b>Questão 4</b>
+                        <div className='str-content'>
+                            <strong>Conteúdo</strong>
+                        </div>
+                        <div className='editor'>
+                            {/*onclick={get_CKditor()}*/}
+                            <CKEditor
+                                editor={ ClassicEditor }
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
+                                onChange={ ( event, editor ) => {
+                                    const data = editor.getData();
+                                    console.log( { event, editor, data } );
+                                } }
+                                onBlur={ ( event, editor ) => {
+                                    console.log( 'Blur.', editor );
+                                } }
+                                onFocus={ ( event, editor ) => {
+                                    console.log( 'Focus.', editor );
+                                } }
+                            />
+                        </div>
+
+                        <div className='alternative'>
+                            <strong>Alternativas</strong><br />
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    a)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    b)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    c)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    d)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    e)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+                
+                        <div className='buttons'>
+                            <div>
+                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
+                            </div>
+                            <div>
+                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className='cards-questions'>
+                    <div className='individual-card'>
+                        <b>Questão 5</b>
+                        <div className='str-content'>
+                            <strong>Conteúdo</strong>
+                        </div>
+                        <div className='editor'>
+                            {/*onclick={get_CKditor()}*/}
+                            <CKEditor
+                                editor={ ClassicEditor }
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
+                                onChange={ ( event, editor ) => {
+                                    const data = editor.getData();
+                                    console.log( { event, editor, data } );
+                                } }
+                                onBlur={ ( event, editor ) => {
+                                    console.log( 'Blur.', editor );
+                                } }
+                                onFocus={ ( event, editor ) => {
+                                    console.log( 'Focus.', editor );
+                                } }
+                            />
+                        </div>
+
+                        <div className='alternative'>
+                            <strong>Alternativas</strong><br />
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    a)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    b)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    c)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    d)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+
+                                </div>
+                            </div>
+
+                            <div className='letter-editor'>
+                                <div className='letter-alternative'>
+                                    e)
+                                </div>
+                                <br/>
+                                <div className='editor-alternative'>
+                                    <CKEditor
+                                        editor={ ClassicEditor }
+
+                                        onInit={ editor => {
+                                            // You can store the "editor" and use when it is needed.
+                                            console.log( 'Editor is ready to use!', editor );
+                                        } }
+                                        onChange={ ( event, editor ) => {
+                                            const data = editor.getData();
+                                            console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                        } }
+                                        onFocus={ ( event, editor ) => {
+                                            console.log( 'Focus.', editor );
+                                        } }
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+                
+                        <div className='buttons'>
+                            <div>
+                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
+                            </div>
+                            <div>
+                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

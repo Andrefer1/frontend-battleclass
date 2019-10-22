@@ -14,6 +14,7 @@ import ActivitysStudent from './pages/Student/ActivitysStudent'
 import IndividualActivity from './pages/Student/IndividualActivity'
 /*import Battle from './pages/Battle'*/
 import Hero from './pages/Student/Hero'
+import Batalha from './pages/General/Batalha'
 
 /*PROFESSOR*/
 import Dashboard from './pages/Professor/Dashboard'
@@ -35,17 +36,19 @@ export default function Routes() {
             <Route path='/:id/icon' component={Hero} />
             <Route path='/contacts' component={Main} />
             <Route path='/about' component={Main} />
+            <Route path='/battle' component={Batalha} />
             {/**
             ## Rota para adicionar novos icones ##
                 <Route path='/test' component={Test}/>
             */} 
 
             {/*STUDENT*/}
-            <Route path='/main/:id' component={Main} />
+            <Route path='/:idUser/main' component={Main} />
             <Route path='/team' component={Team} />
-            <Route path='/activitys-student' exact component={ActivitysStudent} />
-            <Route path='/activitys-student/individual-activity' component={IndividualActivity} />
+            <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
+            <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
             <Route path='/settings' component={Main} />
+            
 
             {/*PROFESSOR*/}
             <Route path='/dashboard' component={Dashboard} />

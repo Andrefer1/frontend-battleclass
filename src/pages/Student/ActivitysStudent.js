@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
+import api from '../../service/api';
 
 import './ActivitysStudent.css';
 
-export default function Activity() {
+export default function Activity({ history, match }) {
     const [showMembers, setShowMembers] = useState('')
+    const [ atividades, setAtividade ] = useState([]);
 
     function dropdown() {
         setShowMembers('true')
     }
+
+    function navegarAtividade(atividade){
+        history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`)
+        
+    }
+
+    useEffect(() => {
+        async function buscarAtividades() {
+            const response = await api.get('/buscar/atividades');
+            //heros = response.data;
+           
+            setAtividade(response.data.reverse()) // reverse() é para colocar a lista de tras pra frente.
+        }
+        
+        buscarAtividades();
+    }, [])
+
 
     return (
         <div className='activitys-student'>
@@ -106,71 +125,33 @@ export default function Activity() {
             </div>
 
             <div className='cards-activitys'>
-                <ul>
-                    <li>
-                        <a href='/activitys-student/individual-activity'>
-                            <div className='card-individual'>
-                                <div className='activity-data'>
-                                    <div className='activity-title'>
-                                        <strong>[Título da atividade]</strong>
+                { atividades.length > 0 ? (
+                    <ul>
+                        { atividades.map(atividade =>(
+                            <li>
+                            <a onClick={()=> navegarAtividade(atividade)}>
+                                <div className='card-individual'>
+                                    <div className='activity-data'>
+                                        <div className='activity-title'>
+                                            <strong>{atividade.titulo}</strong>
+                                        </div>
+                                        <div className='activity-date'>
+                                            Entrega: {atividade.dataEntrega}
+                                        </div>
                                     </div>
-                                    <div className='activity-date'>
-                                        [dd/MM/aaaa]
+                                    <div className='activity-content'>
+                                        {atividade.conteudo}
                                     </div>
-                                </div>
-                                <div className='activity-content'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint  occaecat cupidatat non proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.
-                                </div>
-                         </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='/activitys-student/individual-activity'>
-                            <div className='card-individual'>
-                                <div className='activity-data'>
-                                    <div className='activity-title'>
-                                        <strong>[Título da atividade]</strong>
-                                    </div>
-                                    <div className='activity-date'>
-                                        [dd/MM/aaaa]
-                                    </div>
-                                </div>
-                                <div className='activity-content'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint  occaecat cupidatat non proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.
-                                </div>
                             </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='/activitys-student/individual-activity'>
-                            <div className='card-individual'>
-                                <div className='activity-data'>
-                                    <div className='activity-title'>
-                                        <strong>[Título da atividade]</strong>
-                                    </div>
-                                    <div className='activity-date'>
-                                        [dd/MM/aaaa]
-                                    </div>
-                                </div>
-                                <div className='activity-content'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint  occaecat cupidatat non proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                            </a>
+                        </li>
+                        ))}
+                        
+                    </ul>
+                ) : (
+                    <div className="empty">Não tem nenhuma atividade :( </div>
+                )}
+
             </div>
         </div>
     );

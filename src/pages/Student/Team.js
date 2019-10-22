@@ -6,7 +6,7 @@ import userProfile from '../../assets/user-profile.svg';
 
 import './Team.css';
 
-export default function Team() {
+export default function Team({ history }) {
     const [showMembers, setShowMembers] = useState('')
 
     function dropdown() {
@@ -43,6 +43,7 @@ export default function Team() {
                 <a href='/main'> Página Inicial </a>
                 <a href='/team'> Minha Equipe </a>
                 <a href='/activitys-student'> Atividades </a>
+                <a onClick={() => {history.push('/battle')}}>Batalha</a>
                 <div className='menu-bottom'>
                     <a href='/settings'> Configurações </a>
                     <a href='/contacts'> Contatos </a>

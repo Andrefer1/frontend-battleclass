@@ -23,7 +23,7 @@ export default function Login({ history }) {
         });
 
         if(response.data.login == true){
-            history.push(`/main/${response.data.id_user}`)
+            history.push(`/${response.data.id_user}/main`)
         }
         else {
             setVariavel("login incorreto")
