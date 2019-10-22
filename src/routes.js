@@ -16,7 +16,13 @@ import IndividualActivity from './pages/Student/IndividualActivity'
 import Hero from './pages/Student/Hero'
 
 /*PROFESSOR*/
+import Dashboard from './pages/Professor/Dashboard'
+import Students from './pages/Professor/Students'
+import Teams from './pages/Professor/Teams'
+import Activitys from './pages/Professor/Activitys'
+import Activity from './pages/Professor/IndividualActivity'
 import AddActivity from './pages/Professor/AddActivity'
+
 
 export default function Routes() {
     return (
@@ -42,11 +48,11 @@ export default function Routes() {
             <Route path='/settings' component={Main} />
 
             {/*PROFESSOR*/}
-            <Route path='/dashboard' component={Main} />
-            <Route path='/student' component={Main} />
-            <Route path='/teams' component={Main} />
-            <Route path='/activitys' component={Main} />
-            <Route path='/activitys/activity' component={Main} />
+            <Route path='/dashboard' component={Dashboard} />
+            <Route path='/students' component={Students} />
+            <Route path='/teams' component={Teams} />
+            <Route path='/activitys' exact component={Activitys} />
+            <Route path='/activitys/activity' component={Activity} />
             <Route path='/activitys/add-activity' component={AddActivity} />
             <Route path='/settings' component={Main} />
         </BrowserRouter>

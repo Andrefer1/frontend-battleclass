@@ -63,7 +63,7 @@ export default function Activity() {
             .catch( error => {
                 console.log( error );
             } );
-        const CKEditorHTML = '<'+`${CKEditor}
+        const CKEditorHTML = `<${CKEditor}
                 editor={ ${ClassicEditor} }
 
                 onInit={ editor => {
@@ -92,53 +92,12 @@ export default function Activity() {
         let get_div_editor_br2 = document.querySelector('.editor-alternative')
         let create_br2= document.createElement('br')
         get_div_editor_br2.appendChild(create_br2)
-
-     /*alternativas()*/
     }
-/*
+
     function alternativas() {
         this.qtd_alternativas += 1
 
-        if (this.qtd_alternativas >= 2){
-            /*let elementButtonAdd = document.querySelector('.add').disabled = false*/
-            /*document.getElementsById("teste").disabled = false;
-        }
-
-        else {
-            document.getElementsById("teste").disabled = true
-
-        }
-    }*/
-
-
-    
-
-/*
-    function check_github() {
-        get_input = document.querySelector('input[name=user]')
-        
     }
-
-    let btnElement = document.querySelector('button')
-    btnElement.onclick = check_github
-
-    function create_list(dev){
-        let ul = document.querySelector('ul')
-            
-        for (dev of dev_list) {
-            console.log(dev.data)
-            let li = document.createElement('li')
-            ul.appendChild(li)
-            li.append(dev.data.name)
-        }
-    }*/
-    
-
-    
-
-
-    
-
 
     return (
         <div className='individual-activity'>
@@ -176,9 +135,10 @@ export default function Activity() {
             </nav>
 
             <div className='menu'>
-                <a href='/main'> Página Inicial </a>
-                <a href='/team'> Minha Equipe </a>
-                <a href='/activitys-student'> Atividades </a>
+            <a href='/dashboard'> Página Inicial </a>
+                <a href='/students'> Alunos </a>
+                <a href='/teams'> Equipes </a>
+                <a href='/activitys'> Atividades </a>
                 <div className='menu-bottom'>
                     <a href='/settings'> Configurações </a>
                     <a href='/contacts'> Contatos </a>
@@ -247,12 +207,17 @@ export default function Activity() {
                     <input type='text' className="form-control" placeholder='Adicione um título'  />
                 </div>
                 <div className='cards-questions'>
-                    {/*<strong>Conteúdo</strong>*/}
-                    <div className='editor'>
+                    <div className='individual-card'>
+                        {/*<strong>Conteúdo</strong>*/}
+                        <div className='editor'>
                         {/*onclick={get_CKditor()}*/}
                         <CKEditor
                             editor={ ClassicEditor }
-      
+
+                            onInit={ editor => {
+                                // You can store the "editor" and use when it is needed.
+                                console.log( 'Editor is ready to use!', editor );
+                            } }
                             onChange={ ( event, editor ) => {
                                 const data = editor.getData();
                                 console.log( { event, editor, data } );
@@ -266,16 +231,20 @@ export default function Activity() {
                         />
                     </div>
 
-                    <div className='alternative'>
-                        <strong>Alternativas</strong><br />
-                        <div className='radio-editor'>
+                        <div className='alternative'>
+                            <strong>Alternativas</strong><br />
+                            <div className='r adio-editor'>
                             <div className='radio-alternative'>
                                 <input type='radio' name='radio' className='input-radio'/>
                             </div>
                             <div className='editor-alternative'>
                             <CKEditor
                                 editor={ ClassicEditor }
-        
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
@@ -291,14 +260,18 @@ export default function Activity() {
                             </div>
                         </div>
 
-                        <div className='radio-editor'>
+                            <div className='radio-editor'>
                             <div className='radio-alternative'>
                                 <input type='radio' name='radio' className='input-radio'/>
                             </div>
                             <div className='editor-alternative'>
                             <CKEditor
                                 editor={ ClassicEditor }
-        
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
@@ -314,14 +287,18 @@ export default function Activity() {
                             </div>
                         </div>
 
-                        <div className='radio-editor'>
+                            <div className='radio-editor'>
                             <div className='radio-alternative'>
                                 <input type='radio' name='radio' className='input-radio'/>
                             </div>
                             <div className='editor-alternative'>
                             <CKEditor
                                 editor={ ClassicEditor }
-        
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
@@ -337,14 +314,18 @@ export default function Activity() {
                             </div>
                         </div>
 
-                        <div className='radio-editor'>
+                            <div className='radio-editor'>
                             <div className='radio-alternative'>
                                 <input type='radio' name='radio' className='input-radio'/>
                             </div>
                             <div className='editor-alternative'>
                             <CKEditor
                                 editor={ ClassicEditor }
-        
+
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
@@ -360,14 +341,18 @@ export default function Activity() {
                             </div>
                         </div>
 
-                        <div className='radio-editor'>
+                            <div className='radio-editor'>
                             <div className='radio-alternative'>
                                 <input type='radio' name='radio' className='input-radio'/>
                             </div>
                             <div className='editor-alternative'>
                             <CKEditor
                                 editor={ ClassicEditor }
-        
+                                
+                                onInit={ editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
@@ -382,7 +367,7 @@ export default function Activity() {
 
                             </div>
                         </div>
-
+                        </div>
                     </div>
 
 
