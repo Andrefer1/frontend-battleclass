@@ -14,7 +14,7 @@ import ActivitysStudent from './pages/Student/ActivitysStudent'
 import IndividualActivity from './pages/Student/IndividualActivity'
 /*import Battle from './pages/Battle'*/
 import Hero from './pages/Student/Hero'
-import Batalha from './pages/General/Batalha'
+import PrepararBatalha from './pages/General/PrepararBatalha'
 import SelectEnemy from './pages/General/SelectEnemy'
 
 /*PROFESSOR*/
@@ -24,6 +24,7 @@ import Teams from './pages/Professor/Teams'
 import Activitys from './pages/Professor/Activitys'
 import Activity from './pages/Professor/IndividualActivity'
 import AddActivity from './pages/Professor/AddActivity'
+import Batalha from './pages/General/Batalha'
 
 
 export default function Routes() {
@@ -38,7 +39,8 @@ export default function Routes() {
             <Route path='/contacts' component={Main} />
             <Route path='/about' component={Main} />
             <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
-            <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={Batalha} />
+            <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
+            <Route path='/battle' component={Batalha} />
             
             
                 <Route path='/test' component={Test}/>

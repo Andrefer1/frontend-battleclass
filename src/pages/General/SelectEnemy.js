@@ -24,7 +24,7 @@ export default function Team({ history, match }) {
     useEffect(() => {
         async function buscarTeams(){
             const response = await api.get('/buscar/grupo/all')
-            setGrupos(response.data)
+            setGrupos(response.data.filter(t => t._id !== match.params.idGrupo));
         }
 
         async function buscarGrupo() {
@@ -158,7 +158,7 @@ export default function Team({ history, match }) {
                         
                     </ul>
                 ) : (
-                    <div> Sem Integrantes </div>
+                    <div> Sem Equipes </div>
                 )}
                 
             </div>

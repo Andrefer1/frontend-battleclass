@@ -24,6 +24,7 @@ html, body{
     background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
     position: fixed;
     box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.13);
+    cursor: pointer;
 }
 
 .main-student nav .navbar .sitename a {
@@ -83,6 +84,7 @@ html, body{
     display: block;
     border-bottom: 1px solid;
     border-color: white;
+    cursor: pointer;
 }
 
 .main-student .menu a:hover {
