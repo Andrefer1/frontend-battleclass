@@ -13,6 +13,7 @@ export default function Login({ history }) {
     const [ username, setUsername ] = useState('');
     const [ senha, setSenha ] = useState('');
     const [ variavel, setVariavel ] = useState('');
+    const [ verificado, setVerificar ] = useState('');
 
     async function efetuarLogin(e){
         e.preventDefault();
@@ -23,10 +24,14 @@ export default function Login({ history }) {
         });
 
         if(response.data.login == true){
-            history.push(`/${response.data.id_user}/main`)
+            history.push(`/main/${response.data.id_user}`)
         }
+        else if(response.data.login == "not verified"){
+            setVerificar(response.data.msg)
+            setVariavel("not verified")
+        } 
         else {
-            setVariavel("login incorreto")
+            setVariavel('login incorreto')
         }
         console.log(response.data);
         
@@ -52,7 +57,15 @@ export default function Login({ history }) {
                 onConfirm={() => setVariavel(null)}
             />
         </RcIf>
-    
+        <RcIf if={variavel === "not verified"}>
+            <SweetAlert
+                show={verificado}
+                title="Falha no Login"
+                text={verificado}
+                type='error'
+                onConfirm={() => setVariavel(null)}
+            />
+        </RcIf>
         <div className='form-login'>
             <img src={ mainImage } alt='Íconce de usuário' id='main-image' />
 
