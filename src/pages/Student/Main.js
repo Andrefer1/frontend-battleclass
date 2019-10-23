@@ -10,16 +10,13 @@ export default function MainStudent({ history, match }) {
 
     const [user, setUser] = useState('');
 
-    function selecionarEquipe(){
-        history.push(`${user.id_user}/main/team`)
-    }
 
     useEffect(() => {
         async function buscarUser(){
-            const response = await api.post('/userId', {
+            const response = await api.get('/buscar/userId', {headers: {
                 id: match.params.idUser
-            })
-    
+            }})
+            
             if (response.data != null){
                 setUser(response.data);
             }
@@ -58,7 +55,7 @@ export default function MainStudent({ history, match }) {
 
         <div className='menu'>
             <a href='/main'> Página Inicial </a>
-            <a href='/team'> Minha Equipe </a>
+            <a onClick={() => (history.push(`/${user._id}/team/${user.grupo}`))}> Minha Equipe </a>
             <a onClick={() => (history.push(`/${user._id}/activitys-student`))}> Atividades </a>
             <div className='menu-bottom'>
                 <a href='/settings'> Configurações </a>

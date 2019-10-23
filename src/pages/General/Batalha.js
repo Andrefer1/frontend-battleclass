@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Column from './Column';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import './Batalha.css';
-import kirito from '../../assets/icons/jv.png';
-import ed from '../../assets/icons/manel.png';
-import gohan from '../../assets/icons/andre.png';
+import api from '../../service/api'
+
 
 
 const Container = styled.div`
@@ -14,11 +13,11 @@ const Container = styled.div`
 `
 var lista = [];
 
-const initialData ={
+const initialData = {
     tasks: {
-        'task-1': { id: 'task-1', content: kirito},
-        'task-2': { id: 'task-2', content: ed},
-        'task-3': { id: 'task-3', content: gohan}
+        'task-1': { id: 'task-1', content: null, _id: null},
+        'task-2': { id: 'task-2', content: null, _id: null},
+        'task-3': { id: 'task-3', content: null, _id: null}
     },
     columns: {
         'column-1': {
@@ -36,27 +35,21 @@ const initialData ={
 }
 
 
-function inicarBatalha(listaIcons, id){
-    if (id == 'column-2'){
-        console.log("lista: " + listaIcons)
-        lista = listaIcons;
-    }
-    
-    console.log("id: " + id)
-}
 
-function confirmaBatalha() {
-    console.log(lista)
-}
 
-class Batalha extends React.Component {
+export default function Batalha({ history, match }) {
     
-    state = initialData;
-
-    
+    const [ state, setState ] = useState(initialData);
+    const [ grupo, setGrupo ] = useState(Object);
+    const [ integrantes, setIntegrantes ] = useState([]);
+    const [ icons, setIcons ] = useState([]);
+    const listaP = [];
+    var listaIcon = [];
+    var tasks = {};
+    const taskIds = []
     
 
-    onDragEnd = result => {
+    const onDragEnd = result => {
         const { destination, source, draggableId } = result;
 
         if (!destination) {
@@ -70,8 +63,8 @@ class Batalha extends React.Component {
             return;
         }
 
-        const start = this.state.columns[source.droppableId];
-        const finish = this.state.columns[destination.droppableId];
+        const start = state.columns[source.droppableId];
+        const finish = state.columns[destination.droppableId];
 
         if(start === finish) {
             const newTaskIds = Array.from(start.taskIds)
@@ -84,15 +77,15 @@ class Batalha extends React.Component {
             };
     
             const newState = {
-                ...this.state,
+                ...state,
                 columns: {
-                    ...this.state.columns,
+                    ...state.columns,
                     [newColumn.id]: newColumn,
                 },
             };
     
             inicarBatalha(newColumn.taskIds, newColumn.id)
-            this.setState(newState)
+            setState(newState)
             return;
         
         };
@@ -114,69 +107,154 @@ class Batalha extends React.Component {
         };
 
         const newState = {
-            ...this.state,
+            ...state,
             columns: {
-                ...this.state.columns,
+                ...state.columns,
                 [newStart.id]: newStart,
                 [newFinish.id]: newFinish
             },
         }
 
         inicarBatalha(finishTaskIds, newFinish.id)
-        this.setState(newState)
+        setState(newState)
 
+    }
+
+    useEffect(() => {
+        async function buscarTeam(){
+            const response = await api.get('/buscar/grupo', {headers: {
+                id: match.params.idGrupo
+            }})
+
+            for (let u in response.data.integrantes) {
+                buscarIntegrantes(response.data.integrantes[u])
+            }
+            //console.log(response.data)
+            setGrupo(response.data)
+        }
+        
+        async function buscarIntegrantes(id){
+            const response = await api.get('/buscar/userId', {headers: {
+                id:id
+            }})
+
+            await buscarIcon(response.data.icon)
+
+            listaP.push(response.data)
+            setIntegrantes(listaP)
+
+        }
+
+        async function buscarIcon(id) {
+            const response = await api.get('/buscar/icon', {headers: {
+                id: id
+            }})
+
+            await listaIcon.push(response.data);
+
+            tasks[response.data.nomePersonagem] = {
+                id:response.data.nomePersonagem,
+                content: response.data.url
+            }
+
+            taskIds.push(response.data.nomePersonagem)
+
+            console.log(tasks)
+            console.log(state)
+            
+
+            
+            setIcons(listaIcon);
+            ajustarTask();
+            
+        }
+
+        function ajustarTask() {
+            const newState = {
+                ...state,
+                tasks,
+                columns: {
+                    ...state.columns,
+                    'column-1':{
+                        ...state.columns['column-1'],
+                        taskIds: taskIds
+                    }
+                }
+            }
+            console.log(newState)
+            setState(newState);
+        }
+        
+        buscarTeam();
+
+    }, [])
+
+    function inicarBatalha(listaIcons, id){
+        if (id == 'column-2'){
+            lista = listaIcons;
+        }
         
         
     }
+    
+    async function confirmaBatalha() {
+        const preparar = { 
+            idEquipe: match.params.idGrupo,
+            posicoes: lista,
+            verificado: []
+        }
+        console.log(preparar)
+        const response = await api.post('/preparar/batalha', {
+            equipe1: preparar,
+            equipe2: null
+        })
+    }
 
-    render() {
-        return (
-            <div className='team'>
-
-                <nav>
-                    <div className='navbar'>
-                        <div className='sitename'>
-                            <a href='/main'>
-                                BATTLECLASS
-                            </a>
-                        </div>
-                        <div className='student-data'>
-                            <div className='team-name-principal'>
-                                Bonde do Tigrãaaaaao
-                            </div>
-                            <div className='trace'>
-                                -
-                            </div>
-                            <div className='team-points-principal'>
-                                75 PONTOS
-                        </div>
-                        </div>
+    return (
+        <div className='team'>
+            <nav>
+                <div className='navbar'>
+                    <div className='sitename'>
+                        <a href='/main'>
+                            BATTLECLASS
+                        </a>
                     </div>
-
-                    <hr id='hr' />
-                </nav>
-
-                <div className='main-container'>
-                    <DragDropContext onDragEnd={this.onDragEnd}>
-                        <Container>
-                            {this.state.columnOrder.map(id => {
-                                const column = this.state.columns[id];
-                                const tasks = column.taskIds.map(taskId => this.state.tasks[taskId])
-
-                                return <Column key={column.id} column={column} tasks={tasks}/>
-                            })}
-                        </Container>
-                        
-                    </DragDropContext>
-                    <button onClick={confirmaBatalha}> BATALHAR! </button>
+                    <div className='student-data'>
+                        <div className='team-name-principal'>
+                            {grupo.nome}
+                        </div>
+                        <div className='trace'>
+                            -
+                        </div>
+                        <div className='team-points-principal'>
+                            {grupo.pontuacao} PONTOS
+                    </div>
+                    </div>
                 </div>
-                
+
+                <hr id='hr' />
+            </nav>
+
+            <div className='main-container'>
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <Container>
+                        {state.columnOrder.map(id => {
+                            const column = state.columns[id];
+                            const tasks = column.taskIds.map(taskId => state.tasks[taskId])
+
+                            return <Column key={column.id} column={column} tasks={tasks}/>
+                        })}
+                    </Container>
+                    
+                </DragDropContext>
+                <button onClick={confirmaBatalha}> BATALHAR! </button>
             </div>
             
-        )
+        </div>
         
-    };
+    )
+    
+};
        
-}
 
-export default Batalha;
+

@@ -4,12 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import RcIf, { RcElse } from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
 
-import './Team.css';
+import './SelectEnemy.css';
 import api from '../../service/api';
 
 export default function Team({ history, match }) {
     const [ showMembers, setShowMembers ] = useState('')
-    const [ grupo, setGrupo ] = useState(Object);
+    const [ grupos, setGrupos ] = useState(Object);
+    const [ team, setTeam ] = useState(Object);
     const [ integrantes, setIntegrantes ] = useState([]);
     const [ icons, setIcons ] = useState([]);
     const lista = [];
@@ -21,45 +22,20 @@ export default function Team({ history, match }) {
     }
 
     useEffect(() => {
-        async function buscarTeam(){
+        async function buscarTeams(){
+            const response = await api.get('/buscar/grupo/all')
+            setGrupos(response.data)
+        }
+
+        async function buscarGrupo() {
             const response = await api.get('/buscar/grupo', {headers: {
                 id: match.params.idGrupo
             }})
-
-            for (let u in response.data.integrantes) {
-                buscarIntegrantes(response.data.integrantes[u])
-            }
-            console.log(response.data)
-            setGrupo(response.data)
-        }
-        
-        async function buscarIntegrantes(id){
-            const response = await api.get('/buscar/userId', {headers: {
-                id:id
-            }})
-
-            await buscarIcon(response.data.icon)
             
-            lista.push(response.data)
-
-            setCont(cont += 1)
-            setIntegrantes(lista)
-
+            setTeam(response.data)
         }
-
-        async function buscarIcon(id) {
-            const response = await api.get('/buscar/icon', {headers: {
-                id: id
-            }})
-    
-            
-            await listaIcon.push(response.data);
-            console.log(response.data)
-            
-            setIcons(listaIcon);
-        }
-        
-        buscarTeam();
+        buscarTeams();
+        buscarGrupo();
 
     }, [])
 
@@ -75,13 +51,13 @@ export default function Team({ history, match }) {
                     </div>
                     <div className='student-data'>
                         <div className='team-name-principal'>
-                            {grupo.nome}
+                            {team.nome}
                         </div>
                         <div className='trace'>
                             -
                         </div>
                         <div className='team-points-principal'>
-                            {grupo.pontuacao}
+                            {team.pontuacao}
                     </div>
                     </div>
                 </div>
@@ -93,7 +69,6 @@ export default function Team({ history, match }) {
                 <a href='/main'> Página Inicial </a>
                 <a href='/team'> Minha Equipe </a>
                 <a href='/activitys-student'> Atividades </a>
-                <a onClick={() => {history.push(`/${match.params.idUser}/team/${grupo._id}/select-enemy`)}}>Batalha</a>
                 <div className='menu-bottom'>
                     <a href='/settings'> Configurações </a>
                     <a href='/contacts'> Contatos </a>
@@ -157,26 +132,28 @@ export default function Team({ history, match }) {
             </div>
 
             <div className='cards-students'>
-                { cont > 0 ? (
+                { grupos.length > 0 ? (
                     <ul>
-                        {console.log(integrantes)}
-                        { integrantes.map( (integrante, index) => (
+                        { grupos.map( grupo => (
                             
-                            <li key={integrante._id}>
-                                <div className='card-individual' >
-                                    <div className='profile-data'>
-                                        <div className='img-profile'>
-                                            <img src={icons[index].url} alt='Imagem do usuário' className='img-individual' />
+                                <li key={grupo._id}>
+                                    <a onClick={() => {history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/battle/${grupo._id}`)}}>
+                                        <div className='card-individual' >
+                                            <div className='profile-data'>
+                                                <div className='img-profile'>
+                                                    <img src={userProfile} alt='Imagem do grupo' className='img-individual' />
+                                                </div>
+                                                <div className='username-profile'>
+                                                    {grupo.nome}
+                                                </div>
+                                            </div>
+                                            <div className='points'>
+                                                {grupo.pontuacao}
+                                            </div>
                                         </div>
-                                        <div className='username-profile'>
-                                            {integrante.nome}
-                                        </div>
-                                    </div>
-                                    <div className='points'>
-                                        {integrante.pontuacao}
-                                    </div>
-                                </div>
-                            </li>
+                                    </a>
+                                </li>
+                            
                         ))}
                         
                     </ul>
