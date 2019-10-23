@@ -9,22 +9,34 @@ import api from '../../service/api';
 export default function MainStudent({ history, match }) {
 
     const [user, setUser] = useState('');
+    const [ grupos, setGrupos ] = useState([])
+    const [ atividades, setAtividades ] = useState([])
 
-    function selecionarEquipe(){
-        history.push(`${user.id_user}/main/team`)
-    }
 
     useEffect(() => {
         async function buscarUser(){
-            const response = await api.post('/userId', {
+            const response = await api.get('/buscar/userId', {headers: {
                 id: match.params.idUser
-            })
-    
+            }})
+            
             if (response.data != null){
                 setUser(response.data);
             }
         }
+
+        async function buscarTeams(){
+            const response = await api.get('/buscar/grupo/all')
+            setGrupos(response.data.filter(t => t._id !== match.params.idGrupo));
+        }
+
+        async function buscarAtividades(){
+            const response = await api.get('/buscar/atividade/all')
+            setAtividades(response.data)
+        }
+
         buscarUser();
+        buscarTeams();
+        buscarAtividades();
 
         console.log(user)
     }, [])
@@ -36,7 +48,7 @@ export default function MainStudent({ history, match }) {
         <nav>
             <div className='navbar'>
                 <div className='sitename'>
-                    <a href='/main'> 
+                    <a onClick={() => (history.push(`/${user._id}/main`))}> 
                         BATTLECLASS
                     </a>
                 </div>
@@ -57,8 +69,8 @@ export default function MainStudent({ history, match }) {
         </nav>
 
         <div className='menu'>
-            <a href='/main'> Página Inicial </a>
-            <a href='/team'> Minha Equipe </a>
+            <a onClick={() => (history.push(`/${user._id}/main`))}> Página Inicial </a>
+            <a onClick={() => (history.push(`/${user._id}/team/${user.grupo}`))}> Minha Equipe </a>
             <a onClick={() => (history.push(`/${user._id}/activitys-student`))}> Atividades </a>
             <div className='menu-bottom'>
                 <a href='/settings'> Configurações </a>
@@ -72,85 +84,70 @@ export default function MainStudent({ history, match }) {
                 <div className='ranking-name'>
                     <b> Ranking do Dia </b>
                 </div>
-                <ul>
-                    <li>
-                        <div className='team-ranking'>
-                            <div className='team-profile'>
-                                <img src={userProfile} alt='Imagem do time' />
-                            </div>          
-                            <div className='team-name'>
-                                Bonde do Tigrãaaaaao
-                            </div>       
-                            <div className='team-points'>
-                                75
+                { grupos.length > 0 ? (
+                    <ul>
+                        { grupos.map(grupo => (
+                            <div>
+                                <li key={grupo._id}>
+                                    <div className='team-ranking'>
+                                        <div className='team-profile'>
+                                            <img src={userProfile} alt='Imagem do time' />
+                                        </div>          
+                                        <div className='team-name'>
+                                            {grupo.nome}
+                                        </div>       
+                                        <div className='team-points'>
+                                            {grupo.pontuacao}
+                                        </div>
+                                    </div>
+                                </li>
+                                <hr className='hr-ranking' />
                             </div>
-                        </div>
-                    </li>
-                    <hr id='hr-ranking'/>
-                    <li>
-                        <div className='team-ranking'>
-                            <div className='team-profile'>
-                                <img src={userProfile} alt='Imagem do time' />
-                            </div>   
-                            <div className='team-name'>
-                                Equipe 2
-                            </div>       
-                            <div className='team-points'>
-                                60
-                            </div>
-                        </div>
-                    </li>
-                    <hr id='hr-ranking'/>
-                    <li>
-                        <div className='team-ranking'>
-                            <div className='team-profile'>
-                                <img src={userProfile} alt='Imagem do time' /> 
-                            </div>          
-                            <div className='team-name'>
-                                Equipe 3
-                            </div>       
-                            <div className='team-points'>
-                                57
-                            </div>
-                        </div>
-                    </li>
-                    <hr id='hr-ranking'/>
-                </ul>
+                            
+                        ))}
+                        
+                    </ul>
+                ): (
+                    <div> Sem grupos </div>
+                )}
+                
             </div>
         </div>
 
-        <div className='tasks'>
-            <div className='task'>
-                <div className='task-content'>
-                    <div className='task-title'>
-                        <b>[Título da Atividade]</b>
-                    </div>
-                    <div className='task-description'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint  occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus 
-                        error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo 
-                        inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem 
-                        quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione 
-                        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                        adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam 
-                        exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? 
-                        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, 
-                        vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+        { atividades.length > 0 ? (
+            <ul>
+                <div className='tasks'>
+                    <div className='task'>
+                        { atividades.map(atividade => (
+                            <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
+                                <li key={atividade._id}>
+                                    <div className='task-content'>
+                                        <div className='task-title'>
+                                            <b>{atividade.titulo}</b>
+                                        </div>
+                                        <div className='task-description'>
+                                            {atividade.conteudo}
+                                        </div>
+                                    </div>
+                                    <div className='task-points'>
+                                        <div className='task-points-notes'>
+                                            <b>Nota</b>
+                                        </div>
+                                        <div className='task-pontuation'>
+                                            50
+                                        </div>
+                                    </div>
+                                </li>
+                            </a>
+                        ))}
+                        
                     </div>
                 </div>
-                <div className='task-points'>
-                    <div className='task-points-notes'>
-                        <b>Nota</b>
-                    </div>
-                    <div className='task-pontuation'>
-                        65
-                    </div>
-                </div>
-            </div>
-        </div>
+            </ul>
+        ) : (
+            <div> Sem atividades à realizar </div>
+        )}            
+        
 
     </div>
 

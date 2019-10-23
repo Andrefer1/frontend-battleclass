@@ -16,7 +16,8 @@ import ActivitysStudent from './pages/Student/ActivitysStudent'
 import IndividualActivity from './pages/Student/IndividualActivity'
 /*import Battle from './pages/Battle'*/
 import Hero from './pages/Student/Hero'
-import Batalha from './pages/General/Batalha'
+import PrepararBatalha from './pages/General/PrepararBatalha'
+import SelectEnemy from './pages/General/SelectEnemy'
 
 
 /*PROFESSOR*/
@@ -26,6 +27,7 @@ import Teams from './pages/Professor/Teams'
 import Activitys from './pages/Professor/Activitys'
 import Activity from './pages/Professor/IndividualActivity'
 import AddActivity from './pages/Professor/AddActivity'
+import Batalha from './pages/General/Batalha'
 
 
 export default function Routes() {
@@ -39,18 +41,19 @@ export default function Routes() {
             <Route path='/:id/icon' component={Hero} />
             <Route path='/contacts' component={Main} />
             <Route path='/about' component={Main} />
+            <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
+            <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
             <Route path='/battle' component={Batalha} />
-            {/**
-            ## Rota para adicionar novos icones ##
-                <Route path='/test' component={Test}/>
-            */} 
-            <Route path='/settings' component={Settings} />
             
+            {/*<Route path='/test' component={Test}/>*/}
+
+            <Route path='/settings' component={Settings} />
+             
 
             {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
-            <Route path='/team' component={Team} />
-            <Route path='/:idUser/activitys-student' exact component={ActivitysStudent} />
+            <Route path='/:idUser/team/:idGrupo' exact component={Team} />
+            <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
             <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
             
 
