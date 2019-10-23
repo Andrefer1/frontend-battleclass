@@ -6,6 +6,8 @@ import Login from './pages/General/Login'
 import Password from './pages/General/Password'
 import Register from './pages/General/Register'
 import Test from './pages/test'
+import Settings from './pages/General/Settings'
+
 
 /*STUDENT*/
 import Main from './pages/Student/Main'
@@ -15,6 +17,7 @@ import IndividualActivity from './pages/Student/IndividualActivity'
 /*import Battle from './pages/Battle'*/
 import Hero from './pages/Student/Hero'
 import Batalha from './pages/General/Batalha'
+
 
 /*PROFESSOR*/
 import Dashboard from './pages/Professor/Dashboard'
@@ -41,13 +44,14 @@ export default function Routes() {
             ## Rota para adicionar novos icones ##
                 <Route path='/test' component={Test}/>
             */} 
+            <Route path='/settings' component={Settings} />
+            
 
             {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
             <Route path='/team' component={Team} />
-            <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
+            <Route path='/:idUser/activitys-student' exact component={ActivitysStudent} />
             <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
-            <Route path='/settings' component={Main} />
             
 
             {/*PROFESSOR*/}
@@ -57,7 +61,6 @@ export default function Routes() {
             <Route path='/activitys' exact component={Activitys} />
             <Route path='/activitys/activity' component={Activity} />
             <Route path='/activitys/add-activity' component={AddActivity} />
-            <Route path='/settings' component={Main} />
         </BrowserRouter>
     );
 }

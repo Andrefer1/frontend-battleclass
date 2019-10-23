@@ -37,7 +37,7 @@ export default function Login({ history }) {
     }
 
     function selecionarRecuperar(){
-        history.push('/recuperar')
+        history.push('/recover')
     }
     
     return (
@@ -82,10 +82,10 @@ export default function Login({ history }) {
                     </div>
                 </div>
 
-                <div className="div-check">
+                {/*<div className="div-check">
                     <input type="checkbox" id='check-input' />
                     <label className="check-label" for="check-input"> Manter logado </label>
-                </div>
+                </div>*/}
                 
                 <button className="btn btn-primary enter-button" href='./main' >Entrar</button>
 

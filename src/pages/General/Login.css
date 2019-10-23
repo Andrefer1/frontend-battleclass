@@ -146,39 +146,6 @@ html, body {
 }    
 
 
-/*FORM OF CHECKBOX*/
-/*
-.form-login  .div-check {
-    margin-top: 20px;
-    margin-left: -107px;
-}
-
-.form-login  .div-check #check-input {
-    display: none;
-}
-
-.form-login  .div-check #check-input + .check-label:before {
-    margin-left: -105px;
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    background-color: none;
-    border-radius: 3px;
-    border: 1px solid white
-
-}
-
-.form-login .div-check #check-input:checked + .check-label:before {
-    background-color: white;
-}
-
-.form-login .div-check .check-label {
-    top: 100px;
-    color: black;
-}
-*/
-
 /*BUTTON*/
 .form-login .enter-button {
     height: 60px;
@@ -208,6 +175,7 @@ html, body {
     font-size: 15px;
     text-decoration:none;
     color: black;
+    cursor: pointer;
 }
 
 .form-login .links #link-forgot-password:before {

@@ -7,7 +7,7 @@ import mainImage from '../../assets/user2.png'
 import userIcon from '../../assets/user2.png'
 import padlockIcon from '../../assets/padlock.png'
 
-import './Login.css'
+import './Password.css'
 
 export default function Login({ history }) {
     const [ username, setUsername ] = useState('');
@@ -69,7 +69,7 @@ export default function Login({ history }) {
     })
 
     return (
-    <div className='main-login'>
+    <div className='main-password'>
 
         <RcIf if={variavel === "ook"}>
             <SweetAlert
@@ -91,20 +91,20 @@ export default function Login({ history }) {
                 <hr id='hr-top-right' />
 
                 <form onSubmit={verificarEmail}>
-                    <div className='inputs'>
+                    <div className='input'>
                         {/*PASSWORD INPUT*/}
-                        <div className='username'>
+                        <div className='email'>
                             <div className='div-user-icon'>
                                 <img id='user-icon' src={ userIcon } alt='imagem usuário' />
                             </div>
                             <div>
                                 <input  className="form-control" id="email-input" aria-describedby="emailHelp"
-                                    placeholder="usuario@rede.ulbra.br" name='email' type="text" value={username} onChange={e => setUsername(e.target.value)}  required />
+                                        placeholder="usuario@rede.ulbra.br" name='email' type="text" value={username} onChange={e => setUsername(e.target.value)}  required />
                             </div>
                         </div>
-                        <button className="btn btn-primary enter-button" href='./main' >Buscar</button>
+                        <button className="btn btn-primary enter-button" href='./main'>Recuperar</button>
 
-                        <div className='links'>
+                        <div className='link'>
                             <div>
                                 <a onClick={selecionarCadastro} id='link-register'>Ainda não possui cadastro?</a>
                             </div>
@@ -123,7 +123,7 @@ export default function Login({ history }) {
                     <div className='inputs'>
                         {/*PASSWORD INPUT*/}
                         <label className='label-password-input' for='password-input'> Digite sua senha: </label>
-                        <div className='password'>
+                        <div className='div-password'>
                             <div className='div-padlock-icon'>
                                 <img id='padlock-icon' src={ padlockIcon } alt='padlock' />
                             </div>
@@ -141,7 +141,7 @@ export default function Login({ history }) {
                             <input type="password" name="password-confirmation" id="password-input-confirmation" 
                             placeholder="Confirme sua senha" value={senha2} onChange={e => setSenha2(e.target.value)} required/>
                         </div>
-                        <button className="btn btn-primary enter-button" href='./main' >Buscar</button>
+                        <button className="btn btn-primary enter-button" href='./main' >Confirmar</button>
                     </div>
                 </form>
             </RcIf>

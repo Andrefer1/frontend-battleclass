@@ -68,8 +68,7 @@
 
 .main-container .empty {
     font-size: 32px;
-    color: #999;
-    font-weight: bold;
+    color: rgb(212, 212, 212);
     margin-top: 300px;
 }
 

@@ -124,14 +124,11 @@ class Batalha extends React.Component {
 
         inicarBatalha(finishTaskIds, newFinish.id)
         this.setState(newState)
-
-        
-        
     }
 
     render() {
         return (
-            <div className='team'>
+            <div className='battle'>
 
                 <nav>
                     <div className='navbar'>
@@ -156,7 +153,7 @@ class Batalha extends React.Component {
                     <hr id='hr' />
                 </nav>
 
-                <div className='main-container'>
+                <div className='container-battle'>
                     <DragDropContext onDragEnd={this.onDragEnd}>
                         <Container>
                             {this.state.columnOrder.map(id => {
@@ -168,7 +165,7 @@ class Batalha extends React.Component {
                         </Container>
                         
                     </DragDropContext>
-                    <button onClick={confirmaBatalha}> BATALHAR! </button>
+                    <button className='btn btn-primary battle-button' onClick={confirmaBatalha}> BATALHAR! </button>
                 </div>
                 
             </div>

@@ -5,21 +5,20 @@
     outline: 0;
     box-sizing: border-box;
 }
-
+ 
 html, body{
     height: 0px;
 }
 
-.team {
+.settings {
     position: absolute;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     background: white;
 }
 
-
 /*NAVBAR*/
-.team nav .navbar {
+.settings nav .navbar {
     height: 100px;
     width: 100%;
     background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
@@ -27,37 +26,38 @@ html, body{
     box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.13);
 }
 
-.team nav .navbar .sitename a {
+.settings nav .navbar .sitename a {
     color: white;
     text-decoration: none;
     margin-left: 60px;
 }
 
-.team nav .navbar .student-data {
+.settings nav .navbar .student-data {
     display: flex;
+    /*grid-template-columns: repeat(3, 2fr); NÃO FUNCIONOU, VERIFICAR*/
     position: absolute;
     margin-left: 254px;
 }
 
-.team nav .navbar .student-data .team-name-principal {
+.settings nav .navbar .student-data .student-name {
     color: white;
     font-size: 30px;
 }
 
-.team nav .navbar .student-data .trace {
+.settings nav .navbar .student-data .trace {
     color: white;
     font-size: 30px;
     margin-left: 20px;
 }
 
-.team nav .navbar .student-data .team-points-principal{
+.settings nav .navbar .student-data .student-points {
     color: white;
     font-size: 25px;
     margin-top: 3px;
     margin-left: 20px;
 }
 
-.team nav #hr {
+.settings nav #hr {
     max-width: 100%;
     margin-top: -1px;
     margin-left: 270px;
@@ -67,17 +67,16 @@ html, body{
 
 
 /*MENU*/
-.team .menu {
+.settings .menu {
     position: fixed; /*Tirar o absolute no ranking*/
     background-color: #2e2e64;
     width: 250px;
-    height: 90%;
     z-index: 1;
     margin-top: 83px;
     margin-left: 0px;
 }
 
-.team .menu a {
+.settings .menu a {
     color: white;
     padding: 12px 16px;
     text-decoration: none;
@@ -86,18 +85,18 @@ html, body{
     border-color: white;
 }
 
-.team .menu a:hover {
+.settings .menu a:hover {
     background-color: rgba(206,51,126,1)
 }
 
-.team .menu .menu-bottom {
-    margin-top: 535px;
+.settings .menu .menu-bottom {
+    margin-top: 544px;
 
 }
 
 
 /*RANKINGS*/
-.team .rankings .ranking-do-dia {
+.settings .rankings .ranking-do-dia {
     height: 280px;
     width: 270px;
     background: white;
@@ -108,40 +107,40 @@ html, body{
     margin-right: 20px;
 }
 
-.team .rankings .ranking-do-dia .ranking-name {
+.settings .rankings .ranking-do-dia .ranking-name {
     margin-top: 20px;
     text-align: center;
 }
 
-.team .rankings .ranking-do-dia ul {
+.settings .rankings .ranking-do-dia ul {
     margin-top: 20px;
     margin-right: 40px;
 }
 
-.team .rankings .ranking-do-dia ul li {
+.settings .rankings .ranking-do-dia ul li {
     display: inline-block;
 }
 
-.team .rankings .ranking-do-dia ul li .team-ranking {
+.settings .rankings .ranking-do-dia ul li .team-ranking {
     display: flex;
     transform: translate( 95px, 20px)
 }
 
-.team .rankings .ranking-do-dia ul li .team-ranking:hover {
+.settings .rankings .ranking-do-dia ul li .team-ranking:hover {
     background-color: #f1f1f1;
     cursor: pointer
 }
 
-.team .rankings .ranking-do-dia ul li .team-ranking .team-profile {
+.settings .rankings .ranking-do-dia ul li .team-ranking .team-profile {
     position: absolute;
     transform: translate(-105px, -25px);
 }
 
-.team .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
+.settings .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
     height: 30px;
 }
 
-.team .rankings .ranking-do-dia ul li .team-ranking .team-name {
+.settings .rankings .ranking-do-dia ul li .team-ranking .team-name {
     width: 155px;
     position: relative;
     text-align: left;
@@ -153,69 +152,77 @@ html, body{
     transition-duration: 1s;
 }
 
-.team .rankings .ranking-do-dia ul li .team-ranking .team-points {
+.settings .rankings .ranking-do-dia ul li .team-ranking .team-points {
     position: absolute;
     transform: translate(90px, -22px);
 }
 
-.team .rankings .ranking-do-dia ul #hr-ranking {
+.settings .rankings .ranking-do-dia ul #hr-ranking {
     width: 210px;
     margin-top: 25px;
     margin-left: 30px;
 }
 
 
-/*PROFILES CARDS*/
-.team .cards-students {
-    width: 55%;
-    /*border: solid 1px red;*/
-    margin-top: 125px;
-    margin-left: 16%;
+/*TASKS*/
+.settings .inputs {
+    margin-top: 200px;
 }
 
-.team .cards-students ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
-    /*border: solid 1px;*/
+.settings .inputs .data-name {
+
 }
 
-.team .cards-students .card-individual {
-    min-width: 400px;
-    height: 140px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    /*border: solid 1px blue;*/
+.settings .inputs .data-name .label-name {
+
 }
 
-.team .cards-students .card-individual .profile-data {
-    margin-top: 0px;
+.settings .inputs .data-name .div-name {
+
+}
+
+.settings .inputs .data-name .div-name .input-name {
+
+}
+
+.settings .inputs .data-email {
+
+}
+
+.settings .inputs .data-email .label-email {
+
+}
+
+.settings .inputs .data-email .div-email {
+
+}
+
+.settings .inputs .data-email .div-email .name-input {
+
+}
+
+.settings .inputs .data-password {
+    margin-left: 300px;
     display: flex;
 }
 
-.team .cards-students .card-individual .profile-data .img-individual {
-    height: 8%;
-    margin-left: 20px;
-    margin-top: 15px;
-    position: absolute;
-    /*border: solid 1px*/
+.settings .inputs .data-password div .label-password {
+
 }
 
-.team .cards-students .card-individual .profile-data .username-profile {
-    margin-top: 25px;
-    margin-left: 100px;
-    float: left;
-    /*position: absolute;*/
-    /*border: solid 1px;*/
+.settings .inputs .data-password div .div-password {
+
 }
 
-.team .cards-students .card-individual .points {
-    height: 70px;
-    transform: translate(0px, 0px);
-    /*border: solid 1px green;*/
-    font-size: 50px;
+.settings .inputs .data-password div .div-password .password-input {
+
 }
 
+.settings .inputs .data-password .div-button {
 
+}
+
+.settings .inputs .data-password .div-button .change-button {
+
+}
+                   
