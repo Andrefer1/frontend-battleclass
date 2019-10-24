@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import api from '../../service/api'
 
 import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
@@ -7,11 +8,35 @@ import userProfile from '../../assets/user-profile.svg';
 import './Dashboard.css';
 
 export default function Team() {
-    const [showMembers, setShowMembers] = useState('')
+    const [showMembers, setShowMembers] = useState('');
+    const [ dados, setDados ] = useState(Object)
+    const [ alunos, setAlunos ] = useState(0);
+    const [ atividades, setAtividades ] = useState(0);
+    const [ grupos, setGrupos ] = useState(0);
+    const [ batalhas, setBatalhas ] = useState(0);
 
     function dropdown() {
         setShowMembers('true')
     }
+
+
+    useEffect(() => {
+        async function buscarDados(){
+            const response = await api.get('/dashboard');
+
+            console.log(response.data)
+            setDados(response.data);
+            setAlunos(response.data.usuarios.length);
+            setGrupos(response.data.grupos.length);
+            setAtividades(response.data.atividades.length);
+            setBatalhas(response.data.batalhas.length)
+            
+            
+            
+        }
+        buscarDados();
+        
+    }, []);
 
     return (
         <div className='dashboard'>
@@ -114,27 +139,18 @@ export default function Team() {
                                 Atividades
                             </div>
                             <div className='number'>
-                                10
+                                {atividades}
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div className='card-individual'>
-                            <div className='dataname'>
-
-                            </div>
-                            <div className='number'>
-
-                            </div>
-                        </div>
-                    </li>
+                    
                     <li>
                         <div className='card-individual'>
                             <div className='dataname'>
                                 Alunos
                             </div>
                             <div className='number'>
-                                17
+                                { alunos }
                             </div>
                         </div>
                     </li>
@@ -144,7 +160,7 @@ export default function Team() {
                                 Equipes
                             </div>
                             <div className='number'>
-                                5
+                                {grupos}
                             </div>
                         </div>
                     </li>
@@ -154,7 +170,7 @@ export default function Team() {
                                 Batalhas
                             </div>
                             <div className='number'>
-                                7
+                                {batalhas}
                             </div>
                         </div>
                     </li>

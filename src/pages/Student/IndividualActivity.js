@@ -50,7 +50,7 @@ export default function Activity({ history, match}) {
                             -
                         </div>
                         <div className='team-points-principal'>
-                            [Nota]
+                            [aluno]/50
                         </div>
                     </div>
                     <div className='dates'>

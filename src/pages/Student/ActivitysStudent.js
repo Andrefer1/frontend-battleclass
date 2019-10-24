@@ -22,7 +22,7 @@ export default function Activity({ history, match }) {
 
     useEffect(() => {
         async function buscarAtividades() {
-            const response = await api.get('/buscar/atividades');
+            const response = await api.get('/buscar/atividade/all');
             //heros = response.data;
            
             setAtividade(response.data.reverse()) // reverse() é para colocar a lista de tras pra frente.
