@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import SweetAlert from 'sweetalert2-react';
+import RcIf from 'rc-if';
 import Column from './Column';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
@@ -43,6 +45,7 @@ export default function PrepararBatalha({ history, match }) {
     const [ grupo, setGrupo ] = useState(Object);
     const [ integrantes, setIntegrantes ] = useState([]);
     const [ icons, setIcons ] = useState([]);
+    const [ msg, setMsg ] = useState('');
     const listaP = [];
     var listaIcon = [];
     var tasks = {};
@@ -216,6 +219,7 @@ export default function PrepararBatalha({ history, match }) {
         })
 
         console.log(response.data)
+        setMsg('ok')
     }
     
 
@@ -224,9 +228,7 @@ export default function PrepararBatalha({ history, match }) {
             <nav>
                 <div className='navbar'>
                     <div className='sitename'>
-                        <a href='/main'>
-                            BATTLECLASS
-                        </a>
+                        <a className='' onClick={() => (history.push(`/${match.params.idUser}/main`))}> BATTLECLASS </a>
                     </div>
                     <div className='student-data'>
                         <div className='team-name-principal'>
@@ -244,6 +246,18 @@ export default function PrepararBatalha({ history, match }) {
                 <hr id='hr' />
             </nav>
 
+            <RcIf if={msg === "ok"}>
+                <SweetAlert
+                    show={msg}
+                    title="SE PREPARE GUERREIRO"
+                    text="Você receberá um email de autorização de batalha. Chame seu time e seu oponente, e que COMECEM OS JOGOS"
+                    type='success'
+                    onConfirm={() => {
+                        setMsg(null);
+                        history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`)
+                    }}
+                />
+            </RcIf>
             <div className='main-container'>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Container>

@@ -10,6 +10,7 @@ import api from '../../service/api';
 export default function Team({ history, match }) {
     const [ showMembers, setShowMembers ] = useState('')
     const [ grupo, setGrupo ] = useState(Object);
+    const [ grupos, setGrupos ] = useState([])
     const [ integrantes, setIntegrantes ] = useState([]);
     const [ icons, setIcons ] = useState([]);
     const lista = [];
@@ -58,8 +59,14 @@ export default function Team({ history, match }) {
             
             setIcons(listaIcon);
         }
+
+        async function buscarTeams(){
+            const response = await api.get('/buscar/grupo/all')
+            setGrupos(response.data);
+        }
         
         buscarTeam();
+        buscarTeams();
 
     }, [])
 
@@ -69,9 +76,7 @@ export default function Team({ history, match }) {
             <nav>
                 <div className='navbar'>
                     <div className='sitename'>
-                        <a href='/main'>
-                            BATTLECLASS
-                        </a>
+                        <a className='' onClick={() => (history.push(`/${match.params.idUser}/main`))}> BATTLECLASS </a>
                     </div>
                     <div className='student-data'>
                         <div className='team-name-principal'>
@@ -90,12 +95,12 @@ export default function Team({ history, match }) {
             </nav>
 
             <div className='menu'>
-                <a href='/main'> Página Inicial </a>
-                <a href='/team'> Minha Equipe </a>
-                <a href='/activitys-student'> Atividades </a>
-                <a onClick={() => {history.push(`/${match.params.idUser}/team/${grupo._id}/select-enemy`)}}>Batalha</a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`))}> Minha Equipe </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))}> Batalha </a>
                 <div className='menu-bottom'>
-                    <a href='/settings'> Configurações </a>
+                    <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
                     <a href='/contacts'> Contatos </a>
                     <a href='/about'> Sobre </a>
                 </div>
@@ -106,53 +111,33 @@ export default function Team({ history, match }) {
                     <div className='ranking-name'>
                         <b> Ranking do Dia </b>
                     </div>
-                    <ul>
-                        <li>
-                            <div className='team-ranking' onClick={dropdown}>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
+                    { grupos.length > 0 ? (
+                        <ul>
+                            { grupos.map(grupoD => (
+                                <div>
+                                    <li key={grupoD._id}>
+                                        <div className='team-ranking'>
+                                            <div className='team-profile'>
+                                                <img src={userProfile} alt='Imagem do time' />
+                                            </div>          
+                                            <div className='team-name'>
+                                                {grupoD.nome}
+                                            </div>       
+                                            <div className='team-points'>
+                                                {grupoD.pontuacao}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <hr className='hr-ranking' />
                                 </div>
-                                <div className='team-name'>
-                                    Bonde do Tigrãaaaaao
-                                </div>
-                                <div className='team-points'>
-                                    75
-                                </div>
-                            </div>
-                            <RcIf if={showMembers === "true"}>
-                                teste
-                            </RcIf>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 2
-                            </div>
-                                <div className='team-points'>
-                                    60
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 3
-                            </div>
-                                <div className='team-points'>
-                                    57
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                    </ul>
+                                
+                            ))}
+                            
+                        </ul>
+                    ): (
+                        <div> Sem grupos </div>
+                    )}
+                    
                 </div>
             </div>
 

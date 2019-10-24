@@ -11,6 +11,9 @@ export default function Activity({ history, match}) {
     const [ showMembers, setShowMembers ] = useState('')
     const [ atividade, setAtividade ] = useState(Object);
     const [ questoes, setQuestoes ] = useState([]); 
+    const [ user, setUser ] = useState(Object);
+    const [ grupos, setGrupos ] = useState([]);
+    var listaAux = [];
     var letra = '';
     const alfabeto = ['a','b','c','d']
 
@@ -28,6 +31,31 @@ export default function Activity({ history, match}) {
             setAtividade(response.data)
             setQuestoes(response.data.questoes)
         }
+
+        async function buscarUser(){
+            const response = await api.get('/buscar/userId', {headers: {
+                id: match.params.idUser
+            }})
+            
+            if (response.data != null){
+                setUser(response.data);
+            }
+
+        }
+
+        async function buscarTeams(){
+            const response = await api.get('/buscar/grupo/all')
+
+            listaAux = response.data
+            listaAux.sort(function (a, b) {
+                return b.pontuacao - a.pontuacao
+            })
+            
+            setGrupos(listaAux);
+        }
+
+        buscarTeams();
+        buscarUser();
         buscarAtividadeIndividual(match.params.idAtividade);
     }, [])
 
@@ -37,9 +65,7 @@ export default function Activity({ history, match}) {
             <nav>
                 <div className='navbar'>
                     <div className='sitename'>
-                        <a href='/main'>
-                            BATTLECLASS
-                        </a>
+                        <a className='' onClick={() => (history.push(`/${match.params.idUser}/main`))}> BATTLECLASS </a>
                     </div>
                     <div className='student-data'>
                         <div className='activity-title'>
@@ -67,11 +93,11 @@ export default function Activity({ history, match}) {
             </nav>
 
             <div className='menu'>
-                <a href='/main'> Página Inicial </a>
-                <a href='/team'> Minha Equipe </a>
-                <a href='/activitys-student'> Atividades </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
                 <div className='menu-bottom'>
-                    <a href='/settings'> Configurações </a>
+                    <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
                     <a href='/contacts'> Contatos </a>
                     <a href='/about'> Sobre </a>
                 </div>
@@ -82,53 +108,33 @@ export default function Activity({ history, match}) {
                     <div className='ranking-name'>
                         <b> Ranking do Dia </b>
                     </div>
-                    <ul>
-                        <li>
-                            <div className='team-ranking' onClick={dropdown}>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
+                    { grupos.length > 0 ? (
+                        <ul>
+                            { grupos.map(grupo => (
+                                <div key={grupo._id}>
+                                    <li key={grupo._id}>
+                                        <div className='team-ranking'>
+                                            <div className='team-profile'>
+                                                <img src={userProfile} alt='Imagem do time' />
+                                            </div>          
+                                            <div className='team-name'>
+                                                {grupo.nome}
+                                            </div>       
+                                            <div className='team-points'>
+                                                {grupo.pontuacao}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <hr className='hr-ranking' />
                                 </div>
-                                <div className='team-name'>
-                                    Bonde do Tigrãaaaaao
-                                </div>
-                                <div className='team-points'>
-                                    75
-                                </div>
-                            </div>
-                            <RcIf if={showMembers === "true"}>
-                                teste
-                            </RcIf>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 2
-                            </div>
-                                <div className='team-points'>
-                                    60
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 3
-                            </div>
-                                <div className='team-points'>
-                                    57
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                    </ul>
+                                
+                            ))}
+                            
+                        </ul>
+                    ): (
+                        <div> Sem grupos </div>
+                    )}
+                    
                 </div>
             </div>
 
@@ -136,8 +142,7 @@ export default function Activity({ history, match}) {
                 { questoes.length > 0 ? (
                     <ul>
                         { questoes.map( (questao, index) => (
-                            
-                            <li>
+                            <li key={index}>
                                 <div className='card-individual'>
                                     <div className='question'>
                                         <strong>{questao[index + 1].texto}</strong>
@@ -147,7 +152,6 @@ export default function Activity({ history, match}) {
                                             { questao[index + 1].alternativas.map((alternativa, index) => (
                                                 <div className='alternative' key={index}>
                                                     {letra = alfabeto[index]}
-                                                    {console.log(alfabeto[index])}
                                                     <div>
                                                         <input type='radio' name='radio-question' className='radio-input' />
                                                     </div>
@@ -174,6 +178,11 @@ export default function Activity({ history, match}) {
                 )}
                 
             </div>
+            <div className={'card-questions'}>
+                <button onClick={() => console.log('eae')}>Publicar Atividade</button>
+            </div>
+            
         </div>
+        
     );
 }

@@ -31,7 +31,7 @@ import wonderWoman from '../assets/icons/wonderWoman.png';
 import zanitsu from '../assets/icons/zanitsu.png';
 import kirito from '../assets/icons/jv.png';
 import ed from '../assets/icons/manel.png';
-import gohan from '../assets/icons/andre.png';
+import cebolinha from '../assets/icons/andre.png';
 import patolinoMago from '../assets/icons/patolinoMago.png';
 
 import api from '../service/api';
@@ -71,7 +71,7 @@ export default function Test() {
         { nomePersonagem:'Zenitsu Agatsuma', url:zanitsu },
         { nomePersonagem:'Kirito', url: kirito},
         { nomePersonagem:'Edward Elric', url:ed},
-        { nomePersonagem:'Gohan', url:gohan},
+        { nomePersonagem:'Cebolinha', url:cebolinha},
         { nomePersonagem:'O Mago', url:patolinoMago },
     
     ]

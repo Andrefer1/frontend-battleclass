@@ -10,6 +10,8 @@ import './ActivitysStudent.css';
 export default function Activity({ history, match }) {
     const [showMembers, setShowMembers] = useState('')
     const [ atividades, setAtividade ] = useState([]);
+    const [ grupo, setGrupo ] = useState(Object);
+    const [ grupos, setGrupos ] = useState([]);
 
     function dropdown() {
         setShowMembers('true')
@@ -27,8 +29,32 @@ export default function Activity({ history, match }) {
            
             setAtividade(response.data.reverse()) // reverse() é para colocar a lista de tras pra frente.
         }
+
+        async function buscarUsuario() {
+            const response = await api.get('/buscar/userId', {headers: {
+                id: match.params.idUser
+            }})
+
+            buscarGrupo(response.data.grupo)
+        }
+
+        async function buscarGrupo(id) {
+            const response = await api.get('/buscar/grupo', {headers: {
+                id:id
+            }})
+
+            setGrupo(response.data)
+        }
+
+        async function buscarGrupos() {
+            const response = await api.get('/buscar/grupo/all')
+
+            setGrupos(response.data)
+        }
         
         buscarAtividades();
+        buscarGrupos();
+        buscarUsuario();
     }, [])
 
 
@@ -59,11 +85,11 @@ export default function Activity({ history, match }) {
             </nav>
 
             <div className='menu'>
-                <a href='/main'> Página Inicial </a>
-                <a href='/team'> Minha Equipe </a>
-                <a href='/activitys-student'> Atividades </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/team/${grupo._id}`))}> Minha Equipe </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
                 <div className='menu-bottom'>
-                    <a href='/settings'> Configurações </a>
+                    <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
                     <a href='/contacts'> Contatos </a>
                     <a href='/about'> Sobre </a>
                 </div>
@@ -74,53 +100,33 @@ export default function Activity({ history, match }) {
                     <div className='ranking-name'>
                         <b> Ranking do Dia </b>
                     </div>
-                    <ul>
-                        <li>
-                            <div className='team-ranking' onClick={dropdown}>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
+                    { grupos.length > 0 ? (
+                        <ul>
+                            { grupos.map(grupo => (
+                                <div key={grupo._id}>
+                                    <li key={grupo._id}>
+                                        <div className='team-ranking'>
+                                            <div className='team-profile'>
+                                                <img src={userProfile} alt='Imagem do time' />
+                                            </div>          
+                                            <div className='team-name'>
+                                                {grupo.nome}
+                                            </div>       
+                                            <div className='team-points'>
+                                                {grupo.pontuacao}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <hr className='hr-ranking' />
                                 </div>
-                                <div className='team-name'>
-                                    Bonde do Tigrãaaaaao
-                                </div>
-                                <div className='team-points'>
-                                    75
-                                </div>
-                            </div>
-                            <RcIf if={showMembers === "true"}>
-                                teste
-                            </RcIf>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 2
-                            </div>
-                                <div className='team-points'>
-                                    60
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 3
-                            </div>
-                                <div className='team-points'>
-                                    57
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                    </ul>
+                                
+                            ))}
+                            
+                        </ul>
+                    ): (
+                        <div> Sem grupos </div>
+                    )}
+                    
                 </div>
             </div>
 
@@ -128,7 +134,7 @@ export default function Activity({ history, match }) {
                 { atividades.length > 0 ? (
                     <ul>
                         { atividades.map(atividade =>(
-                            <li>
+                            <li key={atividade._id}>
                             <a onClick={()=> navegarAtividade(atividade)}>
                                 <div className='card-individual'>
                                     <div className='activity-data'>
