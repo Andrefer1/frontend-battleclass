@@ -15,7 +15,7 @@ import Team from './pages/Student/Team'
 import ActivitysStudent from './pages/Student/ActivitysStudent'
 import IndividualActivity from './pages/Student/IndividualActivity'
 /*import Battle from './pages/Battle'*/
-import Hero from './pages/Student/Hero'
+import Hero from './pages/General/Hero'
 import PrepararBatalha from './pages/General/PrepararBatalha'
 import SelectEnemy from './pages/General/SelectEnemy'
 
@@ -27,7 +27,7 @@ import Teams from './pages/Professor/Teams'
 import Activitys from './pages/Professor/Activitys'
 import Activity from './pages/Professor/IndividualActivity'
 import AddActivity from './pages/Professor/AddActivity'
-import Batalha from './pages/General/Batalha'
+import Batalha from './pages/Professor/Batalha'
 
 
 export default function Routes() {

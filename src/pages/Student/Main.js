@@ -48,11 +48,15 @@ export default function MainStudent({ history, match }) {
         <nav>
             <div className='navbar'>
                 <div className='sitename'>
-                    <a onClick={() => (history.push(`/${user._id}/main`))}> 
-                        BATTLECLASS
-                    </a>
+                <a className='' onClick={() => (history.push(`/${user._id}/main`))}> BATTLECLASS </a>
                 </div>
-                <div className='student-data'>
+                
+            </div>
+           
+            <hr id='hr' />
+        </nav>
+
+        <div className='student-data'>
                     <div className='student-name'>
                         {user.nome}
                     </div>
@@ -63,10 +67,6 @@ export default function MainStudent({ history, match }) {
                         {user.pontuacao} PONTOS
                     </div>
                 </div>
-            </div>
-           
-            <hr id='hr' />
-        </nav>
 
         <div className='menu'>
             <a onClick={() => (history.push(`/${user._id}/main`))}> Página Inicial </a>
@@ -121,20 +121,22 @@ export default function MainStudent({ history, match }) {
                         { atividades.map(atividade => (
                             <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
                                 <li key={atividade._id}>
-                                    <div className='task-content'>
-                                        <div className='task-title'>
-                                            <b>{atividade.titulo}</b>
+                                    <div className='teste'>
+                                        <div className='task-content'>
+                                            <div className='task-title'>
+                                                <b>{atividade.titulo}</b>
+                                            </div>
+                                            <div className='task-description'>
+                                                {atividade.conteudo}
+                                            </div>
                                         </div>
-                                        <div className='task-description'>
-                                            {atividade.conteudo}
-                                        </div>
-                                    </div>
-                                    <div className='task-points'>
-                                        <div className='task-points-notes'>
-                                            <b>Nota</b>
-                                        </div>
-                                        <div className='task-pontuation'>
-                                            50
+                                        <div className='task-points'>
+                                            <div className='task-points-notes'>
+                                                <b>Nota</b>
+                                            </div>
+                                            <div className='task-pontuation'>
+                                                50
+                                            </div>
                                         </div>
                                     </div>
                                 </li>

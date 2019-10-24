@@ -20,39 +20,44 @@ html, body{
 /*NAVBAR*/
 .main-student nav .navbar {
     height: 100px;
-    width: 100%;
-    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
-    position: fixed;
-    box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.13);
+    width: 250px;
+    float: left;
+    background:#2e2e64;
+    border-bottom: solid 1px;
+    border-color: white;
     cursor: pointer;
 }
 
 .main-student nav .navbar .sitename a {
     color: white;
     text-decoration: none;
-    margin-left: 60px;
+    margin-left: 25px;
+    font-size: 20pt;
+
 }
 
-.main-student nav .navbar .student-data {
+
+
+.main-student .student-data {
+    margin-top: 10px;
     display: flex;
-    /*grid-template-columns: repeat(3, 2fr); NÃO FUNCIONOU, VERIFICAR*/
     position: absolute;
-    margin-left: 254px;
+    margin-left: 354px;
 }
 
-.main-student nav .navbar .student-data .student-name {
-    color: white;
+.main-student .student-data .student-name {
+    color: black;
     font-size: 30px;
 }
 
-.main-student nav .navbar .student-data .trace {
-    color: white;
+.main-student .student-data .trace {
+    color: black;
     font-size: 30px;
     margin-left: 20px;
 }
 
-.main-student nav .navbar .student-data .student-points {
-    color: white;
+.main-student .student-data .student-points {
+    color: black;
     font-size: 25px;
     margin-top: 3px;
     margin-left: 20px;
@@ -88,7 +93,8 @@ html, body{
 }
 
 .main-student .menu a:hover {
-    background-color: rgba(206,51,126,1)
+    background-color: rgba(206,51,126,1);
+    color: white;
 }
 
 .main-student .menu .menu-bottom {
@@ -173,7 +179,11 @@ html, body{
     margin-left: 275px;
 }
 
-.main-student .tasks .task {
+.main-student .tasks .task li {
+    list-style-type: none;
+}
+
+.main-student .tasks .task li .teste {
     display: flex;
     width: 100%;
     height: 250px;
@@ -183,6 +193,7 @@ html, body{
 
 .main-student .tasks .task:hover {
     cursor: pointer;
+    border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
 }
 
