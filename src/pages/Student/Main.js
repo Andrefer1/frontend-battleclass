@@ -8,9 +8,12 @@ import api from '../../service/api';
 
 export default function MainStudent({ history, match }) {
 
-    const [user, setUser] = useState('');
+    const [ user, setUser ] = useState('');
     const [ grupos, setGrupos ] = useState([])
     const [ atividades, setAtividades ] = useState([])
+    const [ icon, setIcon ] = useState(Object)
+
+    var listaAux = []
 
 
     useEffect(() => {
@@ -22,16 +25,32 @@ export default function MainStudent({ history, match }) {
             if (response.data != null){
                 setUser(response.data);
             }
+
+            busarIcon(response.data.icon);
         }
 
         async function buscarTeams(){
             const response = await api.get('/buscar/grupo/all')
-            setGrupos(response.data.filter(t => t._id !== match.params.idGrupo));
+
+            listaAux = response.data
+            listaAux.sort(function (a, b) {
+                return b.pontuacao - a.pontuacao
+            })
+            
+            setGrupos(listaAux);
         }
 
         async function buscarAtividades(){
             const response = await api.get('/buscar/atividade/all')
             setAtividades(response.data)
+        }
+
+        async function busarIcon(id){
+            const response = await api.get('/buscar/icon', {headers: {
+                id:id
+            }})
+            setIcon(response.data)
+
         }
 
         buscarUser();
@@ -64,18 +83,18 @@ export default function MainStudent({ history, match }) {
                 {user.pontuacao} PONTOS
             </div>
             <div className='div-img-user'>
-                <img src={userProfile} className='img-user' />
+                <img src={icon.url} className='img-user' />
             </div>
         </div>
 
         <hr id='hr-nav' />
 
         <div className='menu'>
-            <a onClick={() => (history.push(`/${user._id}/main`))}> Página Inicial </a>
-            <a onClick={() => (history.push(`/${user._id}/team/${user.grupo}`))}> Minha Equipe </a>
-            <a onClick={() => (history.push(`/${user._id}/activitys-student`))}> Atividades </a>
+            <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
+            <a onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
+            <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
             <div className='menu-bottom'>
-                <a href='/settings'> Configurações </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
                 <a href='/contacts'> Contatos </a>
                 <a href='/about'> Sobre </a>
             </div>
@@ -89,7 +108,7 @@ export default function MainStudent({ history, match }) {
                 { grupos.length > 0 ? (
                     <ul>
                         { grupos.map(grupo => (
-                            <div>
+                            <div key={grupo._id}>
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
@@ -118,9 +137,10 @@ export default function MainStudent({ history, match }) {
 
         { atividades.length > 0 ? (
             <ul>
-                <div className='tasks'>
-                    <div className='task'>
-                        { atividades.map(atividade => (
+                
+                { atividades.map(atividade => (
+                    <div className='tasks'>
+                        <div className='task'>
                             <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
                                 <li key={atividade._id}>
                                     <div className='teste'>
@@ -143,10 +163,11 @@ export default function MainStudent({ history, match }) {
                                     </div>
                                 </li>
                             </a>
-                        ))}
-                        
+                        </div>
                     </div>
-                </div>
+                ))}
+                
+                    
             </ul>
         ) : (
             <div> Sem atividades à realizar </div>

@@ -66,11 +66,11 @@ export default function Team({ history, match }) {
             </nav>
 
             <div className='menu'>
-                <a href='/main'> Página Inicial </a>
-                <a href='/team'> Minha Equipe </a>
-                <a href='/activitys-student'> Atividades </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`))}> Minha Equipe </a>
+                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
                 <div className='menu-bottom'>
-                    <a href='/settings'> Configurações </a>
+                    <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
                     <a href='/contacts'> Contatos </a>
                     <a href='/about'> Sobre </a>
                 </div>

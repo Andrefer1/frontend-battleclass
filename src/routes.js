@@ -47,7 +47,7 @@ export default function Routes() {
             
             {/*<Route path='/test' component={Test}/>*/}
 
-            <Route path='/settings' component={Settings} />
+            <Route path='/:idUser/settings' component={Settings} />
              
 
             {/*STUDENT*/}

@@ -26,7 +26,6 @@ html, body{
     justify-content: center;
     
 }
-
 .retangle1 {
     
     width: 100%;
@@ -60,4 +59,8 @@ html, body{
     background: gray;
     border-radius: 50%;
     opacity: 0.5;
+}
+
+.pontuacao {
+    color: white;
 }
