@@ -39,21 +39,26 @@ html, body{
 
 
 .main-student .student-data {
+    width: 75.9%;
     margin-top: 30px;
     display: flex;
     position: absolute;
     margin-left: 316px;
+    border: solid 1px;
+    white-space: nowrap;
 }
 
 .main-student .student-data .student-name {
     color: black;
     font-size: 30px;
+    border: solid 1px;
 }
 
 .main-student .student-data .trace {
     color: black;
     font-size: 30px;
     margin-left: 20px;
+    border: solid 1px;
 }
 
 .main-student .student-data .student-points {
@@ -61,11 +66,13 @@ html, body{
     font-size: 25px;
     margin-top: 5px;
     margin-left: 20px;
+    border: solid 1px;
 }
 
 .main-student .student-data .div-img-user {
     margin-top: -25px;
-    margin-left: 1000px;
+    margin-left: 48.5%;
+    border: solid 1px;
 }
 
 .main-student .student-data .div-img-user .img-user {
@@ -74,8 +81,10 @@ html, body{
 
 .main-student #hr-nav {
     width: 80%;
+    margin-left: 1.8%;
     transform: translate(20.5%, 82px);
     background: rgb(212, 212, 212);
+    background: red;
 }
 
 
@@ -182,12 +191,13 @@ html, body{
 
 /*TASKS*/
 .main-student .tasks {
-    margin-top: 130px;
+    margin-top: 120px;
     width: 50%;
     margin-left: 313px;
 }
 
 .main-student .tasks .task {
+    margin-bottom: 40px;
     list-style-type: none;
     transition: transform .3s cubic-bezier(.52,.28,.47,1.15),-webkit-transform .3s cubic-bezier(.52,.28,.47,1.15);
 

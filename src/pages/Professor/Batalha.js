@@ -14,7 +14,6 @@ import patolinoMago from '../../assets/icons/patolinoMago.png';
 import api from '../../service/api';
 
 
-
 const team1 = [
     { nomePersonagem:'Kirito', url: kirito, id:"5daf91e336f3b64848f0f635", vida:50},
     { nomePersonagem:'Edward Elric', url:ed, id:"5daf91e436f3b64848f0f636", vida:40},
