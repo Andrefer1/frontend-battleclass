@@ -185,35 +185,34 @@ html, body{
     /*border: solid 1px;*/
 }
 
-.individual-activity .cards-questions .card-individual {
-    position: absolute;
-    width: 60%;
-    max-height: 100%;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    text-decoration: none;
-    /*border: solid 1px blue;*/
-}
-
 .individual-activity .cards-questions a {
     text-decoration: none;
     color: black;
 }
 
 .individual-activity .cards-questions .card-individual {
+    position: absolute;
+    width: 60%;
+    max-height: 100%;
+    border-radius: 10px;
     margin-top: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    text-decoration: none;
+    border: solid 1px blue;
 }
 
+
 .individual-activity .cards-questions .card-individual .question {
+    width: 95%;
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 2.5%;
     float: left;
-    /*border: solid 1px;*/
+    border: solid 1px;
 }
 
 .individual-activity .cards-questions .card-individual .activity-content {
     content: '...';
-    width: 90%;
+    width: 100%;
     max-height: 100%;
     margin-top: 49px;
     margin-left: 10px;
@@ -223,4 +222,18 @@ html, body{
     overflow: hidden;
 }
 
+.individual-activity .cards-questions .card-individual .alternatives {
+    width: 95%;
+    margin-top: 100px;
+    margin-left: 2.5%;
+    /*transform: translate(-200px, 0px);*/
+    border: solid 1px;
+}
 
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .radio-input {
+    float: left;
+}
+
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .radio-input .radio-input-text {
+    float: left;
+}

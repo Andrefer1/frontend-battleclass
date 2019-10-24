@@ -145,7 +145,7 @@ export default function Activity({ history, match}) {
                                     { questao[index + 1].alternativas.length > 0 ? (
                                         <div className='alternatives'>
                                             { questao[index + 1].alternativas.map((alternativa, index) => (
-                                                <div className='alternative' key={index}>
+                                                <div className='individual-alternative' key={index}>
                                                     {letra = alfabeto[index]}
                                                     {console.log(alfabeto[index])}
                                                     <div>
