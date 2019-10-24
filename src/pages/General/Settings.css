@@ -166,7 +166,8 @@ html, body{
 
 /*TASKS*/
 .settings .inputs {
-    margin-top: 200px;
+    margin-top: 150px;
+    margin-left: 320px;
 }
 
 .settings .inputs .data-name {
@@ -174,15 +175,20 @@ html, body{
 }
 
 .settings .inputs .data-name .label-name {
-
+    transform: translate(-630px);
 }
 
-.settings .inputs .data-name .div-name {
-
+.settings .inputs .data-name .div-input-name {
+    
 }
 
-.settings .inputs .data-name .div-name .input-name {
-
+.settings .inputs .data-name .div-input-name .input-name {
+    width: 500px;
+    height: 40px;
+    border: none;
+    border-bottom: solid 1px rgb(194, 194, 194);
+    border-radius: 0 0 0 0;
+    -webkit-box-shadow: none !important;
 }
 
 .settings .inputs .data-email {
@@ -190,39 +196,49 @@ html, body{
 }
 
 .settings .inputs .data-email .label-email {
+    margin-top: 20px;
+    transform: translate(-630px);
+}
+
+.settings .inputs .data-email .div-input-email {
 
 }
 
-.settings .inputs .data-email .div-email {
-
-}
-
-.settings .inputs .data-email .div-email .name-input {
-
+.settings .inputs .data-email .div-input-email .input-email {
+    width: 500px;
+    height: 40px;
+    border: none;
+    border-bottom: solid 1px rgb(194, 194, 194);
+    border-radius: 0 0 0 0;
+    -webkit-box-shadow: none !important;
 }
 
 .settings .inputs .data-password {
-    margin-left: 300px;
     display: flex;
 }
 
 .settings .inputs .data-password div .label-password {
+    margin-top: 20px;
+    transform: translate(-630px);
+}
+
+.settings .inputs .data-password div .div-input-password {
 
 }
 
-.settings .inputs .data-password div .div-password {
-
-}
-
-.settings .inputs .data-password div .div-password .password-input {
-
+.settings .inputs .data-password div .div-input-password .input-password {
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-bottom: solid 1px rgb(194, 194, 194);
+    border-radius: 0 0 0 0;
+    -webkit-box-shadow: none !important;
 }
 
 .settings .inputs .data-password .div-button {
-
+    transform: translate( 20px, 50px);
 }
 
 .settings .inputs .data-password .div-button .change-button {
-
+    width: 90px;
 }
-                   

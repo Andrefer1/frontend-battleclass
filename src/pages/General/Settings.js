@@ -120,36 +120,36 @@ export default function MainStudent({ history, match }) {
         </div>
 
         <div className='inputs'>
-                <div className='data-name'>
-                    <div className='label-name'>
-                        <label>Name</label>
-                    </div>
-                    <div className='div-name'>
-                        <input className='input-name' />
-                    </div>
+            <div className='data-name'>
+                <div className='label-name'>
+                    <label>Name</label>
                 </div>
+                <div className='div-input-name'>
+                    <input className='form-control input-name' readonly='true'/>
+                </div>
+            </div>
 
-                <div className='data-email'>
-                    <div className='label-email'>
-                        <label>E-mail</label>
+            <div className='data-email'>
+                <div className='label-email'>
+                    <label>E-mail</label>
+                </div>
+                <div className='div-input-email'>
+                    <input className='form-control input-email' readonly='true'/>
+                </div>
+            </div>   
+            <div className='data-password'>
+                <div>
+                    <div className='label-password'>
+                        <label>Senha</label>
                     </div>
-                    <div className='div-email'>
-                        <input className='input-email' />
-                    </div>
-                </div>   
-                <div className='data-password'>
-                    <div>
-                        <div className='label-password'>
-                            <label>Senha</label>
-                        </div>
-                        <div className='div-password'>
-                            <input className='input-password' />
-                        </div>
-                    </div>
-                    <div className='div-button'>
-                        <button className='btn btn-outline-primary change-button'>Alterar</button>
+                    <div className='div-input-password'>
+                        <input className='form-control input-password' />
                     </div>
                 </div>
+                <div className='div-button'>
+                    <button className='btn btn-outline-primary change-button'>Alterar</button>
+                </div>
+            </div>
 
         </div>
 

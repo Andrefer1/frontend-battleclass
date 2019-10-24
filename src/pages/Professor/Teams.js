@@ -186,7 +186,6 @@ export default function Team() {
                                                             </div>
                                                         </div>
                                                     </RcIf>
-                                                    
                                                 </li>
                                                 
                                             ))}

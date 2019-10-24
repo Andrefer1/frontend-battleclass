@@ -48,25 +48,27 @@ export default function MainStudent({ history, match }) {
         <nav>
             <div className='navbar'>
                 <div className='sitename'>
-                <a className='' onClick={() => (history.push(`/${user._id}/main`))}> BATTLECLASS </a>
+                    <a className='' onClick={() => (history.push(`/${user._id}/main`))}> BATTLECLASS </a>
                 </div>
-                
             </div>
-           
-            <hr id='hr' />
         </nav>
 
         <div className='student-data'>
-                    <div className='student-name'>
-                        {user.nome}
-                    </div>
-                    <div className='trace'>
-                        -
-                    </div>
-                    <div className='student-points'>
-                        {user.pontuacao} PONTOS
-                    </div>
-                </div>
+            <div className='student-name'>
+                {user.nome}
+            </div>
+            <div className='trace'>
+                -
+            </div>
+            <div className='student-points'>
+                {user.pontuacao} PONTOS
+            </div>
+            <div className='div-img-user'>
+                <img src={userProfile} className='img-user' />
+            </div>
+        </div>
+
+        <hr id='hr-nav' />
 
         <div className='menu'>
             <a onClick={() => (history.push(`/${user._id}/main`))}> Página Inicial </a>

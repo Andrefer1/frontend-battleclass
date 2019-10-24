@@ -37,12 +37,11 @@ html, body{
 }
 
 
-
 .main-student .student-data {
-    margin-top: 10px;
+    margin-top: 30px;
     display: flex;
     position: absolute;
-    margin-left: 354px;
+    margin-left: 316px;
 }
 
 .main-student .student-data .student-name {
@@ -59,16 +58,23 @@ html, body{
 .main-student .student-data .student-points {
     color: black;
     font-size: 25px;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-left: 20px;
 }
 
-.main-student nav #hr {
-    max-width: 100%;
-    margin-top: -1px;
-    margin-left: 270px;
-    background: black;
-    position: relative;
+.main-student .student-data .div-img-user {
+    margin-top: -25px;
+    margin-left: 1000px;
+}
+
+.main-student .student-data .div-img-user .img-user {
+    width: 90px;
+}
+
+.main-student #hr-nav {
+    width: 80%;
+    transform: translate(20.5%, 82px);
+    background: rgb(212, 212, 212);
 }
 
 
@@ -78,7 +84,7 @@ html, body{
     background-color: #2e2e64;
     width: 250px;
     z-index: 1;
-    margin-top: 83px;
+    margin-top: 67px;
     margin-left: 0px;
 }
 
@@ -93,8 +99,8 @@ html, body{
 }
 
 .main-student .menu a:hover {
-    background-color: rgba(206,51,126,1);
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 .main-student .menu .menu-bottom {
@@ -111,8 +117,9 @@ html, body{
     border-radius: 9px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
     float: right;
-    margin-top: 110px;
-    margin-right: 20px;
+    transform: translate(-70px, 110px);
+    /*margin-top: 110px;
+    margin-right: 20px;*/
 }
 
 .main-student .rankings .ranking-do-dia .ranking-name {
@@ -176,11 +183,18 @@ html, body{
 .main-student .tasks {
     margin-top: 130px;
     width: 50%;
-    margin-left: 275px;
+    margin-left: 313px;
 }
 
-.main-student .tasks .task li {
+.main-student .tasks .task {
     list-style-type: none;
+    transition: transform .3s cubic-bezier(.52,.28,.47,1.15),-webkit-transform .3s cubic-bezier(.52,.28,.47,1.15);
+
+}
+
+.main-student .tasks .task:hover {
+    transform: translateY(-10px);
+    transition: transform .3s cubic-bezier(.52,.28,.47,1.15),-webkit-transform .3s cubic-bezier(.52,.28,.47,1.15);
 }
 
 .main-student .tasks .task li .teste {
