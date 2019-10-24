@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
 
 import './Teams.css';
+import api from '../../service/api';
 
 export default function Team() {
     const [showMembers, setShowMembers] = useState('')
+    const [ grupos, setGrupos ] = useState([]);
+    const [ usuarios, setUsuarios ] = useState([])
+    var [ cont, setCont ] = useState(0)
 
+    const listaU = []
 
     function dropdown() {
         setShowMembers('true')
@@ -28,10 +33,37 @@ export default function Team() {
         }
     }
  
+    useEffect(() => {
+        async function buscarGrupos(){
+            const response = await api.get('/buscar/grupo/all');
+            setGrupos(response.data)
+
+            for(let u in response.data) {
+                for (let i in response.data[u].integrantes){
+                    buscaUser(response.data[u].integrantes[i])
+                }
+            }
+            
+            
+        }
+
+        async function buscaUser(id) {
+            const response = await api.get('/buscar/userId', {headers: {
+                id:id
+            }})
+
+            listaU.push(response.data)
+            setUsuarios(listaU)
+            setCont(cont += 1)
+            
+            
+        }
+        buscarGrupos()
+        
+    }, [])
 
     return (
         <div className='teams'>
-
             <nav>
                 <div className='navbar'>
                     <div className='sitename'>
@@ -123,162 +155,70 @@ export default function Team() {
             </div>
 
             <div className='cards-teams'>
-                <ul>
-                    <li>
-                        <div className='card-individual'>
-                            <div className='team-data'>
-                                <div className='team-name'>
-                                    <strong>Bonde do Tigrãaaaaao</strong>
-                                </div>
-                                <div className='team-points'>
-                                    75
-                                </div>
-                            </div>
+                { grupos.length > 0 ? (
+                    <ul>
+                        {grupos.map(grupo => (
+                            <li key={grupo._id}>
+                                <div className='card-individual'>
+                                    <div className='team-data'>
+                                        <div className='team-name'>
+                                            <strong>{grupo.nome}</strong>
+                                        </div>
+                                        <div className='team-points'>
+                                            {grupo.pontuacao}
+                                        </div>
+                                    </div>
 
-                            <hr className='hr-card-team' />
+                                    <hr className='hr-card-team' />
+    
+                                    { cont > 0 ? (
+                                        <ul>
+                                            { usuarios.map(user => (
+                                               
+                                                <li classname='student-data' key={user._id}>
+                                                    <RcIf if={grupo.integrantes.includes(user._id)}>
+                                                        <div className='student-data'>
+                                                            <div className='student-name'>
+                                                                {user.nome}
+                                                            </div>
+                                                            <div className='student-point'>
+                                                                {user.pontuacao}
+                                                            </div>
+                                                        </div>
+                                                    </RcIf>
+                                                    
+                                                </li>
+                                                
+                                            ))}
+                                        </ul>
+                                        
+                                    ): (
+                                        <div> Sem integrantes </div>
+                                    )}
 
-                            <div className='student-data'>
-                                <div className='student-name'>
-                                    André Fernandes Bispo
-                                </div>
-                                <div className='student-point'>
-                                    75
-                                </div>
-                            </div>
-                            <div className='student-data'>
-                                <div className='student-name'>
-                                    Joao Vitor Soares Egidio
-                                </div>
-                                <div className='student-point'>
-                                    85
-                                </div>
-                            </div>
-                            <div className='student-data'>
-                                <div className='student-name'>
-                                    Emmanuel Peralta
-                                </div>
-                                <div className='student-point'>
-                                    65
-                                </div>
-                            </div>
+                                    <hr className='hr-card-team' />
 
-                            <hr className='hr-card-team' />
-
-                            <div className='challenge-data'>
-                                <div className='str-challenge'>
-                                    <strong>Desafios:</strong>
-                                </div>
-                                <div className='challenge-wins'>
-                                    Ganhados: 3
-                                </div>
-                                <div className='challenge-loses'>
-                                    Perdidos: 2
-                                </div>
-                            </div>
-
-                        </div>
-                    </li>
-
-                    <li>
-                        <div className='card-individual'>
-                            <div className='team-data'>
-                                <div className='team-name'>
-                                    <strong>Os Hawaianos</strong>
-                                </div>
-                                <div className='team-points'>
-                                    75
-                                </div>
-                            </div>
-
-                            <hr className='hr-card-team' />
-                            
-                            <div className='student-data'>
-                                <div className='student-name'>
-                                    André Fernandes Bispo
-                                </div>
-                                <div className='student-point'>
-                                    75
-                                </div>
-                            </div>
-                            <div className='student-data'>
-                                <div className='student-name'>
-                                    Joao Vitor Soares Egidio
-                                </div>
-                                <div className='student-point'>
-                                    85
-                                </div>
-                            </div>
-                            <div className='student-data'>
-                                <div className='student-name'>
-                                    Emmanuel Peralta
-                                </div>
-                                <div className='student-point'>
-                                    65
-                                </div>
-                            </div>
-
-                            <hr className='hr-card-team' />
-
-                            <div className='challenge-data'>
-                                <div className='str-challenge'>
-                                    <strong>Desafios:</strong>
-                                </div>
-                                <div className='challenge-wins'>
-                                    Ganhados: 3
-                                </div>
-                                <div className='challenge-loses'>
-                                    Perdidos: 2
-                                </div>
-                            </div>
-
-                        </div>
-                    </li>
-
-                    <li>
-                        <div className='card-individual'>
-                            <div className='div-team-name'>
-                                <div>
-                                    <label>Nome da equipe</label>
-                                </div>
-                                <div>
-                                    <input className='input-team-name' placeholder='Insira o nome da equipe'/>
-                                </div>
-                            </div>
-
-                            <div className='select-students'>
-                                <div>
-                                    <label>Integrates</label>
-                                </div>
-                                <div>
-                                    <select>
-                                        <option value=''></option>
-                                        <option value='André Fernandes Bispo'>André Fernandes Bispo</option>
-                                        <option value='João Vitor Soares Egidio'>João Vitor Soares Egidio</option>
-                                        <option value='Emmanuel Peralta'>Emmanuel Peralta</option>
-                                        <option value='lista'>Lista com o nome de todos os alunos</option>
-                                    </select>
-                                </div>
-                                <div className='student-selected'>
+                                    <div className='challenge-data'>
+                                        <div className='str-challenge'>
+                                            <strong>Desafios:</strong>
+                                        </div>
+                                        <div className='challenge-wins'>
+                                            Ganhados: {grupo.vitorias}
+                                        </div>
+                                        <div className='challenge-loses'>
+                                            Perdidos: {grupo.derrotas}
+                                        </div>
+                                    </div>
 
                                 </div>
-                            </div>
+                            </li>
+                        ))}
+                        
+                    </ul>
 
-                            <div className='buttons'>
-                                <div>
-                                    <button className='btn btn-outline-primary' onClick={adicionar_estudante}>+ Integrante</button>
-                                </div>
-                                <div>
-                                    <button className='btn btn-primary'>Adicionar</button>
-                                </div>
-                            </div>
-                            
-                            
-
-                        </div>
-                    </li>
-                    
-                </ul>
-
+                ): (
+                    <div> Sem Grupo </div>
+                )}
             </div>
                     
         </div>

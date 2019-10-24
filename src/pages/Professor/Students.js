@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
 
 import './Students.css';
+import api from '../../service/api';
 
 export default function Team() {
     const [showMembers, setShowMembers] = useState('')
+    const [ alunos, setAlunos ] = useState([])
 
     function dropdown() {
         setShowMembers('true')
     }
  
+    useEffect(() => {
+        async function buscarAlunos(){
+            const response = await api.get('/buscar/alunos')
+
+            console.log(response.data)
+            setAlunos(response.data)
+        }
+        buscarAlunos();
+    }, []);
 
     return (
         <div className='students'>
@@ -143,29 +154,27 @@ export default function Team() {
                     </li>*/}
                     
                     <div className='student-data'>
-                        <ul>
-                            <li>
-                                <div className='student-name'>
-                                    André Fernandes Bispo
-                                </div>
-                                <div className='student-name'>
-                                    Joao Vitor Soares Egidio
-                                </div>
-                                <div className='student-name'>
-                                    Emmanuel Peralta
-                                </div>
-                            </li>
-                            <li>
-                                <div className='student-points'>
-                                    75
-                                </div>
-                                <div className='student-points'>
-                                    65
-                                </div>
-                                <div className='student-points'>
-                                    85
-                                </div>
-                            </li>
+                        {alunos.length > 0 ? (
+                            <ul>
+                                {alunos.map(aluno => (
+                                    <li>
+                                        <div className='student-name'>
+                                            {aluno.nome}
+                                        </div>
+                                    </li>
+                                ))}
+                                {alunos.map(aluno => (
+                                    <li>                                        
+                                        <div className='student-points'>
+                                            {aluno.pontuacao}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        ): (
+                            <div> Sem Alunos </div>
+                        )}
+                        {/**
                             <li>
                                 <div className='team-name'>
                                     André Fernandes Bispo
@@ -189,6 +198,9 @@ export default function Team() {
                                 </div>
                             </li>
                         </ul>
+                        
+                        */}
+                            
                     </div>
                     
                 
