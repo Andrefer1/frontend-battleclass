@@ -29,10 +29,9 @@ export default function Register({ history }) {
 
     async function efetuarCadastro(e){
         e.preventDefault();
-        const nome2 = nome.toUpperCase();
         
         const response = await api.post('/cadastro/usuario',{
-            nome: nome2,
+            nome: nome,
             email: email,
             senha: senha,
             professor: professor

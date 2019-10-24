@@ -137,7 +137,6 @@ export default function MainStudent({ history, match }) {
 
         { atividades.length > 0 ? (
             <ul>
-                
                 { atividades.map(atividade => (
                     <div className='tasks'>
                         <div className='task'>
