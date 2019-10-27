@@ -7,13 +7,21 @@ import './Main.css';
 import api from '../../service/api';
 
 export default function MainStudent({ history, match }) {
-
     const [ user, setUser ] = useState('');
     const [ grupos, setGrupos ] = useState([])
     const [ atividades, setAtividades ] = useState([])
     const [ icon, setIcon ] = useState(Object)
 
     var listaAux = []
+
+    var screen = {}
+
+    function screen() {
+        return screen = {'login': 0, 'main': 1}
+    }
+
+    screen()
+
 
     useEffect(() => {
         async function buscarUser(){
@@ -126,11 +134,11 @@ export default function MainStudent({ history, match }) {
                 
             </div>
         </div>
-        
-        <div className='tasks'>
-            { atividades.length > 0 ? (
-                <ul>
-                    { atividades.map(atividade => (
+
+        { atividades.length > 0 ? (
+            <ul>
+                { atividades.map(atividade => (
+                    <div className='tasks'>
                         <div className='task'>
                             <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
                                 <li key={atividade._id}>
@@ -155,13 +163,14 @@ export default function MainStudent({ history, match }) {
                                 </li>
                             </a>
                         </div>
-                    ))}
+                    </div>
+                ))}
+                
                     
-                </ul>
-            ) : (
-                <div> Sem atividades à realizar </div>
-            )}    
-        </div>        
+            </ul>
+        ) : (
+            <div> Sem atividades à realizar </div>
+        )}            
         
 
     </div>

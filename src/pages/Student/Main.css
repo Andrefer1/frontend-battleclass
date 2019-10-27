@@ -19,7 +19,6 @@ html, body{
 
 
 .main-student .student-data {
-    width: 75.9%;
     margin-top: 30px;
     display: flex;
     position: absolute;
@@ -165,13 +164,12 @@ html, body{
 
 /*TASKS*/
 .main-student .tasks {
-    margin-top: 120px;
+    margin-top: 130px;
     width: 50%;
     margin-left: 313px;
 }
 
 .main-student .tasks .task {
-    margin-bottom: 40px;
     list-style-type: none;
     transition: transform .3s cubic-bezier(.52,.28,.47,1.15),-webkit-transform .3s cubic-bezier(.52,.28,.47,1.15);
 
