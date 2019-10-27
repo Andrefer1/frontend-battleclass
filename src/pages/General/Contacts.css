@@ -1,0 +1,153 @@
+* {
+    font-family: open sans;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+ 
+html, body {
+    height: 0px;
+}
+
+.about {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+
+
+.about .str-about {
+    width: 100px;
+    height: 81px;
+    margin-top: 30px;
+    margin-left: 300px;
+    font-size: 25pt;
+    /*border: solid 1px;*/
+}
+
+.about #hr-nav {
+    width: auto;
+    min-width: 300px;
+    max-width: 83%;
+    margin-top: 0px;
+    margin-left: 300px;
+    margin-right: 50px;
+    background: rgb(212, 212, 212);
+}
+
+
+
+/*RANKINGS*/
+.about .rankings .ranking-do-dia {
+    height: 280px;
+    width: 270px;
+    background: white;
+    border-radius: 9px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
+    float: right;
+    transform: translate(-70px, 110px);
+    /*margin-top: 110px;
+    margin-right: 20px;*/
+}
+
+.about .rankings .ranking-do-dia .ranking-name {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.about .rankings .ranking-do-dia ul {
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.about .rankings .ranking-do-dia ul li {
+    display: inline-block;
+}
+
+.about .rankings .ranking-do-dia ul li .team-ranking {
+    display: flex;
+    transform: translate( 95px, 20px)
+}
+
+.about .rankings .ranking-do-dia ul li .team-ranking:hover {
+    background-color: #f1f1f1;
+    cursor: pointer
+}
+
+.about .rankings .ranking-do-dia ul li .team-ranking .team-profile {
+    position: absolute;
+    transform: translate(-105px, -25px);
+}
+
+.about .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
+    height: 30px;
+}
+
+.about .rankings .ranking-do-dia ul li .team-ranking .team-name {
+    width: 155px;
+    position: relative;
+    text-align: left;
+    margin-top: -20px;
+    transform: translate(-72px, -3px);
+
+    white-space: nowrap;
+    overflow: hidden;
+    transition-duration: 1s;
+}
+
+.about .rankings .ranking-do-dia ul li .team-ranking .team-points {
+    position: absolute;
+    transform: translate(90px, -22px);
+}
+
+.about .rankings .ranking-do-dia ul #hr-ranking {
+    width: 210px;
+    margin-top: 25px;
+    margin-left: 30px;
+}
+
+
+/*CONTENT*/
+.about .content {
+    width: auto;
+    min-width: 10%;
+    max-width: 64%;
+    margin: 30px 380px 0 300px;
+}
+
+.about .content .support {
+    float: left;
+    margin-right: 100%;
+    /*border: solid 1px;*/
+}
+
+.about .content .support .str-support {
+    font-size: 20pt;
+    float: left;
+    /*border: solid 1px;*/
+}
+
+.about .content .support .email-support {
+    float: left;
+    /*border: solid 1px;*/
+}
+
+.about .content .email-devs {
+    margin: 30px 0 0 0;
+    text-align: justify;
+    float: left;
+    /*border: solid 1px;*/
+}
+
+.about .content .str-developers {
+    font-size: 20pt;
+    margin-bottom: -10px;
+    /*border: solid 1px;*/
+}
+
+.about .content .email-devs .dev {
+    margin-top: 20px;
+    /*border: solid 1px;*/
+}

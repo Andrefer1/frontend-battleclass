@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import userProfile from '../../assets/user-profile.svg'
 
-import './Main.css';
+import './About.css';
 import api from '../../service/api';
 
 export default function MainStudent({ history, match }) {
@@ -13,17 +13,6 @@ export default function MainStudent({ history, match }) {
     const [ icon, setIcon ] = useState(Object)
 
     var listaAux = []
-
-    var screen = {}
-
-    /*
-    function screen() {
-        return screen = {'login': 0, 'main': 1}
-    }
-
-    screen()
-    */
-
 
     useEffect(() => {
         async function buscarUser(){
@@ -71,36 +60,13 @@ export default function MainStudent({ history, match }) {
     
 
     return (
-    <div className='main-student'>
+    <div className='about'>
 
-        <div className='student-data'>
-            <div className='student-name'>
-                {user.nome}
-            </div>
-            <div className='trace'>
-                -
-            </div>
-            <div className='student-points'>
-                {user.pontuacao} PONTOS
-            </div>
-            <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
-            </div>
+        <div className='str-about'>
+            Sobre
         </div>
 
         <hr id='hr-nav' />
-        {/*}
-        <div className='menu'>
-            <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-            <a onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
-            <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
-            <div className='menu-bottom'>
-                <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                <a href='/contacts'> Contatos </a>
-                <a href='/about'> Sobre </a>
-            </div>
-        </div>
-        */}
 
         <div className='rankings'>
             <div className='ranking-do-dia' >
@@ -137,44 +103,17 @@ export default function MainStudent({ history, match }) {
             </div>
         </div>
 
-        { atividades.length > 0 ? (
-            <ul>
-                { atividades.map(atividade => (
-                    <div className='tasks'>
-                        <div className='task'>
-                            <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
-                                <li key={atividade._id}>
-                                    <div className='teste'>
-                                        <div className='task-content'>
-                                            <div className='task-title'>
-                                                <b>{atividade.titulo}</b>
-                                            </div>
-                                            <div className='task-description'>
-                                                {atividade.conteudo}
-                                            </div>
-                                        </div>
-                                        <div className='task-points'>
-                                            <div className='task-points-notes'>
-                                                <b>Nota</b>
-                                            </div>
-                                            <div className='task-pontuation'>
-                                                50
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </a>
-                        </div>
-                    </div>
-                ))}
-                
-                    
-            </ul>
-        ) : (
-            <div> Sem atividades à realizar </div>
-        )}            
-        
-
+        <div className='content'>
+            <div className='version'>
+                Versão: <a href='https://github.com/Andrefer1/frontend-battleclass'>2.1.2</a>
+            </div>
+            <div className='text'>
+                Este sistema foi desenvolvido pela equipe formada por André F. Bispo, 
+                João Vitor S. Egidio, Emmanuel Peralta e Igor Valadares da matéria 
+                Tópicos II (2019/2) do CEULP/ULBRA, ministrada pela professora Heloíse. 
+            </div>
+        </div>
+   
     </div>
 
     );

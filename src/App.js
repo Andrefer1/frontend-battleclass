@@ -25,10 +25,15 @@ function App({ history, match }) {
   }, [])
 */
 
+console.log(history)
+console.log(match)
+
+/*
  console.log(Routes.state)
  console.log(Routes.getParam)
 
  console.log(MainScreen)
+ */
 
 
   return (

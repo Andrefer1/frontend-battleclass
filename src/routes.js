@@ -7,6 +7,8 @@ import Password from './pages/General/Password'
 import Register from './pages/General/Register'
 import Test from './pages/test'
 import Settings from './pages/General/Settings'
+import Contacts from './pages/General/Contacts'
+import About from './pages/General/About'
 
 
 /*STUDENT*/
@@ -39,8 +41,8 @@ export default function Routes() {
             <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
             <Route path='/:id/icon' component={Hero} />
-            <Route path='/contacts' component={Main} />
-            <Route path='/about' component={Main} />
+            <Route path='/contacts' component={Contacts} />
+            <Route path='/about' component={About} />
             <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
             <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
             <Route path='/battle' component={Batalha} />
