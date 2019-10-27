@@ -64,6 +64,7 @@ export default function Team() {
                 <hr id='hr' />
             </nav>
 
+            {/*
             <div className='menu'>
                 <a href='/dashboard'> Página Inicial </a>
                 <a href='/students'> Alunos </a>
@@ -75,6 +76,7 @@ export default function Team() {
                     <a href='/about'> Sobre </a>
                 </div>
             </div>
+            */}
 
             <div className='rankings'>
                 <div className='ranking-do-dia' >

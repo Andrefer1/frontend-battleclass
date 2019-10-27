@@ -17,26 +17,6 @@ html, body{
     background: white;
 }
 
-/*NAVBAR*/
-.main-student nav .navbar {
-    height: 100px;
-    width: 250px;
-    float: left;
-    background:#2e2e64;
-    border-bottom: solid 1px;
-    border-color: white;
-    cursor: pointer;
-    position: fixed;
-}
-
-.main-student nav .navbar .sitename a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    font-size: 20pt;
-
-}
-
 
 .main-student .student-data {
     width: 75.9%;
@@ -44,21 +24,18 @@ html, body{
     display: flex;
     position: absolute;
     margin-left: 316px;
-    border: solid 1px;
     white-space: nowrap;
 }
 
 .main-student .student-data .student-name {
     color: black;
     font-size: 30px;
-    border: solid 1px;
 }
 
 .main-student .student-data .trace {
     color: black;
     font-size: 30px;
     margin-left: 20px;
-    border: solid 1px;
 }
 
 .main-student .student-data .student-points {
@@ -66,13 +43,11 @@ html, body{
     font-size: 25px;
     margin-top: 5px;
     margin-left: 20px;
-    border: solid 1px;
 }
 
 .main-student .student-data .div-img-user {
     margin-top: -25px;
     margin-left: 48.5%;
-    border: solid 1px;
 }
 
 .main-student .student-data .div-img-user .img-user {
@@ -80,11 +55,10 @@ html, body{
 }
 
 .main-student #hr-nav {
-    width: 80%;
-    margin-left: 1.8%;
+    width: 70%;
+    margin-left: 10.8%;
     transform: translate(20.5%, 82px);
     background: rgb(212, 212, 212);
-    background: red;
 }
 
 

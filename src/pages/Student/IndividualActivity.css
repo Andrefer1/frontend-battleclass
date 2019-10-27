@@ -210,30 +210,68 @@ html, body{
     border: solid 1px;
 }
 
-.individual-activity .cards-questions .card-individual .activity-content {
-    content: '...';
-    width: 100%;
+.individual-activity .cards-questions .card-individual .activity-context {
+    width: 95%;
     max-height: 100%;
-    margin-top: 49px;
-    margin-left: 10px;
-    margin-right: 10px;
-    color: rgb(161, 161, 161);
+    margin: 49px 2.5% 0 2.5%;
     text-align: justify;
     overflow: hidden;
+    border: solid 1px;
 }
 
 .individual-activity .cards-questions .card-individual .alternatives {
     width: 95%;
-    margin-top: 100px;
+    height: 100%;
+    margin-top: 20px;
     margin-left: 2.5%;
-    /*transform: translate(-200px, 0px);*/
+    border: solid 1px;
+}
+
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative {
+    width: 100%;
+    margin-top: 10px;
+    border: solid 1px;
+
+}
+
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .div-radio-input .radio-input {
+    display: flex;
+    float: left;
+    border: solid 1px;
+
+}
+
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .div-radio-input .radio-input {
+    margin-top: 8px;
+    margin-right: 5px;
+    float: left;
     border: solid 1px;
 }
 
 .individual-activity .cards-questions .card-individual .alternatives .individual-alternative .radio-input {
     float: left;
+    border: solid 1px;
 }
 
-.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .radio-input .radio-input-text {
+
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .alphabet-letter {
+    margin-right: 5px;
     float: left;
+    border: solid 1px;
+
+}
+
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .div-alternative-text {
+    /*width: 95%;*/
+    float: left;
+    text-align: justify;
+    overflow: hidden;
+    border: solid 1px;
+
+}
+
+.individual-activity .cards-questions .card-individual .alternatives .individual-alternative .div-alternative-text .alternative-text {
+    float: left;
+    border: solid 1px;
+
 }

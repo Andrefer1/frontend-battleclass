@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { useState, Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import RcIf from 'rc-if'
@@ -14,6 +14,10 @@ export default function Activity() {
 
     var qtd_alternativas = 0
 
+
+
+    var cont = 5
+    
     function dropdown() {
         setShowMembers('true')
 
@@ -134,6 +138,7 @@ export default function Activity() {
                 <hr id='hr' />
             </nav>
 
+            {/*
             <div className='menu'>
             <a href='/dashboard'> Página Inicial </a>
                 <a href='/students'> Alunos </a>
@@ -145,6 +150,7 @@ export default function Activity() {
                     <a href='/about'> Sobre </a>
                 </div>
             </div>
+            */}
 
             <div className='rankings'>
                 <div className='ranking-do-dia' >
@@ -354,7 +360,11 @@ export default function Activity() {
                                 </div>
                                 <br/>
                                 <div className='editor-alternative'>
-                                    <CKEditor
+                                    {cont > 0 ? (
+
+                                        <ul>
+                                            {}
+                                        <CKEditor
                                         editor={ ClassicEditor }
 
                                         onInit={ editor => {
@@ -371,7 +381,14 @@ export default function Activity() {
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
                                         } }
-                                    />
+                                        />
+                                        </ul>
+                                    ):(
+                                        <>
+                                            yesye
+                                        </>
+                                    )}
+                                    
                                 </div>
                             </div>
 

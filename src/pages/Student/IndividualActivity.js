@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
 import api from '../../service/api';
 
 import './IndividualActivity.css';
 
 export default function Activity({ history, match}) {
-    const [ showMembers, setShowMembers ] = useState('')
     const [ atividade, setAtividade ] = useState(Object);
     const [ questoes, setQuestoes ] = useState([]); 
     const [ user, setUser ] = useState(Object);
     const [ grupos, setGrupos ] = useState([]);
     var listaAux = [];
     var letra = '';
-    const alfabeto = ['a','b','c','d']
-
-    function dropdown() {
-        setShowMembers('true')
-    }
-    
+    const alfabeto = ['a','b','c','d']    
 
     useEffect(() => {
         async function buscarAtividadeIndividual(id) {
@@ -92,6 +85,7 @@ export default function Activity({ history, match}) {
                 <hr id='hr' />
             </nav>
 
+            {/*
             <div className='menu'>
                 <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
                 <a onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
@@ -102,6 +96,7 @@ export default function Activity({ history, match}) {
                     <a href='/about'> Sobre </a>
                 </div>
             </div>
+            */}
 
             <div className='rankings'>
                 <div className='ranking-do-dia' >
@@ -147,20 +142,32 @@ export default function Activity({ history, match}) {
                                     <div className='question'>
                                         <strong>{questao[index + 1].texto}</strong>
                                     </div>
+                                    <div className='activity-context'>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </div>
                                     { questao[index + 1].alternativas.length > 0 ? (
                                         <div className='alternatives'>
                                             { questao[index + 1].alternativas.map((alternativa, index) => (
                                                 <div className='individual-alternative' key={index}>
-                                                    {letra = alfabeto[index]}
-                                                    <div>
+                                                    <div className='div-radio-input'>
                                                         <input type='radio' name='radio-question' className='radio-input' />
                                                     </div>
-                                                    <div>
-                                                        <label for='radio-input' className='radio-input-text'> 
-                                                            {alternativa[letra].texto}
+                                                    <div className='alphabet-letter'>
+                                                        {letra = alfabeto[index]})
+                                                    </div>
+                                                    <div className='div-alternative-text'>
+                                                        <label for='radio-input' className='alternative-text'> 
+                                                            {alternativa[letra].texto} iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                                        non proident, sunt in culpa qui officia des
                                                         </label>
                                                     </div>
                                                 </div>
+            
                                             ))}
                                             
                                         </div>

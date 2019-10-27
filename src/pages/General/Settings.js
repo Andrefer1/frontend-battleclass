@@ -56,6 +56,7 @@ export default function MainStudent({ history, match }) {
             <hr id='hr' />
         </nav>
 
+        {/*
         <div className='menu'>
             <a href='/main'> Página Inicial </a>
             <a href='/team'> Minha Equipe </a>
@@ -66,6 +67,7 @@ export default function MainStudent({ history, match }) {
                 <a href='/about'> Sobre </a>
             </div>
         </div>
+        */}
 
         <div className='rankings'>
             <div className='ranking-do-dia' >
