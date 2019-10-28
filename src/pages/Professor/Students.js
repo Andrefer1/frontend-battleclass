@@ -51,7 +51,7 @@ export default function Team() {
                 <hr id='hr' />
             </nav>
 
-            {/*
+            
             <div className='menu'>
                 <a href='/dashboard'> Página Inicial </a>
                 <a href='/students'> Alunos </a>
@@ -63,7 +63,7 @@ export default function Team() {
                     <a href='/about'> Sobre </a>
                 </div>
             </div>
-            */}
+            
 
             <div className='rankings'>
                 <div className='ranking-do-dia' >
@@ -156,25 +156,44 @@ export default function Team() {
                     </li>*/}
                     
                     <div className='student-data'>
-                        {alunos.length > 0 ? (
-                            <ul>
+                        <ul>
+                            <li className='li'>
+                                <div className='line-title'>
+                                    <div className='str-student-name'>
+                                        NOME DO ALUNO
+                                    </div>
+
+                                    <div className='str-student-points'>
+                                        NOTA
+                                    </div>
+                                    {/*
+                                    <div className='team-name'>
+                                        NOME DA EQUIPE
+                                    </div>
+                                    <div className='team-points'>
+                                        NOTA
+                                    </div>
+                                    */}
+                                </div>
+                            </li>
+                            {alunos.length > 0 ? (
+                            <div>
                                 {alunos.map(aluno => (
-                                    <li>
-                                        <div className='student-name'>
-                                            {aluno.nome}
+                                    <li className='li2'>
+                                        <div className='div-student-name'>
+                                            <div className='student-name'>
+                                                {aluno.nome}
+                                            </div>
                                         </div>
-                                    </li>
-                                ))}
-                                {alunos.map(aluno => (
-                                    <li>                                        
+                                                         
                                         <div className='student-points'>
                                             {aluno.pontuacao}
                                         </div>
-                                    </li>
+                                    </li>  
                                 ))}
-                            </ul>
-                        ): (
-                            <div> Sem Alunos </div>
+                            </div>
+                        ) : (
+                            <div> Não há alunos </div>
                         )}
                         {/**
                             <li>
@@ -203,7 +222,7 @@ export default function Team() {
                         
                         */}
                             
-                    </div>
+                    </ul>
                     
                 
                     {/*
@@ -244,6 +263,7 @@ export default function Team() {
 
             </div>
                     
+        </div>
         </div>
     );
 }

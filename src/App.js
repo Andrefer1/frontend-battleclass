@@ -37,7 +37,8 @@ console.log(match)
 
 
   return (
-    <div className="App">   
+    <div className="App"> 
+    {/*  
       <div className='menu'>
         <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
         <a className='tab'onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
@@ -49,6 +50,7 @@ console.log(match)
           <a className='tab' href='/about'> Sobre </a>
         </div>
       </div>
+    */}
 
       <Routes/>
 
