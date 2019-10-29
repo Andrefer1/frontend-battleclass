@@ -161,9 +161,12 @@ export default function Activity({ history, match}) {
                                                     </div>
                                                     <div className='div-alternative-text'>
                                                         <label for='radio-input' className='alternative-text'> 
-                                                            {alternativa[letra].texto} iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                        non proident, sunt in culpa qui officia des
+                                                            {alternativa[letra].texto} 
+                                                            {/*
+                                                            iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                                                            non proident, sunt in culpa qui officia des
+                                                            */}
                                                         </label>
                                                     </div>
                                                 </div>
@@ -184,9 +187,6 @@ export default function Activity({ history, match}) {
                     <div> Sem questões </div>
                 )}
                 
-            </div>
-            <div className={'card-questions'}>
-                <button onClick={() => console.log('eae')}>Publicar Atividade</button>
             </div>
             
         </div>

@@ -1,58 +1,79 @@
-.main-container {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 50px 0;
-    text-align: center;
+* {
+    font-family: open sans;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+ 
+html, body {
+    height: 0px;
 }
 
-.main-container ul {
+.hero {
+    max-width: 980px;
+    position: absolute;
+    width: auto;
+    height: 100%;
+    margin-top: 150px;
+    margin-left: 27%;
+    background: white;
+}
+
+.hero ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-gap: 30px;
     margin-top: 50px;
 }
 
-.main-container ul li {
-    display: flex;
-    flex-direction: column;
+.hero .ul {
+    width: 300px;
+    /*border: solid 1px;*/
+
 }
 
-.main-container ul li img {
+.hero ul li {
+    display: flex;
+    flex-direction: column;
+    /*border: solid 1px;*/
+}
+
+.hero ul li img {
     max-width: 100%;
     border-radius: 5px 5px 0 0;
 }
 
-.main-container ul li footer {
+.hero ul li footer {
     flex: 1;
     background: #fff;
-    padding: 15px 20px;
+    padding: 15px 30px;
     text-align: center;
     border-radius: 0 0 5px 5px;
     position: relative;
 }
 
-.main-container ul li footer strong {
+.hero ul li footer strong {
     font-size: 16px;
     color: #000;
-
 }
 
-.main-container ul li footer p {
+.hero ul li footer p {
     font-size: 14px;
     line-height: 20px;
     color: #999;
     margin-top: 5px 
 }
 
-.main-container ul li .buttons {
+.hero ul li .buttons {
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
 }
 
-.main-container ul li .buttons button {
+.hero ul li .buttons button {
     height: 50px;
     box-shadow: 0 2px 2px 0 (0, 0, 0, 0.05);
     border: 0;
@@ -61,33 +82,34 @@
     cursor: pointer;
 }
 
-.main-container ul li .buttons button:hover img{
+.hero ul li .buttons button:hover img{
     transform: scale(1.2, 1.2);
     transition: all 0.2s;
 }
 
-.main-container .empty {
+.hero .empty {
     font-size: 32px;
     color: rgb(212, 212, 212);
     margin-top: 300px;
 }
 
-.imagem3{
+.imagem3 {
     transition: all 0.5s;
     cursor: pointer;
+    /*border: solid 1px;*/
 }
 
-.img{
+.img {
     transition: all .5s;
     border: solid transparent;
 }
 
-.img:hover{
+.img:hover {
     border: 2px solid #3300cc;
     border-radius: 50%
 }
 
-.imagem3:hover{
+.imagem3:hover {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }

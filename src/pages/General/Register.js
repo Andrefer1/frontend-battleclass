@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import RcIf from 'rc-if';
 import SweetAlert from 'sweetalert2-react';
 import api from '../../service/api'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 import mainImage from '../../assets/user2.png'
 import userIcon from '../../assets/user2.png'
 import padlockIcon from '../../assets/padlock.png'
-
+/*import TermsUse from '../../assets/termos.json'*/
+ 
 import './Register.css';
 
 const header = {
@@ -67,6 +70,12 @@ export default function Register({ history }) {
         console.log(professor);
         
     })
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
         
     <div className='main-register'>
@@ -124,7 +133,7 @@ export default function Register({ history }) {
                             <img id='padlock-icon' src={ padlockIcon } alt='padlock' />
                         </div>
                         <input type="password" className="form-control" name="senha" id="password-input" 
-                        placeholder="Senha" value={senha1} onChange={e => setSenha1(e.target.value)} required/>
+                            placeholder="Senha" value={senha1} onChange={e => setSenha1(e.target.value)} required/>
                     </div>
                 
 
@@ -135,16 +144,33 @@ export default function Register({ history }) {
                             <img id='padlock-icon-confirmation' src={ padlockIcon } alt='padlock' />
                         </div>
                         <input type="password" className="form-control" name="password-confirmation" id="password-input-confirmation" 
-                        placeholder="Confirme sua senha" value={senha2} onChange={e => setSenha2(e.target.value)} required/>
+                            placeholder="Confirme sua senha" value={senha2} onChange={e => setSenha2(e.target.value)} required/>
                     </div>
                 </div>
                     
                 <div className="div-accept-terms">
-                    <button type="button" class="btn btn-outline-info terms-use">
+
+                    <Button className='btn btn-outline-info terms-use' onClick={handleShow} required>
                         Termos de uso
-                    </button>
-                    <input type="checkbox" id='check-input' />
-                    <label className="check-label" for="check-input"> Li e concordo com os termos </label>
+                    </Button>
+
+                    <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {/*TermsUse.content*/}
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Fechar
+                        </Button>
+                        <Button variant="primary" onClick={handleClose} required>
+                            Aceitar
+                        </Button>
+                    </Modal.Footer>
+                    </Modal>
+
                 </div>
                 
                 <button className="btn btn-primary enter-button"> Criar </button> 
@@ -158,5 +184,10 @@ export default function Register({ history }) {
 
     </div>
 
+    
+        
+   
+
     );
 }
+

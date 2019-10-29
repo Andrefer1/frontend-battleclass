@@ -222,7 +222,6 @@ html, body{
     max-width: 400px;
     margin-bottom: 10px;
     /*border: solid 1px;*/
-
 }
 
 .students .cards-students .student-data .li .line-title {
@@ -230,7 +229,6 @@ html, body{
     width: auto;
     min-width: 15%;
     max-width: 80%;
-
 }
 
 .students .cards-students .student-data .li .line-title .str-student-name {
@@ -252,13 +250,11 @@ html, body{
     width: auto;
     max-width: 400px;
     /*border: solid 1px;*/
-
 }
 
 .students .cards-students .student-data .li2 .div-student-name {
     width: 400px;
     border-bottom: solid 1px;
-
 }
 
 .students .cards-students .student-data .li2 .student-name {

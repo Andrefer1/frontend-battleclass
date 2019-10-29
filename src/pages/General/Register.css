@@ -233,42 +233,21 @@ html, body{
 
 /*CHECKBOX INPUT*/
 .form-register .div-accept-terms {
-    margin-top: 15px;
+    margin-top: 20px;
     margin-right: 86px;
 }
 
 .form-register .div-accept-terms .terms-use {
     margin-right: 115px;
-    margin-bottom: 10px;
+    background: white;
+    color: rgba(0,212,255,1);
     border: solid 1px rgba(0,212,255,1);
     -webkit-box-shadow: none !important;
 }
 
 .form-register .div-accept-terms .terms-use:hover {
+    color: white;
     background: rgba(0,212,255,1);
-}
-
-.form-register .div-accept-terms #check-input {
-    display: none;
-}
-
-.form-register .div-accept-terms #check-input + .check-label:before {
-    margin-left: -15px;
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    background-color: none;
-    border-radius: 3px;
-    border: solid 1px black;
-}
-
-.form-register .div-accept-terms #check-input:checked + .check-label:before {
-    background-color: rgba(9,9,121,1);
-}
-
-.form-register .div-accept-terms .check-label {
-    color: black;
 }
 
 
@@ -276,7 +255,7 @@ html, body{
 .form-register .enter-button {
     height: 50px;
     width: 345px;
-    margin-top: 15px;
+    margin-top: 20px;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     border-radius: 5px;
     color: white;

@@ -46,7 +46,7 @@ export default function Hero({ history, match }) {
 
 
     return(
-        <div className='main-container'>
+        <div className='hero'>
             <RcIf if={confirmation === "true"}>
                 <SweetAlert
                     show={confirmation}
@@ -61,10 +61,11 @@ export default function Hero({ history, match }) {
             </RcIf>
             
             <h2> Escolha seu ícone: </h2>
+            <div className='ul'>
             { heros.length > 0 ? (
                 <ul>
                     {heros.map(icon => (
-                        <RcIf if={icon.selecionado === "false"}> 
+                        <RcIf if={icon.selecionado === "false"}>
                             <li key={icon._id} className='imagem3'>
                                 <img className='img' src={icon.url} alt={icon.nomePersonagem} onClick={(e) => setarIcon(icon, e)} />
                                 <footer>
@@ -87,6 +88,7 @@ export default function Hero({ history, match }) {
             ) : (
                 <div className="empty">Acabou :( </div>
             )}
+            </div>
         </div>
     );
 }

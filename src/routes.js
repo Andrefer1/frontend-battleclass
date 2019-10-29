@@ -35,7 +35,7 @@ import Batalha from './pages/Professor/Batalha'
 export default function Routes() {
     return (
         <BrowserRouter basename="/frontend-battleclass">
-
+            
             {/*GENERAL*/}
             <Route path='/' exact component={Login} />
             <Route path='/recover' component={Password} />
@@ -54,7 +54,7 @@ export default function Routes() {
 
             {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
-            <Route path='/:idUser/team/:idGrupo' exact component={Team} />
+            <Route path='/:idUser/team/:idGrupo' component={Team} />
             <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
             <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
             
@@ -66,6 +66,7 @@ export default function Routes() {
             <Route path='/activitys' exact component={Activitys} />
             <Route path='/activitys/activity' component={Activity} />
             <Route path='/activitys/add-activity' component={AddActivity} />
+
         </BrowserRouter>
     );
 }
