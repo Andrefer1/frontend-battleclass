@@ -133,54 +133,55 @@ export default function Team() {
                 </div>
             </div>
 
-            <div className='cards-students'>
-                <ul>
-                    <li>
-                        <div className='card-individual'>
-                            <div className='dataname'>
-                                Atividades
+            <div className='content'>
+                <div className='cards-students'>
+                    <ul>
+                        <li>
+                            <div className='card-individual'>
+                                <div className='dataname'>
+                                    Atividades
+                                </div>
+                                <div className='number'>
+                                    {atividades}
+                                </div>
                             </div>
-                            <div className='number'>
-                                {atividades}
+                        </li>
+                        
+                        <li>
+                            <div className='card-individual'>
+                                <div className='dataname'>
+                                    Alunos
+                                </div>
+                                <div className='number'>
+                                    { alunos }
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <div className='card-individual'>
-                            <div className='dataname'>
-                                Alunos
+                        </li>
+                        <li>
+                            <div className='card-individual'>
+                                <div className='dataname'>
+                                    Equipes
+                                </div>
+                                <div className='number'>
+                                    {grupos}
+                                </div>
                             </div>
-                            <div className='number'>
-                                { alunos }
+                        </li>
+                        <li>
+                            <div className='card-individual'>
+                                <div className='dataname'>
+                                    Batalhas
+                                </div>
+                                <div className='number'>
+                                    {batalhas}
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className='card-individual'>
-                            <div className='dataname'>
-                                Equipes
-                            </div>
-                            <div className='number'>
-                                {grupos}
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className='card-individual'>
-                            <div className='dataname'>
-                                Batalhas
-                            </div>
-                            <div className='number'>
-                                {batalhas}
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        
-            <canvas id="myChart" width="400" height="400"></canvas>
+                        </li>
+                    </ul>
+                </div>
             
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
         </div>
     );
 }
