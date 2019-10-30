@@ -65,7 +65,7 @@ export default function Team({ history, match }) {
                 <hr id='hr' />
             </nav>
 
-            {/*
+        
             <div className='menu'>
                 <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
                 <a onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`))}> Minha Equipe </a>
@@ -76,7 +76,7 @@ export default function Team({ history, match }) {
                     <a href='/about'> Sobre </a>
                 </div>
             </div>
-            */}
+            
 
             <div className='rankings'>
                 <div className='ranking-do-dia' >

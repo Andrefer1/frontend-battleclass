@@ -89,7 +89,7 @@ export default function MainStudent({ history, match }) {
         </div>
 
         <hr id='hr-nav' />
-        {/*}
+        
         <div className='menu'>
             <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
             <a onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
@@ -100,7 +100,7 @@ export default function MainStudent({ history, match }) {
                 <a href='/about'> Sobre </a>
             </div>
         </div>
-        */}
+        
 
         <div className='ranking'>
             <div className='str-ranking'>

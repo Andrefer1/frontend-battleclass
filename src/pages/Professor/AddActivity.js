@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
+import api from '../../service/api'
 
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -11,8 +12,33 @@ import './AddActivity.css';
 
 export default function Activity() {
     const [showMembers, setShowMembers] = useState('')
+    
 
-    var qtd_alternativas = 0
+    const [ titulo, setTitulo ] = useState('');
+    const [ contexto, setContexto ] = useState([]);
+
+    
+    const [ conteudo1, setConteudo1 ] = useState('');
+    const [ questoes1, setQuestoes1 ] = useState([]);
+    var lista1 = []
+    const [ conteudo2, setConteudo2 ] = useState('');
+    const [ questoes2, setQuestoes2 ] = useState([]);
+    var lista2 = []
+    const [ conteudo3, setConteudo3 ] = useState('');
+    const [ questoes3, setQuestoes3 ] = useState([]);
+    var lista3 = []
+    const [ conteudo4, setConteudo4 ] = useState('');
+    const [ questoes4, setQuestoes4 ] = useState([]);
+    var lista4 = []
+    const [ conteudo5, setConteudo5 ] = useState('');
+    const [ questoes5, setQuestoes5 ] = useState([]);
+    var lista5 = []
+
+    const [questao1Gabarito, setQuestao1Gabarito ] = useState(Object);
+    const [questao2Gabarito, setQuestao2Gabarito ] = useState(Object);
+    const [questao3Gabarito, setQuestao3Gabarito ] = useState(Object);
+    const [questao4Gabarito, setQuestao4Gabarito ] = useState(Object);
+    const [questao5Gabarito, setQuestao5Gabarito ] = useState(Object);
 
 
 
@@ -101,6 +127,27 @@ export default function Activity() {
     function alternativas() {
         this.qtd_alternativas += 1
 
+    }
+
+    async function salvarAtividade() {
+        const obj = {
+            titulo: titulo,
+            conteudo: contexto,
+            questoes: [
+                {1: {texto:conteudo1, alternativas:questoes1}},
+                {2: {texto:conteudo2, alternativas:questoes2}},
+                {3: {texto:conteudo3, alternativas:questoes3}},
+                {4: {texto:conteudo4, alternativas:questoes4}},
+                {5: {texto:conteudo5, alternativas:questoes5}}
+            ],
+            gabarito: [questao1Gabarito, questao2Gabarito, questao3Gabarito, questao4Gabarito, questao5Gabarito],
+            dataPostagem: new Date().toLocaleDateString(),
+        }
+        console.log(questao1Gabarito)
+        
+        console.log(obj)
+        const response = await api.post('/cadastro/atividade', obj);
+        console.log(response)
     }
 
     return (
@@ -210,7 +257,11 @@ export default function Activity() {
             <div className='content'>
                 <div className='input-title'>
                     <label><strong>Título da atividade</strong></label>
-                    <input type='text' className="form-control" placeholder='Adicione um título'  />
+                    <input type='text' className="form-control" placeholder='Adicione um título' value={titulo} onChange={e => setTitulo(e.target.value)} />
+                </div>
+                <div className='input-title'>
+                    <label><strong>Conteúdo presente na atividade</strong></label>
+                    <textarea type='text' className="form-control" placeholder='Adicione o contexto da atividade' value={contexto} onChange={e => setContexto(e.target.value)} />
                 </div>
                 <div className='cards-questions'>
                     <div className='individual-card'>
@@ -230,6 +281,7 @@ export default function Activity() {
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
+                                    setConteudo1(data)
                                 } }
                                 onBlur={ ( event, editor ) => {
                                     console.log( 'Blur.', editor );
@@ -258,6 +310,13 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var a = {
+                                                texto: data
+                                            }
+                                            lista1.push(a)
+
+                                            setQuestoes1(lista1)
+                                            
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -286,6 +345,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var b = {
+                                                texto: data
+                                            }
+                                            lista1.push(b)
+
+                                            setQuestoes1(lista1)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -314,6 +379,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var c = {
+                                                texto: data
+                                            }
+                                            lista1.push(c)
+
+                                            setQuestoes1(lista1)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -342,6 +413,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var d = {
+                                                texto: data
+                                            }
+                                            lista1.push(d)
+
+                                            setQuestoes1(lista1)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -353,45 +430,6 @@ export default function Activity() {
 
                                 </div>
                             </div>
-
-                            <div className='letter-editor'>
-                                <div className='letter-alternative'>
-                                    e)
-                                </div>
-                                <br/>
-                                <div className='editor-alternative'>
-                                    {cont > 0 ? (
-
-                                        <ul>
-                                            {}
-                                        <CKEditor
-                                        editor={ ClassicEditor }
-
-                                        onInit={ editor => {
-                                            // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
-                                            const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
-                                        />
-                                        </ul>
-                                    ):(
-                                        <>
-                                            yesye
-                                        </>
-                                    )}
-                                    
-                                </div>
-                            </div>
-
                         </div>
                 
                         <div className='buttons'>
@@ -423,6 +461,7 @@ export default function Activity() {
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
+                                    setConteudo2(data)
                                 } }
                                 onBlur={ ( event, editor ) => {
                                     console.log( 'Blur.', editor );
@@ -451,6 +490,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var a = {
+                                                texto: data
+                                            }
+                                            lista1.push(a)
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -479,6 +524,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var b = {
+                                                texto: data
+                                            }
+                                            lista1.push(b)
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -507,6 +558,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var c = {
+                                                texto: data
+                                            }
+                                            lista1.push(c)
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -535,6 +592,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var d = {
+                                                texto: data
+                                            }
+                                            lista1.push(d)
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -544,33 +607,6 @@ export default function Activity() {
                                         } }
                                     />
 
-                                </div>
-                            </div>
-
-                            <div className='letter-editor'>
-                                <div className='letter-alternative'>
-                                    e)
-                                </div>
-                                <br/>
-                                <div className='editor-alternative'>
-                                    <CKEditor
-                                        editor={ ClassicEditor }
-
-                                        onInit={ editor => {
-                                            // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
-                                            const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
-                                    />
                                 </div>
                             </div>
 
@@ -605,6 +641,7 @@ export default function Activity() {
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
+                                    setConteudo3(data)
                                 } }
                                 onBlur={ ( event, editor ) => {
                                     console.log( 'Blur.', editor );
@@ -633,6 +670,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var a = {
+                                                texto: data
+                                            }
+                                            lista3.push({a})
+
+                                            setQuestoes3(lista3)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -661,6 +704,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var b = {
+                                                texto: data
+                                            }
+                                            lista3.push({b})
+
+                                            setQuestoes3(lista3)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -689,6 +738,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var c = {
+                                                texto: data
+                                            }
+                                            lista3.push({c})
+
+                                            setQuestoes3(lista3)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -717,6 +772,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var d = {
+                                                texto: data
+                                            }
+                                            lista3.push({d})
+
+                                            setQuestoes3(lista3)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -726,33 +787,6 @@ export default function Activity() {
                                         } }
                                     />
 
-                                </div>
-                            </div>
-
-                            <div className='letter-editor'>
-                                <div className='letter-alternative'>
-                                    e)
-                                </div>
-                                <br/>
-                                <div className='editor-alternative'>
-                                    <CKEditor
-                                        editor={ ClassicEditor }
-
-                                        onInit={ editor => {
-                                            // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
-                                            const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
-                                    />
                                 </div>
                             </div>
 
@@ -787,6 +821,7 @@ export default function Activity() {
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
+                                    setConteudo4(data)
                                 } }
                                 onBlur={ ( event, editor ) => {
                                     console.log( 'Blur.', editor );
@@ -815,6 +850,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var a = {
+                                                texto: data
+                                            }
+                                            lista4.push({a})
+
+                                            setQuestoes4(lista4)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -843,6 +884,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var b = {
+                                                texto: data
+                                            }
+                                            lista4.push({b})
+
+                                            setQuestoes4(lista4)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -871,6 +918,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var c = {
+                                                texto: data
+                                            }
+                                            lista4.push({c})
+
+                                            setQuestoes4(lista4)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -899,6 +952,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var d = {
+                                                texto: data
+                                            }
+                                            lista4.push({d})
+
+                                            setQuestoes4(lista4)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -910,34 +969,6 @@ export default function Activity() {
 
                                 </div>
                             </div>
-
-                            <div className='letter-editor'>
-                                <div className='letter-alternative'>
-                                    e)
-                                </div>
-                                <br/>
-                                <div className='editor-alternative'>
-                                    <CKEditor
-                                        editor={ ClassicEditor }
-
-                                        onInit={ editor => {
-                                            // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
-                                            const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
-                                    />
-                                </div>
-                            </div>
-
                         </div>
                 
                         <div className='buttons'>
@@ -969,6 +1000,7 @@ export default function Activity() {
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     console.log( { event, editor, data } );
+                                    setConteudo5(data)
                                 } }
                                 onBlur={ ( event, editor ) => {
                                     console.log( 'Blur.', editor );
@@ -997,6 +1029,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var a = {
+                                                texto: data
+                                            }
+                                            lista5.push({a})
+
+                                            setQuestoes5(lista5)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -1025,6 +1063,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var b = {
+                                                texto: data
+                                            }
+                                            lista5.push({b})
+
+                                            setQuestoes5(lista5)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -1053,6 +1097,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var c = {
+                                                texto: data
+                                            }
+                                            lista5.push({c})
+
+                                            setQuestoes5(lista5)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -1081,6 +1131,12 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            var d = {
+                                                texto: data
+                                            }
+                                            lista5.push({d})
+
+                                            setQuestoes5(lista5)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
@@ -1093,33 +1149,86 @@ export default function Activity() {
                                 </div>
                             </div>
 
-                            <div className='letter-editor'>
-                                <div className='letter-alternative'>
-                                    e)
-                                </div>
-                                <br/>
-                                <div className='editor-alternative'>
-                                    <CKEditor
-                                        editor={ ClassicEditor }
-
-                                        onInit={ editor => {
-                                            // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
-                                            const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
-                                    />
-                                </div>
+                        </div>
+                        <br />
+                        <hr/>
+                        <div>
+                            <h4>GABARITO</h4>
+                            <div>
+                            <table className="table table-bordered table-striped">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th colSpan="2"> Tabela de Rotas da API</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Questões</td>
+                                        <td>Alternativa correta</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> Questão 1</td>
+                                        <td>
+                                            <select value={questao1Gabarito[1]} onChange={e => setQuestao1Gabarito({1:e.target.value})}>
+                                                <option value=''> --- </option>
+                                                <option value="a"> a </option>
+                                                <option value="b"> b </option>
+                                                <option value="c"> c </option>
+                                                <option value="d"> d </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Questão 2</td>
+                                        <td>
+                                            <select value={questao2Gabarito[2]} onChange={e => setQuestao2Gabarito({2:e.target.value})}>
+                                                <option value=''> --- </option>
+                                                <option value="a"> a </option>
+                                                <option value="b"> b </option>
+                                                <option value="c"> c </option>
+                                                <option value="d"> d </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Questão 3</td>
+                                        <td>
+                                            <select value={questao3Gabarito[3]} onChange={e => setQuestao3Gabarito({3:e.target.value})}>
+                                                <option value=''> --- </option>
+                                                <option value="a"> a </option>
+                                                <option value="b"> b </option>
+                                                <option value="c"> c </option>
+                                                <option value="d"> d </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Questão 4</td>
+                                        <td>
+                                            <select value={questao4Gabarito[4]} onChange={e => setQuestao4Gabarito({4:e.target.value})}>
+                                                <option value=''> --- </option>
+                                                <option value="a"> a </option>
+                                                <option value="b"> b </option>
+                                                <option value="c"> c </option>
+                                                <option value="d"> d </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Questão 5</td>
+                                        <td>
+                                            <select value={questao5Gabarito[5]} onChange={e => setQuestao5Gabarito({5:e.target.value})}>
+                                                <option value=''> --- </option>
+                                                <option value="a"> a </option>
+                                                <option value="b"> b </option>
+                                                <option value="c"> c </option>
+                                                <option value="d"> d </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             </div>
-
                         </div>
                 
                         <div className='buttons'>
@@ -1127,7 +1236,7 @@ export default function Activity() {
                                 {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
                             </div>
                             <div>
-                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
+                                <button onClick={salvarAtividade} className='btn btn-primary add' id='teste'>Adicionar</button>
                             </div>
                         </div>
                     </div>

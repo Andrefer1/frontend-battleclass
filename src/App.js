@@ -3,7 +3,7 @@ import './App.css';
 
 import api from './service/api';
 
-import Routes, { Route } from './routes';
+import Routes from './routes';
 
 import MainScreen from './pages/Student/Main'
 
@@ -37,10 +37,11 @@ console.log(match)
 
 
   return (
-    <div className="App"> 
-    {/*  
+    <div className="App">  
+    {/**
       <div className='menu'>
-        <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
+        
+          <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
         <a className='tab'onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
         <a className='tab' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
         <a className='tab' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
@@ -50,7 +51,8 @@ console.log(match)
           <a className='tab' href='/about'> Sobre </a>
         </div>
       </div>
-     */}
+    */}
+        
 
       <Routes/>
 
