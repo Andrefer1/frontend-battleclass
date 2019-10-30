@@ -58,7 +58,7 @@ export default function Routes() {
             <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
             <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
             
-
+            
             {/*PROFESSOR*/}
             <Route path='/dashboard' component={Dashboard} />
             <Route path='/students' component={Students} />

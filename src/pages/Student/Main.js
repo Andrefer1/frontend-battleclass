@@ -102,39 +102,37 @@ export default function MainStudent({ history, match }) {
         </div>
         */}
 
-        <div className='rankings'>
-            <div className='ranking-do-dia' >
-                <div className='ranking-name'>
-                    <b> Ranking do Dia </b>
-                </div>
-                { grupos.length > 0 ? (
-                    <ul>
-                        { grupos.map(grupo => (
-                            <div key={grupo._id}>
-                                <li key={grupo._id}>
-                                    <div className='team-ranking'>
-                                        <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
-                                        </div>          
-                                        <div className='team-name'>
-                                            {grupo.nome}
-                                        </div>       
-                                        <div className='team-points'>
-                                            {grupo.pontuacao}
-                                        </div>
-                                    </div>
-                                </li>
-                                <hr className='hr-ranking' />
-                            </div>
-                            
-                        ))}
-                        
-                    </ul>
-                ): (
-                    <div> Sem grupos </div>
-                )}
-                
+        <div className='ranking'>
+            <div className='str-ranking'>
+                <b> Ranking </b>
             </div>
+            { grupos.length > 0 ? (
+                <ul>
+                    { grupos.map(grupo => (
+                        <div key={grupo._id}>
+                            <li key={grupo._id}>
+                                <div className='team-ranking'>
+                                    <div className='team-profile'>
+                                        <img src={userProfile} alt='Imagem do time' />
+                                    </div>          
+                                    <div className='team-name'>
+                                        {grupo.nome}
+                                    </div>       
+                                    <div className='team-points'>
+                                        {grupo.pontuacao}
+                                    </div>
+                                </div>
+                            </li>
+                            {/*<hr className='hr-ranking' />*/}
+                        </div>
+                        
+                    ))}
+                    
+                </ul>
+            ): (
+                <div> Sem grupos </div>
+            )}
+                
         </div>
 
         { atividades.length > 0 ? (

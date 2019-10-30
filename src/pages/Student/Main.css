@@ -93,72 +93,79 @@ html, body {
 
 
 /*RANKINGS*/
-.main-student .rankings .ranking-do-dia {
-    height: 280px;
+
+.main-student .ranking {
     width: 270px;
+    height: 390px;
     background: white;
     border-radius: 9px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
     float: right;
     transform: translate(-70px, 110px);
-    /*margin-top: 110px;
-    margin-right: 20px;*/
+    /*border: solid 1px;*/
 }
 
-.main-student .rankings .ranking-do-dia .ranking-name {
-    margin-top: 20px;
+.main-student .ranking .str-ranking {
+    margin: 10px 15px 0 15px;
     text-align: center;
+    /*border: solid 1px;*/
 }
 
-.main-student .rankings .ranking-do-dia ul {
-    margin-top: 20px;
-    margin-right: 40px;
+.main-student .ranking ul {
+    margin: 10px 15px 0 15px;
+    /*border: solid 1px red;*/
 }
 
-.main-student .rankings .ranking-do-dia ul li {
+.main-student .ranking ul li {
+    height: 50px;
+    margin-bottom: 20px; 
     display: inline-block;
+    border-bottom: solid 1px rgb(190, 190, 190);
 }
 
-.main-student .rankings .ranking-do-dia ul li .team-ranking {
+.main-student .ranking ul li .team-ranking {
+    width: 235px;
     display: flex;
-    transform: translate( 95px, 20px)
+    /*border: solid 1px greenyellow;*/
 }
 
-.main-student .rankings .ranking-do-dia ul li .team-ranking:hover {
-    background-color: #f1f1f1;
-    cursor: pointer
+.main-student .ranking ul li .team-ranking:hover {
+    /*background-color: #f1f1f1;
+    cursor: pointer;*/
 }
 
-.main-student .rankings .ranking-do-dia ul li .team-ranking .team-profile {
-    position: absolute;
-    transform: translate(-105px, -25px);
+.main-student .ranking ul li .team-ranking .team-profile {
+    /*position: absolute;*/
+    /*border: solid 1px;*/
 }
 
-.main-student .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
+.main-student .ranking ul li .team-ranking .team-profile img {
+    height: 40px;
+}
+
+.main-student .ranking ul li .team-ranking .team-name {
+    width: 163px;
     height: 30px;
-}
-
-.main-student .rankings .ranking-do-dia ul li .team-ranking .team-name {
-    width: 155px;
-    position: relative;
     text-align: left;
-    margin-top: -20px;
-    transform: translate(-72px, -3px);
+    transform: translate(8px, 8px);
 
     white-space: nowrap;
     overflow: hidden;
     transition-duration: 1s;
+    /*border: solid 1px;*/
 }
 
-.main-student .rankings .ranking-do-dia ul li .team-ranking .team-points {
+.main-student .ranking ul li .team-ranking .team-points {
+    width: 30px; 
     position: absolute;
-    transform: translate(90px, -22px);
+    transform: translate(205px, 8px);
+    /*border: solid 1px;*/
 }
 
-.main-student .rankings .ranking-do-dia ul #hr-ranking {
-    width: 210px;
+.main-student .ranking ul #hr-ranking {
+    /*width: 210px;
     margin-top: 25px;
-    margin-left: 30px;
+    margin-left: 30px;*/
 }
 
 

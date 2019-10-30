@@ -153,7 +153,7 @@ export default function Register({ history }) {
                     <Button className='btn btn-outline-info terms-use' onClick={handleShow} required>
                         Termos de uso
                     </Button>
-
+                    
                     <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Modal heading</Modal.Title>
