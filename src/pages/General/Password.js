@@ -93,6 +93,7 @@ export default function Login({ history }) {
                 <form onSubmit={verificarEmail}>
                     <div className='input'>
                         {/*PASSWORD INPUT*/}
+                        <label className='label-email-input' for='email-input'>E-mail:</label>
                         <div className='email'>
                             <div className='div-user-icon'>
                                 <img id='user-icon' src={ userIcon } alt='imagem usuário' />
@@ -130,15 +131,15 @@ export default function Login({ history }) {
                             <input type="password" className="form-control" name="senha" id="password-input" 
                             placeholder="Senha" value={senha1} onChange={e => setSenha1(e.target.value)} required/>
                         </div>
-                    
+                 
 
                         {/*PASSWORD INPUT CONFIRMATION*/}
-                        <label className='label-password-input-confirmation' for='password-input-confirmation'> Confirme senha: </label>
+                        <label className='label-password-input-confirmation' for='password-input-confirmation'> Confirme sua senha: </label>
                         <div className='password-confirmation'>
                             <div className='div-padlock-icon-confirmation'>
                                 <img id='padlock-icon-confirmation' src={ padlockIcon } alt='padlock' />
                             </div>
-                            <input type="password" name="password-confirmation" id="password-input-confirmation" 
+                            <input type="password" name="password-confirmation" className='form-control' id="password-input-confirmation" 
                             placeholder="Confirme sua senha" value={senha2} onChange={e => setSenha2(e.target.value)} required/>
                         </div>
                         <button className="btn btn-primary enter-button" href='./main' >Confirmar</button>

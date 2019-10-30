@@ -156,11 +156,10 @@ export default function Register({ history }) {
                     
                     <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Política de Privacidade</Modal.Title>
                     </Modal.Header>
                     <Modal.Body className='terms'>
-                        <strong>Política de Privacidade</strong>
-
+                        
                         <p align="justify">
                             A BattleClass Inc. ("BattleClass") leva a privacidade de seus alunos, professores e pais a sério. 
                             A BattleClass  está comprometida em proteger a privacidade dos usuários, proporcionando uma experiência 
@@ -169,10 +168,10 @@ export default function Register({ history }) {
                         <p align="justify">
                             A BattleClass aceitou o Compromisso de Privacidade do Estudante como um compromisso público pela 
                             coleta e uso responsáveis ​​dos dados do aluno. Entre outras coisas, comprometemo-nos a coletar apenas 
-                            as informações dos alunos necessárias para fins educacionais / escolares autorizados, ou conforme 
-                            autorizado pelos pais / aluno, para não vender informações pessoais dos alunos, não usar as informações 
+                            as informações dos alunos necessárias para fins educacionais/escolares autorizados, ou conforme 
+                            autorizado pelos pais/aluno, para não vender informações pessoais dos alunos, não usar as informações 
                             dos alunos para direcionamento comportamental de anúncios aos alunos. e não reter informações pessoais 
-                            do aluno além do período necessário para apoiar os propósitos educacionais / escolares autorizados. 
+                            do aluno além do período necessário para apoiar os propósitos educacionais/escolares autorizados. 
                             “Todas as informações pessoais relativas a membros, assinantes, clientes ou visitantes que usem o 
                             BattleClass  serão tratadas em concordância com a Lei da Proteção de Dados Pessoais de 26 de outubro 
                             de 1998 (Lei n.º 67/98).” A BattleClass  desenvolveu esta Política de Privacidade para informar aos 
@@ -268,7 +267,7 @@ export default function Register({ history }) {
 
                         <strong>Registros de Alunos</strong>
                         <p  align="justify">
-                            Os registros dos alunos são de propriedade e estão sob o controle da escola e / ou distrito escolar. 
+                            Os registros dos alunos são de propriedade e estão sob o controle da escola e/ou distrito escolar. 
                             Os alunos podem acessar seus registros de estudante fazendo login na conta de aluno.
                         </p>
                         <p  align="justify">
@@ -373,7 +372,7 @@ export default function Register({ history }) {
                             <li>Primeiro e último nome;</li>
                             <li>O email;</li>
                             <li>Nome da turma e escola;</li>
-                            <li>Nome do aluno e / ou ID do usuário e / ou nome de usuário;</li>
+                            <li>Nome do aluno e/ou ID do usuário e/ou nome de usuário;</li>
                         </ul>
 
                         <p  align="justify">O usuário será então contatado por um membro da equipe BattleClass  para fins de verificação.</p>
@@ -424,7 +423,7 @@ export default function Register({ history }) {
                         
                         <strong>Consentimento para a coleta e processamento de informações</strong>
                         <p  align="justify">
-                            Ao aceitar o Contrato de Licença do Professor, os Termos de Uso dos Pais e / ou os Termos de Uso dos 
+                            Ao aceitar o Contrato de Licença do Professor, os Termos de Uso dos Pais e/ou os Termos de Uso dos 
                             Estudantes estão expressamente concedendo à BattleClass  uma declaração especial de que os usuários 
                             decidiram, por livre e espontânea vontade, conceder autorização específica à BattleClass  para coletar, 
                             processar e usar as informações pessoais estipuladas nessa Política de Privacidade e para usar essas 
