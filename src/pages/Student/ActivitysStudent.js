@@ -144,7 +144,7 @@ export default function Activity({ history, match }) {
                                             <strong>{atividade.titulo}</strong>
                                         </div>
                                         <div className='activity-date'>
-                                            Entrega: {atividade.dataEntrega}
+                                            Publicado: {atividade.dataPostagem}
                                         </div>
                                     </div>
                                     <div className='activity-content'>

@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import SweetAlert from 'sweetalert2-react';
 import RcIf from 'rc-if'
 import userProfile from '../../assets/user-profile.svg';
 import api from '../../service/api'
@@ -10,29 +11,30 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import './AddActivity.css';
 
-export default function Activity() {
+export default function Activity({ history }) {
     const [showMembers, setShowMembers] = useState('')
-    
+    const [ msg, setMsg ] = useState('');
 
     const [ titulo, setTitulo ] = useState('');
     const [ contexto, setContexto ] = useState([]);
 
+    const [ a, setA ] = useState(Object)
     
     const [ conteudo1, setConteudo1 ] = useState('');
     const [ questoes1, setQuestoes1 ] = useState([]);
-    var lista1 = []
+    var lista1 = questoes1;
     const [ conteudo2, setConteudo2 ] = useState('');
     const [ questoes2, setQuestoes2 ] = useState([]);
-    var lista2 = []
+    var lista2 = questoes2
     const [ conteudo3, setConteudo3 ] = useState('');
     const [ questoes3, setQuestoes3 ] = useState([]);
-    var lista3 = []
+    var lista3 = questoes3
     const [ conteudo4, setConteudo4 ] = useState('');
     const [ questoes4, setQuestoes4 ] = useState([]);
-    var lista4 = []
+    var lista4 = questoes4
     const [ conteudo5, setConteudo5 ] = useState('');
     const [ questoes5, setQuestoes5 ] = useState([]);
-    var lista5 = []
+    var lista5 = questoes5
 
     const [questao1Gabarito, setQuestao1Gabarito ] = useState(Object);
     const [questao2Gabarito, setQuestao2Gabarito ] = useState(Object);
@@ -134,25 +136,48 @@ export default function Activity() {
             titulo: titulo,
             conteudo: contexto,
             questoes: [
-                {1: {texto:conteudo1, alternativas:questoes1}},
-                {2: {texto:conteudo2, alternativas:questoes2}},
-                {3: {texto:conteudo3, alternativas:questoes3}},
-                {4: {texto:conteudo4, alternativas:questoes4}},
-                {5: {texto:conteudo5, alternativas:questoes5}}
+                {1: {texto:conteudo1, alternativas:lista1}},
+                {2: {texto:conteudo2, alternativas:lista2}},
+                {3: {texto:conteudo3, alternativas:lista3}},
+                {4: {texto:conteudo4, alternativas:lista4}},
+                {5: {texto:conteudo5, alternativas:lista5}}
             ],
             gabarito: [questao1Gabarito, questao2Gabarito, questao3Gabarito, questao4Gabarito, questao5Gabarito],
             dataPostagem: new Date().toLocaleDateString(),
         }
-        console.log(questao1Gabarito)
-        
-        console.log(obj)
         const response = await api.post('/cadastro/atividade', obj);
-        console.log(response)
+
+        console.log(obj)
+        if(response) {
+            setMsg('true')
+        } else {
+            setMsg('false')
+        }
     }
 
     return (
         <div className='individual-activity'>
-
+            <RcIf if={msg === "false"}>
+                <SweetAlert
+                    show={msg}
+                    title="Ops!!"
+                    text="Ocorreu algum erro na hora de cadastrar uma nova mensagem."
+                    type='error'
+                    onConfirm={() => setMsg(null)}
+                />
+            </RcIf>
+            <RcIf if={msg === "true"}>
+                <SweetAlert
+                    show={msg}
+                    title="Cadastro efetuado com sucesso"
+                    text="Atividade cadastrada com sucesso"
+                    type='success'
+                    onConfirm={() => {
+                        setMsg(null);
+                        history.push('/activitys');
+                    }}
+                />
+            </RcIf>
             <nav>
                 <div className='navbar'>
                     <div className='sitename'>
@@ -310,16 +335,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var a = {
-                                                texto: data
-                                            }
-                                            lista1.push(a)
-
-                                            setQuestoes1(lista1)
                                             
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var a = {
+                                                texto: data
+                                            }
+                                            lista1.push({a})
+                                            setQuestoes1(lista1)
+                                            console.log(questoes1)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -345,15 +371,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var b = {
-                                                texto: data
-                                            }
-                                            lista1.push(b)
-
-                                            setQuestoes1(lista1)
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var b = {
+                                                texto: data
+                                            }
+                                            lista1.push({b})
+
+                                            setQuestoes1(lista1)
+                                            console.log(questoes1)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -379,15 +407,18 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var c = {
-                                                texto: data
-                                            }
-                                            lista1.push(c)
-
-                                            setQuestoes1(lista1)
+                                            
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var c = {
+                                                texto: data
+                                            }
+                                            lista1.push({c})
+
+                                            setQuestoes1(lista1)
+                                            console.log(questoes1)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -413,15 +444,18 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var d = {
-                                                texto: data
-                                            }
-                                            lista1.push(d)
-
-                                            setQuestoes1(lista1)
+                                            
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var d = {
+                                                texto: data
+                                            }
+                                            lista1.push({d})
+
+                                            setQuestoes1(lista1)
+                                            console.log(questoes1)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -490,15 +524,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var a = {
-                                                texto: data
-                                            }
-                                            lista1.push(a)
-
-                                            setQuestoes2(lista2)
+                                            
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var a = {
+                                                texto: data
+                                            }
+                                            lista2.push({a})
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -524,15 +560,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var b = {
-                                                texto: data
-                                            }
-                                            lista1.push(b)
-
-                                            setQuestoes2(lista2)
+                                            
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var b = {
+                                                texto: data
+                                            }
+                                            lista2.push({b})
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -558,15 +596,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var c = {
-                                                texto: data
-                                            }
-                                            lista1.push(c)
-
-                                            setQuestoes2(lista2)
+                                            
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var c = {
+                                                texto: data
+                                            }
+                                            lista2.push({c})
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -592,15 +632,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
-                                            var d = {
-                                                texto: data
-                                            }
-                                            lista1.push(d)
-
-                                            setQuestoes2(lista2)
+                                            
                                         } }
                                         onBlur={ ( event, editor ) => {
                                             console.log( 'Blur.', editor );
+                                            const data = editor.getData();
+                                            var d = {
+                                                texto: data
+                                            }
+                                            lista2.push({d})
+
+                                            setQuestoes2(lista2)
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -670,15 +712,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
                                             lista3.push({a})
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -704,15 +748,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                           
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
                                             lista3.push({b})
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -738,15 +784,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
                                             lista3.push({c})
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -772,15 +820,17 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                            
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
                                             lista3.push({d})
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -850,15 +900,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
                                             lista4.push({a})
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -884,15 +935,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
                                             lista4.push({b})
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -918,15 +970,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
                                             lista4.push({c})
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -952,15 +1005,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
                                             lista4.push({d})
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -1029,15 +1083,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
                                             lista5.push({a})
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -1063,15 +1118,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
                                             lista5.push({b})
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -1097,15 +1153,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
                                             lista5.push({c})
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
@@ -1131,15 +1188,16 @@ export default function Activity() {
                                         onChange={ ( event, editor ) => {
                                             const data = editor.getData();
                                             console.log( { event, editor, data } );
+                                        } }
+                                        onBlur={ ( event, editor ) => {
+                                            console.log( 'Blur.', editor );
+                                            const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
                                             lista5.push({d})
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
                                         } }
                                         onFocus={ ( event, editor ) => {
                                             console.log( 'Focus.', editor );
