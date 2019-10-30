@@ -15,7 +15,7 @@ export default function Team() {
  
 
     return (
-        <div className='activitys'>
+        <div className='dashboard'>
 
             <nav>
                 <div className='navbar'>
