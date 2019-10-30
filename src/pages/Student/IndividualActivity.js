@@ -132,63 +132,70 @@ export default function Activity({ history, match}) {
                     
                 </div>
             </div>
-
-            <div className='cards-questions'>
-                { questoes.length > 0 ? (
-                    <ul>
-                        { questoes.map( (questao, index) => (
-                            <li key={index}>
-                                <div className='card-individual'>
-                                    <div className='question'>
-                                        <strong>{questao[index + 1].texto}</strong>
-                                    </div>
-                                    <div className='activity-context'>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </div>
-                                    { questao[index + 1].alternativas.length > 0 ? (
-                                        <div className='alternatives'>
-                                            { questao[index + 1].alternativas.map((alternativa, index) => (
-                                                <div className='individual-alternative' key={index}>
-                                                    <div className='div-radio-input'>
-                                                        <input type='radio' name='radio-question' className='radio-input' />
-                                                    </div>
-                                                    <div className='alphabet-letter'>
-                                                        {letra = alfabeto[index]})
-                                                    </div>
-                                                    <div className='div-alternative-text'>
-                                                        <label for='radio-input' className='alternative-text'> 
-                                                            {alternativa[letra].texto} 
-                                                            {/*
-                                                            iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                                            non proident, sunt in culpa qui officia des
-                                                            */}
-                                                        </label>
-                                                    </div>
-                                                </div>
             
-                                            ))}
-                                            
+            <div className='content2'>
+                <div className='cards-questions'>
+                    { questoes.length > 0 ? (
+                        <ul>
+                            { questoes.map( (questao, index) => (
+                                <li key={index}>
+                                    <div className='card-individual'>
+                                        <div className='str-question'>
+                                            <strong>{questao[index + 1].texto}</strong>
                                         </div>
-                                    ): (
-                                        <div> Sem questões </div>
-                                    )}
-                                    
-                                </div>
-                            </li>
-                        ))}
-                        
-                    </ul>
-                ) : (
-                    <div> Sem questões </div>
-                )}
+                                        <div className='activity-context'>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                        { questao[index + 1].alternativas.length > 0 ? (
+                                            <div className='alternatives'>
+                                                { questao[index + 1].alternativas.map((alternativa, index) => (
+                                                    <div className='individual-alternative' key={index}>
+                                                        <div className='div-radio-input'>
+                                                            <input type='radio' name='radio-question' className='radio-input' />
+                                                        </div>
+                                                        <div className='alphabet-letter'>
+                                                            {letra = alfabeto[index]})
+                                                        </div>
+                                                        <div className='div-alternative-text'>
+                                                            <label for='radio-input' className='alternative-text'> 
+                                                                {alternativa[letra].texto} 
+                                                                {/*
+                                                                iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                                                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                                                                non proident, sunt in culpa qui officia des
+                                                                */}
+                                                            </label>
+                                                        </div>
+                                                    </div>
                 
+                                                ))}
+                                                
+                                            </div>
+                                        ): (
+                                            <div> Sem questões </div>
+                                        )}
+                                        
+                                    </div>
+                                </li>
+                            ))}
+                            
+                        </ul>
+                    ) : (
+                        <div> Sem questões </div>
+                    )}
+                    
+                </div>
+                
+                <div className='div-button'>
+                    <button className='btn btn-primary button'>
+                        Publicar
+                    </button>
+                </div>
             </div>
-            
         </div>
         
     );
