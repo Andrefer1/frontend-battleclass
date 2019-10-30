@@ -1150,8 +1150,7 @@ export default function Activity() {
                             </div>
 
                         </div>
-                        <br />
-                        <hr/>
+                        
                         <div>
                             <h4>GABARITO</h4>
                             <div>
