@@ -41,7 +41,7 @@ console.log(match)
     {/**
       <div className='menu'>
         
-          <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
+        <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
         <a className='tab'onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
         <a className='tab' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
         <a className='tab' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>

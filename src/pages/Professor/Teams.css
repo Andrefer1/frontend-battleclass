@@ -19,149 +19,130 @@ html, body{
 
 
 /*NAVBAR*/
-.teams nav .navbar {
-    height: 100px;
+.teams .screen-data {
     width: 100%;
-    background: linear-gradient(221deg, rgba(253,40,29,1) 0%, rgba(206,51,126,1) 50%, rgba(156,63,232,1) 100%);
-    position: fixed;
-    box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.13);
-}
-
-.teams nav .navbar .sitename a {
-    color: white;
-    text-decoration: none;
-    margin-left: 60px;
-}
-
-.teams nav .navbar .student-data {
+    height: 100px;
+    padding: 9px 0 0 240px;
     display: flex;
     position: absolute;
-    margin-left: 254px;
+    white-space: nowrap;
+    border-bottom: solid 1px rgb(212, 212, 212);
 }
 
-.teams nav .navbar .student-data .team-name-principal {
-    color: white;
-    font-size: 30px;
+.teams .screen-data .str-dashboard {
+    margin-top: 15px;
+    color: black;
+    font-size: 23pt;
 }
 
-.teams nav .navbar .student-data .trace {
-    color: white;
-    font-size: 30px;
-    margin-left: 20px;
+.teams .div-img-user {
+    float: right;
+    margin-right: 30px;
 }
 
-.teams nav .navbar .student-data .team-points-principal{
-    color: white;
-    font-size: 25px;
-    margin-top: 3px;
-    margin-left: 20px;
-}
-
-.teams nav #hr {
-    max-width: 100%;
-    margin-top: -1px;
-    margin-left: 270px;
-    background: black;
-    position: relative;
+.teams .div-img-user .img-user {
+    width: 98px;
 }
 
 
 /*MENU*/
 .teams .menu {
-    position: fixed; /*Tirar o absolute no ranking*/
-    background-color: #2e2e64;
-    width: 250px;
-    height: 90%;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    background:rgba(9,9,121,1);
     z-index: 1;
-    margin-top: 83px;
+    margin-top: -95px;
+    margin-top: 0px;
     margin-left: 0px;
 }
 
 .teams .menu a {
     color: white;
-    padding: 12px 16px;
+    padding: 10px 16px;
     text-decoration: none;
     display: block;
     border-bottom: 1px solid;
     border-color: white;
+    cursor: pointer;
 }
 
 .teams .menu a:hover {
-    background-color: rgba(206,51,126,1)
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.teams .menu .sitename {
+    padding: 30px 16px;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 20pt;
+}
+
+.teams .menu .sitename:hover {
+    background: rgba(9,9,121,1);
+    color: white;
 }
 
 .teams .menu .menu-bottom {
-    margin-top: 535px;
-
+    width: 200px;
+    position: absolute;
+    bottom: 0;
 }
 
-
 /*RANKINGS*/
-.teams .rankings .ranking-do-dia {
-    height: 280px;
+.teams .ranking {
     width: 270px;
+    height: 390px;
     background: white;
     border-radius: 9px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
     float: right;
-    margin-top: 110px;
-    margin-right: 20px;
+    transform: translate(90px, 130px);
 }
 
-.teams .rankings .ranking-do-dia .ranking-name {
-    margin-top: 20px;
+.teams .ranking .str-ranking {
+    margin: 10px 15px 0 15px;
     text-align: center;
 }
 
-.teams .rankings .ranking-do-dia ul {
-    margin-top: 20px;
-    margin-right: 40px;
+.teams .ranking ul {
+    margin: 10px 15px 0 15px;
 }
 
-.teams .rankings .ranking-do-dia ul li {
+.teams .ranking ul li {
+    height: 50px;
+    margin-bottom: 20px; 
     display: inline-block;
+    border-bottom: solid 1px rgb(190, 190, 190);
 }
 
-.teams .rankings .ranking-do-dia ul li .team-ranking {
+.teams .ranking ul li .team-ranking {
+    width: 235px;
     display: flex;
-    transform: translate( 95px, 20px)
 }
 
-.teams .rankings .ranking-do-dia ul li .team-ranking:hover {
-    background-color: #f1f1f1;
-    cursor: pointer
+.teams .ranking ul li .team-ranking .team-profile img {
+    height: 40px;
 }
 
-.teams .rankings .ranking-do-dia ul li .team-ranking .team-profile {
-    position: absolute;
-    transform: translate(-105px, -25px);
-}
-
-.teams .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
+.teams .ranking ul li .team-ranking .team-name {
+    width: 163px;
     height: 30px;
-}
-
-.teams .rankings .ranking-do-dia ul li .team-ranking .team-name {
-    width: 155px;
-    position: relative;
     text-align: left;
-    margin-top: -20px;
-    transform: translate(-72px, -3px);
+    transform: translate(8px, 8px);
 
     white-space: nowrap;
     overflow: hidden;
     transition-duration: 1s;
 }
 
-.teams .rankings .ranking-do-dia ul li .team-ranking .team-points {
+.teams .ranking ul li .team-ranking .team-points {
+    width: 30px; 
     position: absolute;
-    transform: translate(90px, -22px);
-}
-
-.teams .rankings .ranking-do-dia ul #hr-ranking {
-    width: 210px;
-    margin-top: 25px;
-    margin-left: 30px;
+    transform: translate(205px, 8px);
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import SweetAlert from 'sweetalert2-react';
@@ -11,48 +11,62 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import './AddActivity.css';
 
-export default function Activity({ history }) {
-    const [showMembers, setShowMembers] = useState('')
-    const [ msg, setMsg ] = useState('');
+export default function AddActivity({ history, match }) {
+    const [grupos, setGrupos] = useState([])
+    const [icon, setIcon] = useState(Object)
 
-    const [ titulo, setTitulo ] = useState('');
-    const [ contexto, setContexto ] = useState([]);
+    const [msg, setMsg] = useState('');
 
-    const [ a, setA ] = useState(Object)
-    
-    const [ conteudo1, setConteudo1 ] = useState('');
-    const [ questoes1, setQuestoes1 ] = useState([]);
+    const [titulo, setTitulo] = useState('');
+    const [contexto, setContexto] = useState([]);
+
+    const [a, setA] = useState(Object)
+
+    const [conteudo1, setConteudo1] = useState('');
+    const [questoes1, setQuestoes1] = useState([]);
     var lista1 = questoes1;
-    const [ conteudo2, setConteudo2 ] = useState('');
-    const [ questoes2, setQuestoes2 ] = useState([]);
+    const [conteudo2, setConteudo2] = useState('');
+    const [questoes2, setQuestoes2] = useState([]);
     var lista2 = questoes2
-    const [ conteudo3, setConteudo3 ] = useState('');
-    const [ questoes3, setQuestoes3 ] = useState([]);
+    const [conteudo3, setConteudo3] = useState('');
+    const [questoes3, setQuestoes3] = useState([]);
     var lista3 = questoes3
-    const [ conteudo4, setConteudo4 ] = useState('');
-    const [ questoes4, setQuestoes4 ] = useState([]);
+    const [conteudo4, setConteudo4] = useState('');
+    const [questoes4, setQuestoes4] = useState([]);
     var lista4 = questoes4
-    const [ conteudo5, setConteudo5 ] = useState('');
-    const [ questoes5, setQuestoes5 ] = useState([]);
+    const [conteudo5, setConteudo5] = useState('');
+    const [questoes5, setQuestoes5] = useState([]);
     var lista5 = questoes5
 
-    const [questao1Gabarito, setQuestao1Gabarito ] = useState(Object);
-    const [questao2Gabarito, setQuestao2Gabarito ] = useState(Object);
-    const [questao3Gabarito, setQuestao3Gabarito ] = useState(Object);
-    const [questao4Gabarito, setQuestao4Gabarito ] = useState(Object);
-    const [questao5Gabarito, setQuestao5Gabarito ] = useState(Object);
+    const [questao1Gabarito, setQuestao1Gabarito] = useState(Object);
+    const [questao2Gabarito, setQuestao2Gabarito] = useState(Object);
+    const [questao3Gabarito, setQuestao3Gabarito] = useState(Object);
+    const [questao4Gabarito, setQuestao4Gabarito] = useState(Object);
+    const [questao5Gabarito, setQuestao5Gabarito] = useState(Object);
 
 
 
     var cont = 5
-    
-    function dropdown() {
-        setShowMembers('true')
 
-    }
+    var listaAux = []
+    useEffect(() => {
+        async function buscarTeams() {
+            const response = await api.get('/buscar/grupo/all')
 
-    function create_CKEditor(){
-       let radioHTML = "<input type='radio' name='radioButton' className='input-radio' />"
+            listaAux = response.data
+            listaAux.sort(function (a, b) {
+                return b.pontuacao - a.pontuacao
+            })
+
+            setGrupos(listaAux);
+        }
+
+        buscarTeams();
+
+    }, []);
+
+    function create_CKEditor() {
+        let radioHTML = "<input type='radio' name='radioButton' className='input-radio' />"
         let get_div_radio = document.querySelector('.radio-alternative')
         /*/*let create_radio = document.createElement('radio')*/
         /*/*get_div_radio.appendChild(radioHTML)*/
@@ -62,9 +76,9 @@ export default function Activity({ history }) {
         /*RADIO*/
 
         let theInput = document.createElement("input");
-        theInput.setAttribute('type',"radio");
-        theInput.setAttribute('name','radioButton');
-        theInput.setAttribute('className','input-radio');
+        theInput.setAttribute('type', "radio");
+        theInput.setAttribute('name', 'radioButton');
+        theInput.setAttribute('className', 'input-radio');
         get_div_radio.appendChild(theInput)
 
         let get_div_input_br2 = document.querySelector('.radio-alternative')
@@ -81,9 +95,9 @@ export default function Activity({ history }) {
         /*let CKEditorHTML = "<CKEditor id='Editor-teste' editor={ ClassicEditor } onInit={ editor => { // You can store the 'editor' and use when it is needed. console.log( 'Editor is ready to use!', editor ); } } onChange={ ( event, editor ) => { const data = editor.getData(); console.log( { event, editor, data } ); } } onBlur={ ( event, editor ) => { console.log( 'Blur.', editor ); } } onFocus={ ( event, editor ) => { console.log( 'Focus.', editor ); } } />"
         */
         ClassicEditor
-            .create( document.querySelector( '#editor' ), {
+            .create(document.querySelector('#editor'), {
                 /*removePlugins: [ 'Bold', 'Link' ],*/
-                toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
                 heading: {
                     options: [
                         { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
@@ -91,10 +105,10 @@ export default function Activity({ history }) {
                         { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
                     ]
                 }
-            } )
-            .catch( error => {
-                console.log( error );
-            } );
+            })
+            .catch(error => {
+                console.log(error);
+            });
         const CKEditorHTML = `<${CKEditor}
                 editor={ ${ClassicEditor} }
 
@@ -120,9 +134,9 @@ export default function Activity({ history }) {
         let create_editor = document.createElement(get_CKEditor)
         get_div_editor.appendChild(create_editor)*/
         get_div_editor.innerHTML = CKEditorHTML
-        
+
         let get_div_editor_br2 = document.querySelector('.editor-alternative')
-        let create_br2= document.createElement('br')
+        let create_br2 = document.createElement('br')
         get_div_editor_br2.appendChild(create_br2)
     }
 
@@ -136,11 +150,11 @@ export default function Activity({ history }) {
             titulo: titulo,
             conteudo: contexto,
             questoes: [
-                {1: {texto:conteudo1, alternativas:lista1}},
-                {2: {texto:conteudo2, alternativas:lista2}},
-                {3: {texto:conteudo3, alternativas:lista3}},
-                {4: {texto:conteudo4, alternativas:lista4}},
-                {5: {texto:conteudo5, alternativas:lista5}}
+                { 1: { texto: conteudo1, alternativas: lista1 } },
+                { 2: { texto: conteudo2, alternativas: lista2 } },
+                { 3: { texto: conteudo3, alternativas: lista3 } },
+                { 4: { texto: conteudo4, alternativas: lista4 } },
+                { 5: { texto: conteudo5, alternativas: lista5 } }
             ],
             gabarito: [questao1Gabarito, questao2Gabarito, questao3Gabarito, questao4Gabarito, questao5Gabarito],
             dataPostagem: new Date().toLocaleDateString(),
@@ -148,7 +162,7 @@ export default function Activity({ history }) {
         const response = await api.post('/cadastro/atividade', obj);
 
         console.log(obj)
-        if(response) {
+        if (response) {
             setMsg('true')
         } else {
             setMsg('false')
@@ -156,7 +170,8 @@ export default function Activity({ history }) {
     }
 
     return (
-        <div className='individual-activity'>
+        <div className='add-activity'>
+
             <RcIf if={msg === "false"}>
                 <SweetAlert
                     show={msg}
@@ -178,105 +193,58 @@ export default function Activity({ history }) {
                     }}
                 />
             </RcIf>
-            <nav>
-                <div className='navbar'>
-                    <div className='sitename'>
-                        <a href='/main'>
-                            BATTLECLASS
-                        </a>
-                    </div>
-                    <div className='student-data'>
-                        <div className='activity-title'>
-                            [Título da atividade]
-                        </div>
-                        
-                        <div className='trace'>
-                            -
-                        </div>
-                        <div className='team-points-principal'>
-                            [Nota]
-                        </div>
-                    </div>
-                    <div className='dates'>
-                        <div className='trace'>
-                            Postado em: dd/MM/aaaa
-                        </div>
-                        <div className='team-points-principal'>
-                            Entrega: dd/MM/aaaa
-                        </div>
-                    </div>
-                </div>
-
-                <hr id='hr' />
-            </nav>
-
-            {/*
-            <div className='menu'>
-            <a href='/dashboard'> Página Inicial </a>
-                <a href='/students'> Alunos </a>
-                <a href='/teams'> Equipes </a>
-                <a href='/activitys'> Atividades </a>
-                <div className='menu-bottom'>
-                    <a href='/settings'> Configurações </a>
-                    <a href='/contacts'> Contatos </a>
-                    <a href='/about'> Sobre </a>
+            <div className='screen-data'>
+                <div className='str'>
+                    Adicionar Atividade
                 </div>
             </div>
-            */}
+            <div className='div-img-user'>
+                <img src={icon.url} className='img-user' />
+            </div>
 
-            <div className='rankings'>
-                <div className='ranking-do-dia' >
-                    <div className='ranking-name'>
-                        <b> Ranking do Dia </b>
-                    </div>
-                    <ul>
-                        <li>
-                            <div className='team-ranking' onClick={dropdown}>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Bonde do Tigrãaaaaao
-                                </div>
-                                <div className='team-points'>
-                                    75
-                                </div>
-                            </div>
-                            <RcIf if={showMembers === "true"}>
-                                teste
-                            </RcIf>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 2
-                            </div>
-                                <div className='team-points'>
-                                    60
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 3
-                            </div>
-                                <div className='team-points'>
-                                    57
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                    </ul>
+            <div className='menu'>
+                <a className='sitename' href='/dashboard'>BattleClass</a>
+                <a className='menu-item' href='/dashboard'> Página Inicial </a>
+                <a className='menu-item' href='/students'> Alunos </a>
+                <a className='menu-item' href='/teams'> Equipes </a>
+                <a className='menu-item' href='/activitys'> Atividades </a>
+                <div className='menu-bottom'>
+                    <a className='menu-item' href='/settings'> Configurações </a>
+                    <a className='menu-item' href='/contacts'> Contatos </a>
+                    <a className='menu-item' href='/about'> Sobre </a>
                 </div>
+            </div>
+
+            <div className='ranking'>
+                <div className='str-ranking'>
+                    <b> Ranking </b>
+                </div>
+                {grupos.length > 0 ? (
+                    <ul>
+                        {grupos.map(grupo => (
+                            <div key={grupo._id}>
+                                <li key={grupo._id}>
+                                    <div className='team-ranking'>
+                                        <div className='team-profile'>
+                                            <img src={userProfile} alt='Imagem do time' />
+                                        </div>
+                                        <div className='team-name'>
+                                            {grupo.nome}
+                                        </div>
+                                        <div className='team-points'>
+                                            {grupo.pontuacao}
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+
+                        ))}
+
+                    </ul>
+                ) : (
+                        <div> Sem grupos </div>
+                    )}
+
             </div>
 
             <div className='content'>
@@ -297,23 +265,23 @@ export default function Activity({ history }) {
                         <div className='editor'>
                             {/*onclick={get_CKditor()}*/}
                             <CKEditor
-                                editor={ ClassicEditor }
+                                editor={ClassicEditor}
 
-                                onInit={ editor => {
+                                onInit={editor => {
                                     // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
+                                    console.log('Editor is ready to use!', editor);
+                                }}
+                                onChange={(event, editor) => {
                                     const data = editor.getData();
-                                    console.log( { event, editor, data } );
+                                    console.log({ event, editor, data });
                                     setConteudo1(data)
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log('Blur.', editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log('Focus.', editor);
+                                }}
                             />
                         </div>
 
@@ -323,33 +291,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     a)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
-                                            lista1.push({a})
+                                            lista1.push({ a })
                                             setQuestoes1(lista1)
                                             console.log(questoes1)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -359,33 +327,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     b)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
-                                            lista1.push({b})
+                                            lista1.push({ b })
 
                                             setQuestoes1(lista1)
                                             console.log(questoes1)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -395,34 +363,34 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     c)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
-                                            lista1.push({c})
+                                            lista1.push({ c })
 
                                             setQuestoes1(lista1)
                                             console.log(questoes1)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -432,34 +400,34 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     d)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
-                                            lista1.push({d})
+                                            lista1.push({ d })
 
                                             setQuestoes1(lista1)
                                             console.log(questoes1)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -477,23 +445,23 @@ export default function Activity({ history }) {
                         <div className='editor'>
                             {/*onclick={get_CKditor()}*/}
                             <CKEditor
-                                editor={ ClassicEditor }
+                                editor={ClassicEditor}
 
-                                onInit={ editor => {
+                                onInit={editor => {
                                     // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
+                                    console.log('Editor is ready to use!', editor);
+                                }}
+                                onChange={(event, editor) => {
                                     const data = editor.getData();
-                                    console.log( { event, editor, data } );
+                                    console.log({ event, editor, data });
                                     setConteudo2(data)
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log('Blur.', editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log('Focus.', editor);
+                                }}
                             />
                         </div>
 
@@ -503,33 +471,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     a)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
-                                            lista2.push({a})
+                                            lista2.push({ a })
 
                                             setQuestoes2(lista2)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -539,33 +507,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     b)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
-                                            lista2.push({b})
+                                            lista2.push({ b })
 
                                             setQuestoes2(lista2)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -575,33 +543,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     c)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
-                                            lista2.push({c})
+                                            lista2.push({ c })
 
                                             setQuestoes2(lista2)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -611,33 +579,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     d)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
-                                            lista2.push({d})
+                                            lista2.push({ d })
 
                                             setQuestoes2(lista2)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -656,23 +624,23 @@ export default function Activity({ history }) {
                         <div className='editor'>
                             {/*onclick={get_CKditor()}*/}
                             <CKEditor
-                                editor={ ClassicEditor }
+                                editor={ClassicEditor}
 
-                                onInit={ editor => {
+                                onInit={editor => {
                                     // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
+                                    console.log('Editor is ready to use!', editor);
+                                }}
+                                onChange={(event, editor) => {
                                     const data = editor.getData();
-                                    console.log( { event, editor, data } );
+                                    console.log({ event, editor, data });
                                     setConteudo3(data)
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log('Blur.', editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log('Focus.', editor);
+                                }}
                             />
                         </div>
 
@@ -682,33 +650,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     a)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
-                                            lista3.push({a})
+                                            lista3.push({ a })
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -718,33 +686,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     b)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                           
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
-                                            lista3.push({b})
+                                            lista3.push({ b })
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -754,33 +722,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     c)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
-                                            lista3.push({c})
+                                            lista3.push({ c })
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -790,33 +758,33 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     d)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                            
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
-                                            lista3.push({d})
+                                            lista3.push({ d })
 
                                             setQuestoes3(lista3)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -835,23 +803,23 @@ export default function Activity({ history }) {
                         <div className='editor'>
                             {/*onclick={get_CKditor()}*/}
                             <CKEditor
-                                editor={ ClassicEditor }
+                                editor={ClassicEditor}
 
-                                onInit={ editor => {
+                                onInit={editor => {
                                     // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
+                                    console.log('Editor is ready to use!', editor);
+                                }}
+                                onChange={(event, editor) => {
                                     const data = editor.getData();
-                                    console.log( { event, editor, data } );
+                                    console.log({ event, editor, data });
                                     setConteudo4(data)
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log('Blur.', editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log('Focus.', editor);
+                                }}
                             />
                         </div>
 
@@ -861,32 +829,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     a)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
-                                            lista4.push({a})
+                                            lista4.push({ a })
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -896,32 +864,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     b)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
-                                            lista4.push({b})
+                                            lista4.push({ b })
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -931,32 +899,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     c)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
-                                            lista4.push({c})
+                                            lista4.push({ c })
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -966,32 +934,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     d)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
-                                            lista4.push({d})
+                                            lista4.push({ d })
 
                                             setQuestoes4(lista4)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -999,7 +967,7 @@ export default function Activity({ history }) {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className='cards-questions'>
                     <div className='individual-card'>
                         <b>Questão 5</b>
@@ -1009,23 +977,23 @@ export default function Activity({ history }) {
                         <div className='editor'>
                             {/*onclick={get_CKditor()}*/}
                             <CKEditor
-                                editor={ ClassicEditor }
+                                editor={ClassicEditor}
 
-                                onInit={ editor => {
+                                onInit={editor => {
                                     // You can store the "editor" and use when it is needed.
-                                    console.log( 'Editor is ready to use!', editor );
-                                } }
-                                onChange={ ( event, editor ) => {
+                                    console.log('Editor is ready to use!', editor);
+                                }}
+                                onChange={(event, editor) => {
                                     const data = editor.getData();
-                                    console.log( { event, editor, data } );
+                                    console.log({ event, editor, data });
                                     setConteudo5(data)
-                                } }
-                                onBlur={ ( event, editor ) => {
-                                    console.log( 'Blur.', editor );
-                                } }
-                                onFocus={ ( event, editor ) => {
-                                    console.log( 'Focus.', editor );
-                                } }
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log('Blur.', editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log('Focus.', editor);
+                                }}
                             />
                         </div>
 
@@ -1035,32 +1003,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     a)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var a = {
                                                 texto: data
                                             }
-                                            lista5.push({a})
+                                            lista5.push({ a })
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -1070,32 +1038,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     b)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var b = {
                                                 texto: data
                                             }
-                                            lista5.push({b})
+                                            lista5.push({ b })
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -1105,32 +1073,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     c)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var c = {
                                                 texto: data
                                             }
-                                            lista5.push({c})
+                                            lista5.push({ c })
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>
@@ -1140,32 +1108,32 @@ export default function Activity({ history }) {
                                 <div className='letter-alternative'>
                                     d)
                                 </div>
-                                <br/>
+                                <br />
                                 <div className='editor-alternative'>
                                     <CKEditor
-                                        editor={ ClassicEditor }
+                                        editor={ClassicEditor}
 
-                                        onInit={ editor => {
+                                        onInit={editor => {
                                             // You can store the "editor" and use when it is needed.
-                                            console.log( 'Editor is ready to use!', editor );
-                                        } }
-                                        onChange={ ( event, editor ) => {
+                                            console.log('Editor is ready to use!', editor);
+                                        }}
+                                        onChange={(event, editor) => {
                                             const data = editor.getData();
-                                            console.log( { event, editor, data } );
-                                        } }
-                                        onBlur={ ( event, editor ) => {
-                                            console.log( 'Blur.', editor );
+                                            console.log({ event, editor, data });
+                                        }}
+                                        onBlur={(event, editor) => {
+                                            console.log('Blur.', editor);
                                             const data = editor.getData();
                                             var d = {
                                                 texto: data
                                             }
-                                            lista5.push({d})
+                                            lista5.push({ d })
 
                                             setQuestoes5(lista5)
-                                        } }
-                                        onFocus={ ( event, editor ) => {
-                                            console.log( 'Focus.', editor );
-                                        } }
+                                        }}
+                                        onFocus={(event, editor) => {
+                                            console.log('Focus.', editor);
+                                        }}
                                     />
 
                                 </div>

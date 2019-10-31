@@ -46,11 +46,8 @@ export default function Routes() {
             <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
             <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
             <Route path='/battle' component={Batalha} />
-            
-            {/*<Route path='/test' component={Test}/>*/}
-
             <Route path='/:idUser/settings' component={Settings} />
-             
+            {/*<Route path='/test' component={Test}/>*/}
 
             {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
