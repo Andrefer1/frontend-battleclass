@@ -465,15 +465,6 @@ export default function Activity({ history }) {
                                 </div>
                             </div>
                         </div>
-                
-                        <div className='buttons'>
-                            <div>
-                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
-                            </div>
-                            <div>
-                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -652,15 +643,6 @@ export default function Activity({ history }) {
                                 </div>
                             </div>
 
-                        </div>
-                
-                        <div className='buttons'>
-                            <div>
-                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
-                            </div>
-                            <div>
-                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -841,15 +823,6 @@ export default function Activity({ history }) {
                             </div>
 
                         </div>
-                
-                        <div className='buttons'>
-                            <div>
-                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
-                            </div>
-                            <div>
-                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -1022,15 +995,6 @@ export default function Activity({ history }) {
                                     />
 
                                 </div>
-                            </div>
-                        </div>
-                
-                        <div className='buttons'>
-                            <div>
-                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
-                            </div>
-                            <div>
-                                <button className='btn btn-primary add' id='teste'>Adicionar</button>
                             </div>
                         </div>
                     </div>
@@ -1208,98 +1172,103 @@ export default function Activity({ history }) {
                             </div>
 
                         </div>
-                        <br />
-                        <hr/>
-                        <div>
-                            <h4>GABARITO</h4>
-                            <div>
-                            <table className="table table-bordered table-striped">
-                                <thead className="thead-dark">
-                                    <tr>
-                                        <th colSpan="2"> Tabela de Rotas da API</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Questões</td>
-                                        <td>Alternativa correta</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> Questão 1</td>
-                                        <td>
-                                            <select value={questao1Gabarito[1]} onChange={e => setQuestao1Gabarito({1:e.target.value})}>
-                                                <option value=''> --- </option>
-                                                <option value="a"> a </option>
-                                                <option value="b"> b </option>
-                                                <option value="c"> c </option>
-                                                <option value="d"> d </option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> Questão 2</td>
-                                        <td>
-                                            <select value={questao2Gabarito[2]} onChange={e => setQuestao2Gabarito({2:e.target.value})}>
-                                                <option value=''> --- </option>
-                                                <option value="a"> a </option>
-                                                <option value="b"> b </option>
-                                                <option value="c"> c </option>
-                                                <option value="d"> d </option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> Questão 3</td>
-                                        <td>
-                                            <select value={questao3Gabarito[3]} onChange={e => setQuestao3Gabarito({3:e.target.value})}>
-                                                <option value=''> --- </option>
-                                                <option value="a"> a </option>
-                                                <option value="b"> b </option>
-                                                <option value="c"> c </option>
-                                                <option value="d"> d </option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> Questão 4</td>
-                                        <td>
-                                            <select value={questao4Gabarito[4]} onChange={e => setQuestao4Gabarito({4:e.target.value})}>
-                                                <option value=''> --- </option>
-                                                <option value="a"> a </option>
-                                                <option value="b"> b </option>
-                                                <option value="c"> c </option>
-                                                <option value="d"> d </option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td> Questão 5</td>
-                                        <td>
-                                            <select value={questao5Gabarito[5]} onChange={e => setQuestao5Gabarito({5:e.target.value})}>
-                                                <option value=''> --- </option>
-                                                <option value="a"> a </option>
-                                                <option value="b"> b </option>
-                                                <option value="c"> c </option>
-                                                <option value="d"> d </option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            </div>
-                        </div>
-                
-                        <div className='buttons'>
-                            <div>
-                                {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
-                            </div>
-                            <div>
-                                <button onClick={salvarAtividade} className='btn btn-primary add' id='teste'>Adicionar</button>
-                            </div>
-                        </div>
                     </div>
+                    
                 </div>
 
+
+                <div className="cards-questions">
+                    <div className="individual-card">
+                        <div>
+                        <h4>GABARITO</h4>
+                        <div>
+                        <table className="table table-bordered table-striped">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th colSpan="2"> Tabela de Rotas da API</th>
+                                </tr>
+                                <tr>
+                                    <td>Questões</td>
+                                    <td>Alternativa correta</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> Questão 1</td>
+                                    <td>
+                                        <select value={questao1Gabarito[1]} onChange={e => setQuestao1Gabarito({1:e.target.value})}>
+                                            <option value=''> --- </option>
+                                            <option value="a"> a </option>
+                                            <option value="b"> b </option>
+                                            <option value="c"> c </option>
+                                            <option value="d"> d </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Questão 2</td>
+                                    <td>
+                                        <select value={questao2Gabarito[2]} onChange={e => setQuestao2Gabarito({2:e.target.value})}>
+                                            <option value=''> --- </option>
+                                            <option value="a"> a </option>
+                                            <option value="b"> b </option>
+                                            <option value="c"> c </option>
+                                            <option value="d"> d </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Questão 3</td>
+                                    <td>
+                                        <select value={questao3Gabarito[3]} onChange={e => setQuestao3Gabarito({3:e.target.value})}>
+                                            <option value=''> --- </option>
+                                            <option value="a"> a </option>
+                                            <option value="b"> b </option>
+                                            <option value="c"> c </option>
+                                            <option value="d"> d </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Questão 4</td>
+                                    <td>
+                                        <select value={questao4Gabarito[4]} onChange={e => setQuestao4Gabarito({4:e.target.value})}>
+                                            <option value=''> --- </option>
+                                            <option value="a"> a </option>
+                                            <option value="b"> b </option>
+                                            <option value="c"> c </option>
+                                            <option value="d"> d </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Questão 5</td>
+                                    <td>
+                                        <select value={questao5Gabarito[5]} onChange={e => setQuestao5Gabarito({5:e.target.value})}>
+                                            <option value=''> --- </option>
+                                            <option value="a"> a </option>
+                                            <option value="b"> b </option>
+                                            <option value="c"> c </option>
+                                            <option value="d"> d </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    <div className='buttons'>
+                        <div>
+                            {/*<button type="button" className="btn btn-outline-primary add-alternative" onClick={create_CKEditor}>+ Alternativa</button>*/}
+                        </div>
+                        <div>
+                            <button onClick={salvarAtividade} className='btn btn-primary add' id='teste'>Adicionar</button>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+                <br />
             </div>
         </div>
     );

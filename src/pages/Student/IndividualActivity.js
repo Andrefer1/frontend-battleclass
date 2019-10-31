@@ -11,9 +11,42 @@ export default function Activity({ history, match}) {
     const [ questoes, setQuestoes ] = useState([]); 
     const [ user, setUser ] = useState(Object);
     const [ grupos, setGrupos ] = useState([]);
+    const [ questao1, setQuestao1 ] = useState(Object);
+    const [ questao2, setQuestao2 ] = useState(Object);
+    const [ questao3, setQuestao3 ] = useState(Object);
+    const [ questao4, setQuestao4 ] = useState(Object);
+    const [ questao5, setQuestao5 ] = useState(Object);
+    var listaVar =[questao1, questao2, questao3, questao4, questao5]
+    var resposta = []
     var listaAux = [];
     var letra = '';
     const alfabeto = ['a','b','c','d']    
+
+    function postarAtividade() {
+        console.log('POSTADO')
+    }
+
+    function verificarVariavel(index, valor) {
+        console.log(valor)
+        if(listaVar[index] == 0) {
+            setQuestao1({1:valor})
+            resposta.push({1:valor})
+        } else if(listaVar[index] == 1){
+            setQuestao2({2:valor})
+            resposta.push({2:valor})
+        } else if(listaVar[index] == 2){
+            setQuestao3({3:valor})
+            resposta.push({3:valor})
+        } else if(listaVar[index] == 3){
+            setQuestao4({4:valor})
+            resposta.push({4:valor})
+        } else if(listaVar[index] == 4){
+            setQuestao5({5:valor})
+            resposta.push({5:valor})
+        }
+
+        console.log(resposta)
+    }
 
     useEffect(() => {
         async function buscarAtividadeIndividual(id) {
@@ -141,27 +174,23 @@ export default function Activity({ history, match}) {
                                 <li key={index}>
                                     <div className='card-individual'>
                                         <div className='str-question'>
-                                            <strong>{questao[index + 1].texto}</strong>
+                                            <strong> Questão {index + 1}</strong>
                                         </div>
                                         <div className='activity-context'>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            {questao[index + 1].texto}
                                         </div>
                                         { questao[index + 1].alternativas.length > 0 ? (
                                             <div className='alternatives'>
                                                 { questao[index + 1].alternativas.map((alternativa, index) => (
-                                                    <div className='individual-alternative' key={index}>
+                                                    <div className='individual-alternative' key={index} value={listaVar[index]} onChange={e => verificarVariavel(index, e.target.value)}>
                                                         <div className='div-radio-input'>
-                                                            <input type='radio' name='radio-question' className='radio-input' />
+                                                            <input type='radio' name='radio-question' value={alfabeto[index]} className='radio-input' />
                                                         </div>
                                                         <div className='alphabet-letter'>
                                                             {letra = alfabeto[index]})
                                                         </div>
                                                         <div className='div-alternative-text'>
-                                                            <label for='radio-input' className='alternative-text'> 
+                                                            <label for='radio-input' className='alternative-text' > 
                                                                 {alternativa[letra].texto} 
                                                                 {/*
                                                                 iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
@@ -191,7 +220,7 @@ export default function Activity({ history, match}) {
                 </div>
                 
                 <div className='div-button'>
-                    <button className='btn btn-primary button'>
+                    <button className='btn btn-primary button' onClick={postarAtividade}>
                         Publicar
                     </button>
                 </div>

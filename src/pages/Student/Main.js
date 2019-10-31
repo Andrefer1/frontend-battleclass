@@ -138,7 +138,7 @@ export default function MainStudent({ history, match }) {
         { atividades.length > 0 ? (
             <ul>
                 { atividades.map(atividade => (
-                    <div className='tasks'>
+                    <div className='tasks' key={atividade._id}>
                         <div className='task'>
                             <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
                                 <li key={atividade._id}>
