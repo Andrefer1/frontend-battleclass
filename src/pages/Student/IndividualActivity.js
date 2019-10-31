@@ -6,44 +6,50 @@ import api from '../../service/api';
 
 import './IndividualActivity.css';
 
-export default function Activity({ history, match}) {
-    const [ atividade, setAtividade ] = useState(Object);
-    const [ questoes, setQuestoes ] = useState([]); 
-    const [ user, setUser ] = useState(Object);
-    const [ grupos, setGrupos ] = useState([]);
+export default function Activity({ history, match }) {
+    const [atividade, setAtividade] = useState(Object);
+    const [questoes, setQuestoes] = useState([]);
+    const [user, setUser] = useState(Object);
+    const [grupos, setGrupos] = useState([]);
     var listaAux = [];
     var letra = '';
-    const alfabeto = ['a','b','c','d']    
+    const alfabeto = ['a', 'b', 'c', 'd']
+    const [icon, setIcon] = useState(Object)
+
 
     useEffect(() => {
         async function buscarAtividadeIndividual(id) {
-            const response = await api.get('/buscar/atividade', {headers: {
-                id: id
-            }});
+            const response = await api.get('/buscar/atividade', {
+                headers: {
+                    id: id
+                }
+            });
             //heros = response.data;
             setAtividade(response.data)
             setQuestoes(response.data.questoes)
         }
 
-        async function buscarUser(){
-            const response = await api.get('/buscar/userId', {headers: {
-                id: match.params.idUser
-            }})
-            
-            if (response.data != null){
+        async function buscarUser() {
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: match.params.idUser
+                }
+            })
+
+            if (response.data != null) {
                 setUser(response.data);
             }
 
         }
 
-        async function buscarTeams(){
+        async function buscarTeams() {
             const response = await api.get('/buscar/grupo/all')
 
             listaAux = response.data
             listaAux.sort(function (a, b) {
                 return b.pontuacao - a.pontuacao
             })
-            
+
             setGrupos(listaAux);
         }
 
@@ -55,104 +61,86 @@ export default function Activity({ history, match}) {
     return (
         <div className='individual-activity'>
 
-            <nav>
-                <div className='navbar'>
-                    <div className='sitename'>
-                        <a className='' onClick={() => (history.push(`/${match.params.idUser}/main`))}> BATTLECLASS </a>
-                    </div>
-                    <div className='student-data'>
-                        <div className='activity-title'>
-                            {atividade.titulo}
-                        </div>
-                        
-                        <div className='trace'>
-                            -
-                        </div>
-                        <div className='team-points-principal'>
-                            [aluno]/50
-                        </div>
-                    </div>
-                    <div className='dates'>
-                        <div className='trace'>
-                            Postagem: {atividade.dataPostagem}
-                        </div>
-                        <div className='team-points-principal'>
-                            Entrega: {atividade.dataEntrega}
-                        </div>
-                    </div>
+            <div className='student-data'>
+                <div className='student-name'>
+                    {user.nome}
                 </div>
+                <div className='trace'>
+                    -
+            </div>
+                <div className='student-points'>
+                    {user.pontuacao} PONTOS
+            </div>
 
-                <hr id='hr' />
-            </nav>
+            </div>
+            <div className='div-img-user'>
+                <img src={icon.url} className='img-user' />
+            </div>
 
-            
             <div className='menu'>
-                <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-                <a onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
-                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
+                <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
+                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
+                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
+                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
                 <div className='menu-bottom'>
-                    <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                    <a href='/contacts'> Contatos </a>
-                    <a href='/about'> Sobre </a>
+                    <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
+                    <a className='menu-item' href='/contacts'> Contatos </a>
+                    <a className='menu-item' href='/about'> Sobre </a>
                 </div>
             </div>
-            
 
-            <div className='rankings'>
-                <div className='ranking-do-dia' >
-                    <div className='ranking-name'>
-                        <b> Ranking do Dia </b>
-                    </div>
-                    { grupos.length > 0 ? (
-                        <ul>
-                            { grupos.map(grupo => (
-                                <div key={grupo._id}>
-                                    <li key={grupo._id}>
-                                        <div className='team-ranking'>
-                                            <div className='team-profile'>
-                                                <img src={userProfile} alt='Imagem do time' />
-                                            </div>          
-                                            <div className='team-name'>
-                                                {grupo.nome}
-                                            </div>       
-                                            <div className='team-points'>
-                                                {grupo.pontuacao}
-                                            </div>
+            <div className='ranking'>
+                <div className='str-ranking'>
+                    <b> Ranking </b>
+                </div>
+                {grupos.length > 0 ? (
+                    <ul>
+                        {grupos.map(grupo => (
+                            <div key={grupo._id}>
+                                <li key={grupo._id}>
+                                    <div className='team-ranking'>
+                                        <div className='team-profile'>
+                                            <img src={userProfile} alt='Imagem do time' />
                                         </div>
-                                    </li>
-                                    <hr className='hr-ranking' />
-                                </div>
-                                
-                            ))}
-                            
-                        </ul>
-                    ): (
+                                        <div className='team-name'>
+                                            {grupo.nome}
+                                        </div>
+                                        <div className='team-points'>
+                                            {grupo.pontuacao}
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+
+                        ))}
+
+                    </ul>
+                ) : (
                         <div> Sem grupos </div>
                     )}
-                    
-                </div>
+
             </div>
-            
+
             <div className='content2'>
                 <div className='cards-questions'>
-                    { questoes.length > 0 ? (
+                    {questoes.length > 0 ? (
                         <ul>
-                            { questoes.map( (questao, index) => (
+                            {questoes.map((questao, index) => (
                                 <li key={index}>
                                     <div className='card-individual'>
                                         <div className='str-question'>
                                             <strong>{questao[index + 1].texto}</strong>
                                         </div>
                                         <div className='activity-context'>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                                             non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                                         </div>
-                                        { questao[index + 1].alternativas.length > 0 ? (
+                                        {questao[index + 1].alternativas.length > 0 ? (
                                             <div className='alternatives'>
-                                                { questao[index + 1].alternativas.map((alternativa, index) => (
+                                                {questao[index + 1].alternativas.map((alternativa, index) => (
                                                     <div className='individual-alternative' key={index}>
                                                         <div className='div-radio-input'>
                                                             <input type='radio' name='radio-question' className='radio-input' />
@@ -161,8 +149,8 @@ export default function Activity({ history, match}) {
                                                             {letra = alfabeto[index]})
                                                         </div>
                                                         <div className='div-alternative-text'>
-                                                            <label for='radio-input' className='alternative-text'> 
-                                                                {alternativa[letra].texto} 
+                                                            <label for='radio-input' className='alternative-text'>
+                                                                {alternativa[letra].texto}
                                                                 {/*
                                                                 iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
                                                                 voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
@@ -171,25 +159,25 @@ export default function Activity({ history, match}) {
                                                             </label>
                                                         </div>
                                                     </div>
-                
+
                                                 ))}
-                                                
+
                                             </div>
-                                        ): (
-                                            <div> Sem questões </div>
-                                        )}
-                                        
+                                        ) : (
+                                                <div> Sem questões </div>
+                                            )}
+
                                     </div>
                                 </li>
                             ))}
-                            
+
                         </ul>
                     ) : (
-                        <div> Sem questões </div>
-                    )}
-                    
+                            <div> Sem questões </div>
+                        )}
+
                 </div>
-                
+
                 <div className='div-button'>
                     <button className='btn btn-primary button'>
                         Publicar
@@ -197,6 +185,6 @@ export default function Activity({ history, match}) {
                 </div>
             </div>
         </div>
-        
+
     );
 }

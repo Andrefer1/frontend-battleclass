@@ -8,18 +8,15 @@ import './Teams.css';
 import api from '../../service/api';
 
 export default function Team() {
-    const [showMembers, setShowMembers] = useState('')
-    const [ grupos, setGrupos ] = useState([]);
-    const [ usuarios, setUsuarios ] = useState([])
-    var [ cont, setCont ] = useState(0)
+    const [grupos, setGrupos] = useState([]);
+    const [usuarios, setUsuarios] = useState([])
+    const [icon, setIcon] = useState(Object)
+    
+    var [cont, setCont] = useState(0)
 
     const listaU = []
 
-    function dropdown() {
-        setShowMembers('true')
-    }
-
-    function adicionar_estudante(){
+    function adicionar_estudante() {
         if (document.querySelector('select').value == '') {
             alert('Selecione um estudante')
         }
@@ -32,132 +29,96 @@ export default function Team() {
             studentTag.appendChild(createDiv)
         }
     }
- 
+
     useEffect(() => {
-        async function buscarGrupos(){
+        async function buscarGrupos() {
             const response = await api.get('/buscar/grupo/all');
             setGrupos(response.data)
 
-            for(let u in response.data) {
-                for (let i in response.data[u].integrantes){
+            for (let u in response.data) {
+                for (let i in response.data[u].integrantes) {
                     buscaUser(response.data[u].integrantes[i])
                 }
             }
-            
-            
+
+
         }
 
         async function buscaUser(id) {
-            const response = await api.get('/buscar/userId', {headers: {
-                id:id
-            }})
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: id
+                }
+            })
 
             listaU.push(response.data)
             setUsuarios(listaU)
             setCont(cont += 1)
-            
-            
+
+
         }
         buscarGrupos()
-        
+
     }, [])
 
     return (
         <div className='teams'>
-            <nav>
-                <div className='navbar'>
-                    <div className='sitename'>
-                        <a href='/main'>
-                            BATTLECLASS
-                        </a>
-                    </div>
-                    <div className='student-data'>
-                        <div className='team-name-principal'>
-                            Bonde do Tigrãaaaaao
-                        </div>
-                        <div className='trace'>
-                            -
-                        </div>
-                        <div className='team-points-principal'>
-                            75 PONTOS
-                    </div>
-                    </div>
-                </div>
-
-                <hr id='hr' />
-            </nav>
-
-            {/*
-            <div className='menu'>
-                <a href='/dashboard'> Página Inicial </a>
-                <a href='/students'> Alunos </a>
-                <a href='/teams'> Equipes </a>
-                <a href='/activitys'> Atividades </a>
-                <div className='menu-bottom'>
-                    <a href='/settings'> Configurações </a>
-                    <a href='/contacts'> Contatos </a>
-                    <a href='/about'> Sobre </a>
+            <div className='screen-data'>
+                <div className='str-dashboard'>
+                    Dashboard
                 </div>
             </div>
-            */}
+            <div className='div-img-user'>
+                <img src={icon.url} className='img-user' />
+            </div>
 
-            <div className='rankings'>
-                <div className='ranking-do-dia' >
-                    <div className='ranking-name'>
-                        <b> Ranking do Dia </b>
-                    </div>
-                    <ul>
-                        <li>
-                            <div className='team-ranking' onClick={dropdown}>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Bonde do Tigrãaaaaao
-                                </div>
-                                <div className='team-points'>
-                                    75
-                                </div>
-                            </div>
-                            <RcIf if={showMembers === "true"}>
-                                teste
-                            </RcIf>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 2
-                            </div>
-                                <div className='team-points'>
-                                    60
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                        <li>
-                            <div className='team-ranking'>
-                                <div className='team-profile'>
-                                    <img src={userProfile} alt='Imagem do time' />
-                                </div>
-                                <div className='team-name'>
-                                    Equipe 3
-                            </div>
-                                <div className='team-points'>
-                                    57
-                            </div>
-                            </div>
-                        </li>
-                        <hr id='hr-ranking' />
-                    </ul>
+            <div className='menu'>
+                <a className='sitename' href='/dashboard'>BattleClass</a>
+                <a className='menu-item' href='/dashboard'> Página Inicial </a>
+                <a className='menu-item' href='/students'> Alunos </a>
+                <a className='menu-item' href='/teams'> Equipes </a>
+                <a className='menu-item' href='/activitys'> Atividades </a>
+                <div className='menu-bottom'>
+                    <a className='menu-item' href='/settings'> Configurações </a>
+                    <a className='menu-item' href='/contacts'> Contatos </a>
+                    <a className='menu-item' href='/about'> Sobre </a>
                 </div>
+            </div>
+
+            <div className='ranking'>
+                <div className='str-ranking'>
+                    <b> Ranking </b>
+                </div>
+                {grupos.length > 0 ? (
+                    <ul>
+                        {grupos.map(grupo => (
+                            <div key={grupo._id}>
+                                <li key={grupo._id}>
+                                    <div className='team-ranking'>
+                                        <div className='team-profile'>
+                                            <img src={userProfile} alt='Imagem do time' />
+                                        </div>
+                                        <div className='team-name'>
+                                            {grupo.nome}
+                                        </div>
+                                        <div className='team-points'>
+                                            {grupo.pontuacao}
+                                        </div>
+                                    </div>
+                                </li>
+                            </div>
+
+                        ))}
+
+                    </ul>
+                ) : (
+                        <div> Sem grupos </div>
+                    )}
+
             </div>
 
             <div className='cards-teams'>
-                { grupos.length > 0 ? (
+                {grupos.length > 0 ? (
                     <ul>
                         {grupos.map(grupo => (
                             <li key={grupo._id}>
@@ -172,11 +133,11 @@ export default function Team() {
                                     </div>
 
                                     <hr className='hr-card-team' />
-    
-                                    { cont > 0 ? (
+
+                                    {cont > 0 ? (
                                         <ul>
-                                            { usuarios.map(user => (
-                                               
+                                            {usuarios.map(user => (
+
                                                 <li classname='student-data' key={user._id}>
                                                     <RcIf if={grupo.integrantes.includes(user._id)}>
                                                         <div className='student-data'>
@@ -189,13 +150,13 @@ export default function Team() {
                                                         </div>
                                                     </RcIf>
                                                 </li>
-                                                
+
                                             ))}
                                         </ul>
-                                        
-                                    ): (
-                                        <div> Sem integrantes </div>
-                                    )}
+
+                                    ) : (
+                                            <div> Sem integrantes </div>
+                                        )}
 
                                     <hr className='hr-card-team' />
 
@@ -214,14 +175,14 @@ export default function Team() {
                                 </div>
                             </li>
                         ))}
-                        
+
                     </ul>
 
-                ): (
-                    <div> Sem Grupo </div>
-                )}
+                ) : (
+                        <div> Sem Grupo </div>
+                    )}
             </div>
-                    
+
         </div>
     );
 }

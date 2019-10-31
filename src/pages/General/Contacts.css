@@ -10,7 +10,7 @@ html, body {
     height: 0px;
 }
 
-.about {
+.contacts {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -18,136 +18,174 @@ html, body {
 }
 
 
-.about .str-about {
-    width: 100px;
-    height: 81px;
-    margin-top: 30px;
-    margin-left: 300px;
-    font-size: 25pt;
-    /*border: solid 1px;*/
+/*NAVBAR*/
+.contacts .screen-data {
+    width: 100%;
+    height: 100px;
+    padding: 9px 0 0 240px;
+    display: flex;
+    position: absolute;
+    white-space: nowrap;
+    border-bottom: solid 1px rgb(212, 212, 212);
 }
 
-.about #hr-nav {
-    width: auto;
-    min-width: 300px;
-    max-width: 83%;
+.contacts .screen-data .str {
+    margin-top: 15px;
+    color: black;
+    font-size: 23pt;
+}
+
+.contacts .div-img-user {
+    float: right;
+    margin-right: 30px;
+}
+
+.contacts .div-img-user .img-user {
+    width: 98px;
+}
+
+
+/*MENU*/
+.contacts .menu {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    background:rgba(9,9,121,1);
+    z-index: 1;
+    margin-top: -95px;
     margin-top: 0px;
-    margin-left: 300px;
-    margin-right: 50px;
-    background: rgb(212, 212, 212);
+    margin-left: 0px;
 }
 
+.contacts .menu a {
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid;
+    border-color: white;
+    cursor: pointer;
+}
+
+.contacts .menu a:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.contacts .menu .sitename {
+    padding: 30px 16px;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 20pt;
+}
+
+.contacts .menu .sitename:hover {
+    background: rgba(9,9,121,1);
+    color: white;
+}
+
+.contacts .menu .menu-bottom {
+    width: 200px;
+    position: absolute;
+    bottom: 0;
+}
 
 
 /*RANKINGS*/
-.about .rankings .ranking-do-dia {
-    height: 280px;
+.contacts .ranking {
     width: 270px;
+    height: 390px;
     background: white;
     border-radius: 9px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
     float: right;
-    transform: translate(-70px, 110px);
-    /*margin-top: 110px;
-    margin-right: 20px;*/
+    transform: translate(90px, 130px);
 }
 
-.about .rankings .ranking-do-dia .ranking-name {
-    margin-top: 20px;
+.contacts .ranking .str-ranking {
+    margin: 10px 15px 0 15px;
     text-align: center;
 }
 
-.about .rankings .ranking-do-dia ul {
-    margin-top: 20px;
-    margin-right: 40px;
+.contacts .ranking ul {
+    margin: 10px 15px 0 15px;
 }
 
-.about .rankings .ranking-do-dia ul li {
+.contacts .ranking ul li {
+    height: 50px;
+    margin-bottom: 20px; 
     display: inline-block;
+    border-bottom: solid 1px rgb(190, 190, 190);
 }
 
-.about .rankings .ranking-do-dia ul li .team-ranking {
+.contacts .ranking ul li .team-ranking {
+    width: 235px;
     display: flex;
-    transform: translate( 95px, 20px)
 }
 
-.about .rankings .ranking-do-dia ul li .team-ranking:hover {
-    background-color: #f1f1f1;
-    cursor: pointer
+.contacts .ranking ul li .team-ranking .team-profile img {
+    height: 40px;
 }
 
-.about .rankings .ranking-do-dia ul li .team-ranking .team-profile {
-    position: absolute;
-    transform: translate(-105px, -25px);
-}
-
-.about .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
+.contacts .ranking ul li .team-ranking .team-name {
+    width: 163px;
     height: 30px;
-}
-
-.about .rankings .ranking-do-dia ul li .team-ranking .team-name {
-    width: 155px;
-    position: relative;
     text-align: left;
-    margin-top: -20px;
-    transform: translate(-72px, -3px);
+    transform: translate(8px, 8px);
 
     white-space: nowrap;
     overflow: hidden;
     transition-duration: 1s;
 }
 
-.about .rankings .ranking-do-dia ul li .team-ranking .team-points {
+.contacts .ranking ul li .team-ranking .team-points {
+    width: 30px; 
     position: absolute;
-    transform: translate(90px, -22px);
-}
-
-.about .rankings .ranking-do-dia ul #hr-ranking {
-    width: 210px;
-    margin-top: 25px;
-    margin-left: 30px;
+    transform: translate(205px, 8px);
 }
 
 
 /*CONTENT*/
-.about .content {
+.contacts .content {
     width: auto;
     min-width: 10%;
     max-width: 64%;
     margin: 30px 380px 0 300px;
 }
 
-.about .content .support {
+.contacts .content .support {
     float: left;
     margin-right: 100%;
     /*border: solid 1px;*/
 }
 
-.about .content .support .str-support {
+.contacts .content .support .str-support {
     font-size: 20pt;
     float: left;
     /*border: solid 1px;*/
 }
 
-.about .content .support .email-support {
+.contacts .content .support .email-support {
     float: left;
     /*border: solid 1px;*/
 }
 
-.about .content .email-devs {
+.contacts .content .email-devs {
     margin: 30px 0 0 0;
     text-align: justify;
     float: left;
     /*border: solid 1px;*/
 }
 
-.about .content .str-developers {
+.contacts .content .str-developers {
     font-size: 20pt;
     margin-bottom: -10px;
     /*border: solid 1px;*/
 }
 
-.about .content .email-devs .dev {
+.contacts .content .email-devs .dev {
     margin-top: 20px;
     /*border: solid 1px;*/
 }

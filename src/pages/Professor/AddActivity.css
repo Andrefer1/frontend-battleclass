@@ -10,7 +10,7 @@ html, body{
     height: 0px;
 }
 
-.individual-activity {
+.add-activity {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -19,158 +19,136 @@ html, body{
 
 
 /*NAVBAR*/
-.individual-activity nav .navbar {
-    height: 100px;
+.add-activity .screen-data {
     width: 100%;
-    background: linear-gradient(
-        90deg, rgba(2,0,36,1) 0%,
-        rgba(9,9,121,1) 35%,
-        rgba(0,212,255,1) 100%
-    ); 
-    position: fixed;
-    box-shadow: 2px 5px 5px 2px rgba(0,0,0,0.13);
-}
-
-.individual-activity nav .navbar .sitename a {
-    color: white;
-    text-decoration: none;
-    margin-left: 60px;
-}
-
-.individual-activity nav .navbar .student-data {
+    height: 100px;
+    padding: 9px 0 0 240px;
     display: flex;
     position: absolute;
-    margin-left: 254px;
+    white-space: nowrap;
+    border-bottom: solid 1px rgb(212, 212, 212);
 }
 
-.individual-activity nav .navbar .student-data .activity-title {
-    color: white;
-    font-size: 30px;
+.add-activity .screen-data .str {
+    margin-top: 15px;
+    color: black;
+    font-size: 23pt;
 }
 
-.individual-activity nav .navbar .student-data .trace {
-    color: white;
-    font-size: 30px;
-    margin-left: 20px;
+.add-activity .div-img-user {
+    float: right;
+    margin-right: 30px;
 }
 
-.individual-activity nav .navbar .student-data .team-points-principal{
-    color: white;
-    font-size: 25px;
-    margin-top: 3px;
-    margin-left: 20px;
-}
-
-.individual-activity nav #hr {
-    max-width: 100%;
-    margin-top: -1px;
-    margin-left: 270px;
-    background: black;
-    position: relative;
+.add-activity .div-img-user .img-user {
+    width: 98px;
 }
 
 
 /*MENU*/
-.individual-activity .menu {
-    position: fixed; /*Tirar o absolute no ranking*/
+.add-activity .menu {
+    width: 200px;
+    height: 100%;
+    position: fixed;
     background:rgba(9,9,121,1);
-    width: 250px;
-    height: 90%;
     z-index: 1;
-    margin-top: 83px;
+    margin-top: -95px;
+    margin-top: 0px;
     margin-left: 0px;
 }
 
-.individual-activity .menu a {
+.add-activity .menu a {
     color: white;
-    padding: 12px 16px;
+    padding: 10px 16px;
     text-decoration: none;
     display: block;
     border-bottom: 1px solid;
     border-color: white;
+    cursor: pointer;
 }
 
-.individual-activity .menu a:hover {
-    background-color: rgba(206,51,126,1)
+.add-activity .menu a:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
 
-.individual-activity .menu .menu-bottom {
-    margin-top: 535px;
+.add-activity .menu .sitename {
+    padding: 30px 16px;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 20pt;
+}
 
+.add-activity .menu .sitename:hover {
+    background: rgba(9,9,121,1);
+    color: white;
+}
+
+.add-activity .menu .menu-bottom {
+    width: 200px;
+    position: absolute;
+    bottom: 0;
 }
 
 
 /*RANKINGS*/
-.individual-activity .rankings .ranking-do-dia {
-    height: 280px;
+.add-activity .ranking {
     width: 270px;
+    height: 390px;
     background: white;
     border-radius: 9px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
     float: right;
-    margin-top: 110px;
-    margin-right: 20px;
+    transform: translate(90px, 130px);
 }
 
-.individual-activity .rankings .ranking-do-dia .ranking-name {
-    margin-top: 20px;
+.add-activity .ranking .str-ranking {
+    margin: 10px 15px 0 15px;
     text-align: center;
 }
 
-.individual-activity .rankings .ranking-do-dia ul {
-    margin-top: 20px;
-    margin-right: 40px;
+.add-activity .ranking ul {
+    margin: 10px 15px 0 15px;
 }
 
-.individual-activity .rankings .ranking-do-dia ul li {
+.add-activity .ranking ul li {
+    height: 50px;
+    margin-bottom: 20px; 
     display: inline-block;
+    border-bottom: solid 1px rgb(190, 190, 190);
 }
 
-.individual-activity .rankings .ranking-do-dia ul li .team-ranking {
+.add-activity .ranking ul li .team-ranking {
+    width: 235px;
     display: flex;
-    transform: translate( 95px, 20px)
 }
 
-.individual-activity .rankings .ranking-do-dia ul li .team-ranking:hover {
-    background-color: #f1f1f1;
-    cursor: pointer
+.add-activity .ranking ul li .team-ranking .team-profile img {
+    height: 40px;
 }
 
-.individual-activity .rankings .ranking-do-dia ul li .team-ranking .team-profile {
-    position: absolute;
-    transform: translate(-105px, -25px);
-}
-
-.individual-activity .rankings .ranking-do-dia ul li .team-ranking .team-profile img {
+.add-activity .ranking ul li .team-ranking .team-name {
+    width: 163px;
     height: 30px;
-}
-
-.individual-activity .rankings .ranking-do-dia ul li .team-ranking .team-name {
-    width: 155px;
-    position: relative;
     text-align: left;
-    margin-top: -20px;
-    transform: translate(-72px, -3px);
+    transform: translate(8px, 8px);
 
     white-space: nowrap;
     overflow: hidden;
     transition-duration: 1s;
 }
 
-.individual-activity .rankings .ranking-do-dia ul li .team-ranking .team-points {
+.add-activity .ranking ul li .team-ranking .team-points {
+    width: 30px; 
     position: absolute;
-    transform: translate(90px, -22px);
-}
-
-.individual-activity .rankings .ranking-do-dia ul #hr-ranking {
-    width: 210px;
-    margin-top: 25px;
-    margin-left: 30px;
+    transform: translate(205px, 8px);
 }
 
 
 
-.individual-activity .content {
+.add-activity .content {
     width: 55%;
     max-height: 100%;
     margin-top: 125px;
@@ -178,19 +156,19 @@ html, body{
     /*border: solid 1px blue;*/
 }
 
-.individual-activity .content .input-title {
+.add-activity .content .input-title {
     width: 94.5%;
     margin-left: 20px;
     /*border: solid 1px red;*/
 }
 
-.individual-activity .content .input-title label {
+.add-activity .content .input-title label {
     float: left;
     /*border: solid 1px red;*/
 }
 
 /*ACTIVITY CARDS*/
-.individual-activity .content .cards-questions {
+.add-activity .content .cards-questions {
     width: 100%;
     margin-top: 25px;
     float: right;
@@ -199,52 +177,52 @@ html, body{
     /*border: solid 1px red;*/
 }
 
-.individual-activity .content .cards-questions .individual-card .str-content {
+.add-activity .content .cards-questions .individual-card .str-content {
     margin-left: 20px;
     margin-bottom: 30px;
 }
 
-.individual-activity .content .cards-questions strong {
+.add-activity .content .cards-questions strong {
     /*margin: 20px 20px 20px 20px;*/
     float: left;
 }
 
-.individual-activity .content .cards-questions .editor {
+.add-activity .content .cards-questions .editor {
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     /*border: solid 1px;*/
 }
 
-.individual-activity .content .cards-questions .alternative {
+.add-activity .content .cards-questions .alternative {
     width: 94.2%; 
     margin-top: 20px;
     margin-left: 20px;
     /*border: solid 1px;*/
 }
 
-.individual-activity .content .cards-questions .alternative strong {
+.add-activity .content .cards-questions .alternative strong {
     float: left;
 }
 
-.individual-activity .content .cards-questions .alternative .letter-editor {
+.add-activity .content .cards-questions .alternative .letter-editor {
     width: 100%;
     margin-top: 10px;
     float: left;
 }
 
-.individual-activity .content .cards-questions .alternative .letter-editor .letter-alternative {
+.add-activity .content .cards-questions .alternative .letter-editor .letter-alternative {
     margin-left: 11px;
     float: left;
 }
 
-.individual-activity .content .cards-questions .alternative .letter-editor .editor-alternative {
+.add-activity .content .cards-questions .alternative .letter-editor .editor-alternative {
     margin-left: 10px;
     margin-bottom: 10px;
     /*border: solid 1px;*/
 }
 
-.individual-activity .content .cards-questions .buttons {
+.add-activity .content .cards-questions .buttons {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0px;

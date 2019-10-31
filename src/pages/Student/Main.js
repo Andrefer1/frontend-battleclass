@@ -14,17 +14,6 @@ export default function MainStudent({ history, match }) {
 
     var listaAux = []
 
-    var screen = {}
-
-    /*
-    function screen() {
-        return screen = {'login': 0, 'main': 1}
-    }
-
-    screen()
-    */
-
-
     useEffect(() => {
         async function buscarUser(){
             const response = await api.get('/buscar/userId', {headers: {
@@ -66,9 +55,7 @@ export default function MainStudent({ history, match }) {
         buscarTeams();
         buscarAtividades();
 
-        console.log(user)
     }, [])
-    
 
     return (
     <div className='main-student'>
@@ -83,21 +70,21 @@ export default function MainStudent({ history, match }) {
             <div className='student-points'>
                 {user.pontuacao} PONTOS
             </div>
-            <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
-            </div>
+            {/*<hr id='hr-nav' />*/}
         </div>
-
-        <hr id='hr-nav' />
+        <div className='div-img-user'>
+            <img src={icon.url} className='img-user' />
+        </div>
         
         <div className='menu'>
-            <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-            <a onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
-            <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
+            <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
+            <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
+            <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
+            <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
             <div className='menu-bottom'>
-                <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                <a href='/contacts'> Contatos </a>
-                <a href='/about'> Sobre </a>
+                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
+                <a className='menu-item' href='/contacts'> Contatos </a>
+                <a className='menu-item' href='/about'> Sobre </a>
             </div>
         </div>
         
@@ -123,7 +110,6 @@ export default function MainStudent({ history, match }) {
                                     </div>
                                 </div>
                             </li>
-                            {/*<hr className='hr-ranking' />*/}
                         </div>
                         
                     ))}
@@ -134,15 +120,15 @@ export default function MainStudent({ history, match }) {
             )}
                 
         </div>
-
-        { atividades.length > 0 ? (
-            <ul>
-                { atividades.map(atividade => (
-                    <div className='tasks'>
+        
+        <div className='content'>
+            { atividades.length > 0 ? (
+                <ul>
+                    { atividades.map(atividade => (
                         <div className='task'>
                             <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
                                 <li key={atividade._id}>
-                                    <div className='teste'>
+                                    <div className='div-task-content'>
                                         <div className='task-content'>
                                             <div className='task-title'>
                                                 <b>{atividade.titulo}</b>
@@ -163,15 +149,15 @@ export default function MainStudent({ history, match }) {
                                 </li>
                             </a>
                         </div>
-                    </div>
-                ))}
-                
                     
-            </ul>
+                    ))}
+                    
+                </ul>
         ) : (
             <div> Sem atividades à realizar </div>
-        )}            
-        
+        )}     
+
+        </div>
 
     </div>
 
