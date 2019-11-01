@@ -178,6 +178,14 @@ html, body{
 
 
 /*PROFILES CARDS*/
+.team .content {
+    width: auto;
+    min-width: 380px;
+    max-width: 66%;
+    margin: 130px 380px 0 240px;
+    border: solid 1px;
+}
+
 .team .cards-students {
     width: 55%;
     margin-top: 130px;
@@ -243,7 +251,7 @@ html, body{
 .team .content #warning {
     font-size: 26pt;
     color: rgb(212, 212, 212);
-    margin: 22% 0 0 22%;
+    margin: 26% 0 0 0;
 }
 
 .team .menu .disabled {
