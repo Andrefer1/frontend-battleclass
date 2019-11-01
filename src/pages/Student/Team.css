@@ -183,7 +183,7 @@ html, body{
     min-width: 380px;
     max-width: 66%;
     margin: 130px 380px 0 240px;
-    border: solid 1px;
+    /*border: solid 1px;*/
 }
 
 .team .cards-students {
