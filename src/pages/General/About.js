@@ -122,13 +122,13 @@ export default function About({ history, match }) {
 
             <div className='content'>
                 <div className='version'>
-                    Versão: <a href='https://github.com/Andrefer1/frontend-battleclass'>2.1.2</a>
+                    Versão: <a href='https://github.com/Andrefer1/frontend-battleclass' target="_blank">2.2.10</a>
                 </div>
                 <div className='text'>
                     Este sistema foi desenvolvido pela equipe formada por André F. Bispo,
                     João Vitor S. Egidio, Emmanuel Peralta e Igor Valadares da matéria
                     Tópicos II (2019/2) do CEULP/ULBRA, ministrada pela professora Heloíse.
-            </div>
+                </div>
             </div>
 
         </div>
