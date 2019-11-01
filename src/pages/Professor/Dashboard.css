@@ -218,7 +218,7 @@ canvas {
 .dashboard #warning {
     font-size: 26pt;
     color: rgb(212, 212, 212);
-    margin: 35% 0 0 15%;
+    margin: 35% 0 0 0;
 }
 
 .dashboard .menu .disabled {

@@ -134,7 +134,7 @@
 .activitys #warning {
     font-size: 26pt;
     color: rgb(212, 212, 212);
-    margin: 22% 0 0 22%;
+    margin: 22% 0 0 0;
 }
 
 .activitys .menu .disabled {
