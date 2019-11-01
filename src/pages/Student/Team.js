@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import userProfile from '../../assets/user-profile.svg';
 
+import RcIf from 'rc-if'
 import './Team.css';
 import api from '../../service/api';
 
@@ -14,27 +15,31 @@ export default function Team({ history, match }) {
     const lista = [];
     var listaIcon = [];
     var [cont, setCont] = useState(0)
-    const [ user, setUser ] = useState('');
-    const [ icon, setIcon ] = useState(Object)
+    const [user, setUser] = useState('');
+    const [icon, setIcon] = useState(Object)
 
 
     useEffect(() => {
-        async function buscarUser(){
-            const response = await api.get('/buscar/userId', {headers: {
-                id: match.params.idUser
-            }})
-            
-            if (response.data != null){
+        async function buscarUser() {
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: match.params.idUser
+                }
+            })
+
+            if (response.data != null) {
                 setUser(response.data);
             }
 
             busarIcon(response.data.icon);
         }
 
-        async function busarIcon(id){
-            const response = await api.get('/buscar/icon', {headers: {
-                id:id
-            }})
+        async function busarIcon(id) {
+            const response = await api.get('/buscar/icon', {
+                headers: {
+                    id: id
+                }
+            })
             setIcon(response.data)
         }
 
@@ -99,28 +104,26 @@ export default function Team({ history, match }) {
                     {user.nome}
                 </div>
                 <div className='trace'>
-                    -
-            </div>
+                    {/*-*/}
+                </div>
                 <div className='student-points'>
-                    {user.pontuacao} PONTOS
-            </div>
+                    {user.pontuacao} {/*PONTOS*/}
+                </div>
 
-                {/*<hr id='hr-nav' />*/}
             </div>
             <div className='div-img-user'>
                 <img src={icon.url} className='img-user' />
             </div>
 
-
             <div className='menu'>
-                <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-                <a onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`))}> Minha Equipe </a>
-                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
-                <a onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))}> Batalha </a>
+                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
+                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
                 <div className='menu-bottom'>
-                    <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                    <a href='/contacts'> Contatos </a>
-                    <a href='/about'> Sobre </a>
+                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <div className='menu-item disabled' > Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item disabled' > Sobre </div> {/*href='/about'*/}
                 </div>
             </div>
 
@@ -157,35 +160,52 @@ export default function Team({ history, match }) {
 
             </div>
 
-            <div className='cards-students'>
-                {cont > 0 ? (
-                    <ul>
-                        {console.log(integrantes)}
-                        {integrantes.map((integrante, index) => (
+            <div className='content'>
+                <div id='warning'>
+                    Em construção...
+                </div>
 
-                            <li key={integrante._id}>
-                                <div className='card-individual' >
-                                    <div className='profile-data'>
-                                        <div className='img-profile'>
-                                            <img src={icons[index].url} alt='Imagem do usuário' className='img-individual' />
+                <RcIf if={1 === 'a'}>
+                    <div className='cards-students'>
+
+                        <a className='btn btn-primary button-battle'
+                            onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))}>
+                            <div className='div-button-battle'>
+                                Batalhar
+                    </div>
+                        </a>
+
+                        {cont > 0 ? (
+                            <ul>
+                                {console.log(integrantes)}
+                                {integrantes.map((integrante, index) => (
+
+                                    <li key={integrante._id}>
+                                        <div className='card-individual' >
+                                            <div className='profile-data'>
+                                                <div className='img-profile'>
+                                                    <img src={icons[index].url} alt='Imagem do usuário' className='img-individual' />
+                                                </div>
+                                                <div className='username-profile'>
+                                                    {integrante.nome}
+                                                </div>
+                                            </div>
+                                            <div className='points'>
+                                                {integrante.pontuacao}
+                                            </div>
                                         </div>
-                                        <div className='username-profile'>
-                                            {integrante.nome}
-                                        </div>
-                                    </div>
-                                    <div className='points'>
-                                        {integrante.pontuacao}
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
+                                    </li>
+                                ))}
 
-                    </ul>
-                ) : (
-                        <div> Sem Integrantes </div>
-                    )}
+                            </ul>
+                        ) : (
+                                <div> Sem Integrantes </div>
+                            )}
 
+                    </div>
+                </RcIf>
             </div>
         </div>
+
     );
 }

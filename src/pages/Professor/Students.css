@@ -149,26 +149,28 @@ html, body{
 
 
 /*PROFILES CARDS*/
-.students .cards-students {
+.students .content {
     width: auto;
-    min-width: 30%;
-    max-width: 64%;
-    margin: 30px 380px 0 300px;
-    /*border: solid 1px red;*/
+    min-width: 380px;
+    max-width: 66%;
+    margin: 130px 380px 0 240px;
+}
+.students .content .cards-students {
+    
 }
 /*
-.students .cards-students ul {
+.students .content .cards-students ul {
     list-style: none;
     /*border: solid 1px;*/
 /*}*/
 /*
-.students .cards-students .line-title {
+.students .content .cards-students .line-title {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
 }
 
-.students .cards-students .student-data {
+.students .content .cards-students .student-data {
     margin-top: 15px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -176,13 +178,13 @@ html, body{
     border: solid 1px red;
 }
 
-.students .cards-students .student-data .team-name {
+.students .content .cards-students .student-data .team-name {
     margin-left: 355px;
     white-space: nowrap;
     border: solid 1px;
 }
 
-.students .cards-students .student-data .team-points {
+.students .content .cards-students .student-data .team-points {
     width: 30px;
     margin-left: 535px;
     border: solid 1px;
@@ -190,16 +192,16 @@ html, body{
 */
 
 
-.students .cards-students .student-data {
+.students .content .cards-students .student-data {
     /*margin-top: 15px;*/
     /*border: solid 1px red;*/
 }
 
-.students .cards-students .student-data ul {
+.students .content .cards-students .student-data ul {
     list-style: none;
 }
 
-.students .cards-students .student-data .li {
+.students .content .cards-students .student-data .li {
     display: flex;
     width: auto;
     max-width: 400px;
@@ -207,62 +209,70 @@ html, body{
     /*border: solid 1px;*/
 }
 
-.students .cards-students .student-data .li .line-title {
+.students .content .cards-students .student-data .li .line-title {
     display: flex;
     width: auto;
     min-width: 15%;
     max-width: 80%;
 }
 
-.students .cards-students .student-data .li .line-title .str-student-name {
+.students .content .cards-students .student-data .li .line-title .str-student-name {
     min-width: 340px;
     white-space: nowrap;
     /*border: solid 1px;*/
 }
 
-.students .cards-students .student-data .li .line-title .str-student-points {
+.students .content .cards-students .student-data .li .line-title .str-student-points {
     width: 50px;
     margin-left: 10px;
     /*border: solid 1px;*/
 }
 
-
-
-.students .cards-students .student-data .li2 {
+.students .content .cards-students .student-data .li2 {
     display: flex;
     width: auto;
     max-width: 400px;
     /*border: solid 1px;*/
 }
 
-.students .cards-students .student-data .li2 .div-student-name {
+.students .content .cards-students .student-data .li2 .div-student-name {
     width: 400px;
     border-bottom: solid 1px;
 }
 
-.students .cards-students .student-data .li2 .student-name {
+.students .content .cards-students .student-data .li2 .student-name {
     float: left;
     margin-top: 10px;
     white-space: nowrap;
     /*border: solid 1px;*/
 }
 
-.students .cards-students .student-data .li2 .student-points {
+.students .content .cards-students .student-data .li2 .student-points {
     width: 40px;
     margin-top: 10px;
     border-bottom: solid 1px;
 }
 
-.students .cards-students .student-data .team-name {
+.students .content .cards-students .student-data .team-name {
     /*margin-top: 10px;
     float: left;
     white-space: nowrap;
     border: solid 1px;*/
 }
 
-.students .cards-students .student-data .team-points {
+.students .content .cards-students .student-data .team-points {
     /*width: 30px;
     margin-top: 10px;
     margin-left: 40px;
     border: solid 1px;*/
+}
+
+.students .menu .disabled {
+    color: gray; 
+}
+
+.students .menu .disabled:hover {
+    color: gray; 
+    background: rgba(9,9,121,1);
+    cursor: default;
 }

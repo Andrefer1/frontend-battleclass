@@ -84,7 +84,7 @@ html, body {
     margin-left: 0px;
 }
 
-.main-student .menu a {
+.main-student .menu .menu-item {
     color: white;
     padding: 10px 16px;
     text-decoration: none;
@@ -94,7 +94,7 @@ html, body {
     cursor: pointer;
 }
 
-.main-student .menu a:hover {
+.main-student .menu .menu-item:hover {
     background-color: white;
     color: black;
     cursor: pointer;
@@ -111,6 +111,12 @@ html, body {
 .main-student .menu .sitename:hover {
     background: rgba(9,9,121,1);
     color: white;
+}
+
+.main-student .menu .selected {
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
 
 .main-student .menu .menu-bottom {
@@ -265,4 +271,20 @@ html, body {
 .main-student .content .task .task-points .task-pontuation {
     font-size: 25px;
     margin-top: 8px;
+}
+
+.main-student .content .empty {
+    font-size: 26pt;
+    color: rgb(212, 212, 212);
+    margin-top: 37%;
+}
+
+.main-student .menu .disabled {
+    color: gray; 
+}
+
+.main-student .menu .disabled:hover {
+    color: gray; 
+    background: rgba(9,9,121,1);
+    cursor: default;
 }

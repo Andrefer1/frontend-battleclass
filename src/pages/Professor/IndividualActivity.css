@@ -124,3 +124,13 @@
     position: absolute;
     transform: translate(205px, 8px);
 }
+
+.individual-activity .menu .disabled {
+    color: gray; 
+}
+
+.individual-activity.menu .disabled:hover {
+    color: gray; 
+    background: rgba(9,9,121,1);
+    cursor: default;
+}

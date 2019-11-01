@@ -10,14 +10,15 @@ import api from '../../service/api';
 export default function Team() {
     const [grupos, setGrupos] = useState([]);
     const [usuarios, setUsuarios] = useState([])
-    const [icon, setIcon] = useState(Object)
-    
+    const [icon] = useState(Object)
+
     var [cont, setCont] = useState(0)
 
     const listaU = []
 
+    /*
     function adicionar_estudante() {
-        if (document.querySelector('select').value == '') {
+        if (document.querySelector('select').value === '') {
             alert('Selecione um estudante')
         }
         else {
@@ -29,6 +30,7 @@ export default function Team() {
             studentTag.appendChild(createDiv)
         }
     }
+    */
 
     useEffect(() => {
         async function buscarGrupos() {
@@ -73,15 +75,15 @@ export default function Team() {
             </div>
 
             <div className='menu'>
-                <a className='sitename' href='/dashboard'>BattleClass</a>
-                <a className='menu-item' href='/dashboard'> Página Inicial </a>
+                <a className='sitename' href='/dashboard'> BattleClass </a>
+                <a className='menu-item' href='/dashboard'> Dashboard </a>
                 <a className='menu-item' href='/students'> Alunos </a>
-                <a className='menu-item' href='/teams'> Equipes </a>
+                <a className='menu-item selected' href='/teams'> Equipes </a>
                 <a className='menu-item' href='/activitys'> Atividades </a>
                 <div className='menu-bottom'>
-                    <a className='menu-item' href='/settings'> Configurações </a>
-                    <a className='menu-item' href='/contacts'> Contatos </a>
-                    <a className='menu-item' href='/about'> Sobre </a>
+                    <a className='menu-item disabled' > Configurações </a> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <a className='menu-item disabled' > Contatos </a> {/*href='/contacts'*/}
+                    <a className='menu-item disabled' > Sobre </a> {/*href='/about'*/}
                 </div>
             </div>
 
@@ -112,7 +114,7 @@ export default function Team() {
 
                     </ul>
                 ) : (
-                        <div> Sem grupos </div>
+                        <div> Não há equipes </div>
                     )}
 
             </div>
@@ -179,7 +181,7 @@ export default function Team() {
                     </ul>
 
                 ) : (
-                        <div> Sem Grupo </div>
+                        <div className='empty'> Não há equipes </div>
                     )}
             </div>
 

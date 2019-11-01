@@ -9,7 +9,7 @@ import api from '../../service/api';
 export default function Students({ history, match }) {
     const [grupos, setGrupos] = useState([])
     const [alunos, setAlunos] = useState([])
-    const [icon, setIcon] = useState(Object)
+    const [icon] = useState(Object)
 
     var listaAux = []
 
@@ -31,6 +31,7 @@ export default function Students({ history, match }) {
             console.log(response.data)
             setAlunos(response.data)
         }
+        /*
         async function busarIcon(id) {
             const response = await api.get('/buscar/icon', {
                 headers: {
@@ -39,6 +40,7 @@ export default function Students({ history, match }) {
             })
             setIcon(response.data)
         }
+        */
 
         buscarTeams();
         buscarAlunos();
@@ -54,24 +56,21 @@ export default function Students({ history, match }) {
                 </div>
             </div>
             <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
+                <img src={icon.url} className='img-user' alt='Ícone do usuário' />
             </div>
 
-
-
             <div className='menu'>
-                <a className='sitename' href='/dashboard'>BattleClass</a>
-                <a className='menu-item' href='/dashboard'> Página Inicial </a>
-                <a className='menu-item' href='/students'> Alunos </a>
+                <a className='sitename' href='/dashboard'> BattleClass </a>
+                <a className='menu-item' href='/dashboard'> Dashboard </a>
+                <a className='menu-item selected' href='/students'> Alunos </a>
                 <a className='menu-item' href='/teams'> Equipes </a>
                 <a className='menu-item' href='/activitys'> Atividades </a>
                 <div className='menu-bottom'>
-                    <a className='menu-item' href='/settings'> Configurações </a>
-                    <a className='menu-item' href='/contacts'> Contatos </a>
-                    <a className='menu-item' href='/about'> Sobre </a>
+                    <a className='menu-item disabled' > Configurações </a> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <a className='menu-item disabled' > Contatos </a> {/*href='/contacts'*/}
+                    <a className='menu-item disabled' > Sobre </a> {/*href='/about'*/}
                 </div>
             </div>
-
 
             <div className='ranking'>
                 <div className='str-ranking'>
@@ -105,11 +104,12 @@ export default function Students({ history, match }) {
 
             </div>
 
-            <div className='cards-students'>
-                {/*<ul>
+            <div className='content'>
+                <div className='cards-students'>
+                    {/*<ul>
                     <li>
                         <div className='student-data'>{/*'line-title'*/}
-                {/*<div className='student-name'>
+                    {/*<div className='student-name'>
                                 NOME DO ALUNO
                             </div>
                             <div className='student-points'>
@@ -140,18 +140,18 @@ export default function Students({ history, match }) {
                         </div>
                     </li>*/}
 
-                <div className='student-data'>
-                    <ul>
-                        <li className='li'>
-                            <div className='line-title'>
-                                <div className='str-student-name'>
-                                    NOME DO ALUNO
+                    <div className='student-data'>
+                        <ul>
+                            <li className='li'>
+                                <div className='line-title'>
+                                    <div className='str-student-name'>
+                                        NOME DO ALUNO
                                     </div>
 
-                                <div className='str-student-points'>
-                                    NOTA
+                                    <div className='str-student-points'>
+                                        NOTA
                                     </div>
-                                {/*
+                                    {/*
                                     <div className='team-name'>
                                         NOME DA EQUIPE
                                     </div>
@@ -159,28 +159,28 @@ export default function Students({ history, match }) {
                                         NOTA
                                     </div>
                                     */}
-                            </div>
-                        </li>
-                        {alunos.length > 0 ? (
-                            <div>
-                                {alunos.map(aluno => (
-                                    <li className='li2'>
-                                        <div className='div-student-name'>
-                                            <div className='student-name'>
-                                                {aluno.nome}
+                                </div>
+                            </li>
+                            {alunos.length > 0 ? (
+                                <div>
+                                    {alunos.map(aluno => (
+                                        <li className='li2'>
+                                            <div className='div-student-name'>
+                                                <div className='student-name'>
+                                                    {aluno.nome}
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div className='student-points'>
-                                            {aluno.pontuacao}
-                                        </div>
-                                    </li>
-                                ))}
-                            </div>
-                        ) : (
-                                <div> Não há alunos </div>
-                            )}
-                        {/**
+                                            <div className='student-points'>
+                                                {aluno.pontuacao}
+                                            </div>
+                                        </li>
+                                    ))}
+                                </div>
+                            ) : (
+                                    <div> Não há alunos </div>
+                                )}
+                            {/**
                             <li>
                                 <div className='team-name'>
                                     André Fernandes Bispo
@@ -207,10 +207,10 @@ export default function Students({ history, match }) {
                         
                         */}
 
-                    </ul>
+                        </ul>
 
 
-                    {/*
+                        {/*
                     <li>
                         <div className='card-individual'>
                             <div className='dataname'>
@@ -246,8 +246,9 @@ export default function Students({ history, match }) {
                     */}
 
 
-                </div>
+                    </div>
 
+                </div>
             </div>
         </div>
     );

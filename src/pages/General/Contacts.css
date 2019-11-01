@@ -86,6 +86,12 @@ html, body {
     color: white;
 }
 
+.contacts .menu .selected {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
 .contacts .menu .menu-bottom {
     width: 200px;
     position: absolute;

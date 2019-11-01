@@ -9,13 +9,12 @@ export default function Hero({ history, match }) {
     
     const [ confirmation, setConfirmation ] = useState('');
     const [ heros, setHeros ] = useState([]);
-    var hero = [];
-
+    
     async function setarIcon(icon, e){
         e.preventDefault();
 
         for (let i in heros){
-            if(heros[i].id == icon.id){
+            if(heros[i].id === icon.id){
                 heros[i].chosed = true;
             }
         }

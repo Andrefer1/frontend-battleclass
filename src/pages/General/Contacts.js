@@ -9,7 +9,7 @@ import api from '../../service/api';
 export default function Contacts({ history, match }) {
     const [user, setUser] = useState('');
     const [grupos, setGrupos] = useState([])
-    const [atividades, setAtividades] = useState([])
+    const [setAtividades] = useState([])
     const [icon, setIcon] = useState(Object)
 
     var listaAux = []
@@ -72,7 +72,7 @@ export default function Contacts({ history, match }) {
                 </div>
             </div>
             <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
+                <img src={icon.url} className='img-user' alt='Ícone do usuário'/>
             </div>
 
             <div className='menu'>
@@ -83,7 +83,7 @@ export default function Contacts({ history, match }) {
                 <a className='menu-item' href='/activitys'> Atividades </a>
                 <div className='menu-bottom'>
                     <a className='menu-item' href='/settings'> Configurações </a>
-                    <a className='menu-item' href='/contacts'> Contatos </a>
+                    <a className='menu-item selected' href='/contacts'> Contatos </a>
                     <a className='menu-item' href='/about'> Sobre </a>
                 </div>
             </div>
@@ -141,7 +141,7 @@ export default function Contacts({ history, match }) {
                     </div>
                         <br />
                         <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
+                            <strong>Curso</strong><br />Engenharia de Software
                     </div>
                         <br />
                         <div className='email'>
@@ -156,7 +156,7 @@ export default function Contacts({ history, match }) {
                     </div>
                         <br />
                         <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
+                            <strong>Curso</strong><br />Engenharia de Software
                     </div>
                         <br />
                         <div className='email'>
@@ -171,7 +171,7 @@ export default function Contacts({ history, match }) {
                     </div>
                         <br />
                         <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
+                            <strong>Curso</strong><br />Engenharia de Software
                     </div>
                         <br />
                         <div className='email'>
@@ -186,7 +186,7 @@ export default function Contacts({ history, match }) {
                     </div>
                         <br />
                         <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
+                            <strong>Curso</strong><br />Engenharia de Software
                     </div>
                         <br />
                         <div className='email'>

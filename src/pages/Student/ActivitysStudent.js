@@ -100,18 +100,18 @@ export default function Activity({ history, match }) {
 
             </div>
             <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
+                <img src={icon.url} className='img-user' alt='Ícone do usuário' />
             </div>
 
             <div className='menu'>
-                <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
-                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
-                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
+                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
+                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
                 <div className='menu-bottom'>
-                    <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                    <a className='menu-item' href='/contacts'> Contatos </a>
-                    <a className='menu-item' href='/about'> Sobre </a>
+                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <div className='menu-item disabled' > Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item disabled' > Sobre </div> {/*href='/about'*/}
                 </div>
             </div>
 
@@ -147,34 +147,36 @@ export default function Activity({ history, match }) {
 
             </div>
 
-            <div className='cards-activitys'>
-                {atividades.length > 0 ? (
-                    <ul>
-                        {atividades.map(atividade => (
-                            <li key={atividade._id}>
-                                <a onClick={() => navegarAtividade(atividade)}>
-                                    <div className='card-individual'>
-                                        <div className='activity-data'>
-                                            <div className='activity-title'>
-                                                <strong>{atividade.titulo}</strong>
+            <div className='content'>
+                <div className='cards-activitys'>
+                    {atividades.length > 0 ? (
+                        <ul>
+                            {atividades.map(atividade => (
+                                <li key={atividade._id}>
+                                    <a onClick={() => navegarAtividade(atividade)}>
+                                        <div className='card-individual'>
+                                            <div className='activity-data'>
+                                                <div className='activity-title'>
+                                                    <strong>{atividade.titulo}</strong>
+                                                </div>
+                                                <div className='activity-date'>
+                                                    Publicado: {atividade.dataPostagem}
+                                                </div>
                                             </div>
-                                            <div className='activity-date'>
-                                                Publicado: {atividade.dataPostagem}
+                                            <div className='activity-content'>
+                                                {atividade.conteudo}
                                             </div>
                                         </div>
-                                        <div className='activity-content'>
-                                            {atividade.conteudo}
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        ))}
+                                    </a>
+                                </li>
+                            ))}
 
-                    </ul>
-                ) : (
-                        <div className="empty">Não tem nenhuma atividade :( </div>
-                    )}
+                        </ul>
+                    ) : (
+                            <div className="empty">Não há atividades :( </div>
+                        )}
 
+                </div>
             </div>
         </div>
     );

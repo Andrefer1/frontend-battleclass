@@ -7,46 +7,50 @@ import './Main.css';
 import api from '../../service/api';
 
 export default function MainStudent({ history, match }) {
-    const [ user, setUser ] = useState('');
-    const [ grupos, setGrupos ] = useState([])
-    const [ atividades, setAtividades ] = useState([])
-    const [ icon, setIcon ] = useState(Object)
+    const [user, setUser] = useState('');
+    const [grupos, setGrupos] = useState([])
+    const [atividades, setAtividades] = useState([])
+    const [icon, setIcon] = useState(Object)
 
     var listaAux = []
 
     useEffect(() => {
-        async function buscarUser(){
-            const response = await api.get('/buscar/userId', {headers: {
-                id: match.params.idUser
-            }})
-            
-            if (response.data != null){
+        async function buscarUser() {
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: match.params.idUser
+                }
+            })
+
+            if (response.data != null) {
                 setUser(response.data);
             }
 
             busarIcon(response.data.icon);
         }
 
-        async function buscarTeams(){
+        async function buscarTeams() {
             const response = await api.get('/buscar/grupo/all')
 
             listaAux = response.data
             listaAux.sort(function (a, b) {
                 return b.pontuacao - a.pontuacao
             })
-            
+
             setGrupos(listaAux);
         }
 
-        async function buscarAtividades(){
+        async function buscarAtividades() {
             const response = await api.get('/buscar/atividade/all')
             setAtividades(response.data)
         }
 
-        async function busarIcon(id){
-            const response = await api.get('/buscar/icon', {headers: {
-                id:id
-            }})
+        async function busarIcon(id) {
+            const response = await api.get('/buscar/icon', {
+                headers: {
+                    id: id
+                }
+            })
             setIcon(response.data)
 
         }
@@ -58,108 +62,108 @@ export default function MainStudent({ history, match }) {
     }, [])
 
     return (
-    <div className='main-student'>
+        <div className='main-student'>
 
-        <div className='student-data'>
-            <div className='student-name'>
-                {user.nome}
+            <div className='student-data'>
+                <div className='student-name'>
+                    {user.nome}
+                </div>
+                <div className='trace'>
+                    -
             </div>
-            <div className='trace'>
-                -
+                <div className='student-points'>
+                    {user.pontuacao} PONTOS
             </div>
-            <div className='student-points'>
-                {user.pontuacao} PONTOS
+                {/*<hr id='hr-nav' />*/}
             </div>
-            {/*<hr id='hr-nav' />*/}
-        </div>
-        <div className='div-img-user'>
-            <img src={icon.url} className='img-user' />
-        </div>
-        
-        <div className='menu'>
-            <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
-            <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-            <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
-            <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
-            <div className='menu-bottom'>
-                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                <a className='menu-item' href='/contacts'> Contatos </a>
-                <a className='menu-item' href='/about'> Sobre </a>
+            <div className='div-img-user'>
+                <img src={icon.url} className='img-user' />
             </div>
-        </div>
-        
 
-        <div className='ranking'>
-            <div className='str-ranking'>
-                <b> Ranking </b>
+            <div className='menu'>
+                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
+                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
+                <div className='menu-bottom'>
+                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <div className='menu-item disabled' > Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item disabled' > Sobre </div> {/*href='/about'*/}
+                </div>
             </div>
-            { grupos.length > 0 ? (
-                <ul>
-                    { grupos.map(grupo => (
-                        <div key={grupo._id}>
-                            <li key={grupo._id}>
-                                <div className='team-ranking'>
-                                    <div className='team-profile'>
-                                        <img src={userProfile} alt='Imagem do time' />
-                                    </div>          
-                                    <div className='team-name'>
-                                        {grupo.nome}
-                                    </div>       
-                                    <div className='team-points'>
-                                        {grupo.pontuacao}
-                                    </div>
-                                </div>
-                            </li>
-                        </div>
-                        
-                    ))}
-                    
-                </ul>
-            ): (
-                <div> Sem grupos </div>
-            )}
-                
-        </div>
-        
-        <div className='content'>
-            { atividades.length > 0 ? (
-                <ul>
-                    { atividades.map(atividade => (
-                        <div className='task'>
-                            <a onClick={()=> (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
-                                <li key={atividade._id}>
-                                    <div className='div-task-content'>
-                                        <div className='task-content'>
-                                            <div className='task-title'>
-                                                <b>{atividade.titulo}</b>
-                                            </div>
-                                            <div className='task-description'>
-                                                {atividade.conteudo}
-                                            </div>
+
+
+            <div className='ranking'>
+                <div className='str-ranking'>
+                    <b> Ranking </b>
+                </div>
+                {grupos.length > 0 ? (
+                    <ul>
+                        {grupos.map(grupo => (
+                            <div key={grupo._id}>
+                                <li key={grupo._id}>
+                                    <div className='team-ranking'>
+                                        <div className='team-profile'>
+                                            <img src={userProfile} alt='Imagem do time' />
                                         </div>
-                                        <div className='task-points'>
-                                            <div className='task-points-notes'>
-                                                <b>Nota</b>
-                                            </div>
-                                            <div className='task-pontuation'>
-                                                50
-                                            </div>
+                                        <div className='team-name'>
+                                            {grupo.nome}
+                                        </div>
+                                        <div className='team-points'>
+                                            {grupo.pontuacao}
                                         </div>
                                     </div>
                                 </li>
-                            </a>
-                        </div>
-                    
-                    ))}
-                    
-                </ul>
-        ) : (
-            <div> Sem atividades à realizar </div>
-        )}     
+                            </div>
+
+                        ))}
+
+                    </ul>
+                ) : (
+                        <div> Sem grupos </div>
+                    )}
+
+            </div>
+
+            <div className='content'>
+                {atividades.length > 0 ? (
+                    <ul>
+                        {atividades.map(atividade => (
+                            <div className='task'>
+                                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
+                                    <li key={atividade._id}>
+                                        <div className='div-task-content'>
+                                            <div className='task-content'>
+                                                <div className='task-title'>
+                                                    <b>{atividade.titulo}</b>
+                                                </div>
+                                                <div className='task-description'>
+                                                    {atividade.conteudo}
+                                                </div>
+                                            </div>
+                                            <div className='task-points'>
+                                                <div className='task-points-notes'>
+                                                    <b>Nota</b>
+                                                </div>
+                                                <div className='task-pontuation'>
+                                                    50
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </a>
+                            </div>
+
+                        ))}
+
+                    </ul>
+                ) : (
+                        <div className='empty'> Não há atividades :( </div>
+                    )}
+
+            </div>
 
         </div>
-
-    </div>
 
     );
 }

@@ -130,3 +130,19 @@
     position: absolute;
     transform: translate(205px, 8px);
 }
+
+.activitys #warning {
+    font-size: 26pt;
+    color: rgb(212, 212, 212);
+    margin: 22% 0 0 22%;
+}
+
+.activitys .menu .disabled {
+    color: gray; 
+}
+
+.activitys .menu .disabled:hover {
+    color: gray; 
+    background: rgba(9,9,121,1);
+    cursor: default;
+}

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+/*import React, { useState, useEffect } from 'react'*/
 import './App.css';
 
-import api from './service/api';
+/*import api from './service/api';*/
 
 import Routes from './routes';
 
-import MainScreen from './pages/Student/Main'
+/*import MainScreen from './pages/Student/Main'*/
 
 function App({ history, match }) {
-  const [ user, setUser ] = useState('');
+  /*const [ user, setUser ] = useState('');*/
 /*
   useEffect(() => {
       async function buscarUser(){
@@ -24,10 +25,10 @@ function App({ history, match }) {
 
   }, [])
 */
-
+/*
 console.log(history)
 console.log(match)
-
+*/
 /*
  console.log(Routes.state)
  console.log(Routes.getParam)

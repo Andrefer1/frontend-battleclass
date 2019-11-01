@@ -9,11 +9,13 @@ import api from '../../service/api';
 export default function SelectEnemy({ history, match }) {
     const [ grupos, setGrupos ] = useState(Object);
     const [ team, setTeam ] = useState(Object);
+    /*
     const [ integrantes, setIntegrantes ] = useState([]);
     const [ icons, setIcons ] = useState([]);
     const lista = [];
     var listaIcon = [];
     var [ cont, setCont ] = useState(0)
+    */
 
     useEffect(() => {
         async function buscarTeams(){
