@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "67180d8da0d637fd4bb56d222a2dd811",
+    "revision": "39fd32760ed78bc815b37db5c729acd1",
     "url": "/frontend-battleclass/index.html"
   },
   {
-    "revision": "88cbcf06d0dced1a9b4a",
+    "revision": "7b87a6400c10ac0b602f",
     "url": "/frontend-battleclass/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "3114c47ab0a6f62afeed",
-    "url": "/frontend-battleclass/static/css/main.c2624e8b.chunk.css"
+    "revision": "777b906cb9c24036ddef",
+    "url": "/frontend-battleclass/static/css/main.1aab8586.chunk.css"
   },
   {
-    "revision": "88cbcf06d0dced1a9b4a",
-    "url": "/frontend-battleclass/static/js/2.35a3414b.chunk.js"
+    "revision": "7b87a6400c10ac0b602f",
+    "url": "/frontend-battleclass/static/js/2.ed1aca55.chunk.js"
   },
   {
-    "revision": "3114c47ab0a6f62afeed",
-    "url": "/frontend-battleclass/static/js/main.db78e982.chunk.js"
+    "revision": "777b906cb9c24036ddef",
+    "url": "/frontend-battleclass/static/js/main.6bb9f668.chunk.js"
   },
   {
     "revision": "6a9567ea7186c5cb7d37",
@@ -58,10 +58,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "158753ef754a69e8f52fc06019d8bd18",
     "url": "/frontend-battleclass/static/media/finn.158753ef.png"
-  },
-  {
-    "revision": "c8a83d0788097e656bc0129ba6021912",
-    "url": "/frontend-battleclass/static/media/github.c8a83d07.png"
   },
   {
     "revision": "bb1869ec398dc24da79beba43adbe042",
