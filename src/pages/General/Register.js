@@ -457,7 +457,7 @@ export default function Register({ history }) {
                 <button className="btn btn-primary enter-button"> Criar </button> 
 
                 <div className='link'>
-                    <a href='/' id='link-login'> Já possui cadastro? </a>
+                    <a href='/frontend-battleclass/' id='link-login'> Já possui cadastro? </a>
                 </div>
                 
             </form>
