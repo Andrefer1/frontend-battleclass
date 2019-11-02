@@ -72,7 +72,7 @@ export default function MainStudent({ history, match }) {
                     -
             </div>
                 <div className='student-points'>
-                    {user.pontuacao} PONTOS
+                    {user.ultimaPontuacao} PONTOS
             </div>
                 {/*<hr id='hr-nav' />*/}
             </div>

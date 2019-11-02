@@ -156,14 +156,14 @@ html, body {
 /*CONTENT*/
 .contacts .content {
     width: auto;
-    min-width: 10%;
-    max-width: 64%;
-    margin: 30px 380px 0 300px;
+    min-width: 380px;
+    max-width: 66%;
+    margin: 130px 380px 0 240px;
+    border: solid 1px white;
 }
 
 .contacts .content .support {
     float: left;
-    margin-right: 100%;
     /*border: solid 1px;*/
 }
 
@@ -173,25 +173,66 @@ html, body {
     /*border: solid 1px;*/
 }
 
-.contacts .content .support .email-support {
-    float: left;
-    /*border: solid 1px;*/
+.contacts .content .cards-devs {
+    margin-top: 90px;
+    border: solid 1px white;
 }
 
-.contacts .content .email-devs {
-    margin: 30px 0 0 0;
-    text-align: justify;
-    float: left;
-    /*border: solid 1px;*/
-}
-
-.contacts .content .str-developers {
+.contacts .content .cards-devs .str-developers {
     font-size: 20pt;
     margin-bottom: -10px;
+    float: left;
     /*border: solid 1px;*/
 }
 
-.contacts .content .email-devs .dev {
-    margin-top: 20px;
+.contacts .content .cards-devs .devs { 
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 30px; 
+}
+
+.contacts .content .cards-devs .devs .dev {
+    width: auto;
+    min-width: 290px;
+    max-width: 350px;
+    height: 230px;
+    float: left;
+    border-radius: 9px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
     /*border: solid 1px;*/
+}
+
+.contacts .content .cards-devs .devs .dev .profile-data {
+    display: flex;
+    margin: 0 10px 0 10px;
+    border-bottom: solid 1px rgb(212, 212, 212);
+}
+
+.contacts .content .cards-devs .devs .dev .profile-data .icon {
+    width: 30%;
+    margin: 10px 0 5px 0px;
+    /*border: solid 1px;*/
+}
+
+.contacts .content .cards-devs .devs .dev .profile-data .name {
+    margin: 40px 0 5px 10px;
+    float: left;
+    /*border: solid 1px;*/
+}
+
+.contacts .content .cards-devs .devs .dev .profission {
+    margin: 10px 0 0 10px;
+    float: left;
+    /*border: solid 1px;*/
+}
+
+.contacts .content .cards-devs .devs .dev .email {
+    margin: 10px 0 0 10px;
+    float: left;
+    /*border: solid 1px;*/
+}
+
+.contacts .content .cards-devs .devs .dev strong {
+    float: left;
 }
