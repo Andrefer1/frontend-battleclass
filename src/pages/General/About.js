@@ -68,7 +68,7 @@ export default function About({ history, match }) {
 
             <div className='screen-data'>
                 <div className='str'>
-                    Dashboard
+                    Sobre
                 </div>
             </div>
             <div className='div-img-user'>
