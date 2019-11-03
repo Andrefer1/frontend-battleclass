@@ -23,8 +23,9 @@ export default function Login({ history }) {
             senha: senha
         });
 
-        if(response.data.login == true){
-            history.push(`/${response.data.id_user}/main`)
+        const usuario = response.data.id_user
+        if(response.data.login == true ){
+            history.push(`/${usuario._id}/main`)
         }
         else if(response.data.login == "not verified"){
             setVerificar(response.data.msg)

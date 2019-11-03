@@ -32,7 +32,7 @@ export default function MainStudent({ history, match }) {
 
             listaAux = response.data
             listaAux.sort(function (a, b) {
-                return b.pontuacao - a.pontuacao
+                return b.posicaoRanking - a.posicaoRanking
             })
             
             setGrupos(listaAux);

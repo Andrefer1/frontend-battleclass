@@ -10,14 +10,17 @@ export default function Activity({ history, match}) {
     const [ atividade, setAtividade ] = useState(Object);
     const [ questoes, setQuestoes ] = useState([]); 
     const [ user, setUser ] = useState(Object);
+    const [ grupo, setGrupo ] = useState(Object);
     const [ grupos, setGrupos ] = useState([]);
     const [ questao1, setQuestao1 ] = useState(Object);
     const [ questao2, setQuestao2 ] = useState(Object);
     const [ questao3, setQuestao3 ] = useState(Object);
     const [ questao4, setQuestao4 ] = useState(Object);
     const [ questao5, setQuestao5 ] = useState(Object);
+    const [ respostaFinal , setResposta ] = useState([]);
+    const [ gabarito, setGabarito ] = useState([])
     var listaVar =[questao1, questao2, questao3, questao4, questao5]
-    var resposta = []
+    var resposta = respostaFinal;
     var listaAux = [];
     var letra = '';
     const alfabeto = ['a', 'b', 'c', 'd']
@@ -25,26 +28,95 @@ export default function Activity({ history, match}) {
 
 
     function postarAtividade() {
-        console.log('POSTADO')
+        var cont = 1;
+        var nota = 0;
+        var pontuacaoAluno = 0
+        var ultimaPontucao = 0
+        for (let g in gabarito){
+            var gab = gabarito[g]
+            var res = respostaFinal[g]
+            if(gab[cont] === res[cont]){
+                nota += 10
+            }
+            cont += 1
+        }
+
+        ultimaPontucao = (nota * (grupo.pontuacao/100))
+        pontuacaoAluno = user.pontuacaoGeral + ultimaPontucao
     }
 
     function verificarVariavel(index, valor) {
-        console.log(valor)
-        if(listaVar[index] == 0) {
-            setQuestao1({1:valor})
-            resposta.push({1:valor})
-        } else if(listaVar[index] == 1){
-            setQuestao2({2:valor})
-            resposta.push({2:valor})
-        } else if(listaVar[index] == 2){
-            setQuestao3({3:valor})
-            resposta.push({3:valor})
-        } else if(listaVar[index] == 3){
-            setQuestao4({4:valor})
-            resposta.push({4:valor})
-        } else if(listaVar[index] == 4){
-            setQuestao5({5:valor})
-            resposta.push({5:valor})
+        var aux = null;
+        if(index == 0) {
+            for (let r in resposta) {
+                if(r == index) {
+                    aux = resposta[r]
+                }
+
+            }
+            if(aux != null) {
+                resposta.splice(index, 1, {1:valor})
+            } else {
+                resposta.push({1:valor})
+                setResposta(resposta)
+            }
+            
+        } else if(index == 1){
+            for (let r in resposta) {
+                if(r == index) {
+                    aux = resposta[r]
+                }
+
+            }
+            if(aux != null) {
+                resposta.splice(index, 1, {2:valor})
+            } else {
+                resposta.push({2:valor})
+                setResposta(resposta)
+            }
+                
+            
+            
+        } else if(index == 2){
+            for (let r in resposta) {
+                if(r == index) {
+                    aux = resposta[r]
+                }
+
+            }
+            if(aux != null) {
+                resposta.splice(index, 1, {3:valor})
+            } else {
+                resposta.push({3:valor})
+                setResposta(resposta)
+            }
+            
+        } else if(index == 3){
+            for (let r in resposta) {
+                if(r == index) {
+                    aux = resposta[r]
+                }
+
+            }
+            if(aux != null) {
+                resposta.splice(index, 1, {4:valor})
+            } else {
+                resposta.push({4:valor})
+                setResposta(resposta)
+            }
+        } else if(index == 4){
+            for (let r in resposta) {
+                if(r == index) {
+                    aux = resposta[r]
+                }
+
+            }
+            if(aux != null) {
+                resposta.splice(index, 1, {5:valor})
+            } else {
+                resposta.push({5:valor})
+                setResposta(resposta)
+            }
         }
 
         console.log(resposta)
@@ -60,6 +132,7 @@ export default function Activity({ history, match}) {
             //heros = response.data;
             setAtividade(response.data)
             setQuestoes(response.data.questoes)
+            setGabarito(response.data.gabarito)
         }
 
         async function buscarUser() {
@@ -74,18 +147,27 @@ export default function Activity({ history, match}) {
             }
 
         }
-
+        async function buscarTeam(){
+            const response = await api.get('/buscar/grupo', {
+                headers: {
+                    id: user.grupo
+                }
+            })
+            setGrupo(response.data)
+        }
+        
         async function buscarTeams() {
             const response = await api.get('/buscar/grupo/all')
 
             listaAux = response.data
             listaAux.sort(function (a, b) {
-                return b.pontuacao - a.pontuacao
+                return b.posicaoRanking - a.posicaoRanking
             })
 
             setGrupos(listaAux);
         }
 
+        buscarTeam();
         buscarTeams();
         buscarUser();
         buscarAtividadeIndividual(match.params.idAtividade);
@@ -155,22 +237,30 @@ export default function Activity({ history, match}) {
             </div>
 
             <div className='content2'>
+                <div>
+                    <h4>{atividade.titulo}</h4>
+                </div>
+                <div>
+                    {atividade.conteudo}
+                </div>
+                <br></br>
                 <div className='cards-questions'>
                     {questoes.length > 0 ? (
                         <ul>
-                            {questoes.map((questao, index) => (
-                                <li key={index}>
+                            {questoes.map((questao, indexQ) => (
+                                <li key={indexQ}>
+                                    <form>
                                     <div className='card-individual'>
                                         <div className='str-question'>
-                                            <strong> Questão {index + 1}</strong>
+                                            <strong> Questão {indexQ + 1}</strong>
                                         </div>
                                         <div className='activity-context'>
-                                            {questao[index + 1].texto}
+                                            {questao[indexQ + 1].texto}
                                         </div>
-                                        {questao[index + 1].alternativas.length > 0 ? (
+                                        {questao[indexQ + 1].alternativas.length > 0 ? (
                                             <div className='alternatives'>
-                                                { questao[index + 1].alternativas.map((alternativa, index) => (
-                                                    <div className='individual-alternative' key={index} value={listaVar[index]} onChange={e => verificarVariavel(index, e.target.value)}>
+                                                { questao[indexQ + 1].alternativas.map((alternativa, index) => (
+                                                    <div className='individual-alternative' key={index} value={listaVar[index]} onChange={e => verificarVariavel(indexQ, e.target.value)}>
                                                         <div className='div-radio-input'>
                                                             <input type='radio' name='radio-question' value={alfabeto[index]} className='radio-input' />
                                                         </div>
@@ -197,6 +287,7 @@ export default function Activity({ history, match}) {
                                             )}
 
                                     </div>
+                                    </form>
                                 </li>
                             ))}
 
