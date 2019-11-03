@@ -9,7 +9,7 @@ import api from '../../service/api';
 export default function About({ history, match }) {
     const [user, setUser] = useState('');
     const [grupos, setGrupos] = useState([])
-    const [atividades, setAtividades] = useState([])
+    const [setAtividades] = useState([])
     const [icon, setIcon] = useState(Object)
 
     var listaAux = []
@@ -68,11 +68,11 @@ export default function About({ history, match }) {
 
             <div className='screen-data'>
                 <div className='str'>
-                    Dashboard
+                    Sobre
                 </div>
             </div>
             <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
+                <img src={icon.url} className='img-user' alt='Ícone do usuário'/>
             </div>
 
             <div className='menu'>
@@ -84,7 +84,7 @@ export default function About({ history, match }) {
                 <div className='menu-bottom'>
                     <a className='menu-item' href='/settings'> Configurações </a>
                     <a className='menu-item' href='/contacts'> Contatos </a>
-                    <a className='menu-item' href='/about'> Sobre </a>
+                    <a className='menu-item selected' href='/about'> Sobre </a>
                 </div>
             </div>
             
@@ -122,13 +122,13 @@ export default function About({ history, match }) {
 
             <div className='content'>
                 <div className='version'>
-                    Versão: <a href='https://github.com/Andrefer1/frontend-battleclass'>2.1.2</a>
+                    Versão: <a href='https://github.com/Andrefer1/frontend-battleclass' target="_blank">2.2.10</a>
                 </div>
                 <div className='text'>
                     Este sistema foi desenvolvido pela equipe formada por André F. Bispo,
                     João Vitor S. Egidio, Emmanuel Peralta e Igor Valadares da matéria
                     Tópicos II (2019/2) do CEULP/ULBRA, ministrada pela professora Heloíse.
-            </div>
+                </div>
             </div>
 
         </div>

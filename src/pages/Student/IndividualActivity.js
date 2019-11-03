@@ -24,7 +24,7 @@ export default function Activity({ history, match}) {
     var listaAux = [];
     var letra = '';
     const alfabeto = ['a', 'b', 'c', 'd']
-    const [icon, setIcon] = useState(Object)
+    const [icon] = useState(Object)
 
 
     function postarAtividade() {
@@ -189,18 +189,18 @@ export default function Activity({ history, match}) {
 
             </div>
             <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
+                <img src={icon.url} className='img-user' alt='Ícone do usuário' />
             </div>
 
             <div className='menu'>
-                <a className='sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</a>
-                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </a>
-                <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
+                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
+                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
                 <div className='menu-bottom'>
-                    <a className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                    <a className='menu-item' href='/contacts'> Contatos </a>
-                    <a className='menu-item' href='/about'> Sobre </a>
+                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <div className='menu-item disabled' > Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item disabled' > Sobre </div> {/*href='/about'*/}
                 </div>
             </div>
 

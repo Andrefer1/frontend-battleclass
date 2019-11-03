@@ -9,7 +9,7 @@ import api from '../../service/api';
 export default function Contacts({ history, match }) {
     const [user, setUser] = useState('');
     const [grupos, setGrupos] = useState([])
-    const [atividades, setAtividades] = useState([])
+    const [setAtividades] = useState([])
     const [icon, setIcon] = useState(Object)
 
     var listaAux = []
@@ -68,11 +68,11 @@ export default function Contacts({ history, match }) {
 
             <div className='screen-data'>
                 <div className='str'>
-                    Dashboard
+                    Contatos
                 </div>
             </div>
             <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
+                <img src={icon.url} className='img-user' alt='Ícone do usuário' />
             </div>
 
             <div className='menu'>
@@ -83,7 +83,7 @@ export default function Contacts({ history, match }) {
                 <a className='menu-item' href='/activitys'> Atividades </a>
                 <div className='menu-bottom'>
                     <a className='menu-item' href='/settings'> Configurações </a>
-                    <a className='menu-item' href='/contacts'> Contatos </a>
+                    <a className='menu-item selected' href='/contacts'> Contatos </a>
                     <a className='menu-item' href='/about'> Sobre </a>
                 </div>
             </div>
@@ -124,76 +124,91 @@ export default function Contacts({ history, match }) {
                 <div className='support'>
                     <div className='str-support'>
                         Suporte
-                </div>
+                    </div>
                     <div className='email-support'>
                         contato.devs@gmail.com
-                </div>
+                    </div>
                 </div>
 
-                <div className='email-devs'>
+                <div className='cards-devs'>
                     <div className='str-developers'>
                         Desenvolvedores
-                </div>
+                    </div>
 
-                    <div className='dev'>
-                        <div className='name'>
-                            <strong>Nome</strong><br />André Fernandes Bispo
-                    </div>
-                        <br />
-                        <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
-                    </div>
-                        <br />
-                        <div className='email'>
-                            <strong>E-mail</strong><br />andre1@rede.ulbra.com
-                    </div>
-                    </div>
-                    <hr />
+                    <div className='devs'>
+                        <div className='dev'>
+                            <div className='profile-data'>
+                                <div className='icon'>
+                                    <img src={userProfile} alt='Ícone do usuário' />
+                                </div>
+                                <div className='name'>
+                                    André Fernandes Bispo
+                                </div>
+                            </div>
 
-                    <div className='dev'>
-                        <div className='name'>
-                            <strong>Nome</strong><br />João Vitor S. Egidio
-                    </div>
-                        <br />
-                        <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
-                    </div>
-                        <br />
-                        <div className='email'>
-                            <strong>E-mail</strong><br />joaovitorsoares12@rede.ulbra.com
-                    </div>
-                    </div>
-                    <hr />
+                            <div className='profission'>
+                                <strong>Curso</strong><br />Engenharia de Software
+                            </div>
+                            <div className='email'>
+                                <strong>E-mail</strong><br />andre1@rede.ulbra.com
+                            </div>
+                        </div>
 
-                    <div className='dev'>
-                        <div className='name'>
-                            <strong>Nome</strong><br />Emmanuel Peralta
-                    </div>
-                        <br />
-                        <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
-                    </div>
-                        <br />
-                        <div className='email'>
-                            <strong>E-mail</strong><br />emmanuelperalta8@rede.ulbra.com
-                    </div>
-                    </div>
-                    <hr />
+                        <div className='dev'>
+                            <div className='profile-data'>
+                                <div className='icon'>
+                                    <img src={userProfile} alt='Ícone do usuário' />
+                                </div>
+                                <div className='name'>
+                                    João Vitor Soares Egidio
+                                </div>
+                            </div>
 
-                    <div className='dev'>
-                        <div className='name'>
-                            <strong>Nome</strong><br />Igor Oliveira Valadares
+                            <div className='profission'>
+                                <strong>Curso</strong><br />Engenharia de Software
+                            </div>
+                            <div className='email'>
+                                <strong>E-mail</strong><br />joaovitorsoares12@rede.ulbra.com
+                            </div>
+                        </div>
+
+                        <div className='dev'>
+                            <div className='profile-data'>
+                                <div className='icon'>
+                                    <img src={userProfile} alt='Ícone do usuário' />
+                                </div>
+                                <div className='name'>
+                                    Emmanuel Peralta
+                                </div>
+                            </div>
+
+                            <div className='profission'>
+                                <strong>Curso</strong><br />Engenharia de Software
+                            </div>
+                            <div className='email'>
+                                <strong>E-mail</strong><br />emmanuelperalta8@rede.ulbra.com
+                            </div>
+                        </div>
+
+                        <div className='dev'>
+                            <div className='profile-data'>
+                                <div className='icon'>
+                                    <img src={userProfile} alt='Ícone do usuário' />
+                                </div>
+                                <div className='name'>
+                                    Igor Oliveira Valadares
+                                </div>
+                            </div>
+
+                            <div className='profission'>
+                                <strong>Curso</strong><br />Engenharia de Software
+                            </div>
+                            <div className='email'>
+                                <strong>E-mail</strong><br />igoroliveira@rede.ulbra.com
+                            </div>
+                        </div>
+
                     </div>
-                        <br />
-                        <div className='Profission'>
-                            <strong>Profissão</strong><br />Engenheiro de Software
-                    </div>
-                        <br />
-                        <div className='email'>
-                            <strong>E-mail</strong><br />@rede.ulbra.com
-                    </div>
-                    </div>
-                    <hr />
                 </div>
             </div>
 

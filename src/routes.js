@@ -48,7 +48,8 @@ export default function Routes() {
             <Route path='/battle' component={Batalha} />
             <Route path='/:idUser/settings' component={Settings} />
             {/*<Route path='/test' component={Test}/>*/}
-
+            
+            
             {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
             <Route path='/:idUser/team/:idGrupo' component={Team} />

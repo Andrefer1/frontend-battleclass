@@ -238,4 +238,18 @@ html, body{
     margin-left: 65px;
 }
 
+.teams .cards-teams .empty{
+    font-size: 26pt;
+    color: rgb(212, 212, 212);
+    margin-top: 37%;
+}
 
+.teams .menu .disabled {
+    color: gray; 
+}
+
+.teams .menu .disabled:hover {
+    color: gray; 
+    background: rgba(9,9,121,1);
+    cursor: default;
+}

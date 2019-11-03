@@ -8,15 +8,16 @@ import Button from 'react-bootstrap/Button'
 import mainImage from '../../assets/user2.png'
 import userIcon from '../../assets/user2.png'
 import padlockIcon from '../../assets/padlock.png'
-/*import TermsUse from '../../assets/termos.json'*/
  
 import './Register.css';
 
+/*
 const header = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With",
     "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS"
 }
+*/
 
 export default function Register({ history }) {
     const [ email, setEmail ] = useState('');
@@ -24,7 +25,6 @@ export default function Register({ history }) {
     const [ nome, setNome ] = useState('');
     const [ professor, setProfessor ] = useState();
     const [ cadastro, setCadastro ] = useState('');
-    const [ confirmation, setConfirmation ] = useState('');
 
     const [ senha1, setSenha1 ] = useState('');
     const [ senha2, setSenha2 ] = useState('');
@@ -457,7 +457,7 @@ export default function Register({ history }) {
                 <button className="btn btn-primary enter-button"> Criar </button> 
 
                 <div className='link'>
-                    <a href='/' id='link-login'> Já possui cadastro? </a>
+                    <a href='/frontend-battleclass/' id='link-login'> Já possui cadastro? </a>
                 </div>
                 
             </form>

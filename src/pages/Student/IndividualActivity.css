@@ -71,7 +71,7 @@ html, body{
         margin-left: 0px;
     }
 
-    .individual-activity .menu a {
+    .individual-activity .menu .menu-item {
         color: white;
         padding: 10px 16px;
         text-decoration: none;
@@ -81,7 +81,7 @@ html, body{
         cursor: pointer;
     }
 
-    .individual-activity .menu a:hover {
+    .individual-activity .menu .menu-item:hover {
         background-color: white;
         color: black;
         cursor: pointer;
@@ -265,3 +265,12 @@ html, body{
 
 
 
+.individual-activity .menu .disabled {
+    color: gray; 
+}
+
+.individual-activity .menu .disabled:hover {
+    color: gray; 
+    background: rgba(9,9,121,1);
+    cursor: default;
+}

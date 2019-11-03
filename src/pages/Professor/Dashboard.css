@@ -171,7 +171,7 @@ html, body{
     min-width: 10%;
     height: 100%;
     margin: 110px 0 0 16%;
-    border: solid 1px;
+    /*border: solid 1px;*/
 }
 
 .dashboard .content .cards-students {
@@ -184,7 +184,7 @@ html, body{
 .dashboard .content .cards-students ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 2fr));
     grid-gap: 20px;
     border: solid 1px;
 }
@@ -215,4 +215,18 @@ canvas {
     margin-left: 300px;
 }
 
+.dashboard #warning {
+    font-size: 26pt;
+    color: rgb(212, 212, 212);
+    margin: 35% 0 0 0;
+}
 
+.dashboard .menu .disabled {
+    color: gray; 
+}
+
+.dashboard .menu .disabled:hover {
+    color: gray; 
+    background: rgba(9,9,121,1);
+    cursor: default;
+}

@@ -85,6 +85,12 @@ html, body{
     color: white;
 }
 
+.settings .menu .selected {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
  .settings .menu .menu-bottom {
     width: 200px;
     position: absolute;

@@ -8,7 +8,7 @@ import './Dashboard.css';
 
 export default function IndividualActivity({ history, match }) {
     const [grupos, setGrupos] = useState([])
-    const [icon, setIcon] = useState(Object)
+    const [icon] = useState(Object)
 
     var listaAux = []
     useEffect(() => {
@@ -23,6 +23,7 @@ export default function IndividualActivity({ history, match }) {
             setGrupos(listaAux);
         }
 
+        /*
         async function busarIcon(id) {
             const response = await api.get('/buscar/icon', {
                 headers: {
@@ -31,6 +32,7 @@ export default function IndividualActivity({ history, match }) {
             })
             setIcon(response.data)
         }
+        */
 
         buscarTeams();
 
@@ -45,19 +47,19 @@ export default function IndividualActivity({ history, match }) {
                 </div>
             </div>
             <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
+                <img src={icon.url} className='img-user' alt='Ícone do usuário' />
             </div>
 
             <div className='menu'>
-                <a className='sitename' href='/dashboard'>BattleClass</a>
-                <a className='menu-item' href='/dashboard'> Página Inicial </a>
+                <a className='sitename' href='/dashboard'> BattleClass </a>
+                <a className='menu-item' href='/dashboard'> Dashboard </a>
                 <a className='menu-item' href='/students'> Alunos </a>
                 <a className='menu-item' href='/teams'> Equipes </a>
-                <a className='menu-item' href='/activitys'> Atividades </a>
+                <a className='menu-item selected' href='/activitys'> Atividades </a>
                 <div className='menu-bottom'>
-                    <a className='menu-item' href='/settings'> Configurações </a>
-                    <a className='menu-item' href='/contacts'> Contatos </a>
-                    <a className='menu-item' href='/about'> Sobre </a>
+                    <a className='menu-item disabled' > Configurações </a> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <a className='menu-item disabled' > Contatos </a> {/*href='/contacts'*/}
+                    <a className='menu-item disabled' > Sobre </a> {/*href='/about'*/}
                 </div>
             </div>
 
