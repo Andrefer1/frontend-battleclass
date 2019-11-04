@@ -147,98 +147,114 @@ html, body{
 
 
 /*PROFILES CARDS*/
-.teams .cards-teams {
-    width: 58%;
-    margin-top: 125px;
-    margin-left: 16%;
+.teams .content {
+    width: auto;
+    min-width: 380px;
+    max-width: 66%;
+    margin: 130px 380px 0 240px;
     /*border: solid 1px red;*/
 }
 
-.teams .cards-teams ul {
+.teams .content .cards-teams {
+    width: 100%;
+    /*border: solid 1px greenyellow;*/
+}
+
+.teams .content .cards-teams ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 30px;
     /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual {
+.teams .content .cards-teams .card-individual {
     width: 400px;
     height: 340px;
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    /*border: solid 1px blue;*/
+    border: solid 1px white;
 }
 
-.teams .cards-teams .card-individual .team-data {
+.teams .content .cards-teams .card-individual .team-data {
     display: flex;
-    /*border: solid 1px;*/
+    margin: 20px 15px 0 15px;
+    /*border: solid 1px red;*/
 }
 
-.teams .cards-teams .card-individual .team-data .team-name {
-    margin-top: 20px;
-    margin-left: 20px;
+.teams .content .cards-teams .card-individual .team-data .team-name {
     font-size: 15pt;
     position: absolute;
     /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual .team-data .team-points {
+.teams .content .cards-teams .card-individual .team-data .team-points {
     width: 50px;
-    margin-top: 20px;
-    margin-left: 340px;
+    margin-left: 90%;
     font-size: 15pt;
-    /*border: solid 1px green;*/
+    /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual .hr-card-team {
+.teams .content .cards-teams .card-individual .hr-card-team {
     width: 90%;
     margin-left: 20px;
 }
 
-.teams .cards-teams .card-individual .student-data {
-    margin-top: 15px;
-    margin-left: 20px;
-    font-size: 15pt;
+.teams .content .cards-teams .card-individual .ul {
+    margin: 0 15px 0 15px;
+    /*border: solid 1px red;*/
+}
+
+.teams .content .cards-teams .card-individual li {
+    /*width: 367px;*/
+    margin-bottom: 10px;
     /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual .student-data .student-name {
+.teams .content .cards-teams .card-individual .student-data {
+    display: flex;
+    /*border: solid 1px greenyellow;*/
+}
+
+.teams .content .cards-teams .card-individual .student-data .student-name {
+    float: left;
     font-size: 15pt;
-    position: absolute;
+    white-space: nowrap;
     /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual .student-data .student-point {
+.teams .content .cards-teams .card-individual .student-data .student-point {
     width: 50px;
-    margin-left: 320px;
+    float: right;
     font-size: 15pt;
     /*border: solid 1px green;*/
 }
 
-.teams .cards-teams .card-individual .challenge-data {
-    margin-top: 0px;
-    margin-left: -25px;
+.teams .content .cards-teams .card-individual .challenge-data {
+    margin: 0 0 15px 15px;
     float: left;
     font-size: 12pt;
+    /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual .challenge-data .str-challenge {
-    margin-top: 0px;
-    margin-left: 0px;
+.teams .content .cards-teams .card-individual .challenge-data .str-challenge {
+    float: left;    
+    /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual .challenge-data .challenge-wins {
-    margin-top: 5px;
-    margin-left: 70px;
+.teams .content .cards-teams .card-individual .challenge-data .challenge-wins {
+    margin: 5px 0 0 20px;
+    float: left;
+   /*border: solid 1px;*/
 }
 
-.teams .cards-teams .card-individual .challenge-data .challenge-loses {
-    margin-top: 8px;
-    margin-left: 65px;
+.teams .content .cards-teams .card-individual .challenge-data .challenge-loses {
+    margin: 10px 0 0 20px;
+    float: left;
+    /*border: solid 1px;*/
 }
 
-.teams .cards-teams .empty{
+.teams .content .cards-teams .empty{
     font-size: 26pt;
     color: rgb(212, 212, 212);
     margin-top: 37%;

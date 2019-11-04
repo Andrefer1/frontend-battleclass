@@ -5,7 +5,7 @@ import userProfile from '../../assets/user-profile.svg';
 
 import RcIf from 'rc-if'
 import './Team.css';
-import api from '../../service/api';
+import api from '../../service/api'; 
 
 export default function Team({ history, match }) {
     const [grupo, setGrupo] = useState(Object);
