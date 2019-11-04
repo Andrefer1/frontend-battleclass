@@ -42,8 +42,6 @@ export default function Team() {
                     buscaUser(response.data[u].integrantes[i])
                 }
             }
-
-
         }
 
         async function buscaUser(id) {
@@ -67,7 +65,7 @@ export default function Team() {
         <div className='teams'>
             <div className='screen-data'>
                 <div className='str-dashboard'>
-                    Dashboard
+                    Equipes
                 </div>
             </div>
             <div className='div-img-user'>
@@ -119,70 +117,74 @@ export default function Team() {
 
             </div>
 
-            <div className='cards-teams'>
-                {grupos.length > 0 ? (
-                    <ul>
-                        {grupos.map(grupo => (
-                            <li key={grupo._id}>
-                                <div className='card-individual'>
-                                    <div className='team-data'>
-                                        <div className='team-name'>
-                                            <strong>{grupo.nome}</strong>
+            <div className='content'>
+
+                <div className='cards-teams'>
+                    {grupos.length > 0 ? (
+                        <ul>
+                            {grupos.map(grupo => (
+                                <li key={grupo._id}>
+                                    <div className='card-individual'>
+                                        <div className='team-data'>
+                                            <div className='team-name'>
+                                                <strong>{grupo.nome}</strong>
+                                            </div>
+                                            <div className='team-points'>
+                                                {grupo.pontuacao}
+                                            </div>
                                         </div>
-                                        <div className='team-points'>
-                                            {grupo.pontuacao}
+
+                                        <hr className='hr-card-team' />
+
+                                        {cont > 0 ? (
+                                            <div className='ul'>
+                                                {usuarios.map(user => (
+                                                    <div key={user._id}>
+                                                        <RcIf if={grupo.integrantes.includes(user._id)}>
+                                                            <li>
+                                                                <div className='student-data'>
+                                                                    <div className='student-name'>
+                                                                        {user.nome}
+                                                                    </div>
+                                                                    <div className='student-point'>
+                                                                        {user.pontuacao}
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </RcIf>
+                                                    </div>
+                                                    
+                                                ))}
+                                            </div>
+
+                                        ) : (
+                                                <div> Sem integrantes </div>
+                                            )}
+
+                                        <hr className='hr-card-team' />
+
+                                        <div className='challenge-data'>
+                                            <div className='str-challenge'>
+                                                <strong>Desafios:</strong>
+                                            </div><br />
+                                            <div className='challenge-wins'>
+                                                Ganhados: {grupo.vitorias}
+                                            </div><br />
+                                            <div className='challenge-loses'>
+                                                Perdidos: {grupo.derrotas}
+                                            </div>
                                         </div>
+
                                     </div>
+                                </li>
+                            ))}
 
-                                    <hr className='hr-card-team' />
+                        </ul>
 
-                                    {cont > 0 ? (
-                                        <ul>
-                                            {usuarios.map(user => (
-
-                                                <li classname='student-data' key={user._id}>
-                                                    <RcIf if={grupo.integrantes.includes(user._id)}>
-                                                        <div className='student-data'>
-                                                            <div className='student-name'>
-                                                                {user.nome}
-                                                            </div>
-                                                            <div className='student-point'>
-                                                                {user.pontuacao}
-                                                            </div>
-                                                        </div>
-                                                    </RcIf>
-                                                </li>
-
-                                            ))}
-                                        </ul>
-
-                                    ) : (
-                                            <div> Sem integrantes </div>
-                                        )}
-
-                                    <hr className='hr-card-team' />
-
-                                    <div className='challenge-data'>
-                                        <div className='str-challenge'>
-                                            <strong>Desafios:</strong>
-                                        </div>
-                                        <div className='challenge-wins'>
-                                            Ganhados: {grupo.vitorias}
-                                        </div>
-                                        <div className='challenge-loses'>
-                                            Perdidos: {grupo.derrotas}
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </li>
-                        ))}
-
-                    </ul>
-
-                ) : (
-                        <div className='empty'> Não há equipes </div>
-                    )}
+                    ) : (
+                            <div className='empty'> Não há equipes </div>
+                        )}
+                </div>
             </div>
 
         </div>
