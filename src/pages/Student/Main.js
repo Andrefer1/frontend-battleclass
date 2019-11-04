@@ -11,6 +11,7 @@ export default function MainStudent({ history, match }) {
     const [grupos, setGrupos] = useState([])
     const [atividades, setAtividades] = useState([])
     const [icon, setIcon] = useState(Object)
+    
 
     var listaAux = []
 
@@ -34,7 +35,7 @@ export default function MainStudent({ history, match }) {
 
             listaAux = response.data
             listaAux.sort(function (a, b) {
-                return b.posicaoRanking - a.posicaoRanking
+                return a.posicaoRanking - b.posicaoRanking
             })
 
             setGrupos(listaAux);
@@ -42,7 +43,7 @@ export default function MainStudent({ history, match }) {
 
         async function buscarAtividades() {
             const response = await api.get('/buscar/atividade/all')
-            setAtividades(response.data)
+            setAtividades(response.data.reverse())
         }
 
         async function busarIcon(id) {
@@ -104,7 +105,7 @@ export default function MainStudent({ history, match }) {
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}
@@ -129,7 +130,7 @@ export default function MainStudent({ history, match }) {
                 {atividades.length > 0 ? (
                     <ul>
                         {atividades.map(atividade => (
-                            <div className='task'>
+                            <div className='task' key={atividade._id} >
                                 <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`))}>
                                     <li key={atividade._id}>
                                         <div className='div-task-content'>

@@ -99,7 +99,7 @@ export default function Contacts({ history, match }) {
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}

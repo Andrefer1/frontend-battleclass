@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RcIf, { RcElse } from 'rc-if';
+import SweetAlert from 'sweetalert2-react';
 
 import userProfile from '../../assets/user-profile.svg';
 import api from '../../service/api';
@@ -24,14 +26,20 @@ export default function Activity({ history, match}) {
     var listaAux = [];
     var letra = '';
     const alfabeto = ['a', 'b', 'c', 'd']
-    const [icon] = useState(Object)
+    const [icon, setIcon] = useState(Object)
+    const [ variavel, setVariavel ] = useState('');
+    const [ultimaPont, setUltima] = useState(0);
+    const [feito, setFeito] = useState(Object);
+    const [notFeito, setNotFeito] = useState('');
 
 
-    function postarAtividade() {
+    async function postarAtividade() {
         var cont = 1;
         var nota = 0;
-        var pontuacaoAluno = 0
-        var ultimaPontucao = 0
+        var pontuacaoAluno = user.pontuacaoGeral;
+        var ultimaPontuacao = 0;
+        var pontuacaoGrupo = grupo.pontuacao;
+
         for (let g in gabarito){
             var gab = gabarito[g]
             var res = respostaFinal[g]
@@ -40,9 +48,27 @@ export default function Activity({ history, match}) {
             }
             cont += 1
         }
+       
+        ultimaPontuacao = ((nota/10) * (grupo.pontuacao/100))
+        pontuacaoAluno = pontuacaoAluno + ultimaPontuacao
 
-        ultimaPontucao = (nota * (grupo.pontuacao/100))
-        pontuacaoAluno = user.pontuacaoGeral + ultimaPontucao
+        pontuacaoGrupo = pontuacaoGrupo + (ultimaPontuacao/2)
+
+        setUltima(ultimaPontuacao.toFixed());
+        
+        const response = await api.post('/postarAtividade', {
+            idUser: user._id,
+            idGrupo: grupo._id,
+            idAtividade: atividade._id,
+            ulPontuacao: ultimaPontuacao,
+            pontuacaoG: pontuacaoAluno,
+            pontuacaoGrupo: pontuacaoGrupo
+        })
+
+        console.log(response)
+        if(response.status == '200'){
+            setVariavel('ok');
+        }
     }
 
     function verificarVariavel(index, valor) {
@@ -141,16 +167,27 @@ export default function Activity({ history, match}) {
                     id: match.params.idUser
                 }
             })
+            var user = response.data
+            var activity = user.atividades.filter(a => a.idAtividade === match.params.idAtividade)
+
+            console.log(activity)
+            if(activity.length > 0) {
+                setFeito(activity[0])
+            } else {
+                setNotFeito('ok')
+            }
+
 
             if (response.data != null) {
                 setUser(response.data);
             }
-
+            buscarTeam(response.data.grupo);
+            buscarIcon(user.icon)
         }
-        async function buscarTeam(){
+        async function buscarTeam(id){
             const response = await api.get('/buscar/grupo', {
                 headers: {
-                    id: user.grupo
+                    id: id
                 }
             })
             setGrupo(response.data)
@@ -161,13 +198,23 @@ export default function Activity({ history, match}) {
 
             listaAux = response.data
             listaAux.sort(function (a, b) {
-                return b.posicaoRanking - a.posicaoRanking
+                return a.posicaoRanking - b.posicaoRanking
             })
 
             setGrupos(listaAux);
         }
 
-        buscarTeam();
+        async function buscarIcon(id) {
+            const response = await api.get('/buscar/icon', {
+                headers: {
+                    id: id
+                }
+            })
+            setIcon(response.data)
+
+        }
+
+        
         buscarTeams();
         buscarUser();
         buscarAtividadeIndividual(match.params.idAtividade);
@@ -176,6 +223,18 @@ export default function Activity({ history, match}) {
     return (
         <div className='individual-activity'>
 
+            <RcIf if={variavel === "ok"}>
+                <SweetAlert
+                    show={variavel}
+                    title={`PARABÉNS !!`}
+                    text={`Sua pontuação para a próxima batalha é: ${ultimaPont}`}
+                    type='success'
+                    onConfirm={() => {
+                        setVariavel(null);
+                        history.push(`/${user._id}/activitys-student`)
+                    }}
+                />
+            </RcIf>
             <div className='student-data'>
                 <div className='student-name'>
                     {user.nome}
@@ -184,7 +243,7 @@ export default function Activity({ history, match}) {
                     -
             </div>
                 <div className='student-points'>
-                    {user.pontuacao} PONTOS
+                    {user.ultimaPontuacao} PONTOS
             </div>
 
             </div>
@@ -215,7 +274,7 @@ export default function Activity({ history, match}) {
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}
@@ -237,72 +296,80 @@ export default function Activity({ history, match}) {
             </div>
 
             <div className='content2'>
-                <div>
-                    <h4>{atividade.titulo}</h4>
-                </div>
-                <div>
-                    {atividade.conteudo}
-                </div>
-                <br></br>
-                <div className='cards-questions'>
-                    {questoes.length > 0 ? (
-                        <ul>
-                            {questoes.map((questao, indexQ) => (
-                                <li key={indexQ}>
-                                    <form>
-                                    <div className='card-individual'>
-                                        <div className='str-question'>
-                                            <strong> Questão {indexQ + 1}</strong>
-                                        </div>
-                                        <div className='activity-context'>
-                                            {questao[indexQ + 1].texto}
-                                        </div>
-                                        {questao[indexQ + 1].alternativas.length > 0 ? (
-                                            <div className='alternatives'>
-                                                { questao[indexQ + 1].alternativas.map((alternativa, index) => (
-                                                    <div className='individual-alternative' key={index} value={listaVar[index]} onChange={e => verificarVariavel(indexQ, e.target.value)}>
-                                                        <div className='div-radio-input'>
-                                                            <input type='radio' name='radio-question' value={alfabeto[index]} className='radio-input' />
-                                                        </div>
-                                                        <div className='alphabet-letter'>
-                                                            {letra = alfabeto[index]})
-                                                        </div>
-                                                        <div className='div-alternative-text'>
-                                                            <label for='radio-input' className='alternative-text' > 
-                                                                {alternativa[letra].texto} 
-                                                                {/*
-                                                                iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-                                                                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                                                                non proident, sunt in culpa qui officia des
-                                                                */}
-                                                            </label>
-                                                        </div>
+                <RcIf if={notFeito == ''}>
+                    <div className='empty'> Você ja fez essa atividade, sua pontuação é de: {feito.pontuacao} :) </div>
+                    <RcElse>
+                        <RcIf if={notFeito == 'ok'}>
+                            <div>
+                                <h4>{atividade.titulo}</h4>
+                            </div>
+                            <div>
+                                {atividade.conteudo}
+                            </div>
+                            <br></br>
+                            <div className='cards-questions'>
+                                {questoes.length > 0 ? (
+                                    <ul>
+                                        {questoes.map((questao, indexQ) => (
+                                            <li key={indexQ}>
+                                                <form>
+                                                <div className='card-individual'>
+                                                    <div className='str-question'>
+                                                        <strong> Questão {indexQ + 1}</strong>
                                                     </div>
+                                                    <div className='activity-context'>
+                                                        {questao[indexQ + 1].texto}
+                                                    </div>
+                                                    {questao[indexQ + 1].alternativas.length > 0 ? (
+                                                        <div className='alternatives'>
+                                                            { questao[indexQ + 1].alternativas.map((alternativa, index) => (
+                                                                <div className='individual-alternative' key={index} value={listaVar[index]} onChange={e => verificarVariavel(indexQ, e.target.value)}>
+                                                                    <div className='div-radio-input'>
+                                                                        <input type='radio' name='radio-question' value={alfabeto[index]} className='radio-input' />
+                                                                    </div>
+                                                                    <div className='alphabet-letter'>
+                                                                        {letra = alfabeto[index]})
+                                                                    </div>
+                                                                    <div className='div-alternative-text'>
+                                                                        <label for='radio-input' className='alternative-text' > 
+                                                                            {alternativa[letra].texto} 
+                                                                            {/*
+                                                                            iquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
+                                                                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+                                                                            non proident, sunt in culpa qui officia des
+                                                                            */}
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
 
-                                                ))}
+                                                            ))}
 
-                                            </div>
-                                        ) : (
-                                                <div> Sem questões </div>
-                                            )}
+                                                        </div>
+                                                    ) : (
+                                                            <div> Sem questões </div>
+                                                        )}
 
-                                    </div>
-                                    </form>
-                                </li>
-                            ))}
+                                                </div>
+                                                </form>
+                                            </li>
+                                        ))}
 
-                        </ul>
-                    ) : (
-                            <div> Sem questões </div>
-                        )}
+                                    </ul>
+                                ) : (
+                                        <div> Sem questões </div>
+                                    )}
 
-                </div>
+                            </div>
 
-                <div className='div-button'>
-                    <button className='btn btn-primary button' onClick={postarAtividade}>
-                        Publicar
-                    </button>
-                </div>
+                            <div className='div-button'>
+                                <button className='btn btn-primary button' onClick={postarAtividade}>
+                                    Publicar
+                                </button>
+                            </div>
+                        </RcIf>
+                    </RcElse>
+                </RcIf>
+                
             </div>
         </div>
 

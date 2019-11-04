@@ -13,6 +13,8 @@ export default function Activity({ history, match }) {
     const [user, setUser] = useState('');
     const [icon, setIcon] = useState(Object)
 
+    var listaAux = [];
+
     function navegarAtividade(atividade) {
         history.push(`/${match.params.idUser}/activitys-student/individual-activity/${atividade._id}`)
 
@@ -73,7 +75,12 @@ export default function Activity({ history, match }) {
         async function buscarGrupos() {
             const response = await api.get('/buscar/grupo/all')
 
-            setGrupos(response.data)
+            listaAux = response.data
+            listaAux.sort(function (a, b) {
+                return a.posicaoRanking - b.posicaoRanking
+            })
+
+            setGrupos(listaAux);
         }
 
         buscarAtividades();
@@ -95,7 +102,7 @@ export default function Activity({ history, match }) {
                     -
                 </div>
                 <div className='student-points'>
-                    {user.pontuacao} PONTOS
+                    {user.ultimaPontuacao} PONTOS
                 </div>
 
             </div>
@@ -126,7 +133,7 @@ export default function Activity({ history, match }) {
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}

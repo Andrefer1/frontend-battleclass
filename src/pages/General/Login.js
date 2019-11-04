@@ -24,8 +24,13 @@ export default function Login({ history }) {
         });
 
         const usuario = response.data.id_user
-        if(response.data.login == true ){
-            history.push(`/${usuario._id}/main`)
+        if(response.data.login == true){
+            if(usuario.professor == false) {
+                history.push(`/${usuario._id}/main`)
+            } else {
+                history.push(`/${usuario._id}/dashboard`)
+            }
+            
         }
         else if(response.data.login == "not verified"){
             setVerificar(response.data.msg)

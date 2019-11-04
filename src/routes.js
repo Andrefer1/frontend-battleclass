@@ -34,15 +34,15 @@ import Batalha from './pages/Professor/Batalha'
 
 export default function Routes() {
     return (
-        <BrowserRouter basename="/frontend-battleclass">
+        <BrowserRouter>
             
             {/*GENERAL*/}
             <Route path='/' exact component={Login} />
             <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
-            <Route path='/:id/icon' component={Hero} />
-            <Route path='/contacts' component={Contacts} />
-            <Route path='/about' component={About} />
+            <Route path='/:idUser/icon' component={Hero} />
+            <Route path='/:idUser/contacts' component={Contacts} />
+            <Route path='/:idUser/about' component={About} />
             <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
             <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
             <Route path='/battle' component={Batalha} />
@@ -58,12 +58,12 @@ export default function Routes() {
             
             
             {/*PROFESSOR*/}
-            <Route path='/dashboard' component={Dashboard} />
-            <Route path='/students' component={Students} />
-            <Route path='/teams' component={Teams} />
-            <Route path='/activitys' exact component={Activitys} />
-            <Route path='/activitys/activity' component={Activity} />
-            <Route path='/activitys/add-activity' component={AddActivity} />
+            <Route path='/:idUser/dashboard' component={Dashboard} />
+            <Route path='/:idUser/students' component={Students} />
+            <Route path='/:idUser/teams' component={Teams} />
+            <Route path='/:idUser/activitys' exact component={Activitys} />
+            <Route path='/:idUser/activitys/activity' component={Activity} />
+            <Route path='/:idUser/activitys/add-activity' component={AddActivity} />
 
         </BrowserRouter>
     );

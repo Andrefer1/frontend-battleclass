@@ -8,7 +8,8 @@ import './Activitys.css';
 
 export default function Activitys({ history, match }) {
     const [grupos, setGrupos] = useState([])
-    const [icon] = useState(Object)
+    const [icon, setIcon] = useState(Object)
+    const [user, setUser] = useState(Object)
 
     var listaAux = []
 
@@ -24,7 +25,21 @@ export default function Activitys({ history, match }) {
             setGrupos(listaAux);
         }
 
-        /*
+        async function buscarUser() {
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: match.params.idUser
+                }
+            })
+
+            if (response.data != null) {
+                setUser(response.data);
+            }
+
+            busarIcon(response.data.icon);
+        }
+
+        
         async function busarIcon(id) {
             const response = await api.get('/buscar/icon', {
                 headers: {
@@ -33,9 +48,9 @@ export default function Activitys({ history, match }) {
             })
             setIcon(response.data)
         }
-        */
 
         buscarTeams();
+        buscarUser();
 
     }, []);
 
@@ -53,11 +68,11 @@ export default function Activitys({ history, match }) {
             </div>
 
             <div className='menu'>
-                <a className='sitename' href='/dashboard'> BattleClass </a>
-                <a className='menu-item' href='/dashboard'> Dashboard </a>
-                <a className='menu-item' href='/students'> Alunos </a>
-                <a className='menu-item' href='/teams'> Equipes </a>
-                <a className='menu-item selected' href='/activitys'> Atividades </a>
+                <a className='sitename' onClick={() => (history.push(`/${user._id}/dashboard`))}> BattleClass </a>
+                <a className='menu-item selected' onClick={() => (history.push(`/${user._id}/dashboard`))}> Dashboard </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/students`))}> Alunos </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/teams`))}> Equipes </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/activitys`))}> Atividades </a>
                 <div className='menu-bottom'>
                     <a className='menu-item disabled' > Configurações </a> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
                     <a className='menu-item disabled' > Contatos </a> {/*href='/contacts'*/}
@@ -76,7 +91,7 @@ export default function Activitys({ history, match }) {
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}

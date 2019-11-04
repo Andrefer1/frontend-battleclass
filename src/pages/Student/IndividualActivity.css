@@ -169,6 +169,12 @@ html, body{
     /*border: solid 1px*/
 }
 
+.individual-activity .content2 .empty {
+    font-size: 26pt;
+    color: rgb(212, 212, 212);
+    margin-top: 37%;
+}
+
 .individual-activity .content2 .cards-questions {
     width: 90%;
     margin: 20px 0 0 5%;
