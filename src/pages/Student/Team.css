@@ -183,24 +183,19 @@ html, body{
     min-width: 380px;
     max-width: 66%;
     margin: 130px 380px 0 240px;
-    /*border: solid 1px;*/
+    border: solid 1px white;
+}
+
+.team .content .button-battle {
+    width: 140px;
+    height: 55px;
+    margin: 0 0 30px 0px;
+    float: left;
 }
 
 .team .cards-students {
-    width: 55%;
-    margin-top: 130px;
-    margin-left: 240px;
-    /*border: solid 1px red;*/
-}
-
-.team .cards-students .div-button-battle {
-    width: 100px;
-    margin: 0 0 30px 0px;
-    background-image: url('../../assets/espadas.gif');
-}
-
-.team .cards-students .button-battle {
-    width: 100px;
+    margin-top: 75px;
+    /*border: solid 1px;*/
 }
 
 .team .cards-students ul {
@@ -237,15 +232,19 @@ html, body{
     margin-top: 25px;
     margin-left: 100px;
     float: left;
-    /*position: absolute;*/
     /*border: solid 1px;*/
 }
 
 .team .cards-students .card-individual .points {
     height: 70px;
     transform: translate(0px, 0px);
-    /*border: solid 1px green;*/
     font-size: 50px;
+}
+
+.team .content .empty {
+    font-size: 26pt;
+    color: rgb(212, 212, 212);
+    margin-top: 27%;
 }
 
 .team .content #warning {

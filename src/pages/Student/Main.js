@@ -87,8 +87,8 @@ export default function MainStudent({ history, match }) {
                 <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
                 <div className='menu-bottom'>
                     <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
-                    <div className='menu-item disabled' > Contatos </div> {/*href='/contacts'*/}
-                    <div className='menu-item disabled' > Sobre </div> {/*href='/about'*/}
+                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/contacts`))}> Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/about`))}> Sobre </div> {/*href='/about'*/}
                 </div>
             </div>
 
@@ -126,6 +126,7 @@ export default function MainStudent({ history, match }) {
             </div>
 
             <div className='content'>
+
                 {atividades.length > 0 ? (
                     <ul>
                         {atividades.map(atividade => (

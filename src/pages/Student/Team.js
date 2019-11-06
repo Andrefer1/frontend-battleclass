@@ -5,7 +5,7 @@ import userProfile from '../../assets/user-profile.svg';
 
 import RcIf from 'rc-if'
 import './Team.css';
-import api from '../../service/api'; 
+import api from '../../service/api';
 
 export default function Team({ history, match }) {
     const [grupo, setGrupo] = useState(Object);
@@ -122,8 +122,8 @@ export default function Team({ history, match }) {
                 <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
                 <div className='menu-bottom'>
                     <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
-                    <div className='menu-item disabled' > Contatos </div> {/*href='/contacts'*/}
-                    <div className='menu-item disabled' > Sobre </div> {/*href='/about'*/}
+                    <div className='menu-item' > Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item' > Sobre </div> {/*href='/about'*/}
                 </div>
             </div>
 
@@ -161,49 +161,46 @@ export default function Team({ history, match }) {
             </div>
 
             <div className='content'>
-                <div id='warning'>
+                {/*<div id='warning'>
                     Em construção...
                 </div>
 
-                <RcIf if={1 === 'a'}>
-                    <div className='cards-students'>
+                <RcIf if={1 === 'a'}>*/}
+                <button className='btn btn-primary button-battle'
+                    onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))}>
+                    Batalhar
+                </button>
 
-                        <a className='btn btn-primary button-battle'
-                            onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))}>
-                            <div className='div-button-battle'>
-                                Batalhar
-                    </div>
-                        </a>
+                <div className='cards-students'>
+                    {cont > 0 ? (
+                        <ul>
+                            {console.log(integrantes)}
+                            {integrantes.map((integrante, index) => (
 
-                        {cont > 0 ? (
-                            <ul>
-                                {console.log(integrantes)}
-                                {integrantes.map((integrante, index) => (
-
-                                    <li key={integrante._id}>
-                                        <div className='card-individual' >
-                                            <div className='profile-data'>
-                                                <div className='img-profile'>
-                                                    <img src={icons[index].url} alt='Imagem do usuário' className='img-individual' />
-                                                </div>
-                                                <div className='username-profile'>
-                                                    {integrante.nome}
-                                                </div>
+                                <li key={integrante._id}>
+                                    <div className='card-individual' >
+                                        <div className='profile-data'>
+                                            <div className='img-profile'>
+                                                <img src={icons[index].url} alt='Imagem do usuário' className='img-individual' />
                                             </div>
-                                            <div className='points'>
-                                                {integrante.pontuacao}
+                                            <div className='username-profile'>
+                                                {integrante.nome}
                                             </div>
                                         </div>
-                                    </li>
-                                ))}
+                                        <div className='points'>
+                                            {integrante.pontuacao}
+                                        </div>
+                                    </div>
+                                </li>
+                            ))}
 
-                            </ul>
-                        ) : (
-                                <div> Sem Integrantes </div>
-                            )}
+                        </ul>
+                    ) : (
+                            <div className='empty'> Não há integrantes </div>
+                        )}
 
-                    </div>
-                </RcIf>
+                </div>
+                {/*</RcIf>*/}
             </div>
         </div>
 

@@ -41,8 +41,8 @@ export default function Routes() {
             <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
             <Route path='/:id/icon' component={Hero} />
-            <Route path='/contacts' component={Contacts} />
-            <Route path='/about' component={About} />
+            <Route path='/:idUser/contacts' component={Contacts} />
+            <Route path='/:idUser/about' component={About} />
             <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
             <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
             <Route path='/battle' component={Batalha} />
