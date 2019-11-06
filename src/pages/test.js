@@ -33,6 +33,12 @@ import kirito from '../assets/icons/jv.png';
 import ed from '../assets/icons/manel.png';
 import cebolinha from '../assets/icons/andre.png';
 import patolinoMago from '../assets/icons/patolinoMago.png';
+import avengers from '../assets/icons/avengers.png';
+import justice from '../assets/icons/justice.png';
+import xmen from '../assets/icons/xmen.png';
+import titans from '../assets/icons/titans.png';
+import rangers from '../assets/icons/rangers.png';
+
 
 import api from '../service/api';
 
@@ -40,45 +46,50 @@ import api from '../service/api';
 export default function Test() {
 
     const heros = [
-        { nomePersonagem:'Akali', url: akali},
-        { nomePersonagem:'Akame', url:akame},
-        { nomePersonagem:'Alerquina', url:alerquina},
-        { nomePersonagem:'All Might', url:allMight},
-        { nomePersonagem:'Capitão América', url:capitaoAmerica},
-        { nomePersonagem:'Darth Vader', url:darthVader},
-        { nomePersonagem:'Erza Scarlet', url:erza},
-        { nomePersonagem:'Finn', url:finn},
-        { nomePersonagem:'Gon Freecss', url:gon},
-        { nomePersonagem:'Gumball Watterson', url:gumball},
-        { nomePersonagem:'Hela', url:hela},
-        { nomePersonagem:'Hisoka', url:hisoka},
-        { nomePersonagem:'Joker', url:joker},
-        { nomePersonagem:'Princesa Jujuba', url:jujuba},
-        { nomePersonagem:'Katarina', url:katarina},
-        { nomePersonagem:'Killua Zaoldyeck', url:killua},
-        { nomePersonagem:'Monkey D. Luffy', url:luffy},
-        { nomePersonagem:'Izuku Midorita', url:midorya},
-        { nomePersonagem:'Mordekai', url:mordekai},
-        { nomePersonagem:'Mulher Gavião', url:mulherGaviao },
-        { nomePersonagem:'Ravena', url:raven },
-        { nomePersonagem:'Saitama', url:saitama },
-        { nomePersonagem:'Shinobu Kocho', url:shinobu},
-        { nomePersonagem:'Syndra', url:syndra},
-        { nomePersonagem:'Tanjirou Kamado', url:tajiro },
-        { nomePersonagem:'Thanos', url:thanos},
-        { nomePersonagem:'Thor', url:thor },
-        { nomePersonagem:'Mulher Maravilha', url:wonderWoman },
-        { nomePersonagem:'Zenitsu Agatsuma', url:zanitsu },
-        { nomePersonagem:'Kirito', url: kirito},
-        { nomePersonagem:'Edward Elric', url:ed},
-        { nomePersonagem:'Cebolinha', url:cebolinha},
-        { nomePersonagem:'O Mago', url:patolinoMago },
+        //{ nomePersonagem:'Akali', url: akali},
+        //{ nomePersonagem:'Akame', url:akame},
+        //{ nomePersonagem:'Alerquina', url:alerquina},
+        //{ nomePersonagem:'All Might', url:allMight},
+        //{ nomePersonagem:'Capitão América', url:capitaoAmerica},
+        //{ nomePersonagem:'Darth Vader', url:darthVader},
+        //{ nomePersonagem:'Erza Scarlet', url:erza},
+        //{ nomePersonagem:'Finn', url:finn},
+        //{ nomePersonagem:'Gon Freecss', url:gon},
+        //{ nomePersonagem:'Gumball Watterson', url:gumball},
+        //{ nomePersonagem:'Hela', url:hela},
+        //{ nomePersonagem:'Hisoka', url:hisoka},
+        //{ nomePersonagem:'Joker', url:joker},
+        //{ nomePersonagem:'Princesa Jujuba', url:jujuba},
+        //{ nomePersonagem:'Katarina', url:katarina},
+        //{ nomePersonagem:'Killua Zaoldyeck', url:killua},
+        //{ nomePersonagem:'Monkey D. Luffy', url:luffy},
+        //{ nomePersonagem:'Izuku Midorita', url:midorya},
+        //{ nomePersonagem:'Mordekai', url:mordekai},
+        //{ nomePersonagem:'Mulher Gavião', url:mulherGaviao },
+        //{ nomePersonagem:'Ravena', url:raven },
+        //{ nomePersonagem:'Saitama', url:saitama },
+        //{ nomePersonagem:'Shinobu Kocho', url:shinobu},
+        //{ nomePersonagem:'Syndra', url:syndra},
+        //{ nomePersonagem:'Tanjirou Kamado', url:tajiro },
+        //{ nomePersonagem:'Thanos', url:thanos},
+        //{ nomePersonagem:'Thor', url:thor },
+        //{ nomePersonagem:'Mulher Maravilha', url:wonderWoman },
+        //{ nomePersonagem:'Zenitsu Agatsuma', url:zanitsu },
+        //{ nomePersonagem:'Kirito', url: kirito},
+        //{ nomePersonagem:'Edward Elric', url:ed},
+        //{ nomePersonagem:'Cebolinha', url:cebolinha},
+        //{ nomePersonagem:'O Mago', url:patolinoMago },
+        { nomePersonagem:'The Avengers', url:avengers },
+        { nomePersonagem:'Justice League', url: justice},
+        { nomePersonagem:'Power Rangers', url:rangers},
+        { nomePersonagem:'Teen Titans', url:titans},
+        { nomePersonagem:'X-Men', url:xmen },
     
     ]
 
     useEffect(() => {
         async function salvarIcons(){
-            var cont = 0
+            var cont = 34
             for (let h in heros){
                 await api.post('/icon', {
                     id: cont,

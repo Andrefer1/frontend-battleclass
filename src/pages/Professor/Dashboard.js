@@ -6,13 +6,17 @@ import userProfile from '../../assets/user-profile.svg';
 import RcIf from 'rc-if'
 import './Dashboard.css';
 
-export default function Dashboard() {
-    const [setDados] = useState(Object)
+export default function Dashboard({ history, match }) {
+    const [dados, setDados] = useState(Object)
     const [alunos, setAlunos] = useState(0);
     const [atividades, setAtividades] = useState(0);
     const [grupos, setGrupos] = useState(0);
     const [batalhas, setBatalhas] = useState(0);
     const [icon, setIcon] = useState(Object)
+    const [user, setUser] = useState(Object);
+    const [teams, setTeams] = useState([]);
+
+    var listaAux = []
 
     useEffect(() => {
         async function buscarDados() {
@@ -26,6 +30,20 @@ export default function Dashboard() {
 
         }
 
+        async function buscarUser() {
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: match.params.idUser
+                }
+            })
+
+            if (response.data != null) {
+                setUser(response.data);
+            }
+
+            busarIcon(response.data.icon);
+        }
+
         async function busarIcon(id) {
             const response = await api.get('/buscar/icon', {
                 headers: {
@@ -35,7 +53,20 @@ export default function Dashboard() {
             setIcon(response.data)
         }
 
+        async function buscarTeams() {
+            const response = await api.get('/buscar/grupo/all')
+
+            listaAux = response.data
+            listaAux.sort(function (a, b) {
+                return a.posicaoRanking - b.posicaoRanking
+            })
+
+            setTeams(listaAux);
+        }
+
         buscarDados();
+        buscarUser();
+        buscarTeams();
 
     }, []);
 
@@ -52,11 +83,11 @@ export default function Dashboard() {
             </div>
 
             <div className='menu'>
-                <a className='sitename' href='/dashboard'> BattleClass </a>
-                <a className='menu-item selected' href='/dashboard'> Dashboard </a>
-                <a className='menu-item' href='/students'> Alunos </a>
-                <a className='menu-item' href='/teams'> Equipes </a>
-                <a className='menu-item' href='/activitys'> Atividades </a>
+                <a className='sitename' onClick={() => (history.push(`/${user._id}/dashboard`))}> BattleClass </a>
+                <a className='menu-item selected' onClick={() => (history.push(`/${user._id}/dashboard`))}> Dashboard </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/students`))}> Alunos </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/teams`))}> Equipes </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/activitys`))}> Atividades </a>
                 <div className='menu-bottom'>
                     <a className='menu-item disabled' > Configurações </a> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
                     <a className='menu-item disabled' > Contatos </a> {/*href='/contacts'*/}
@@ -68,14 +99,14 @@ export default function Dashboard() {
                 <div className='str-ranking'>
                     <b> Ranking </b>
                 </div>
-                {grupos.length > 0 ? (
+                {teams.length > 0 ? (
                     <ul>
-                        {grupos.map(grupo => (
+                        {teams.map(grupo => (
                             <div key={grupo._id}>
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}

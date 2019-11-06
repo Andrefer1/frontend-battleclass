@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled, {keyframes} from 'styled-components';
 import RcIf, { RcElse } from 'rc-if';
 import './Batalha.css'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
@@ -13,25 +14,91 @@ import gohan from '../../assets/icons/andre.png';
 import patolinoMago from '../../assets/icons/patolinoMago.png';
 import api from '../../service/api';
 
+const fight1Loser = keyframes`
+    0% {
+        transform: translateY();
+    }
+    99% {
+        opacity: 1.0
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0.5
+    }
+`
+const Luta1Loser = styled.div`
+    animation: ${fight1Loser} 1s ;
+    animation-fill-mode: forwards;
+`
+const fight1Winner = keyframes`
+    0% {
+        transform: translateY();
+    }
+    99% {
+        opacity: 1.0
+    }
+    100% {
+        transform: translateY(50px);
+    }
+`
+const Luta1Winner = styled.div`
+    animation: ${fight1Winner} 1s ;
+    animation-fill-mode: forwards;
+`
+
+const fight2Loser = keyframes`
+    0% {
+        transform: translateY();
+    }
+    99% {
+        opacity: 1.0
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 0.5
+    }
+`
+const Luta2Loser = styled.div`
+    animation: ${fight2Loser} 1s ;
+    animation-fill-mode: forwards;  
+`
+
+const fight2Winner = keyframes`
+    0% {
+        transform: translateY();
+    }
+    99% {
+        opacity: 1.0
+    }
+    100% {
+        transform: translateY(-50px);
+    }
+`
+const Luta2Winner = styled.div`
+    animation: ${fight2Winner} 1s ;
+    animation-fill-mode: forwards;  
+`
 
 
 const team1 = [
     { nomePersonagem:'Kirito', url: kirito, id:"5daf91e336f3b64848f0f635", vida:50},
-    { nomePersonagem:'Edward Elric', url:ed, id:"5daf91e436f3b64848f0f636", vida:40},
-    { nomePersonagem:'Gohan', url:gohan, id:"5daf91e436f3b64848f0f637", vida:30},
-    { nomePersonagem:'O Mago', url:patolinoMago, id:"5daf91e436f3b64848f0f638", vida:60},
+   // { nomePersonagem:'Edward Elric', url:ed, id:"5daf91e436f3b64848f0f636", vida:40},
+    ///{ nomePersonagem:'Gohan', url:gohan, id:"5daf91e436f3b64848f0f637", vida:30},
+    //{ nomePersonagem:'O Mago', url:patolinoMago, id:"5daf91e436f3b64848f0f638", vida:60},
 ]
 
 const team2 = [
     { nomePersonagem:'Akali', url: akali, id:"5daf91de36f3b64848f0f618", vida:55},
-    { nomePersonagem:'Akame', url:akame, id:"5daf91de36f3b64848f0f619", vida:45},
-    { nomePersonagem:'Alerquina', url:alerquina, id:"5daf91df36f3b64848f0f61a", vida:35},
-    { nomePersonagem:'All Might', url:allMight, id:"5daf91df36f3b64848f0f61b",vida:65},
+   // { nomePersonagem:'Akame', url:akame, id:"5daf91de36f3b64848f0f619", vida:45},
+    //{ nomePersonagem:'Alerquina', url:alerquina, id:"5daf91df36f3b64848f0f61a", vida:35},
+    //{ nomePersonagem:'All Might', url:allMight, id:"5daf91df36f3b64848f0f61b",vida:65},
 ]
 export default function Batalha() {
     const [ equipe1, setEquipe1 ] = useState([])
     const [ equipe2, setEquipe2 ] = useState([])
-    const listaVencedores = []
+    const [ teams, setTeams ] = useState([])
+    const listaVencedores = [];
+    const listaTeams = [];
 
     function exibirVencedores() {
         var t1 = 0, t2 = 0
@@ -42,8 +109,7 @@ export default function Batalha() {
                 t2 +=1 
             }
         }
-        console.log(t1)
-        console.log(t2)
+        
         if (t1 > t2) {
             console.log('team1 é o vencedor')
         } else if ( t2 > t1 ){
@@ -77,6 +143,7 @@ export default function Batalha() {
                     }
 
                     listaVencedores.push(duelo)
+                    listaTeams.push('team1')
                 } else if (team1[e].vida < team2[e].vida) {
                     const duelo = {
                         time1: team1[e],
@@ -84,6 +151,7 @@ export default function Batalha() {
                         vencedor: 'team2'
                     }
                     listaVencedores.push(duelo)
+                    listaTeams.push('team2')
                 } else {
                     const duelo = {
                         time1: team1[e],
@@ -91,20 +159,33 @@ export default function Batalha() {
                         vencedor: null
                     }
                     listaVencedores.push(duelo)
+                    listaTeams.push(null)
                 }
             }
         }
         batalha();
+        setTeams(listaTeams)
         console.log(listaVencedores)
     }, [])
     return(
         <div className='main-container'>
             <div className='retangle1'>
                 { team1.length > 0 ? (
-                    <ul  className='imgs'>
+                    <ul className='imgs'>
                         {team1.map((integrantes,index) => (
-                            <li>
-                                <img className='circle' src={integrantes.url} />
+                            <li key={index}>
+                                <RcIf if={teams[index] == 'team1'}>
+                                    <Luta1Winner>
+                                        <img className='circle' src={integrantes.url} />
+                                    </Luta1Winner>
+                                    <RcElse>
+                                        <RcIf if={teams[index] == 'team2'}>
+                                            <Luta1Loser>
+                                                <img className='circle' src={integrantes.url} />    
+                                            </Luta1Loser>
+                                        </RcIf>
+                                    </RcElse>
+                                </RcIf>
                             </li>
                         ))}
                     </ul>
@@ -116,12 +197,24 @@ export default function Batalha() {
             </div>
             <div className='retangle2'>
                 { team2.length > 0 ? (
-                        <ul  className='imgs'>
+                        <ul className='imgs'>
                             {team2.map((integrantes,index) => (
-                                <li>
-                                    <img className='circle' src={integrantes.url} />
-                                    <p>50</p>
+                                
+                                <li key={index}>
+                                        <RcIf if={teams[index] == 'team1'}>
+                                    <Luta2Loser>
+                                        <img className='circle' src={integrantes.url} />
+                                    </Luta2Loser>
+                                    <RcElse>
+                                        <RcIf if={teams[index] == 'team2'}>
+                                            <Luta2Winner>
+                                                <img className='circle' src={integrantes.url} />    
+                                            </Luta2Winner>
+                                        </RcIf>
+                                    </RcElse>
+                                </RcIf>                                  
                                 </li>
+                                
                             ))}
                         </ul>
                     ): (

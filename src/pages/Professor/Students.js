@@ -9,9 +9,11 @@ import api from '../../service/api';
 export default function Students({ history, match }) {
     const [grupos, setGrupos] = useState([])
     const [alunos, setAlunos] = useState([])
-    const [icon] = useState(Object)
+    const [icon, setIcon] = useState(Object)
+    const [ user, setUser ] = useState(Object);
 
     var listaAux = []
+    var listaAuxAlunos = []
 
     useEffect(() => {
         async function buscarTeams() {
@@ -19,7 +21,7 @@ export default function Students({ history, match }) {
 
             listaAux = response.data
             listaAux.sort(function (a, b) {
-                return b.pontuacao - a.pontuacao
+                return a.posicaoRanking - b.posicaoRanking
             })
 
             setGrupos(listaAux);
@@ -29,9 +31,33 @@ export default function Students({ history, match }) {
             const response = await api.get('/buscar/alunos')
 
             console.log(response.data)
-            setAlunos(response.data)
+            listaAuxAlunos = response.data
+            listaAuxAlunos.sort(function(a, b){
+                if (a.nome > b.nome) {
+                    return 1;
+                }
+                if (a.nome < b.nome) {
+                    return -1;
+                }
+                return 0;
+            })
+            setAlunos(listaAuxAlunos);
         }
-        /*
+
+        async function buscarUser() {
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: match.params.idUser
+                }
+            })
+
+            if (response.data != null) {
+                setUser(response.data);
+            }
+
+            busarIcon(response.data.icon);
+        }
+        
         async function busarIcon(id) {
             const response = await api.get('/buscar/icon', {
                 headers: {
@@ -40,10 +66,11 @@ export default function Students({ history, match }) {
             })
             setIcon(response.data)
         }
-        */
+        
 
         buscarTeams();
         buscarAlunos();
+        buscarUser();
 
     }, []);
 
@@ -60,11 +87,11 @@ export default function Students({ history, match }) {
             </div>
 
             <div className='menu'>
-                <a className='sitename' href='/dashboard'> BattleClass </a>
-                <a className='menu-item' href='/dashboard'> Dashboard </a>
-                <a className='menu-item selected' href='/students'> Alunos </a>
-                <a className='menu-item' href='/teams'> Equipes </a>
-                <a className='menu-item' href='/activitys'> Atividades </a>
+                <a className='sitename' onClick={() => (history.push(`/${user._id}/dashboard`))}> BattleClass </a>
+                <a className='menu-item selected' onClick={() => (history.push(`/${user._id}/dashboard`))}> Dashboard </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/students`))}> Alunos </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/teams`))}> Equipes </a>
+                <a className='menu-item' onClick={() => (history.push(`/${user._id}/activitys`))}> Atividades </a>
                 <div className='menu-bottom'>
                     <a className='menu-item disabled' > Configurações </a> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
                     <a className='menu-item disabled' > Contatos </a> {/*href='/contacts'*/}
@@ -83,7 +110,7 @@ export default function Students({ history, match }) {
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}
@@ -149,7 +176,7 @@ export default function Students({ history, match }) {
                                     </div>
 
                                     <div className='str-student-points'>
-                                        NOTA
+                                        PONTUAÇÃO GERAL
                                     </div>
                                     {/*
                                     <div className='team-name'>
@@ -172,7 +199,7 @@ export default function Students({ history, match }) {
                                             </div>
 
                                             <div className='student-points'>
-                                                {aluno.pontuacao}
+                                                {aluno.pontuacaoGeral}
                                             </div>
                                         </li>
                                     ))}

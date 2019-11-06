@@ -23,7 +23,7 @@ html, body{
 }
 
 .main-container {
-    justify-content: center;
+    text-align: center;
     
 }
 .retangle1 {
@@ -32,6 +32,7 @@ html, body{
     height: 250px;
 
     background: #918EFF;
+    text-align: center;
 }
 
 .retangle2 {
@@ -41,18 +42,31 @@ html, body{
 
     background: #FC9393;
 }
-.imgs {
+.retangle1 .imgs {
     display: inline-block;
     padding: 5px;
     text-align: center;
 }
 
-.circle {
-    position: absolute;
+.retangle2 .imgs {
+    display: inline-block;
+    padding: 5px;
+    text-align: center;
+}
+
+.retangle1 .imgs .circle {
     width: 155px;
     height: 155px;
-
+    position: absolute;
     background:transparent;
+}
+
+.retangle2 .imgs .circle {
+    width: 155px;
+    height: 155px;
+    position: absolute;
+    background:transparent;
+    
 }
 
 .img2 {

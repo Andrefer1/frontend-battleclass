@@ -18,6 +18,8 @@ export default function Team({ history, match }) {
     const [user, setUser] = useState('');
     const [icon, setIcon] = useState(Object)
 
+    var listaAux = [];
+
 
     useEffect(() => {
         async function buscarUser() {
@@ -88,7 +90,13 @@ export default function Team({ history, match }) {
 
         async function buscarTeams() {
             const response = await api.get('/buscar/grupo/all')
-            setGrupos(response.data);
+
+            listaAux = response.data
+            listaAux.sort(function (a, b) {
+                return a.posicaoRanking - b.posicaoRanking
+            })
+
+            setGrupos(listaAux);
         }
 
         buscarTeam();
@@ -139,7 +147,7 @@ export default function Team({ history, match }) {
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>
                                         <div className='team-profile'>
-                                            <img src={userProfile} alt='Imagem do time' />
+                                            <img src={grupo.icon} alt='Imagem do time' />
                                         </div>
                                         <div className='team-name'>
                                             {grupo.nome}
