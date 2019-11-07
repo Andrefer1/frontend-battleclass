@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
+import Aviso from './pages/Aviso';
+
 /*GENERAL*/
 import Login from './pages/General/Login'
 import Password from './pages/General/Password'
@@ -35,8 +37,8 @@ import Batalha from './pages/Professor/Batalha'
 export default function Routes() {
     return (
         <BrowserRouter>
-            
-            {/*GENERAL*/}
+            <Route path='/' exact component={Aviso} />
+            {/*GENERAL
             <Route path='/' exact component={Login} />
             <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
@@ -47,23 +49,23 @@ export default function Routes() {
             <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
             <Route path='/battle' component={Batalha} />
             <Route path='/:idUser/settings' component={Settings} />
-            {/*<Route path='/test' component={Test}/>*/}
+            <Route path='/test' component={Test}/>*/}
             
             
-            {/*STUDENT*/}
+            {/*STUDENT
             <Route path='/:idUser/main' component={Main} />
             <Route path='/:idUser/team/:idGrupo' component={Team} />
             <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
-            <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
+            <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />*/}
             
             
-            {/*PROFESSOR*/}
+            {/*PROFESSOR
             <Route path='/:idUser/dashboard' component={Dashboard} />
             <Route path='/:idUser/students' component={Students} />
             <Route path='/:idUser/teams' component={Teams} />
             <Route path='/:idUser/activitys' exact component={Activitys} />
             <Route path='/:idUser/activitys/activity' component={Activity} />
-            <Route path='/:idUser/activitys/add-activity' component={AddActivity} />
+            <Route path='/:idUser/activitys/add-activity' component={AddActivity} />*/}
 
         </BrowserRouter>
     );

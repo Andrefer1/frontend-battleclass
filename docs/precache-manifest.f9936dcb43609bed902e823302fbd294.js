@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "52285d3dff760adcf87ca994da990701",
+    "revision": "16cf313d99550cc602fafe2cd8aa3e15",
     "url": "/frontend-battleclass/index.html"
   },
   {
-    "revision": "4628191c82bb45741148",
+    "revision": "3ef2ca32b331a160ef8d",
     "url": "/frontend-battleclass/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "f58c47029fb1e4f78c48",
-    "url": "/frontend-battleclass/static/css/main.10ddb14e.chunk.css"
+    "revision": "72cfe3e8925aa2212d39",
+    "url": "/frontend-battleclass/static/css/main.b96e8d30.chunk.css"
   },
   {
-    "revision": "4628191c82bb45741148",
-    "url": "/frontend-battleclass/static/js/2.d00ade3d.chunk.js"
+    "revision": "3ef2ca32b331a160ef8d",
+    "url": "/frontend-battleclass/static/js/2.9b0a4fd1.chunk.js"
   },
   {
-    "revision": "f58c47029fb1e4f78c48",
-    "url": "/frontend-battleclass/static/js/main.fdbce952.chunk.js"
+    "revision": "72cfe3e8925aa2212d39",
+    "url": "/frontend-battleclass/static/js/main.f6542800.chunk.js"
   },
   {
     "revision": "6a9567ea7186c5cb7d37",
@@ -42,6 +42,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "7aef40fcaf472743ad7ebaefe0b07f71",
     "url": "/frontend-battleclass/static/media/andre.7aef40fc.png"
+  },
+  {
+    "revision": "ae2f3775b842612daf674858b9631251",
+    "url": "/frontend-battleclass/static/media/avengers.ae2f3775.png"
   },
   {
     "revision": "7c038fb62fc817f3617225b3059be7d6",
@@ -84,6 +88,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/frontend-battleclass/static/media/jujuba.c5021785.png"
   },
   {
+    "revision": "a0e1ef1392906dcf9361b1c2a64d122f",
+    "url": "/frontend-battleclass/static/media/justice.a0e1ef13.png"
+  },
+  {
     "revision": "86910ba12413df3bb34f475e7ca5684e",
     "url": "/frontend-battleclass/static/media/jv.86910ba1.png"
   },
@@ -120,6 +128,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/frontend-battleclass/static/media/patolinoMago.e81ce0b1.png"
   },
   {
+    "revision": "0fc0d93ecf0bf8bc36b8598de3e35401",
+    "url": "/frontend-battleclass/static/media/rangers.0fc0d93e.png"
+  },
+  {
     "revision": "feec214c1e337a5e6bad22cbb76ff7f9",
     "url": "/frontend-battleclass/static/media/raven.feec214c.png"
   },
@@ -148,6 +160,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/frontend-battleclass/static/media/thor.da4264ff.png"
   },
   {
+    "revision": "49c495cdfc1c1e725e38bc8129d19d64",
+    "url": "/frontend-battleclass/static/media/titans.49c495cd.png"
+  },
+  {
     "revision": "7a21cbe90fd31540fb0384792fbc4a86",
     "url": "/frontend-battleclass/static/media/user-profile.7a21cbe9.svg"
   },
@@ -158,6 +174,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "c1bb74c303ef408cdab9ac4dfc8ca5c2",
     "url": "/frontend-battleclass/static/media/wonderWoman.c1bb74c3.png"
+  },
+  {
+    "revision": "b30a3bfbb6f31ea23f3c7eb37d07db88",
+    "url": "/frontend-battleclass/static/media/xmen.b30a3bfb.png"
   },
   {
     "revision": "8a27cfd2877c26cab18b6e27df452bed",
