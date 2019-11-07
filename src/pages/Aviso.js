@@ -18,7 +18,9 @@ export default function Aviso() {
                     problemas ahahahah !! Acesse o link abaixo para poder utilizar o sistema no novo endereço!! 
                     Obrigadooooo e perdão pelo incômodo
                 </p>
-                <a href='https://frontend-battleclass.herokuapp.com'> https://frontend-battleclass.herokuapp.com </a>
+                <p><a href='https://frontend-battleclass.herokuapp.com'> https://frontend-battleclass.herokuapp.com </a></p>
+                
+                <p> Caso apareça uma tela de erro quando você acessar o site, basta recarregar a página que resolve o problema!!</p>
             </div>
         </div>
 

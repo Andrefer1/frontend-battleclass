@@ -37,7 +37,7 @@ import Batalha from './pages/Professor/Batalha'
 export default function Routes() {
     return (
         <BrowserRouter>
-            <Route path='/' exact component={Aviso} />
+            <Route path='/' component={Aviso} />
             {/*GENERAL
             <Route path='/' exact component={Login} />
             <Route path='/recover' component={Password} />
