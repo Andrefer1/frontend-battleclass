@@ -38,7 +38,7 @@ export default function Routes() {
     return (
         <BrowserRouter basename='frontend-battleclass'>
             <Route path='/' component={Aviso} />
-            {/*GENERAL
+            {/*GENERAL*/}
             <Route path='/' exact component={Login} />
             <Route path='/recover' component={Password} />
             <Route path='/register' component={Register} />
@@ -53,14 +53,14 @@ export default function Routes() {
             <Route path='/test' component={Test}/>*/}
             
             
-            {/*STUDENT
+            {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
             <Route path='/:idUser/team/:idGrupo' exact component={Team} />
             <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
             <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />*/}
             
             
-            {/*PROFESSOR
+            {/*PROFESSOR*/}
             <Route path='/:idUser/dashboard' component={Dashboard} />
             <Route path='/:idUser/students' component={Students} />
             <Route path='/:idUser/teams' component={Teams} />
