@@ -7,8 +7,11 @@ import './SelectEnemy.css';
 import api from '../../service/api';
 
 export default function SelectEnemy({ history, match }) {
+    const [user, setUser] = useState('');
+    const [icon, setIcon] = useState(Object)
     const [ grupos, setGrupos ] = useState(Object);
     const [ team, setTeam ] = useState(Object);
+    const [teams, setTeams] = useState([])
     /*
     const [ integrantes, setIntegrantes ] = useState([]);
     const [ icons, setIcons ] = useState([]);
@@ -18,9 +21,27 @@ export default function SelectEnemy({ history, match }) {
     */
 
     useEffect(() => {
-        async function buscarTeams(){
+        async function buscarUser() {
+            const response = await api.get('/buscar/userId', {
+                headers: {
+                    id: match.params.idUser
+                }
+            })
+
+            if (response.data != null) {
+                setUser(response.data);
+            }
+            busarIcon(response.data.icon);
+        }
+
+        async function buscarGrupos(){
             const response = await api.get('/buscar/grupo/all')
             setGrupos(response.data.filter(t => t._id !== match.params.idGrupo));
+        }
+
+        async function buscarTeams(){
+            const response = await api.get('/buscar/grupo/all')
+            setTeams(response.data);
         }
 
         async function buscarGrupo() {
@@ -30,6 +51,18 @@ export default function SelectEnemy({ history, match }) {
             
             setTeam(response.data)
         }
+
+        async function busarIcon(id) {
+            const response = await api.get('/buscar/icon', {
+                headers: {
+                    id: id
+                }
+            })
+            setIcon(response.data)
+        }
+
+        buscarUser();
+        buscarGrupos();
         buscarTeams();
         buscarGrupo();
 
@@ -38,38 +71,31 @@ export default function SelectEnemy({ history, match }) {
     return (
         <div className='select-enemy'>
 
-            <nav>
-                <div className='navbar'>
-                    <div className='sitename'>
-                        <a href='/main'>
-                            BATTLECLASS
-                        </a>
-                    </div>
-                    <div className='student-data'>
-                        <div className='team-name-principal'>
-                            {team.nome}
-                        </div>
-                        <div className='trace'>
-                            -
-                        </div>
-                        <div className='team-points-principal'>
-                            {team.pontuacao}
-                    </div>
-                    </div>
+            <div className='student-data'>
+                <div className='student-name'>
+                    {user.nome}
                 </div>
-
-                <hr id='hr' />
-            </nav>
-
+                <div className='trace'>
+                    -
+            </div>
+                <div className='student-points'>
+                    {user.ultimaPontuacao} PONTOS
+            </div>
+                {/*<hr id='hr-nav' />*/}
+            </div>
+            <div className='div-img-user'>
+                <img src={icon.url} className='img-user' />
+            </div>
         
             <div className='menu'>
-                <a onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </a>
-                <a onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`))}> Minha Equipe </a>
-                <a onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </a>
+                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
+                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
                 <div className='menu-bottom'>
-                    <a onClick={() => (history.push(`/${match.params.idUser}/settings`))}> Configurações </a>
-                    <a href='/contacts'> Contatos </a>
-                    <a href='/about'> Sobre </a>
+                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/contacts`))}> Contatos </div>
+                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/about`))}> Sobre </div>
                 </div>
             </div>
             
@@ -78,9 +104,9 @@ export default function SelectEnemy({ history, match }) {
                 <div className='str-ranking'>
                     <b> Ranking </b>
                 </div>
-                {grupos.length > 0 ? (
+                {teams.length > 0 ? (
                     <ul>
-                        {grupos.map(grupo => (
+                        {teams.map(grupo => (
                             <div key={grupo._id}>
                                 <li key={grupo._id}>
                                     <div className='team-ranking'>

@@ -5,21 +5,20 @@
     outline: 0;
     box-sizing: border-box;
 }
-
-html, body{
+ 
+html, body {
     height: 0px;
 }
 
-.team {
+.preparar-batalha {
     position: absolute;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     background: white;
 }
 
 
-/*NAVBAR*/
-.team .student-data {
+.preparar-batalha .student-data {
     width: 100%;
     height: 100px;
     padding: 9px 0 0 240px;
@@ -29,49 +28,48 @@ html, body{
     border-bottom: solid 1px rgb(212, 212, 212);
 }
 
-.team .student-data .student-name {
+.preparar-batalha .student-data .student-name {
     margin-top: 15px;
     color: black;
     font-size: 23pt;
 }
 
-.team .student-data .trace {
-    margin-top: 15px;
-    color: black;
-    font-size: 23pt;
-    margin-left: 20px;
-}
-
-.team .student-data .student-points {
+.preparar-batalha .student-data .trace {
     margin-top: 15px;
     color: black;
     font-size: 23pt;
     margin-left: 20px;
 }
 
-.team .div-img-user {
+.preparar-batalha .student-data .student-points {
+    margin-top: 15px;
+    color: black;
+    font-size: 23pt;
+    margin-left: 20px;
+}
+
+.preparar-batalha .div-img-user {
     float: right;
     margin-right: 30px;
 }
 
-.team .div-img-user .img-user {
+.preparar-batalha .div-img-user .img-user {
     width: 98px;
 }
 
 
 /*MENU*/
-.team .menu {
+.preparar-batalha .menu {
     width: 200px;
     height: 100%;
     position: fixed;
     background:rgba(9,9,121,1);
     z-index: 1;
-    margin-top: -95px;
     margin-top: 0px;
     margin-left: 0px;
 }
 
-.team .menu .menu-item {
+.preparar-batalha .menu .menu-item {
     color: white;
     padding: 10px 16px;
     text-decoration: none;
@@ -81,13 +79,13 @@ html, body{
     cursor: pointer;
 }
 
-.team .menu .menu-item:hover {
+.preparar-batalha .menu .menu-item:hover {
     background-color: white;
     color: black;
     cursor: pointer;
 }
 
-.team .menu .sitename {
+.preparar-batalha .menu .sitename {
     padding: 30px 16px;
     color: white;
     border: none;
@@ -95,28 +93,26 @@ html, body{
     font-size: 20pt;
 }
 
-.team .menu .sitename:hover {
+.preparar-batalha .menu .sitename:hover {
     background: rgba(9,9,121,1);
     color: white;
 }
 
-.team .menu .selected {
+.preparar-batalha .menu .selected {
     background-color: white;
     color: black;
     cursor: pointer;
 }
 
-
-.team .menu .menu-bottom {
+.preparar-batalha .menu .menu-bottom {
     width: 200px;
     position: absolute;
     bottom: 0;
 }
 
 
-
 /*RANKINGS*/
-.team .ranking {
+.preparar-batalha .ranking {
     width: 270px;
     height: 390px;
     background: white;
@@ -126,32 +122,32 @@ html, body{
     transform: translate(90px, 130px);
 }
 
-.team .ranking .str-ranking {
+.preparar-batalha .ranking .str-ranking {
     margin: 10px 15px 0 15px;
     text-align: center;
 }
 
-.team .ranking ul {
+.preparar-batalha .ranking ul {
     margin: 10px 15px 0 15px;
 }
 
-.team .ranking ul li {
+.preparar-batalha .ranking ul li {
     height: 50px;
     margin-bottom: 20px; 
     display: inline-block;
     border-bottom: solid 1px rgb(190, 190, 190);
 }
 
-.team .ranking ul li .team-ranking {
+.preparar-batalha .ranking ul li .team-ranking {
     width: 235px;
     display: flex;
 }
 
-.team .ranking ul li .team-ranking .team-profile img {
+.preparar-batalha .ranking ul li .team-ranking .team-profile img {
     height: 40px;
 }
 
-.team .ranking ul li .team-ranking .team-name {
+.preparar-batalha .ranking ul li .team-ranking .team-name {
     width: 163px;
     height: 30px;
     text-align: left;
@@ -162,90 +158,41 @@ html, body{
     transition-duration: 1s;
 }
 
-.team .ranking ul li .team-ranking .team-points {
+.preparar-batalha .ranking ul li .team-ranking .team-points {
     width: 30px; 
     position: absolute;
     transform: translate(205px, 8px);
 }
 
-
-/*PROFILES CARDS*/
-.team .content {
+/*TASKS*/
+.preparar-batalha .content {
     width: auto;
     min-width: 380px;
     max-width: 66%;
-    margin: 50px 380px 0 240px;
-    border: solid 1px white;
+    margin: 130px 380px 0 240px;
+    /*border: solid 1px;*/
 }
 
-.team .content .button-battle {
-    width: 140px;
-    height: 55px;
-    margin: 0 0 30px 0px;
-    float: left;
+.preparar-batalha .content #button-battle y{
+
 }
 
-.team .cards-students {
-    margin-top: 75px;
-}
-
-.team .cards-students ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 30px;
-}
-
-.team .cards-students .card-individual {
-    min-width: 400px;
-    height: 140px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.team .cards-students .card-individual .profile-data {
-    margin-top: 0px;
-    display: flex;
-}
-
-.team .cards-students .card-individual .profile-data .img-individual {
-    height: 8%;
-    margin-left: 20px;
-    margin-top: 15px;
-    position: absolute;
-}
-
-.team .cards-students .card-individual .profile-data .username-profile {
-    margin-top: 25px;
-    margin-left: 100px;
-    float: left;
-}
-
-.team .cards-students .card-individual .points {
-    height: 70px;
-    transform: translate(0px, 0px);
-    font-size: 50px;
-}
-
-.team .content .empty {
+.preparar-batalha .content .empty {
     font-size: 26pt;
     color: rgb(212, 212, 212);
-    margin-top: 27%;
+    margin-top: 37%;
 }
 
-.team .content #warning {
-    font-size: 26pt;
-    color: rgb(212, 212, 212);
-    margin: 26% 0 0 0;
-}
 
-.team .menu .disabled {
+
+
+.preparar-batalha .menu .disabled {
     color: gray; 
 }
 
-.team .menu .disabled:hover {
+.preparar-batalha .menu .disabled:hover {
     color: gray; 
     background: rgba(9,9,121,1);
     cursor: default;
 }
+

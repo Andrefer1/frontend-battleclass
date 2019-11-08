@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import api from '../../service/api'
-
-import userProfile from '../../assets/user-profile.svg';
 import RcIf from 'rc-if'
 import './Dashboard.css';
 

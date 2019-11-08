@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/frontend-battleclass/static/css/main.10ddb14e.chunk.css",
     "main.js": "/frontend-battleclass/static/js/main.fdbce952.chunk.js",
     "main.js.map": "/frontend-battleclass/static/js/main.fdbce952.chunk.js.map",
@@ -13,6 +14,21 @@
     "service-worker.js": "/frontend-battleclass/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/frontend-battleclass/static/css/2.266e55a5.chunk.css.map",
     "static/css/main.10ddb14e.chunk.css.map": "/frontend-battleclass/static/css/main.10ddb14e.chunk.css.map",
+=======
+    "main.css": "/frontend-battleclass/static/css/main.1aab8586.chunk.css",
+    "main.js": "/frontend-battleclass/static/js/main.9612f9e8.chunk.js",
+    "main.js.map": "/frontend-battleclass/static/js/main.9612f9e8.chunk.js.map",
+    "runtime-main.js": "/frontend-battleclass/static/js/runtime-main.510d6c0c.js",
+    "runtime-main.js.map": "/frontend-battleclass/static/js/runtime-main.510d6c0c.js.map",
+    "static/css/2.266e55a5.chunk.css": "/frontend-battleclass/static/css/2.266e55a5.chunk.css",
+    "static/js/2.27da8d2c.chunk.js": "/frontend-battleclass/static/js/2.27da8d2c.chunk.js",
+    "static/js/2.27da8d2c.chunk.js.map": "/frontend-battleclass/static/js/2.27da8d2c.chunk.js.map",
+    "index.html": "/frontend-battleclass/index.html",
+    "precache-manifest.4736bd424bfe2fd67d66766012e8c898.js": "/frontend-battleclass/precache-manifest.4736bd424bfe2fd67d66766012e8c898.js",
+    "service-worker.js": "/frontend-battleclass/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/frontend-battleclass/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.1aab8586.chunk.css.map": "/frontend-battleclass/static/css/main.1aab8586.chunk.css.map",
+>>>>>>> dbbc0fe0d46ebc77e3ae667d8f0c5f648d80332a
     "static/media/akali.png": "/frontend-battleclass/static/media/akali.acf7ba0f.png",
     "static/media/akame.png": "/frontend-battleclass/static/media/akame.94253372.png",
     "static/media/alequina.png": "/frontend-battleclass/static/media/alequina.d194e5c5.png",

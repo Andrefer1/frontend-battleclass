@@ -20,7 +20,7 @@ export default function Hero({ history, match }) {
         }
         const response = await api.post('/cadastro/usuario/icon', {
             idIcon: icon._id,
-            idUser: match.params.id
+            idUser: match.params.idUser
         })
 
         if (response.data){

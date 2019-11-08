@@ -99,6 +99,7 @@ export default function Team({ history, match }) {
             setGrupos(listaAux);
         }
 
+        buscarUser();
         buscarTeam();
         buscarTeams();
 
@@ -106,6 +107,20 @@ export default function Team({ history, match }) {
 
     return (
         <div className='team'>
+
+            
+
+            <div className='menu'>
+                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
+                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
+                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
+                <div className='menu-bottom'>
+                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
+                    <div className='menu-item' > Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item' > Sobre </div> {/*href='/about'*/}
+                </div>
+            </div>
 
             <div className='student-data'>
                 <div className='student-name'>
@@ -122,19 +137,6 @@ export default function Team({ history, match }) {
             <div className='div-img-user'>
                 <img src={icon.url} className='img-user' />
             </div>
-
-            <div className='menu'>
-                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
-                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
-                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
-                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
-                <div className='menu-bottom'>
-                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
-                    <div className='menu-item' > Contatos </div> {/*href='/contacts'*/}
-                    <div className='menu-item' > Sobre </div> {/*href='/about'*/}
-                </div>
-            </div>
-
 
             <div className='ranking'>
                 <div className='str-ranking'>
@@ -174,10 +176,6 @@ export default function Team({ history, match }) {
                 </div>
 
                 <RcIf if={1 === 'a'}>*/}
-                <button className='btn btn-primary button-battle'
-                    onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))}>
-                    Batalhar
-                </button>
 
                 <div className='cards-students'>
                     {cont > 0 ? (
@@ -196,16 +194,23 @@ export default function Team({ history, match }) {
                                             </div>
                                         </div>
                                         <div className='points'>
-                                            {integrante.pontuacao}
+                                            {integrante.ultimaPontuacao}
                                         </div>
                                     </div>
                                 </li>
                             ))}
 
                         </ul>
+
                     ) : (
                             <div className='empty'> Não há integrantes </div>
                         )}
+
+                
+                <button className='btn btn-primary button-battle'
+                    onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))} >
+                    Batalhar
+                </button>
 
                 </div>
                 {/*</RcIf>*/}

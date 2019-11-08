@@ -18,8 +18,9 @@ import ActivitysStudent from './pages/Student/ActivitysStudent'
 import IndividualActivity from './pages/Student/IndividualActivity'
 /*import Battle from './pages/Battle'*/
 import Hero from './pages/General/Hero'
-import PrepararBatalha from './pages/General/PrepararBatalha'
-import SelectEnemy from './pages/General/SelectEnemy'
+import PrepararBatalhaDesafiante from './pages/Student/PrepararBatalhaDesafiante'
+import SelectEnemy from './pages/Student/SelectEnemy'
+import Batalha from './pages/Professor/Batalha'
 
 
 /*PROFESSOR*/
@@ -29,7 +30,7 @@ import Teams from './pages/Professor/Teams'
 import Activitys from './pages/Professor/Activitys'
 import Activity from './pages/Professor/IndividualActivity'
 import AddActivity from './pages/Professor/AddActivity'
-import Batalha from './pages/Professor/Batalha'
+import PrepararBatalha from './pages/Student/PrepararBatalha'
 
 
 export default function Routes() {
@@ -44,15 +45,16 @@ export default function Routes() {
             <Route path='/:idUser/contacts' component={Contacts} />
             <Route path='/:idUser/about' component={About} />
             <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
-            <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalha} />
-            <Route path='/battle' component={Batalha} />
+            <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalhaDesafiante} />
+            <Route path='/:idGrupo/prepare/:idBattle' component={PrepararBatalha} />
+            <Route path='/:idUser/battle' component={Batalha} />
             <Route path='/:idUser/settings' component={Settings} />
             {/*<Route path='/test' component={Test}/>*/}
             
             
             {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
-            <Route path='/:idUser/team/:idGrupo' component={Team} />
+            <Route path='/:idUser/team/:idGrupo' exact component={Team} />
             <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
             <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
             

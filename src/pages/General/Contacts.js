@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import kirito from '../../assets/icons/jv.png';
+import ed from '../../assets/icons/manel.png';
+import cebolinha from '../../assets/icons/andre.png';
+import patolinoMago from '../../assets/icons/patolinoMago.png';
+
 import userProfile from '../../assets/user-profile.svg'
 
 import './Contacts.css';
@@ -40,11 +45,6 @@ export default function Contacts({ history, match }) {
             setGrupos(listaAux);
         }
 
-        async function buscarAtividades() {
-            const response = await api.get('/buscar/atividade/all')
-            setAtividades(response.data)
-        }
-
         async function busarIcon(id) {
             const response = await api.get('/buscar/icon', {
                 headers: {
@@ -57,7 +57,6 @@ export default function Contacts({ history, match }) {
 
         buscarUser();
         buscarTeams();
-        buscarAtividades();
 
         console.log(user)
     }, [])
@@ -139,7 +138,7 @@ export default function Contacts({ history, match }) {
                         <div className='dev'>
                             <div className='profile-data'>
                                 <div className='icon'>
-                                    <img src={userProfile} alt='Ícone do usuário' />
+                                    <img className='img-icon' src={cebolinha} alt='Ícone do usuário' />
                                 </div>
                                 <div className='name'>
                                     André Fernandes Bispo
@@ -157,7 +156,7 @@ export default function Contacts({ history, match }) {
                         <div className='dev'>
                             <div className='profile-data'>
                                 <div className='icon'>
-                                    <img src={userProfile} alt='Ícone do usuário' />
+                                    <img className='img-icon' src={kirito} alt='Ícone do usuário' />
                                 </div>
                                 <div className='name'>
                                     João Vitor Soares Egidio
@@ -175,10 +174,10 @@ export default function Contacts({ history, match }) {
                         <div className='dev'>
                             <div className='profile-data'>
                                 <div className='icon'>
-                                    <img src={userProfile} alt='Ícone do usuário' />
+                                    <img className='img-icon' src={ed} alt='Ícone do usuário' />
                                 </div>
                                 <div className='name'>
-                                    Emmanuel Peralta
+                                    Emmanuel de Oliveira Peralta
                                 </div>
                             </div>
 
@@ -193,7 +192,7 @@ export default function Contacts({ history, match }) {
                         <div className='dev'>
                             <div className='profile-data'>
                                 <div className='icon'>
-                                    <img src={userProfile} alt='Ícone do usuário' />
+                                    <img className='img-icon' src={patolinoMago} alt='Ícone do usuário' />
                                 </div>
                                 <div className='name'>
                                     Igor Oliveira Valadares
