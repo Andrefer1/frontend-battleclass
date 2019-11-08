@@ -4,7 +4,7 @@ import RcIf from 'rc-if';
 import Column from './Column';
 import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
-import './PrepararBatalhaDesafiante.css';
+import './PrepararBatalha.css';
 import api from '../../service/api'
 
 
@@ -224,22 +224,41 @@ export default function PrepararBatalhaDesafiante({ history, match }) {
     
 
     return (
-        <div className='preparar-batalha-desafiante'>
-                
-            <div className='content'>
-                <RcIf if={msg === "ok"}>
-                    <SweetAlert
-                        show={msg}
-                        title="SE PREPARE GUERREIRO"
-                        text="Você receberá um email de autorização de batalha. Chame seu time e seu oponente e, que COMECEM OS JOGOS"
-                        type='success'
-                        onConfirm={() => {
-                            setMsg(null);
-                            history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`)
-                        }}
-                    />
-                </RcIf>
-                
+        <div className='team'>
+            <nav>
+                <div className='navbar'>
+                    <div className='sitename'>
+                        <a className='' onClick={() => (history.push(`/${match.params.idUser}/main`))}> BATTLECLASS </a>
+                    </div>
+                    <div className='student-data'>
+                        <div className='team-name-principal'>
+                            {grupo.nome}
+                        </div>
+                        <div className='trace'>
+                            -
+                        </div>
+                        <div className='team-points-principal'>
+                            {grupo.pontuacao} PONTOS
+                    </div>
+                    </div>
+                </div>
+
+                <hr id='hr' />
+            </nav>
+
+            <RcIf if={msg === "ok"}>
+                <SweetAlert
+                    show={msg}
+                    title="SE PREPARE GUERREIRO"
+                    text="Você receberá um email de autorização de batalha. Chame seu time e seu oponente, e que COMECEM OS JOGOS"
+                    type='success'
+                    onConfirm={() => {
+                        setMsg(null);
+                        history.push(`/${match.params.idUser}/team/${match.params.idGrupo}`)
+                    }}
+                />
+            </RcIf>
+            <div className='main-container'>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Container>
                         {state.columnOrder.map(id => {
@@ -251,8 +270,9 @@ export default function PrepararBatalhaDesafiante({ history, match }) {
                     </Container>
                     
                 </DragDropContext>
-                <button className='btn btn-primary button-battle' onClick={confirmaBatalha}> BATALHAR! </button>
+                <button onClick={confirmaBatalha}> BATALHAR! </button>
             </div>
+            
         </div>
         
     )

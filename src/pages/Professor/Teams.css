@@ -152,10 +152,12 @@ html, body{
     min-width: 380px;
     max-width: 66%;
     margin: 130px 380px 0 240px;
+    /*border: solid 1px red;*/
 }
 
 .teams .content .cards-teams {
     width: 100%;
+    /*border: solid 1px greenyellow;*/
 }
 
 .teams .content .cards-teams ul {
@@ -163,6 +165,7 @@ html, body{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 30px;
+    /*border: solid 1px;*/
 }
 
 .teams .content .cards-teams .card-individual {

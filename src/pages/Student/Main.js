@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import userProfile from '../../assets/user-profile.svg'
+
 import './Main.css';
 import api from '../../service/api';
 
@@ -9,6 +11,7 @@ export default function MainStudent({ history, match }) {
     const [grupos, setGrupos] = useState([])
     const [atividades, setAtividades] = useState([])
     const [icon, setIcon] = useState(Object)
+    
 
     var listaAux = []
 
@@ -50,6 +53,7 @@ export default function MainStudent({ history, match }) {
                 }
             })
             setIcon(response.data)
+
         }
 
         buscarUser();
@@ -84,8 +88,8 @@ export default function MainStudent({ history, match }) {
                 <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
                 <div className='menu-bottom'>
                     <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
-                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/contacts`))}> Contatos </div>
-                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/about`))}> Sobre </div>
+                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/contacts`))}> Contatos </div> {/*href='/contacts'*/}
+                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/about`))}> Sobre </div> {/*href='/about'*/}
                 </div>
             </div>
 

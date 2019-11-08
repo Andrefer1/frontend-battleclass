@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Task from '../General/Task';
+import Task from './Task';
 import { Droppable } from 'react-beautiful-dnd';
+
 
 const Container = styled.div`
     margin: 8px;

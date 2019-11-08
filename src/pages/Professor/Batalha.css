@@ -1,5 +1,4 @@
 * {
-    font-family: open sans;
     margin: 0;
     padding: 0;
     outline: 0;
@@ -10,71 +9,54 @@ html, body{
     height: 0px;
 }
 
-
-/*PROFILES CARDS*/
-.battle .container-battle {
-    margin-top: 200px;
+.batalha .button-return {
+    width: 230px;
+    margin: 20px 0 0 20px;
 }
 
-.battle .container-battle .battle-button {
-    width: 140px;    
-    height: 50px;
-    margin-top: 20px;
+/*CONTENT*/
+.batalha .content {
+    width: auto;
+    max-width: 66%;
+    min-width: 10%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.main-container {
-    text-align: center;
-    
-}
-.retangle1 {
-    
-    width: 100%;
+.batalha .content .rectangle {
+    width: 400px;
     height: 250px;
-
     background: #918EFF;
-    text-align: center;
+    border: solid 1px transparent;
 }
 
-.retangle2 {
-    
-    width: 100%;
-    height: 250px;
-
-    background: #FC9393;
-}
-.retangle1 .imgs {
-    display: inline-block;
-    padding: 5px;
-    text-align: center;
+.batalha .content ul {
+    list-style: none;
 }
 
-.retangle2 .imgs {
-    display: inline-block;
-    padding: 5px;
-    text-align: center;
+.batalha .content .rectangle ul li {
+    margin-top: 47px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.retangle1 .imgs .circle {
+.batalha .content .rectangle ul li .div .circle {
     width: 155px;
     height: 155px;
-    position: absolute;
-    background:transparent;
 }
 
-.retangle2 .imgs .circle {
-    width: 155px;
-    height: 155px;
-    position: absolute;
-    background:transparent;
-    
-}
-
-.img2 {
-    background: gray;
-    border-radius: 50%;
-    opacity: 0.5;
-}
-
-.pontuacao {
+.batalha .content .pontuacao {
     color: white;
 }
+
+.batalha .content .rectangle2 {
+    background: #FC9393;
+}
+
+.batalha .content .button-battle {
+    width: 200px;
+    margin: 20px 100px;
+}
+

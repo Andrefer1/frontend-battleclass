@@ -6,6 +6,7 @@ import './PrepararBatalha.css';
 import api from '../../service/api'
 import queryString from 'query-string';
 
+
 import akali from '../../assets/icons/akali.png';
 import akame from '../../assets/icons/akame.png';
 import alerquina from '../../assets/icons/alequina.png';
@@ -40,6 +41,8 @@ import ed from '../../assets/icons/manel.png';
 import gohan from '../../assets/icons/andre.png';
 import patolinoMago from '../../assets/icons/patolinoMago.png';
 
+
+
 const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -67,10 +70,11 @@ const initialData = {
     columnOrder: ['column-1', 'column-2']
 }
 
-export default function PrepararBatalha({ history, location, match }) {
-    const [user, setUser] = useState('');
-    const [grupos, setGrupos] = useState([])
-    const [icon, setIcon] = useState(Object)
+
+
+
+export default function PrepararBatalha({ location, match }) {
+    
     const [ state, setState ] = useState(initialData);
     const [ grupo, setGrupo ] = useState(Object);
     const [ integrantes, setIntegrantes ] = useState([]);
@@ -80,7 +84,6 @@ export default function PrepararBatalha({ history, location, match }) {
     var tasks = {};
     const taskIds = []
     
-    var listaAux = []
 
     const onDragEnd = result => {
         const { destination, source, draggableId } = result;
@@ -153,43 +156,9 @@ export default function PrepararBatalha({ history, location, match }) {
 
     }
 
+
+
     useEffect(() => {
-        async function buscarUser() {
-            const response = await api.get('/buscar/userId', {
-                headers: {
-                    id: match.params.idUser
-                }
-            })
-
-            if (response.data != null) {
-                setUser(response.data);
-            }
-
-            busarIcon(response.data.icon);
-        }
-
-        async function busarIcon(id) {
-            const response = await api.get('/buscar/icon', {
-                headers: {
-                    id: id
-                }
-            })
-            setIcon(response.data)
-        }
-
-        async function buscarTeams() {
-            const response = await api.get('/buscar/grupo/all')
-
-            listaAux = response.data
-            listaAux.sort(function (a, b) {
-                return a.posicaoRanking - b.posicaoRanking
-            })
-
-            setGrupos(listaAux);
-        }
-        buscarUser()
-        buscarTeams()
-
         async function buscarTeam(){
             const response = await api.get('/buscar/grupo', {headers: {
                 id: match.params.idGrupo
@@ -230,6 +199,8 @@ export default function PrepararBatalha({ history, location, match }) {
 
             console.log(tasks)
             console.log(state)
+            
+
             
             setIcons(listaIcon);
             ajustarTask();
@@ -291,84 +262,48 @@ export default function PrepararBatalha({ history, location, match }) {
         console.log(response.data)
     }
     
+
     return (
-        <div className='preparar-batalha'>
-            <div className='student-data'>
-                <div className='student-name'>
-                    {user.nome}
+        <div className='team'>
+            <nav>
+                <div className='navbar'>
+                    <div className='sitename'>
+                        <a href='/main'>
+                            BATTLECLASS
+                        </a>
+                    </div>
+                    <div className='student-data'>
+                        <div className='team-name-principal'>
+                            {grupo.nome}
+                        </div>
+                        <div className='trace'>
+                            -
+                        </div>
+                        <div className='team-points-principal'>
+                            {grupo.pontuacao} PONTOS
+                    </div>
+                    </div>
                 </div>
-                <div className='trace'>
-                    -
-                </div>
-                <div className='student-points'>
-                    {user.ultimaPontuacao} PONTOS
-                </div>
+
+                <hr id='hr' />
+            </nav>
+
+            <div className='main-container'>
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <Container>
+                        {state.columnOrder.map(id => {
+                            const column = state.columns[id];
+                            const tasks = column.taskIds.map(taskId => state.tasks[taskId])
+
+                            return <Column key={column.id} column={column} tasks={tasks}/>
+                        })}
+                    </Container>
+                    
+                </DragDropContext>
+                <button onClick={confirmaBatalha}> BATALHAR! </button>
+                <button onClick={validarBatalha}> VALIDAR! </button>
             </div>
-            <div className='div-img-user'>
-                <img src={icon.url} className='img-user' />
-            </div>
-
-            <div className='menu'>
-                <div className='menu-item sitename' onClick={() => (history.push(`/${user._id}/main`))}>BattleClass</div>
-                <div className='menu-item selected' onClick={() => (history.push(`/${match.params.idUser}/main`))}> Página Inicial </div>
-                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/team/${user.grupo}`))}> Minha Equipe </div>
-                <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/activitys-student`))}> Atividades </div>
-                <div className='menu-bottom'>
-                    <div className='menu-item disabled' > Configurações </div> {/*onClick={() => (history.push(`/${match.params.idUser}/settings`))}*/}
-                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/contacts`))}> Contatos </div>
-                    <div className='menu-item' onClick={() => (history.push(`/${match.params.idUser}/about`))}> Sobre </div>
-                </div>
-            </div>
-
-            <div className='ranking'>
-                <div className='str-ranking'>
-                    <b> Ranking </b>
-                </div>
-                {grupos.length > 0 ? (
-                    <ul>
-                        {grupos.map(grupo => (
-                            <div key={grupo._id}>
-                                <li key={grupo._id}>
-                                    <div className='team-ranking'>
-                                        <div className='team-profile'>
-                                            <img src={grupo.icon} alt='Imagem do time' />
-                                        </div>
-                                        <div className='team-name'>
-                                            {grupo.nome}
-                                        </div>
-                                        <div className='team-points'>
-                                            {grupo.pontuacao}
-                                        </div>
-                                    </div>
-                                </li>
-                            </div>
-
-                        ))}
-
-                    </ul>
-                ) : (
-                        <div className='empty'> Sem grupos </div>
-                    )}
-
-            </div>
-
-            <div className='content'>
-                <div className='main-container'>
-                    <DragDropContext onDragEnd={onDragEnd}>
-                        <Container>
-                            {state.columnOrder.map(id => {
-                                const column = state.columns[id];
-                                const tasks = column.taskIds.map(taskId => state.tasks[taskId])
-
-                                return <Column key={column.id} column={column} tasks={tasks}/>
-                            })}
-                        </Container>
-                        
-                    </DragDropContext>
-                    <button className='btn btn-primary' onClick={confirmaBatalha}> BATALHAR! </button>
-                    <button onClick={validarBatalha}> VALIDAR! </button>
-                </div>
-            </div>
+            
         </div>
         
     )

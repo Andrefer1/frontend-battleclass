@@ -1,8 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import Aviso from './pages/Aviso';
-
 /*GENERAL*/
 import Login from './pages/General/Login'
 import Password from './pages/General/Password'
@@ -20,9 +18,8 @@ import ActivitysStudent from './pages/Student/ActivitysStudent'
 import IndividualActivity from './pages/Student/IndividualActivity'
 /*import Battle from './pages/Battle'*/
 import Hero from './pages/General/Hero'
-import PrepararBatalhaDesafiante from './pages/Student/PrepararBatalhaDesafiante'
-import SelectEnemy from './pages/Student/SelectEnemy'
-import Batalha from './pages/Professor/Batalha'
+import PrepararBatalhaDesafiante from './pages/General/PrepararBatalhaDesafiante'
+import SelectEnemy from './pages/General/SelectEnemy'
 
 
 /*PROFESSOR*/
@@ -32,12 +29,14 @@ import Teams from './pages/Professor/Teams'
 import Activitys from './pages/Professor/Activitys'
 import Activity from './pages/Professor/IndividualActivity'
 import AddActivity from './pages/Professor/AddActivity'
-import PrepararBatalha from './pages/Student/PrepararBatalha'
+import Batalha from './pages/Professor/Batalha'
+import PrepararBatalha from './pages/General/PreparaBatalha'
+
 
 export default function Routes() {
     return (
-        <BrowserRouter basename='frontend-battleclass'>
-            <Route path='/' component={Aviso} />
+        <BrowserRouter>
+            
             {/*GENERAL*/}
             <Route path='/' exact component={Login} />
             <Route path='/recover' component={Password} />
@@ -48,16 +47,15 @@ export default function Routes() {
             <Route path='/:idUser/team/:idGrupo/select-enemy' component={SelectEnemy} />
             <Route path='/:idUser/team/:idGrupo/battle/:idEnemy' component={PrepararBatalhaDesafiante} />
             <Route path='/:idGrupo/prepare/:idBattle' component={PrepararBatalha} />
-            <Route path='/:idUser/battle' component={Batalha} />
             <Route path='/:idUser/settings' component={Settings} />
-            <Route path='/test' component={Test}/>*/}
+            {/*<Route path='/test' component={Test}/>*/}
             
             
             {/*STUDENT*/}
             <Route path='/:idUser/main' component={Main} />
             <Route path='/:idUser/team/:idGrupo' exact component={Team} />
             <Route path='/:idUser/activitys-student' component={ActivitysStudent} />
-            <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />*/}
+            <Route path='/:idUser/activitys-student/individual-activity/:idAtividade' component={IndividualActivity} />
             
             
             {/*PROFESSOR*/}
@@ -66,7 +64,8 @@ export default function Routes() {
             <Route path='/:idUser/teams' component={Teams} />
             <Route path='/:idUser/activitys' exact component={Activitys} />
             <Route path='/:idUser/activitys/activity' component={Activity} />
-            <Route path='/:idUser/activitys/add-activity' component={AddActivity} />*/}
+            <Route path='/:idUser/activitys/add-activity' component={AddActivity} />
+            <Route path='/:idUser/battle' component={Batalha} />
 
         </BrowserRouter>
     );

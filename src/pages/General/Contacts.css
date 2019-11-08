@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
-
 * {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: open sans;
     margin: 0;
     padding: 0;
     outline: 0;
@@ -198,7 +196,7 @@ html, body {
     width: auto;
     min-width: 290px;
     max-width: 350px;
-    height: 240px;
+    height: 230px;
     float: left;
     border-radius: 9px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.07);
@@ -212,13 +210,7 @@ html, body {
 }
 
 .contacts .content .cards-devs .devs .dev .profile-data .icon {
-    width: 25%;
-    height: 30%;
-    margin: 5px 0 5px 0px;
-    /*border: solid 1px;*/
-}
-.contacts .content .cards-devs .devs .dev .profile-data .icon .img-icon {
-    width: 100%;
+    width: 30%;
     margin: 10px 0 5px 0px;
     /*border: solid 1px;*/
 }

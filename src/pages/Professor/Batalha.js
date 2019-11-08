@@ -15,6 +15,8 @@ import patolinoMago from '../../assets/icons/patolinoMago.png';
 import api from '../../service/api';
 
 
+
+
 const team1 = [
     { nomePersonagem:'Kirito', url: kirito, id:"5daf91e336f3b64848f0f635", vida:50},
     { nomePersonagem:'Edward Elric', url:ed, id:"5daf91e436f3b64848f0f636", vida:40},
@@ -186,64 +188,70 @@ export default function Batalha({ match }) {
         setTeams(listaTeams)
         console.log(listaVencedores)
 
-        
-
     }, [])
+
     return(
-        <div className='main-container'>
-            <div className='retangle1'>
-                { team1.length > 0 ? (
-                    <ul className='imgs'>
-                        {team1.map((integrantes,index) => (
-                            <li key={index}>
-                                <RcIf if={teams[index] == 'team1'}>
-                                    <Luta1Winner>
-                                        <img className='circle' src={integrantes.url} />
-                                    </Luta1Winner>
-                                    <RcElse>
-                                        <RcIf if={teams[index] == 'team2'}>
-                                            <Luta1Loser>
-                                                <img className='circle' src={integrantes.url} />    
-                                            </Luta1Loser>
-                                        </RcIf>
-                                    </RcElse>
-                                </RcIf>
-                            </li>
-                        ))}
-                    </ul>
-                ): (
-                    <div>Sem time</div>
-                )}
-                
-            </div>
-            <div className='retangle2'>
-                { team2.length > 0 ? (
-                        <ul className='imgs'>
-                            {team2.map((integrantes,index) => (
-                                
-                                <li key={index}>
+        <div className='batalha'>
+            <button className='btn btn-outline-primary button-return'> Voltar para Minha Equipe</button>
+
+            <div className='content'>
+
+                <div className='rectangle'>
+                    <ul>
+                        { team1.length > 0 ? (
+                            <li>
+                                {team1.map((integrantes, index) => (
+                                    <div className='div' key={index}>
                                         <RcIf if={teams[index] == 'team1'}>
-                                    <Luta2Loser>
-                                        <img className='circle' src={integrantes.url} />
-                                    </Luta2Loser>
-                                    <RcElse>
-                                        <RcIf if={teams[index] == 'team2'}>
-                                            <Luta2Winner>
-                                                <img className='circle' src={integrantes.url} />    
-                                            </Luta2Winner>
+                                            <Luta1Winner>
+                                                <img className='circle' src={integrantes.url} />
+                                            </Luta1Winner>
+                                            <RcElse>
+                                                <RcIf if={teams[index] == 'team2'}>
+                                                    <Luta1Loser>
+                                                        <img className='circle' src={integrantes.url} />    
+                                                    </Luta1Loser>
+                                                </RcIf>
+                                            </RcElse>
                                         </RcIf>
-                                    </RcElse>
-                                </RcIf>                                  
-                                </li>
-                                
-                            ))}
-                        </ul>
-                    ): (
-                        <div>Sem time</div>
-                    )}
-            </div>
-            <div>
-                <button onClick={exibirVencedores}> EXIBIR VENCEDOR !</button>
+                                    </div>
+                                ))}
+                            </li>
+                        ): (
+                            <div className='empty'>Sem time</div>
+                        )}
+                    </ul>
+                </div>
+
+                <div className='rectangle rectangle2'>
+                    <ul>
+                        { team2.length > 0 ? (
+                            <li>
+                                {team2.map((integrantes,index) => (
+                                    <div className='div' key={index}>
+                                            <RcIf if={teams[index] == 'team1'}>
+                                        <Luta2Loser>
+                                            <img className='circle' src={integrantes.url} />
+                                        </Luta2Loser>
+                                        <RcElse>
+                                            <RcIf if={teams[index] == 'team2'}>
+                                                <Luta2Winner>
+                                                    <img className='circle' src={integrantes.url} />    
+                                                </Luta2Winner>
+                                            </RcIf>
+                                        </RcElse>
+                                    </RcIf>                                  
+                                    </div>
+                                ))}
+                            </li>  
+                        ): (
+                            <div className='empty'>Sem time</div>
+                        )}
+                    </ul>
+                </div>
+                <div>
+                    <button className='btn btn-primary button-battle' onClick={exibirVencedores}> EXIBIR VENCEDOR !</button>
+                </div>
             </div>
         </div>
     );

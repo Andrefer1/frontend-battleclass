@@ -208,7 +208,7 @@ export default function Team({ history, match }) {
 
                 
                 <button className='btn btn-primary button-battle'
-                    onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))} >
+                    onClick={() => (history.push(`/${match.params.idUser}/team/${match.params.idGrupo}/select-enemy`))} disabled>
                     Batalhar
                 </button>
 
